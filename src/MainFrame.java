@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -36,6 +37,7 @@ public class MainFrame {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1200, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().add(new RestaurantPanel(), BorderLayout.CENTER);
 	}
 
 }
