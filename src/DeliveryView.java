@@ -149,6 +149,7 @@ public class DeliveryView {
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -222,8 +223,10 @@ public class DeliveryView {
 		Darea_Field.setColumns(10);
 		
 		JButton Add_btn = new JButton("Add");
+		Add_btn.setBackground(Color.YELLOW);
 		
 		JButton Delete_btn = new JButton("Delete");
+		Delete_btn.setBackground(Color.YELLOW);
 		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
 		gl_panel_5.setHorizontalGroup(
 			gl_panel_5.createParallelGroup(Alignment.LEADING)
