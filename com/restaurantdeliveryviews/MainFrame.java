@@ -3,9 +3,12 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
 
+	private static JFrame mainFrame;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -37,5 +40,14 @@ public class MainFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
+	
+	public static void changePanel(JPanel panel) {
+		mainFrame.getContentPane().add(panel, BorderLayout.CENTER);
+		mainFrame.revalidate();
+	}
 
+	public static JFrame getMainFrame() {
+		return mainFrame;
+	}
+	
 }
