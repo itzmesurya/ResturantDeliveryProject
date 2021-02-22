@@ -154,10 +154,10 @@ public class OrderView {
 		JScrollPane Meal_scrollPane = new JScrollPane();
 		Meal_scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JButton btnA = new JButton("Accept");
-		btnA.setBackground(new Color(0, 0, 0));
-		btnA.setForeground(Color.BLACK);
-		btnA.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JButton Accept_btn = new JButton("Accept");
+		Accept_btn.setBackground(Color.YELLOW);
+		Accept_btn.setForeground(Color.BLACK);
+		Accept_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JScrollPane Order_scrollPane = new JScrollPane();
 		Order_scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
@@ -211,7 +211,7 @@ public class OrderView {
 										.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addGap(124))
 								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+									.addComponent(Accept_btn, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
 									.addGap(253))))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(57)
@@ -256,21 +256,21 @@ public class OrderView {
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnA))
+						.addComponent(Accept_btn))
 					.addGap(92))
 		);
 		
-		JButton btnNewButton = new JButton("Select");
-		btnNewButton.setBackground(new Color(0, 0, 0));
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JButton Select_btn = new JButton("Select");
+		Select_btn.setBackground(new Color(255, 255, 0));
+		Select_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+				.addComponent(Select_btn, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+				.addComponent(Select_btn, GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
 		);
 		panel_2.setLayout(gl_panel_2);
 		panel.setLayout(gl_panel);

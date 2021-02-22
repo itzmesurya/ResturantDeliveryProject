@@ -1,4 +1,9 @@
 
+/**
+ * @author Alex
+ * This is a template used for keeping track of the current program user
+ * To create a user, you must create one of its subclasses (Client, Admin, Manager, etc)
+ */
 public abstract class User {
 	protected static int idCount = 1;
 	protected int id;
@@ -11,6 +16,16 @@ public abstract class User {
 	protected String email;
 	protected String phone;
 	
+	
+	/**
+	 * @param username
+	 * @param password
+	 * @param first_name
+	 * @param last_name
+	 * @param address
+	 * @param email
+	 * @param phone
+	 */
 	public User(String username, String password, String first_name, String last_name, String address, String email, String phone) {
 		this.id = idCount++; //This will be changed eventually to keep track of ID# between saves
 		this.username = username;
@@ -20,6 +35,17 @@ public abstract class User {
 		this.address = address;
 		this.email = email;
 		this.phone = phone;
+	}
+	
+	/**
+	 * @param username
+	 * @param password
+	 * To enter a user without the need of personal information
+	 */
+	public User(String username, String password) {
+		this.id = idCount++; //This will be changed eventually to keep track of ID# between saves
+		this.username = username;
+		this.password = password;
 	}
 
 	public int getId() {
@@ -93,7 +119,5 @@ public abstract class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
-	
 	
 }
