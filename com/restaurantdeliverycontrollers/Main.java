@@ -12,10 +12,11 @@ import com.restaurantdeliveryviews.RestaurantPanel;
 public class Main {
 
 	public static User user;
+	public static MainFrame mainframe;
 	
 	public static void main(String[] args) {
-		new MainFrame();
-		MainFrame.changePanel(new LoginPanel());;
+		mainframe = new MainFrame();
+		mainframe.changePanel(new LoginPanel());;
 	}
 
 }

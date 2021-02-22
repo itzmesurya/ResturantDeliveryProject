@@ -41,13 +41,9 @@ public class MainFrame extends JFrame {
 		this.setVisible(true);
 	}
 	
-	public static void changePanel(JPanel panel) {
-		mainFrame.getContentPane().add(panel, BorderLayout.CENTER);
-		mainFrame.revalidate();
-	}
-
-	public static JFrame getMainFrame() {
-		return mainFrame;
+	public void changePanel(JPanel panel) {
+		this.getContentPane().add(panel, BorderLayout.CENTER);
+		this.revalidate();
 	}
 	
 }
