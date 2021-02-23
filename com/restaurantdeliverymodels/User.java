@@ -6,7 +6,7 @@ package com.restaurantdeliverymodels;
  * To create a user, you must create one of its subclasses (Client, Admin, Manager, etc)
  */
 public abstract class User {
-	protected static int idCount = 1;
+	protected static int idCount;
 	protected int id;
 	protected int level;
 	protected String username;
@@ -28,7 +28,7 @@ public abstract class User {
 	 * @param phone
 	 */
 	public User(String username, String password, String first_name, String last_name, String address, String email, String phone) {
-		this.id = idCount++; //This will be changed eventually to keep track of ID# between saves
+		this.id = Database.getIdCounter().getIdCounterUser();
 		this.username = username;
 		this.password = password;
 		this.first_name = first_name;
