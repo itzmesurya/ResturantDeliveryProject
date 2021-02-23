@@ -21,7 +21,7 @@ public class Item {
 	 * @param menu_id
 	 * Create an item that belongs to an order
 	 */
-	public Item(String name, double price, int quantity, int menu_id) {
+	public Item(String name, double price, int quantity, int order_id) {
 		this.id = idCount++;//This will be changed eventually to keep track of ID# between saves
 		this.name = name;
 		this.price = price;
