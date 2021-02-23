@@ -1,5 +1,14 @@
 package com.restaurantdeliverymodels;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import com.google.gson.*;
 
 /**
  * @author Alex
@@ -17,8 +26,19 @@ public class Database {
 	private static ArrayList<Manager> managers;
 	private static ArrayList<Admin> admins;
 	
+	/**
+	 * Loads file contents into arraylists
+	 */
 	public Database() {
-		//TODO: Load save data from files
+		loadItems();
+		loadOrders();
+		loadMenus();
+		loadRestaurants();
+		loadClients();
+		loadDeliverymen();
+		loadRestaurateurs();
+		loadManagers();
+		loadAdmins();
 	}
 	
 	public static ArrayList<Item> getItems() {
@@ -31,6 +51,12 @@ public class Database {
 			}
 		}
 		return null;
+	}
+	private static void loadItems() {
+		loadData("items");
+	}
+	public static void saveItems() {
+		saveData("items");
 	}
 	public static void addItem(Item item) {
 		items.add(item);
@@ -46,6 +72,12 @@ public class Database {
 		}
 		return null;
 	}
+	private static void loadOrders() {
+		loadData("orders");
+	}
+	public static void saveOrders() {
+		saveData("orders");
+	}
 	public static void addOrder(Order order) {
 		orders.add(order);
 	}
@@ -59,6 +91,12 @@ public class Database {
 			}
 		}
 		return null;
+	}
+	private static void loadMenus() {
+		loadData("menus");
+	}
+	public static void saveMenus() {
+		saveData("menus");
 	}
 	public static void addMenu(Menu menu) {
 		menus.add(menu);
@@ -74,6 +112,12 @@ public class Database {
 		}
 		return null;
 	}
+	private static void loadRestaurants() {
+		loadData("restaurants");
+	}
+	public static void saveRestaurants() {
+		saveData("restaurants");
+	}
 	public static void addRestaurant(Restaurant restaurant) {
 		restaurants.add(restaurant);
 	}
@@ -87,6 +131,12 @@ public class Database {
 			}
 		}
 		return null;
+	}
+	private static void loadClients() {
+		loadData("clients");
+	}
+	public static void saveClients() {
+		saveData("clients");
 	}
 	public static void addClient(Client client) {
 		clients.add(client);
@@ -102,6 +152,12 @@ public class Database {
 		}
 		return null;
 	}
+	private static void loadDeliverymen() {
+		loadData("deliverymen");
+	}
+	public static void saveDeliverymen() {
+		saveData("deliverymen");
+	}
 	public static void addDeliveryman(Deliveryman deliveryman) {
 		deliverymen.add(deliveryman);
 	}
@@ -115,6 +171,12 @@ public class Database {
 			}
 		}
 		return null;
+	}
+	private static void loadRestaurateurs() {
+		loadData("restaurateurs");
+	}
+	public static void saveRestaurateurs() {
+		saveData("restaurateurs");
 	}
 	public static void addRestaurateur(Restaurateur restaurateur) {
 		restaurateurs.add(restaurateur);
@@ -130,6 +192,12 @@ public class Database {
 		}
 		return null;
 	}
+	private static void loadManagers() {
+		loadData("managers");
+	}
+	public static void saveManagers() {
+		saveData("managers");
+	}
 	public static void addManager(Manager manager) {
 		managers.add(manager);
 	}
@@ -144,8 +212,97 @@ public class Database {
 		}
 		return null;
 	}
+	private static void loadAdmins() {
+		loadData("admins");
+	}
+	public static void saveAdmins() {
+		saveData("admins");
+	}
 	public static void addAdmin(Admin admin) {
 		admins.add(admin);
+	}
+	
+	
+	
+	/**
+	 * @param filename
+	 * Load data from file specified into ArrayList
+	 */
+	private static void loadData(String filename) {
+        String infoString = "";
+        //Read the file
+        try {
+
+        	InputStream inputStream = new FileInputStream("saveData/" + filename + ".txt");
+
+        	BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+
+            String readLine;
+            StringBuffer buf = new StringBuffer();
+
+            while ((readLine = in.readLine()) != null) {
+                buf.append(readLine);
+            }
+
+            //Convert the read String into a Json String
+            infoString = buf.toString();
+
+            if (null != in) {
+                in.close();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        //Load data into the array
+        if (infoString !=null && !infoString.isEmpty()) {
+            //Create new Gson object
+            Gson gson = (new GsonBuilder()).create();
+
+           //Use Gson library to process string into objects
+            switch (filename) {
+            case "items":
+            	break;
+            case "admins":
+            	admins = new ArrayList<Admin>(Arrays.asList(gson.fromJson(infoString, Admin[].class)));
+            	break;
+            }
+           
+        } else {
+        	switch (filename) {
+            case "items":
+            	break;
+            case "admins":
+            	admins = new ArrayList<Admin>();
+            	break;
+        	}
+        }
+	}
+	
+	/**
+	 * @param filename
+	 * Save contents of ArrayList into specified file
+	 */
+	private static void saveData(String filename) {
+		String strJson = "";
+		switch(filename) {
+		case "items":
+			strJson = (new GsonBuilder().create()).toJson(items);
+				break;
+		case "admins":
+			strJson = (new GsonBuilder().create()).toJson(admins);
+			break;
+		}
+        
+		try {
+			FileOutputStream outputStream = new FileOutputStream("saveData/" + filename + ".txt");
+            outputStream.write(strJson.getBytes());
+            outputStream.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 	
 }
