@@ -16,6 +16,7 @@ import com.google.gson.*;
  */
 public class Database {
 
+	public static ArrayList<IdCounter> idCounter;
 	private static ArrayList<Item> items;
 	private static ArrayList<Order> orders;
 	private static ArrayList<Menu> menus;
@@ -30,6 +31,8 @@ public class Database {
 	 * Loads file contents into arraylists
 	 */
 	public Database() {
+		loadIdCounter();
+		idCounter.add(new IdCounter());
 		loadItems();
 		loadOrders();
 		loadMenus();
@@ -222,6 +225,13 @@ public class Database {
 		admins.add(admin);
 	}
 	
+	public static IdCounter getIdCounter() {
+		return idCounter.get(0);
+	}
+	
+	private static void loadIdCounter() {
+		loadData("ids");
+	}
 	
 	
 	/**
@@ -262,8 +272,33 @@ public class Database {
 
            //Use Gson library to process string into objects
             switch (filename) {
-            case "items":
+            case "ids":
+            	idCounter = new ArrayList<IdCounter>(Arrays.asList(gson.fromJson(infoString, IdCounter[].class)));
             	break;
+            case "items":
+            	items = new ArrayList<Item>(Arrays.asList(gson.fromJson(infoString, Item[].class)));
+            	break;
+            case "menus":
+    			menus = new ArrayList<Menu>(Arrays.asList(gson.fromJson(infoString, Menu[].class)));
+    				break;
+    		case "orders":
+    			orders = new ArrayList<Order>(Arrays.asList(gson.fromJson(infoString, Order[].class)));
+    				break;
+    		case "restaurants":
+    			restaurants = new ArrayList<Restaurant>(Arrays.asList(gson.fromJson(infoString, Restaurant[].class)));
+    				break;
+    		case "clients":
+    			clients = new ArrayList<Client>(Arrays.asList(gson.fromJson(infoString, Client[].class)));
+    				break;
+    		case "deliverymen":
+    			deliverymen = new ArrayList<Deliveryman>(Arrays.asList(gson.fromJson(infoString, Deliveryman[].class)));
+    				break;
+    		case "restaurateurs":
+    			restaurateurs = new ArrayList<Restaurateur>(Arrays.asList(gson.fromJson(infoString, Restaurateur[].class)));
+    				break;
+    		case "managers":
+    			managers = new ArrayList<Manager>(Arrays.asList(gson.fromJson(infoString, Manager[].class)));
+    				break;
             case "admins":
             	admins = new ArrayList<Admin>(Arrays.asList(gson.fromJson(infoString, Admin[].class)));
             	break;
@@ -271,8 +306,33 @@ public class Database {
            
         } else {
         	switch (filename) {
-            case "items":
+        	case "ids":
+            	idCounter = new ArrayList<IdCounter>();
             	break;
+            case "items":
+            	items = new ArrayList<Item>();
+            	break;
+            case "menus":
+    			menus = new ArrayList<Menu>();
+    				break;
+    		case "orders":
+    			orders = new ArrayList<Order>();
+    				break;
+    		case "restaurants":
+    			restaurants = new ArrayList<Restaurant>();
+    				break;
+    		case "clients":
+    			clients = new ArrayList<Client>();
+    				break;
+    		case "deliverymen":
+    			deliverymen = new ArrayList<Deliveryman>();
+    				break;
+    		case "restaurateurs":
+    			restaurateurs = new ArrayList<Restaurateur>();
+    				break;
+    		case "managers":
+    			managers = new ArrayList<Manager>();
+    				break;
             case "admins":
             	admins = new ArrayList<Admin>();
             	break;
@@ -287,8 +347,32 @@ public class Database {
 	private static void saveData(String filename) {
 		String strJson = "";
 		switch(filename) {
+		case "ids":
+			strJson = (new GsonBuilder().create()).toJson(idCounter);
+			break;
 		case "items":
 			strJson = (new GsonBuilder().create()).toJson(items);
+				break;
+		case "menus":
+			strJson = (new GsonBuilder().create()).toJson(menus);
+				break;
+		case "orders":
+			strJson = (new GsonBuilder().create()).toJson(orders);
+				break;
+		case "restaurants":
+			strJson = (new GsonBuilder().create()).toJson(restaurants);
+				break;
+		case "clients":
+			strJson = (new GsonBuilder().create()).toJson(clients);
+				break;
+		case "deliverymen":
+			strJson = (new GsonBuilder().create()).toJson(deliverymen);
+				break;
+		case "restaurateurs":
+			strJson = (new GsonBuilder().create()).toJson(restaurateurs);
+				break;
+		case "managers":
+			strJson = (new GsonBuilder().create()).toJson(managers);
 				break;
 		case "admins":
 			strJson = (new GsonBuilder().create()).toJson(admins);
