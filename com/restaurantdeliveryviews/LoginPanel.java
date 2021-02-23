@@ -14,8 +14,9 @@ import javax.swing.border.LineBorder;
 
 public class LoginPanel extends JPanel {
 	
-	private JTextField tf_1;
-	private JTextField tf_2;
+	private static JTextField tf_1;
+	private static JTextField tf_2;
+	private static JButton btnLogin;
 	
 	public LoginPanel() {		
 	
@@ -50,7 +51,7 @@ public class LoginPanel extends JPanel {
 	panel.setPreferredSize(new Dimension(650, 20));
 	panel_3.add(panel);
 	
-	JButton btnLogin = new JButton("Login");
+	btnLogin = new JButton("Login");
 	btnLogin.setFont(new Font("Arial", Font.BOLD, 25));
 	btnLogin.setBackground(Color.YELLOW);
 	panel_3.add(btnLogin);
@@ -110,5 +111,17 @@ public class LoginPanel extends JPanel {
 	lbl_Logo.setBounds(169, 137, 271, 258);
 	westPanel.add(lbl_Logo);
 }
+	
+	public static JButton getLoginBtn() {
+		return btnLogin;
+	}
+	
+	public static JTextField getUsernameTF() {
+		return tf_1;
+	}
+	
+	public static JTextField getPasswordTF() {
+		return tf_2;
+	}
 
 }
