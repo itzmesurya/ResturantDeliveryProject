@@ -23,10 +23,12 @@ public class DeliveryPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JTextField Name_Field , Phone_Field ,Darea_Field , User_Field ,pass_Field , ConfirmPass_Field;	
 	private JTable Darea_table;
+	private String action;
+	private JLabel lblNewLabel;
+	private JComboBox selectR_comboBox;
 	
-	
-	public DeliveryPanel() {
-		
+	public DeliveryPanel(String crudAction) {
+		action = crudAction;
 //		JPanel DeliveryPanel = new JPanel();
 		JPanel Dpanel = new JPanel();
 		
@@ -299,7 +301,7 @@ public class DeliveryPanel extends JPanel{
 			);
 			panel_4.setLayout(gl_panel_4);
 			
-			JLabel lblNewLabel = new JLabel("Delivery View");
+			JLabel lblNewLabel = new JLabel("Create Menu");
 			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
 			GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 			gl_panel_3.setHorizontalGroup(
@@ -321,6 +323,88 @@ public class DeliveryPanel extends JPanel{
 //			this.getRootPane().setLayout(groupLayout);
 //			this.getContentPane().setLayout(groupLayout);
 		}
+	 private void AdaptToAction() {
+		
+		 switch(this.action) {
+		 
+		 
+		 case "Create":
+			 lblNewLabel = new JLabel("Create Menu");
+			 selectR_comboBox.setEnabled(false);
+			 break;
+			
+		 
+		 default:
+			    break;
+		 
+		 
+			
+		 }
+		 
+	 }
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public JTextField getName_Field() {
+		return Name_Field;
+	}
+	public JTextField getPhone_Field() {
+		return Phone_Field;
+	}
+	public JTextField getDarea_Field() {
+		return Darea_Field;
+	}
+	public JTextField getUser_Field() {
+		return User_Field;
+	}
+	public JTextField getPass_Field() {
+		return pass_Field;
+	}
+	public JTextField getConfirmPass_Field() {
+		return ConfirmPass_Field;
+	}
+	public JTable getDarea_table() {
+		return Darea_table;
+	}
+	public String getAction() {
+		return action;
+	}
+	public JLabel getLblNewLabel() {
+		return lblNewLabel;
+	}
+	public JComboBox getSelectR_comboBox() {
+		return selectR_comboBox;
+	}
+	public void setName_Field(JTextField name_Field) {
+		Name_Field = name_Field;
+	}
+	public void setPhone_Field(JTextField phone_Field) {
+		Phone_Field = phone_Field;
+	}
+	public void setDarea_Field(JTextField darea_Field) {
+		Darea_Field = darea_Field;
+	}
+	public void setUser_Field(JTextField user_Field) {
+		User_Field = user_Field;
+	}
+	public void setPass_Field(JTextField pass_Field) {
+		this.pass_Field = pass_Field;
+	}
+	public void setConfirmPass_Field(JTextField confirmPass_Field) {
+		ConfirmPass_Field = confirmPass_Field;
+	}
+	public void setDarea_table(JTable darea_table) {
+		Darea_table = darea_table;
+	}
+	public void setAction(String action) {
+		this.action = action;
+	}
+	public void setLblNewLabel(JLabel lblNewLabel) {
+		this.lblNewLabel = lblNewLabel;
+	}
+	public void setSelectR_comboBox(JComboBox selectR_comboBox) {
+		this.selectR_comboBox = selectR_comboBox;
+	}
 	
 
 	}
