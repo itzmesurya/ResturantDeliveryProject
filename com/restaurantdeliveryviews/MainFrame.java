@@ -1,49 +1,26 @@
 package com.restaurantdeliveryviews;
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class MainFrame extends JFrame {
+public class MainFrame {
 
 	private static JFrame mainFrame;
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainFrame window = new MainFrame();
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
-	 * Create the application.
+	 * Create the frame
 	 */
 	public MainFrame() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		this.setBounds(100, 100, 1200, 800);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
+		mainFrame = new JFrame();
+		mainFrame.setBounds(100, 100, 1200, 800);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.setVisible(true);
 	}
 	
-	public void changePanel(JPanel panel) {
-		this.getContentPane().add(panel, BorderLayout.CENTER);
-		this.revalidate();
+	public static void changePanel(JPanel panel) {
+		mainFrame.getContentPane().add(panel, BorderLayout.CENTER);
+		mainFrame.revalidate();
 	}
 	
 }
