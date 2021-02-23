@@ -204,7 +204,7 @@ public class Database {
 	public static ArrayList<Admin> getAdmins() {
 		return admins;
 	}
-	public Admin getAdminById(int id) {
+	public static Admin getAdminById(int id) {
 		for (Admin admin : admins) {
 			if (admin.getId() == id) {
 				return admin;
