@@ -62,6 +62,10 @@ public class RestaurantPanel extends JPanel {
 	
 	private String action;
 	JLabel lbl_1, lbl_2;
+	
+	String[] hours = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};
+	String[] minutes = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"};
+	
 
 	public RestaurantPanel(String crudAction) {
 		action = crudAction;
@@ -279,9 +283,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C321.setFont(new Font("Arial", Font.BOLD, 20));
 		Panel_C32.add(lbl_C321);
 		
-		combo_C321 = new JComboBox();
+		combo_C321 = new JComboBox(hours);
 		combo_C321.setBackground(Color.MAGENTA);
-		combo_C321.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C321.setToolTipText("");
 		combo_C321.setPreferredSize(new Dimension(43, 21));
 		combo_C321.setFont(new Font("Arial", Font.BOLD, 14));
@@ -291,9 +294,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C322.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C32.add(lbl_C322);
 		
-		combo_C322 = new JComboBox();
+		combo_C322 = new JComboBox(minutes);
 		combo_C322.setBackground(Color.MAGENTA);
-		combo_C322.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C322.setToolTipText("");
 		combo_C322.setPreferredSize(new Dimension(43, 21));
 		combo_C322.setFont(new Font("Arial", Font.BOLD, 14));
@@ -303,9 +305,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C323.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C32.add(lbl_C323);
 		
-		combo_C323 = new JComboBox();
+		combo_C323 = new JComboBox(hours);
 		combo_C323.setBackground(Color.MAGENTA);
-		combo_C323.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C323.setToolTipText("");
 		combo_C323.setPreferredSize(new Dimension(43, 21));
 		combo_C323.setFont(new Font("Arial", Font.BOLD, 14));
@@ -315,9 +316,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C324.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C32.add(lbl_C324);
 		
-		combo_C324 = new JComboBox();
+		combo_C324 = new JComboBox(minutes);
 		combo_C324.setBackground(Color.MAGENTA);
-		combo_C324.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C324.setToolTipText("");
 		combo_C324.setPreferredSize(new Dimension(43, 21));
 		combo_C324.setFont(new Font("Arial", Font.BOLD, 14));
@@ -333,9 +333,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C331.setFont(new Font("Arial", Font.BOLD, 20));
 		Panel_C33.add(lbl_C331);
 		
-		combo_C331 = new JComboBox();
+		combo_C331 = new JComboBox(hours);
 		combo_C331.setBackground(Color.MAGENTA);
-		combo_C331.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C331.setToolTipText("");
 		combo_C331.setPreferredSize(new Dimension(43, 21));
 		combo_C331.setFont(new Font("Arial", Font.BOLD, 14));
@@ -345,9 +344,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C332.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C33.add(lbl_C332);
 		
-		combo_C332 = new JComboBox();
+		combo_C332 = new JComboBox(minutes);
 		combo_C332.setBackground(Color.MAGENTA);
-		combo_C332.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C332.setToolTipText("");
 		combo_C332.setPreferredSize(new Dimension(43, 21));
 		combo_C332.setFont(new Font("Arial", Font.BOLD, 14));
@@ -357,9 +355,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C333.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C33.add(lbl_C333);
 		
-		combo_C333 = new JComboBox();
+		combo_C333 = new JComboBox(hours);
 		combo_C333.setBackground(Color.MAGENTA);
-		combo_C333.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C333.setToolTipText("");
 		combo_C333.setPreferredSize(new Dimension(43, 21));
 		combo_C333.setFont(new Font("Arial", Font.BOLD, 14));
@@ -369,9 +366,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C334.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C33.add(lbl_C334);
 		
-		combo_C334 = new JComboBox();
+		combo_C334 = new JComboBox(minutes);
 		combo_C334.setBackground(Color.MAGENTA);
-		combo_C334.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C334.setToolTipText("");
 		combo_C334.setPreferredSize(new Dimension(43, 21));
 		combo_C334.setFont(new Font("Arial", Font.BOLD, 14));
@@ -387,9 +383,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C341.setFont(new Font("Arial", Font.BOLD, 20));
 		Panel_C34.add(lbl_C341);
 		
-		combo_C341 = new JComboBox();
+		combo_C341 = new JComboBox(hours);
 		combo_C341.setBackground(Color.MAGENTA);
-		combo_C341.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C341.setToolTipText("");
 		combo_C341.setPreferredSize(new Dimension(43, 21));
 		combo_C341.setFont(new Font("Arial", Font.BOLD, 14));
@@ -399,9 +394,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C342.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C34.add(lbl_C342);
 		
-		combo_C342 = new JComboBox();
+		combo_C342 = new JComboBox(minutes);
 		combo_C342.setBackground(Color.MAGENTA);
-		combo_C342.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C342.setToolTipText("");
 		combo_C342.setPreferredSize(new Dimension(43, 21));
 		combo_C342.setFont(new Font("Arial", Font.BOLD, 14));
@@ -411,9 +405,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C343.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C34.add(lbl_C343);
 		
-		combo_C343 = new JComboBox();
+		combo_C343 = new JComboBox(hours);
 		combo_C343.setBackground(Color.MAGENTA);
-		combo_C343.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C343.setToolTipText("");
 		combo_C343.setPreferredSize(new Dimension(43, 21));
 		combo_C343.setFont(new Font("Arial", Font.BOLD, 14));
@@ -423,9 +416,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C344.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C34.add(lbl_C344);
 		
-		combo_C344 = new JComboBox();
+		combo_C344 = new JComboBox(minutes);
 		combo_C344.setBackground(Color.MAGENTA);
-		combo_C344.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C344.setToolTipText("");
 		combo_C344.setPreferredSize(new Dimension(43, 21));
 		combo_C344.setFont(new Font("Arial", Font.BOLD, 14));
@@ -441,9 +433,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C351.setFont(new Font("Arial", Font.BOLD, 20));
 		Panel_C35.add(lbl_C351);
 		
-		combo_C351 = new JComboBox();
+		combo_C351 = new JComboBox(hours);
 		combo_C351.setBackground(Color.MAGENTA);
-		combo_C351.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C351.setToolTipText("");
 		combo_C351.setPreferredSize(new Dimension(43, 21));
 		combo_C351.setFont(new Font("Arial", Font.BOLD, 14));
@@ -453,9 +444,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C352.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C35.add(lbl_C352);
 		
-		combo_C352 = new JComboBox();
+		combo_C352 = new JComboBox(minutes);
 		combo_C352.setBackground(Color.MAGENTA);
-		combo_C352.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C352.setToolTipText("");
 		combo_C352.setPreferredSize(new Dimension(43, 21));
 		combo_C352.setFont(new Font("Arial", Font.BOLD, 14));
@@ -465,9 +455,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C353.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C35.add(lbl_C353);
 		
-		combo_C353 = new JComboBox();
+		combo_C353 = new JComboBox(hours);
 		combo_C353.setBackground(Color.MAGENTA);
-		combo_C353.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C353.setToolTipText("");
 		combo_C353.setPreferredSize(new Dimension(43, 21));
 		combo_C353.setFont(new Font("Arial", Font.BOLD, 14));
@@ -477,9 +466,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C354.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C35.add(lbl_C354);
 		
-		combo_C354 = new JComboBox();
+		combo_C354 = new JComboBox(minutes);
 		combo_C354.setBackground(Color.MAGENTA);
-		combo_C354.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C354.setToolTipText("");
 		combo_C354.setPreferredSize(new Dimension(43, 21));
 		combo_C354.setFont(new Font("Arial", Font.BOLD, 14));
@@ -495,9 +483,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C361.setFont(new Font("Arial", Font.BOLD, 20));
 		Panel_C36.add(lbl_C361);
 		
-		combo_C361 = new JComboBox();
+		combo_C361 = new JComboBox(hours);
 		combo_C361.setBackground(Color.MAGENTA);
-		combo_C361.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C361.setToolTipText("");
 		combo_C361.setPreferredSize(new Dimension(43, 21));
 		combo_C361.setFont(new Font("Arial", Font.BOLD, 14));
@@ -507,9 +494,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C362.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C36.add(lbl_C362);
 		
-		combo_C362 = new JComboBox();
+		combo_C362 = new JComboBox(minutes);
 		combo_C362.setBackground(Color.MAGENTA);
-		combo_C362.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C362.setToolTipText("");
 		combo_C362.setPreferredSize(new Dimension(43, 21));
 		combo_C362.setFont(new Font("Arial", Font.BOLD, 14));
@@ -519,9 +505,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C363.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C36.add(lbl_C363);
 		
-		combo_C363 = new JComboBox();
+		combo_C363 = new JComboBox(hours);
 		combo_C363.setBackground(Color.MAGENTA);
-		combo_C363.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C363.setToolTipText("");
 		combo_C363.setPreferredSize(new Dimension(43, 21));
 		combo_C363.setFont(new Font("Arial", Font.BOLD, 14));
@@ -531,9 +516,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C364.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C36.add(lbl_C364);
 		
-		combo_C364 = new JComboBox();
+		combo_C364 = new JComboBox(minutes);
 		combo_C364.setBackground(Color.MAGENTA);
-		combo_C364.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C364.setToolTipText("");
 		combo_C364.setPreferredSize(new Dimension(43, 21));
 		combo_C364.setFont(new Font("Arial", Font.BOLD, 14));
@@ -549,9 +533,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C371.setFont(new Font("Arial", Font.BOLD, 20));
 		Panel_C37.add(lbl_C371);
 		
-		combo_C371 = new JComboBox();
+		combo_C371 = new JComboBox(hours);
 		combo_C371.setBackground(Color.MAGENTA);
-		combo_C371.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C371.setToolTipText("");
 		combo_C371.setPreferredSize(new Dimension(43, 21));
 		combo_C371.setFont(new Font("Arial", Font.BOLD, 14));
@@ -561,9 +544,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C372.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C37.add(lbl_C372);
 		
-		combo_C372 = new JComboBox();
+		combo_C372 = new JComboBox(minutes);
 		combo_C372.setBackground(Color.MAGENTA);
-		combo_C372.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C372.setToolTipText("");
 		combo_C372.setPreferredSize(new Dimension(43, 21));
 		combo_C372.setFont(new Font("Arial", Font.BOLD, 14));
@@ -573,9 +555,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C373.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C37.add(lbl_C373);
 		
-		combo_C373 = new JComboBox();
+		combo_C373 = new JComboBox(hours);
 		combo_C373.setBackground(Color.MAGENTA);
-		combo_C373.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C373.setToolTipText("");
 		combo_C373.setPreferredSize(new Dimension(43, 21));
 		combo_C373.setFont(new Font("Arial", Font.BOLD, 14));
@@ -585,9 +566,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C374.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C37.add(lbl_C374);
 		
-		combo_C374 = new JComboBox();
+		combo_C374 = new JComboBox(minutes);
 		combo_C374.setBackground(Color.MAGENTA);
-		combo_C374.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C374.setToolTipText("");
 		combo_C374.setPreferredSize(new Dimension(43, 21));
 		combo_C374.setFont(new Font("Arial", Font.BOLD, 14));
@@ -603,9 +583,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C381.setFont(new Font("Arial", Font.BOLD, 20));
 		Panel_C38.add(lbl_C381);
 		
-		combo_C381 = new JComboBox();
+		combo_C381 = new JComboBox(hours);
 		combo_C381.setBackground(Color.MAGENTA);
-		combo_C381.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C381.setToolTipText("");
 		combo_C381.setPreferredSize(new Dimension(43, 21));
 		combo_C381.setFont(new Font("Arial", Font.BOLD, 14));
@@ -615,9 +594,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C382.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C38.add(lbl_C382);
 		
-		combo_C382 = new JComboBox();
+		combo_C382 = new JComboBox(minutes);
 		combo_C382.setBackground(Color.MAGENTA);
-		combo_C382.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C382.setToolTipText("");
 		combo_C382.setPreferredSize(new Dimension(43, 21));
 		combo_C382.setFont(new Font("Arial", Font.BOLD, 14));
@@ -627,9 +605,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C383.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C38.add(lbl_C383);
 		
-		combo_C383 = new JComboBox();
+		combo_C383 = new JComboBox(hours);
 		combo_C383.setBackground(Color.MAGENTA);
-		combo_C383.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
 		combo_C383.setToolTipText("");
 		combo_C383.setPreferredSize(new Dimension(43, 21));
 		combo_C383.setFont(new Font("Arial", Font.BOLD, 14));
@@ -639,9 +616,8 @@ public class RestaurantPanel extends JPanel {
 		lbl_C384.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C38.add(lbl_C384);
 		
-		combo_C384 = new JComboBox();
+		combo_C384 = new JComboBox(minutes);
 		combo_C384.setBackground(Color.MAGENTA);
-		combo_C384.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
 		combo_C384.setToolTipText("");
 		combo_C384.setPreferredSize(new Dimension(43, 21));
 		combo_C384.setFont(new Font("Arial", Font.BOLD, 14));
