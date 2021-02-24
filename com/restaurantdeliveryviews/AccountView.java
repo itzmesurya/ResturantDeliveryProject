@@ -122,6 +122,11 @@ public class AccountView {
 	selectLevelDropDown.setBorder(new LineBorder(Color.BLACK));
 	selectLevelDropDown.setBackground(new Color(224, 63, 216));
 	selectLevelDropDown.setPreferredSize(new Dimension(612, 41));
+	selectLevelDropDown.addItem("0");
+	selectLevelDropDown.addItem("1");
+	selectLevelDropDown.addItem("2");
+	selectLevelDropDown.addItem("3");
+	selectLevelDropDown.addItem("4");
 	toppanel2.add(selectLevelDropDown);
 
 	centerPanel = new JPanel();
