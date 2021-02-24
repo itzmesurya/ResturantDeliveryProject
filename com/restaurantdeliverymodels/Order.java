@@ -8,7 +8,6 @@ import java.util.Arrays;
  */
 public class Order {
 	
-	private static int idCount = 1;
 	private int id;
 	private String delivery_area;
 	private String delivery_address;
@@ -26,7 +25,7 @@ public class Order {
 	 * @param client_id
 	 */
 	public Order(String delivery_area, String delivery_address, Item[] items, int restaurant_id, int client_id) {
-		this.id = idCount++;
+		this.id = Database.getIdCounter().getIdCounterOrder();
 		this.delivery_area = delivery_area;
 		this.delivery_address = delivery_address;
 		this.items = items;

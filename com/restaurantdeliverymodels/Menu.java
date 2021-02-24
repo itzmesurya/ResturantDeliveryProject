@@ -1,12 +1,13 @@
 package com.restaurantdeliverymodels;
 
+import java.util.ArrayList;
+
 /**
  * @author Alex
  * Menu belongs to a restaurant and contains items
  */
 public class Menu {
 	
-	private static int idCount = 1;
 	private int id;
 	private int restaurant_id;
 	
@@ -14,7 +15,7 @@ public class Menu {
 	 * @param restaurant_id
 	 */
 	public Menu(int restaurant_id) {
-		this.id = idCount++;
+		this.id = Database.getIdCounter().getIdCounterMenu();
 		this.restaurant_id = restaurant_id;
 	}
 
@@ -34,9 +35,15 @@ public class Menu {
 		this.restaurant_id = restaurant_id;
 	}
 	
-//	TODO
-//	public Item[] getMenuItems() {
-//		
-//	}
+	
+	public ArrayList<Item> getMenuItems() {
+		ArrayList<Item> menuItems = new ArrayList<Item>();
+		for (Item item : Database.getItems()) {
+			if (item.getMenu_id() == this.id) {
+				menuItems.add(item);
+			}
+		}
+		return menuItems;
+	}
 
 }
