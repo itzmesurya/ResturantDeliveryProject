@@ -20,8 +20,8 @@ public class Main {
 		new MainFrame();
 
 		MainFrame.changePanel(new LoginPanel());
-		System.out.println("test");
-		System.out.println("test2");
+		MainFrame.changePanel(new Admin_main_menu_Panel());
+		new Admin_main_menu_Core();
 	}
 
 }
