@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import com.restaurantdeliverymodels.Admin;
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliveryviews.LoginPanel;
+import com.restaurantdeliveryviews.MainFrame;
 
 public class LoginCore {
 	
@@ -17,6 +18,10 @@ public class LoginCore {
 				for (Admin admin : admins) {
 					if (admin.getUsername().equals(LoginPanel.getUsernameTF().getText()) && admin.getPassword().equals(LoginPanel.getPasswordTF().getText())) {
 						Main.user = Database.getAdminById(admin.getId());
+						
+						switch(Main.user.getLevel()) {
+							
+						}
 					}
 				}
 				
