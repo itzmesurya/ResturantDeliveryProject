@@ -18,9 +18,9 @@ import javax.swing.JLabel;
 
 public class Admin_main_menu_Panel extends JPanel{
 	
-	private	JButton resto_add_btn;
-	private	JButton resto_edit_btn;
-	private	JButton resto_del_btn;
+	private static	JButton resto_add_btn;
+	private static	JButton resto_edit_btn;
+	private static  JButton resto_del_btn;
 	private	JButton menu_add_btn;
 	private	JButton menu_edit_btn;
 	private	JButton menu_del_btn;
@@ -287,19 +287,19 @@ public class Admin_main_menu_Panel extends JPanel{
 	
 		//Get resto_add_btn
 	
-		public JButton getResto_Add_Btn() {
+		public static JButton getResto_Add_Btn() {
 			return	resto_add_btn;
 		}
 		
 		//Get resto_edit_btn
 		
-		public JButton getResto_Edit_Btn() {
+		public static JButton getResto_Edit_Btn() {
 			return	resto_edit_btn;
 		}
 		
 		//Get resto_del_btn
 		
-		public JButton getResto_Del_Btn() {
+		public static JButton getResto_Del_Btn() {
 			return	resto_del_btn;
 		}
 		
@@ -350,5 +350,7 @@ public class Admin_main_menu_Panel extends JPanel{
 		public JButton getLog_Out_Btn() {
 			return	log_out_btn;
 		}
+		
+		
 
 }

@@ -19,6 +19,7 @@ public class MainFrame {
 	}
 	
 	public static void changePanel(JPanel panel) {
+		//mainFrame.removeAll();
 		mainFrame.getContentPane().add(panel, BorderLayout.CENTER);
 		mainFrame.revalidate();
 	}
