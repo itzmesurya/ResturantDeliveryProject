@@ -90,6 +90,11 @@ public class AccountPanel extends JPanel {
 	getSelectLevelDropDown().setBorder(new LineBorder(Color.BLACK));
 	getSelectLevelDropDown().setBackground(new Color(224, 63, 216));
 	getSelectLevelDropDown().setPreferredSize(new Dimension(612, 41));
+	getSelectLevelDropDown().addItem("0");
+	getSelectLevelDropDown().addItem("1");
+	getSelectLevelDropDown().addItem("2");
+	getSelectLevelDropDown().addItem("3");
+	getSelectLevelDropDown().addItem("4");
 	toppanel2.add(getSelectLevelDropDown());
 
 	centerPanel = new JPanel();
@@ -244,7 +249,7 @@ public class AccountPanel extends JPanel {
 	getComboBox().setBorder(new LineBorder(Color.BLACK));
 	getComboBox().setBackground(new Color(224, 63, 216));
 	getComboBox().setBounds(198, 11, 612, 41);
-	panel.add(getComboBox());
+	panel.add(getComboBox());	
 	AdaptToAction();
     }
 
