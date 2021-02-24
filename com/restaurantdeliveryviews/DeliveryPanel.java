@@ -158,13 +158,26 @@ public class DeliveryPanel extends JPanel{
 					
 					Deliveryman deliveryman= new Deliveryman(User_Field.getText(),pass_Field.getText(),Name_Field.getText(),"","","",Phone_Field.getText(),areas.toArray(new String[0]));					
 					Database.addDeliveryman(deliveryman);
-					Database.saveDeliverymen();
+					if(User_Field.getText().equals("") && pass_Field.getText().equals("") && Name_Field.getText().equals("") && Phone_Field.getText().equals(""))
+					{
+						JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
+								JOptionPane.INFORMATION_MESSAGE);	
+		
 					
-//					if(User_Field.getText().equals("")||pass_Field.getText().equals("")||Name_Field.getText().equals("")||Phone_Field.getText().equals("")||areas.toArray(new String[0]))
-//					{
-//						JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
-//								JOptionPane.INFORMATION_MESSAGE);	
-//					
+					
+			
+				}
+					else {
+						User_Field.setText("");
+						pass_Field.setText("");
+						Name_Field.setText("");
+						Phone_Field.setText("");
+						ConfirmPass_Field.setText("");
+//						Darea_table.setRowCount("","");
+
+					}
+						
+					Database.saveDeliverymen();
 				}
 				});
 			
@@ -400,6 +413,15 @@ public class DeliveryPanel extends JPanel{
 		 case "create":
 			 lblNewLabel = new JLabel("Create Menu");
 			 selectR_comboBox.setEnabled(false);
+			 break;
+			 
+		 case "edit":
+			 lblNewLabel = new JLabel("edit Menu");
+//			 selectR_comboBox.setEnabled(false);
+			 break;
+		 case "delete":
+			 lblNewLabel = new JLabel("delete Menu");
+//			 selectR_comboBox.setEnabled(false);
 			 break;
 			
 		 
