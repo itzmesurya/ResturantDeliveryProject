@@ -2,11 +2,17 @@ package com.restaurantdeliveryviews;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -16,6 +22,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
+import com.restaurantdeliverymodels.Database;
+import com.restaurantdeliverymodels.Deliveryman;
+
 public class DeliveryPanel extends JPanel{
 	/**
 	 * 
@@ -23,10 +32,14 @@ public class DeliveryPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JTextField Name_Field , Phone_Field ,Darea_Field , User_Field ,pass_Field , ConfirmPass_Field;	
 	private JTable Darea_table;
+	private String action;
+	private JLabel lblNewLabel;
+	private JComboBox selectR_comboBox;
 	
 	
-	public DeliveryPanel() {
-		
+	public DeliveryPanel(String crudAction) {
+		 
+		action = crudAction;
 //		JPanel DeliveryPanel = new JPanel();
 		JPanel Dpanel = new JPanel();
 		
@@ -67,7 +80,7 @@ public class DeliveryPanel extends JPanel{
 			Phone_Field.setBackground(new Color(127, 255, 212));
 			Phone_Field.setColumns(10);
 			
-			JLabel lblPersnolInformation = new JLabel("Persnol Information");
+			JLabel lblPersnolInformation = new JLabel("Personal Information");
 			lblPersnolInformation.setFont(new Font("Tahoma", Font.BOLD, 16));
 			GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 			gl_panel_1.setHorizontalGroup(
@@ -111,7 +124,7 @@ public class DeliveryPanel extends JPanel{
 			JLabel lblNewLabel_2 = new JLabel("Select :");
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			
-			JComboBox selectR_comboBox = new JComboBox();
+			selectR_comboBox = new JComboBox();
 			selectR_comboBox.setForeground(new Color(255, 0, 255));
 			selectR_comboBox.setBackground(new Color(255, 0, 255));
 			
@@ -124,10 +137,37 @@ public class DeliveryPanel extends JPanel{
 			JPanel panel_5 = new JPanel();
 			panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
 			
-			JButton Save_btn = new JButton("Save");
+			final JButton Save_btn = new JButton("Save");
 			Save_btn.setForeground(Color.BLACK);
 			Save_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			Save_btn.setBackground(Color.YELLOW);
+			Save_btn.addActionListener(new ActionListener() {
+			
+//				Defining model for table
+			
+				
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+			
+					ArrayList<String> areas = new ArrayList<String>();
+					for (int i = 0; i<Darea_table.getRowCount();i++) {
+						areas.add((String) Darea_table.getValueAt(i,0));
+					}
+					
+					
+					Deliveryman deliveryman= new Deliveryman(User_Field.getText(),pass_Field.getText(),Name_Field.getText(),"","","",Phone_Field.getText(),areas.toArray(new String[0]));					
+					Database.addDeliveryman(deliveryman);
+					Database.saveDeliverymen();
+					
+//					if(User_Field.getText().equals("")||pass_Field.getText().equals("")||Name_Field.getText().equals("")||Phone_Field.getText().equals("")||areas.toArray(new String[0]))
+//					{
+//						JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
+//								JOptionPane.INFORMATION_MESSAGE);	
+//					
+				}
+				});
+			
 			GroupLayout gl_panel = new GroupLayout(Dpanel);
 			gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.TRAILING)
@@ -194,6 +234,24 @@ public class DeliveryPanel extends JPanel{
 			
 			JButton Add_btn = new JButton("Add");
 			Add_btn.setBackground(Color.YELLOW);
+			 Add_btn.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if (Darea_Field.getText().equals("")) {
+							System.out.println("Empty textfield");
+							JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
+									JOptionPane.INFORMATION_MESSAGE);
+						}
+						else {
+							Object[] row = { Darea_Field.getText()};
+							DefaultTableModel model = (DefaultTableModel) Darea_table.getModel();
+							model.addRow(row);
+							Darea_Field.setText("");
+							
+							
+						}
+						
+					}
+					});
 			
 			JButton Delete_btn = new JButton("Delete");
 			Delete_btn.setBackground(Color.YELLOW);
@@ -227,14 +285,25 @@ public class DeliveryPanel extends JPanel{
 						.addContainerGap())
 			);
 			
+
 			Darea_table = new JTable();
 			Darea_table.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
-					"New column"
-				}
-			));
+					"Delivery Area"
+				}));
+				
+				Darea_table.addMouseListener(new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						JTable selected = (JTable) e.getSource();
+						int row = selected.getSelectedRow();
+						Darea_Field.setText(Darea_table.getModel().getValueAt(row, 0) + "");
+						
+					}
+					}
+			);
+			
 			Darea_scrollPane.setViewportView(Darea_table);
 			panel_5.setLayout(gl_panel_5);
 			
@@ -299,7 +368,7 @@ public class DeliveryPanel extends JPanel{
 			);
 			panel_4.setLayout(gl_panel_4);
 			
-			JLabel lblNewLabel = new JLabel("Delivery View");
+			JLabel lblNewLabel = new JLabel("Create Delivery");
 			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
 			GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 			gl_panel_3.setHorizontalGroup(
@@ -320,7 +389,91 @@ public class DeliveryPanel extends JPanel{
 			Dpanel.setLayout(gl_panel);
 //			this.getRootPane().setLayout(groupLayout);
 //			this.getContentPane().setLayout(groupLayout);
+			
+			AdaptToAction();
 		}
+	 private void AdaptToAction() {
+		
+		 switch(this.action) {
+		 
+		 
+		 case "create":
+			 lblNewLabel = new JLabel("Create Menu");
+			 selectR_comboBox.setEnabled(false);
+			 break;
+			
+		 
+		 default:
+			    break;
+		 
+		 
+			
+		 }
+		 
+	 }
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public JTextField getName_Field() {
+		return Name_Field;
+	}
+	public JTextField getPhone_Field() {
+		return Phone_Field;
+	}
+	public JTextField getDarea_Field() {
+		return Darea_Field;
+	}
+	public JTextField getUser_Field() {
+		return User_Field;
+	}
+	public JTextField getPass_Field() {
+		return pass_Field;
+	}
+	public JTextField getConfirmPass_Field() {
+		return ConfirmPass_Field;
+	}
+	public JTable getDarea_table() {
+		return Darea_table;
+	}
+	public String getAction() {
+		return action;
+	}
+	public JLabel getLblNewLabel() {
+		return lblNewLabel;
+	}
+	public JComboBox getSelectR_comboBox() {
+		return selectR_comboBox;
+	}
+	public void setName_Field(JTextField name_Field) {
+		Name_Field = name_Field;
+	}
+	public void setPhone_Field(JTextField phone_Field) {
+		Phone_Field = phone_Field;
+	}
+	public void setDarea_Field(JTextField darea_Field) {
+		Darea_Field = darea_Field;
+	}
+	public void setUser_Field(JTextField user_Field) {
+		User_Field = user_Field;
+	}
+	public void setPass_Field(JTextField pass_Field) {
+		this.pass_Field = pass_Field;
+	}
+	public void setConfirmPass_Field(JTextField confirmPass_Field) {
+		ConfirmPass_Field = confirmPass_Field;
+	}
+	public void setDarea_table(JTable darea_table) {
+		Darea_table = darea_table;
+	}
+	public void setAction(String action) {
+		this.action = action;
+	}
+	public void setLblNewLabel(JLabel lblNewLabel) {
+		this.lblNewLabel = lblNewLabel;
+	}
+	public void setSelectR_comboBox(JComboBox selectR_comboBox) {
+		this.selectR_comboBox = selectR_comboBox;
+	}
 	
 
 	}

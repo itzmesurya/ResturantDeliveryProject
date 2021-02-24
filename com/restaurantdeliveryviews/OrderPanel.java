@@ -143,7 +143,7 @@ public OrderPanel() {
 		},
 		new String[] {
 			""
-			+ "Orders"
+			+ "Orders" 
 		}
 	));
 	Order_scrollPane.setViewportView(table_1);
