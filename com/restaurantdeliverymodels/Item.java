@@ -6,7 +6,6 @@ package com.restaurantdeliverymodels;
  */
 public class Item {
 	
-	private static int idCount = 1;
 	private int id;
 	private String name;
 	private double price;
@@ -22,7 +21,7 @@ public class Item {
 	 * Create an item that belongs to an order
 	 */
 	public Item(String name, double price, int quantity, int order_id) {
-		this.id = idCount++;//This will be changed eventually to keep track of ID# between saves
+		this.id = Database.getIdCounter().getIdCounterItem();
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
@@ -36,7 +35,7 @@ public class Item {
 	 * Create an item that belongs to a menu
 	 */
 	public Item(String name, double price, int menu_id) {
-		this.id = idCount++;//This will be changed eventually to keep track of ID# between saves
+		this.id = Database.getIdCounter().getIdCounterItem();
 		this.name = name;
 		this.price = price;
 		this.menu_id = menu_id;
@@ -48,7 +47,7 @@ public class Item {
 	 * Create an item not assigned to a menu
 	 */
 	public Item(String name, double price) {
-		this.id = idCount++;//This will be changed eventually to keep track of ID# between saves
+		this.id = Database.getIdCounter().getIdCounterItem();
 		this.name = name;
 		this.price = price;
 	}
