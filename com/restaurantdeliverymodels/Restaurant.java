@@ -5,7 +5,6 @@ package com.restaurantdeliverymodels;
  * Restaurant is assigned a manager and restaurateur, and has a menu and orders
  */
 public class Restaurant {
-	private static int idCount = 1;
 	private int id;
 	private String name;
 	private String address;
@@ -25,7 +24,7 @@ public class Restaurant {
 	 * @param restaurateur_id
 	 */
 	public Restaurant(String name, String address, String phone, String[] delivery_areas, String[][] hours, int manager_id, int restaurateur_id) {
-		this.id = idCount++;//This will be changed eventually to keep track of ID# between saves
+		this.id = Database.getIdCounter().getIdCounterRestaurant();
 		this.name = name;
 		this.address = address;
 		this.phone = phone;

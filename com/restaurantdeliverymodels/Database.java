@@ -32,7 +32,6 @@ public class Database {
 	 */
 	public Database() {
 		loadIdCounter();
-		idCounter.add(new IdCounter());
 		loadItems();
 		loadOrders();
 		loadMenus();
@@ -232,6 +231,22 @@ public class Database {
 	private static void loadIdCounter() {
 		loadData("ids");
 	}
+	public static void saveIdCounter() {
+		saveData("ids");
+	}
+	
+	public static void saveAll() {
+		saveAdmins();
+		saveManagers();
+		saveRestaurateurs();
+		saveDeliverymen();
+		saveClients();
+		saveRestaurants();
+		saveMenus();
+		saveOrders();
+		saveItems();
+		saveIdCounter();
+	}
 	
 	
 	/**
@@ -308,6 +323,7 @@ public class Database {
         	switch (filename) {
         	case "ids":
             	idCounter = new ArrayList<IdCounter>();
+            	idCounter.add(new IdCounter());
             	break;
             case "items":
             	items = new ArrayList<Item>();
