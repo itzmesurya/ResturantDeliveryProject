@@ -47,7 +47,7 @@ public class Database {
 		return items;
 	}
 
-	public Item getItemById(int id) {
+	public static Item getItemById(int id) {
 		for (Item item : items) {
 			if (item.getId() == id) {
 				return item;
@@ -72,7 +72,7 @@ public class Database {
 		return orders;
 	}
 
-	public Order getOrderById(int id) {
+	public static Order getOrderById(int id) {
 		for (Order order : orders) {
 			if (order.getId() == id) {
 				return order;
@@ -97,7 +97,7 @@ public class Database {
 		return menus;
 	}
 
-	public Menu getMenuById(int id) {
+	public static Menu getMenuById(int id) {
 		for (Menu menu : menus) {
 			if (menu.getId() == id) {
 				return menu;
@@ -122,7 +122,7 @@ public class Database {
 		return restaurants;
 	}
 
-	public Restaurant getRestaurantById(int id) {
+	public static Restaurant getRestaurantById(int id) {
 		for (Restaurant restaurant : restaurants) {
 			if (restaurant.getId() == id) {
 				return restaurant;
@@ -147,7 +147,7 @@ public class Database {
 		return clients;
 	}
 
-	public Client getClientById(int id) {
+	public static Client getClientById(int id) {
 		for (Client client : clients) {
 			if (client.getId() == id) {
 				return client;
@@ -181,7 +181,7 @@ public class Database {
 		return deliverymen;
 	}
 
-	public Deliveryman getDeliverymanById(int id) {
+	public static Deliveryman getDeliverymanById(int id) {
 		for (Deliveryman deliveryman : deliverymen) {
 			if (deliveryman.getId() == id) {
 				return deliveryman;
@@ -215,7 +215,7 @@ public class Database {
 		return restaurateurs;
 	}
 
-	public Restaurateur getRestaurateurById(int id) {
+	public static Restaurateur getRestaurateurById(int id) {
 		for (Restaurateur restaurateur : restaurateurs) {
 			if (restaurateur.getId() == id) {
 				return restaurateur;
@@ -249,7 +249,7 @@ public class Database {
 		return managers;
 	}
 
-	public Manager getManagerById(int id) {
+	public static Manager getManagerById(int id) {
 		for (Manager manager : managers) {
 			if (manager.getId() == id) {
 				return manager;
