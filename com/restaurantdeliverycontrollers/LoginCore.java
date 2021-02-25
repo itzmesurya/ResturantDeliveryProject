@@ -56,6 +56,7 @@ public class LoginCore {
 						break;
 					case 100:
 						MainFrame.changePanel(new Admin_main_menu_Panel());
+						MainFrame.setBarForUser(Main.user);
 						new Admin_main_menu_Core();
 						break;
 					}
