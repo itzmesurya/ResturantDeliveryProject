@@ -694,7 +694,7 @@ public class RestaurantPanel extends JPanel {
 		return formattedTextField_1;
 	}
 	
-	public static JTextArea getTextDA() {
+	public static String[] getTextDA() {
 		return textDA;
 	}
 	

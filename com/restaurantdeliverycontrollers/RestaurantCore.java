@@ -26,7 +26,7 @@ public class RestaurantCore {
 						RestaurantPanel.getTf_C11().setText(R1.getName());
 						RestaurantPanel.getTf_C12().setText(R1.getAddress());
 						RestaurantPanel.getFormattedTextField_1().setText(R1.getPhone());
-						RestaurantPanel.getTextDA().setToolTipText(R1.getDelivery_areas().toString());
+						RestaurantPanel.getTextDA().length;
 						String Sr1[][] = R1.getHours();
 						RestaurantPanel.getCombo_C321().setToolTipText(Sr1[0][0]);
 						RestaurantPanel.getCombo_C322().setToolTipText(Sr1[0][1]);
@@ -91,7 +91,13 @@ public class RestaurantCore {
 		Sr2[12][1] = RestaurantPanel.getCombo_C382().getToolTipText();
 		Sr2[13][0] = RestaurantPanel.getCombo_C383().getToolTipText();
 		Sr2[13][1] = RestaurantPanel.getCombo_C384().getToolTipText();
-		Restaurant R2 = new Restaurant(RestaurantPanel.getTf_C11().getText(), RestaurantPanel.getTf_C12().getText(), RestaurantPanel.getFormattedTextField_1().getText(), Sr2, int manager_id, int restaurateur_id);
+		int manager_id;
+		if (Main.user.getLevel() == 3) {
+			manager_id = Main.user.getId();
+		} else 
+			manager_id = -1;
+		
+		Restaurant R2 = new Restaurant(RestaurantPanel.getTf_C11().getText(), RestaurantPanel.getTf_C12().getText(), RestaurantPanel.getFormattedTextField_1().getText(), RestaurantPanel.getTextDA(), Sr2, manager_id, -1);
 		
 		RestaurantPanel.getBtnRestaurant().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -110,34 +116,10 @@ public class RestaurantCore {
 		
 		RestaurantPanel.getBtnC39().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Sr2[0][0] = "00";
-				Sr2[0][1] = "00";
-				Sr2[1][0] = "00";
-				Sr2[1][1] = "00";
-				Sr2[2][0] = "00";
-				Sr2[2][1] = "00";
-				Sr2[3][0] = "00";
-				Sr2[3][1] = "00";
-				Sr2[4][0] = "00";
-				Sr2[4][1] = "00";
-				Sr2[5][0] = "00";
-				Sr2[5][1] = "00";
-				Sr2[6][0] = "00";
-				Sr2[6][1] = "00";
-				Sr2[7][0] = "00";
-				Sr2[7][1] = "00";
-				Sr2[8][0] = "00";
-				Sr2[8][1] = "00";
-				Sr2[9][0] = "00";
-				Sr2[9][1] = "00";
-				Sr2[10][0] = "00";
-				Sr2[10][1] = "00";
-				Sr2[11][0] = "00";
-				Sr2[11][1] = "00";
-				Sr2[12][0] = "00";
-				Sr2[12][1] = "00";
-				Sr2[13][0] = "00";
-				Sr2[13][1] = "00";
+				for (int i = 0; i < 14; i++) {
+					for (int j = 0; j < 2; j++)
+						Sr2[i][j] = "00";
+				}				
 			}			
 		});
 	
