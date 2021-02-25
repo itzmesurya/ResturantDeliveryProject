@@ -13,9 +13,9 @@ import javax.swing.JPanel;
 
 public class Restaurateur_main_menu_Panel extends JPanel{
 	
-	private JButton order_accept_btn;
-	private JButton order_ready_btn;
-	private JButton log_out_btn;
+	private static JButton order_accept_btn;
+	private static JButton order_ready_btn;
+	private static JButton log_out_btn;
 	private	JMenu file;
 	private	JMenu order;
 	private	JMenuItem log_out;
@@ -102,21 +102,21 @@ public class Restaurateur_main_menu_Panel extends JPanel{
 	/**
 	 * @return	order_accept_btn
 	 */
-	public JButton getOrder_Accept_Btn() {
+	public static JButton getOrder_Accept_Btn() {
 		return order_accept_btn;
 	}
 	
 	/**
 	 * @return	order_ready_btn
 	 */
-	public JButton getOrder_Ready_Btn() {
+	public static JButton getOrder_Ready_Btn() {
 		return order_ready_btn;
 	}
 	
 	/**
 	 * @return	log_out_btn
 	 */
-	public JButton getlog_Out_Btn() {
+	public static JButton getlog_Out_Btn() {
 		return log_out_btn;
 	}
 	

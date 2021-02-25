@@ -13,10 +13,10 @@ import javax.swing.JPanel;
 
 public class DeliveryMan_main_menu_Panel extends JPanel{
 	
-	private	JButton delivery_accept_btn;
-	private	JButton delivery_end_btn;
-	private	JButton delivery_editinfo_btn;
-	private	JButton log_out_btn;
+	private	static JButton delivery_accept_btn;
+	private	static JButton delivery_end_btn;
+	private	static JButton delivery_editinfo_btn;
+	private	static JButton log_out_btn;
 	private	JMenu file;
 	private	JMenuItem log_out;
 	private	JMenuItem exit;
@@ -98,25 +98,25 @@ public class DeliveryMan_main_menu_Panel extends JPanel{
 	
 	//Get place_order_btn
 	
-	public JButton getDelivery_Accept_Btn() {
+	public static JButton getDelivery_Accept_Btn() {
 		return	delivery_accept_btn;
 	}
 	
 	//Get view_history_btn
 	
-	public JButton getDelivery_End_Btn() {
+	public static JButton getDelivery_End_Btn() {
 		return	delivery_end_btn;
 	}
 	
 	//Get account_edit_btn
 	
-	public JButton getDelivery_Editinfo_Btn() {
+	public static JButton getDelivery_Editinfo_Btn() {
 		return	delivery_editinfo_btn;
 	}
 	
 	//Get log_out_btn
 	
-	public JButton log_out_btn() {
+	public static JButton getLog_Out_Btn() {
 		return	log_out_btn;
 	}
 	

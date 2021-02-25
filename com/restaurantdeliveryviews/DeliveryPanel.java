@@ -201,6 +201,7 @@ public class DeliveryPanel extends JPanel{
 //					}
 //				}
 //				});
+
 			
 			GroupLayout gl_panel = new GroupLayout(Dpanel);
 			gl_panel.setHorizontalGroup(
@@ -402,8 +403,8 @@ public class DeliveryPanel extends JPanel{
 			);
 			panel_4.setLayout(gl_panel_4);
 			
-			JLabel lblNewLabel = new JLabel("Create Delivery");
-			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
+			lblNewLabel = new JLabel("Create Delivery");
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
 			GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 			gl_panel_3.setHorizontalGroup(
 				gl_panel_3.createParallelGroup(Alignment.LEADING)
@@ -432,17 +433,21 @@ public class DeliveryPanel extends JPanel{
 		 
 		 
 		 case "create":
+
 			 lblNewLabel = new JLabel("Create Menu");
 			 
+
 			 selectR_comboBox.setEnabled(false);
 			 break;
 			 
 		 case "edit":
+
 			 lblNewLabel = new JLabel("edit Menu");
 //			 selectR_comboBox.setEnabled(false);
 			 break;
 		 case "delete":
 			 lblNewLabel = new JLabel("delete Menu");
+
 //			 selectR_comboBox.setEnabled(false);
 			 break;
 			
@@ -536,6 +541,8 @@ public class DeliveryPanel extends JPanel{
 	}
 	 
 	
+
 	}
+
 
 
