@@ -25,17 +25,17 @@ import javax.swing.table.DefaultTableModel;
 public class MenuPanel extends JPanel  {
 
     private JFrame frame;
-    private JTextField itemNameTextField;
-    private JTextField itemPriceTextField;
-    private JTable table;
+    private static JTextField itemNameTextField;
+    private static JTextField itemPriceTextField;
+    private  JTable table;
     private JPanel rightPanel;
     private String action;
-    private JButton btnEdit;
-    private JButton btnDelete;
-    private JButton selectBtn;
-    private JButton saveBtn;
+    private static JButton btnEdit;
+    private static JButton btnDelete;
+    private static JButton selectBtn;
+    private static JButton saveBtn;
     private JPanel panel;
-    private JButton addBtn;
+    private static JButton addBtn;
     private JLabel itemPriceLabel;
     private JLabel itemNameLabel;
     private JLabel addItemLabel;
@@ -44,7 +44,7 @@ public class MenuPanel extends JPanel  {
     private JLabel lblNewLabel;
     private JSeparator separator;
     private JPanel centerPanel;
-    private JComboBox selectRestoDropDown;
+    private static JComboBox selectRestoDropDown;
     private JLabel selectRestoLabel;
     private JPanel toppanel2;
     private JLabel menuLabel;
@@ -111,7 +111,7 @@ public class MenuPanel extends JPanel  {
 	rightPanel.add(scrollPane);
 
 	setTable(new JTable());
-	scrollPane.setViewportView(getTable());
+	scrollPane.setViewportView(getTable());	
 	getTable().setModel(new DefaultTableModel(new Object[][] { { null, null }, { null, null }, { null, null },
 		{ null, null }, { null, null }, { null, null }, { null, null }, { null, null }, { null, null },
 		{ null, null }, { null, null }, { null, null }, { null, null }, { null, null }, { null, null },
@@ -224,7 +224,7 @@ public class MenuPanel extends JPanel  {
 
     }
 
-	public JTextField getItemNameTextField() {
+	public static JTextField getItemNameTextField() {
 		return itemNameTextField;
 	}
 
@@ -232,7 +232,7 @@ public class MenuPanel extends JPanel  {
 		this.itemNameTextField = itemNameTextField;
 	}
 
-	public JTextField getItemPriceTextField() {
+	public static JTextField getItemPriceTextField() {
 		return itemPriceTextField;
 	}
 
@@ -248,7 +248,7 @@ public class MenuPanel extends JPanel  {
 		this.table = table;
 	}
 
-	public JButton getBtnEdit() {
+	public static JButton getBtnEdit() {
 		return btnEdit;
 	}
 
@@ -259,7 +259,7 @@ public class MenuPanel extends JPanel  {
 	/**
 	 * @return the btnDelete
 	 */
-	public JButton getBtnDelete() {
+	public static JButton getBtnDelete() {
 		return btnDelete;
 	}
 
@@ -273,7 +273,7 @@ public class MenuPanel extends JPanel  {
 	/**
 	 * @return the selectBtn
 	 */
-	public JButton getSelectBtn() {
+	public static JButton getSelectBtn() {
 		return selectBtn;
 	}
 
@@ -287,7 +287,7 @@ public class MenuPanel extends JPanel  {
 	/**
 	 * @return the saveBtn
 	 */
-	public JButton getSaveBtn() {
+	public static JButton getSaveBtn() {
 		return saveBtn;
 	}
 
@@ -301,7 +301,7 @@ public class MenuPanel extends JPanel  {
 	/**
 	 * @return the addBtn
 	 */
-	public JButton getAddBtn() {
+	public static JButton getAddBtn() {
 		return addBtn;
 	}
 
@@ -315,7 +315,7 @@ public class MenuPanel extends JPanel  {
 	/**
 	 * @return the selectRestoDropDown
 	 */
-	public JComboBox getSelectRestoDropDown() {
+	public static JComboBox getSelectRestoDropDown() {
 		return selectRestoDropDown;
 	}
 
