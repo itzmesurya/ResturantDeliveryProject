@@ -25,40 +25,43 @@ import javax.swing.text.MaskFormatter;
 public class RestaurantPanel extends JPanel {
 	
 	private static JComboBox comboBoxName;
-	public static JTextField tf_C11;
-	public static JTextField tf_C12;
-	public static JFormattedTextField formattedTextField_1;
+	private static JTextField tf_C11;
+	private static JTextField tf_C12;
+	private static JFormattedTextField formattedTextField_1;
 	private static JTextField tf_C23;
-	public static JTextArea textDA;
+	private static JTextArea textDA;
+	private static JButton btnRestaurant;
+	private static JButton btnC231;
+	private static JButton btnC39;
 	
-	public static JComboBox combo_C321;
-	public static JComboBox combo_C322;
-	public static JComboBox combo_C323;
-	public static JComboBox combo_C324;
-	public static JComboBox combo_C331;
-	public static JComboBox combo_C332;
-	public static JComboBox combo_C333;
-	public static JComboBox combo_C334;
-	public static JComboBox combo_C341;
-	public static JComboBox combo_C342;
-	public static JComboBox combo_C343;
-	public static JComboBox combo_C344;
-	public static JComboBox combo_C351;
-	public static JComboBox combo_C352;
-	public static JComboBox combo_C353;
-	public static JComboBox combo_C354;
-	public static JComboBox combo_C361;
-	public static JComboBox combo_C362;
-	public static JComboBox combo_C363;
-	public static JComboBox combo_C364;
-	public static JComboBox combo_C371;
-	public static JComboBox combo_C372;
-	public static JComboBox combo_C373;
-	public static JComboBox combo_C374;
-	public static JComboBox combo_C381;
-	public static JComboBox combo_C382;
-	public static JComboBox combo_C383;
-	public static JComboBox combo_C384;
+	private static JComboBox combo_C321;
+	private static JComboBox combo_C322;
+	private static JComboBox combo_C323;
+	private static JComboBox combo_C324;
+	private static JComboBox combo_C331;
+	private static JComboBox combo_C332;
+	private static JComboBox combo_C333;
+	private static JComboBox combo_C334;
+	private static JComboBox combo_C341;
+	private static JComboBox combo_C342;
+	private static JComboBox combo_C343;
+	private static JComboBox combo_C344;
+	private static JComboBox combo_C351;
+	private static JComboBox combo_C352;
+	private static JComboBox combo_C353;
+	private static JComboBox combo_C354;
+	private static JComboBox combo_C361;
+	private static JComboBox combo_C362;
+	private static JComboBox combo_C363;
+	private static JComboBox combo_C364;
+	private static JComboBox combo_C371;
+	private static JComboBox combo_C372;
+	private static JComboBox combo_C373;
+	private static JComboBox combo_C374;
+	private static JComboBox combo_C381;
+	private static JComboBox combo_C382;
+	private static JComboBox combo_C383;
+	private static JComboBox combo_C384;
 	
 	private String action;
 	JLabel lbl_1, lbl_2;
@@ -109,12 +112,12 @@ public class RestaurantPanel extends JPanel {
 		bottomPanel.setFont(new Font("Arial", Font.BOLD, 16));
 		this.add(bottomPanel, BorderLayout.SOUTH);
 		
-		JButton btnSave = new JButton("Save");
-		btnSave.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
-		btnSave.setBackground(Color.YELLOW);
-		btnSave.setPreferredSize(new Dimension(200, 50));
-		btnSave.setFont(new Font("Arial", Font.BOLD, 30));
-		bottomPanel.add(btnSave);
+		btnRestaurant = new JButton("");
+		btnRestaurant.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
+		btnRestaurant.setBackground(Color.YELLOW);
+		btnRestaurant.setPreferredSize(new Dimension(200, 50));
+		btnRestaurant.setFont(new Font("Arial", Font.BOLD, 30));
+		bottomPanel.add(btnRestaurant);
 		
 		JPanel centerPanel = new JPanel();
 		centerPanel.setPreferredSize(new Dimension(500, 0));
@@ -628,7 +631,7 @@ public class RestaurantPanel extends JPanel {
 		Panel_C39.setFont(new Font("Arial", Font.BOLD, 16));
 		panel_C3.add(Panel_C39);
 		
-		JButton btnC39 = new JButton("Modify all at once");
+		btnC39 = new JButton("Modify all at once");
 		btnC39.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
 		btnC39.setBackground(Color.YELLOW);
 		btnC39.setPreferredSize(new Dimension(360, 50));
@@ -641,16 +644,19 @@ public class RestaurantPanel extends JPanel {
 			switch (this.action) {
 			case "add":
 				lbl_1.setText("Add Restaurant");
+				btnRestaurant.setText("Add");
 			    lbl_2.setVisible(false);
 			    comboBoxName.setVisible(false);
 			    break;
 			case "edit":
 				lbl_1.setText("Edit Restaurant");
+				btnRestaurant.setText("Edit");
 			    lbl_2.setVisible(true);
 			    comboBoxName.setVisible(true);
 			    break;
 			case "delete":
 				lbl_1.setText("Delete Restaurant");
+				btnRestaurant.setText("Delete");
 			    lbl_2.setVisible(true);
 			    comboBoxName.setVisible(true);
 			    break;
@@ -674,6 +680,115 @@ public class RestaurantPanel extends JPanel {
 	
 	public static JComboBox getRestaurantnameCB() {
 		return comboBoxName;
+	}
+	
+	public static JTextField getTf_C11() {
+		return tf_C11;
+	}
+	
+	public static JTextField getTf_C12() {
+		return tf_C12;
+	}
+	
+	public static JFormattedTextField getFormattedTextField_1() {
+		return formattedTextField_1;
+	}
+	
+	public static JTextArea getTextDA() {
+		return textDA;
+	}
+	
+	public static JComboBox getCombo_C321() {
+		return combo_C321;
+	}
+	public static JComboBox getCombo_C322() {
+		return combo_C322;
+	}
+	public static JComboBox getCombo_C323() {
+		return combo_C323;
+	}
+	public static JComboBox getCombo_C324() {
+		return combo_C324;
+	}
+	public static JComboBox getCombo_C331() {
+		return combo_C331;
+	}
+	public static JComboBox getCombo_C332() {
+		return combo_C332;
+	}
+	public static JComboBox getCombo_C333() {
+		return combo_C333;
+	}
+	public static JComboBox getCombo_C334() {
+		return combo_C334;
+	}
+	public static JComboBox getCombo_C341() {
+		return combo_C341;
+	}
+	public static JComboBox getCombo_C342() {
+		return combo_C342;
+	}
+	public static JComboBox getCombo_C343() {
+		return combo_C343;
+	}
+	public static JComboBox getCombo_C344() {
+		return combo_C344;
+	}
+	public static JComboBox getCombo_C351() {
+		return combo_C351;
+	}
+	public static JComboBox getCombo_C352() {
+		return combo_C352;
+	}
+	public static JComboBox getCombo_C353() {
+		return combo_C353;
+	}
+	public static JComboBox getCombo_C354() {
+		return combo_C354;
+	}
+	public static JComboBox getCombo_C361() {
+		return combo_C361;
+	}
+	public static JComboBox getCombo_C362() {
+		return combo_C362;
+	}
+	public static JComboBox getCombo_C363() {
+		return combo_C363;
+	}
+	public static JComboBox getCombo_C364() {
+		return combo_C364;
+	}
+	public static JComboBox getCombo_C371() {
+		return combo_C371;
+	}
+	public static JComboBox getCombo_C372() {
+		return combo_C372;
+	}
+	public static JComboBox getCombo_C373() {
+		return combo_C373;
+	}
+	public static JComboBox getCombo_C374() {
+		return combo_C374;
+	}
+	public static JComboBox getCombo_C381() {
+		return combo_C381;
+	}
+	public static JComboBox getCombo_C382() {
+		return combo_C382;
+	}
+	public static JComboBox getCombo_C383() {
+		return combo_C383;
+	}
+	public static JComboBox getCombo_C384() {
+		return combo_C384;
+	}
+	
+	public static JButton getBtnRestaurant() {
+		return btnRestaurant;
+	}
+	
+	public static JButton getBtnC39() {
+		return btnC39;
 	}
 	
 }
