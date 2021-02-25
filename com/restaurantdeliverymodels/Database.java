@@ -42,6 +42,16 @@ public class Database {
 		loadManagers();
 		loadAdmins();
 	}
+	
+	public static ArrayList<User> getUsers(){
+		ArrayList<User> users = new ArrayList<User>();
+		users.addAll(getAdmins());
+		users.addAll(getManagers());
+		users.addAll(getRestaurateurs());
+		users.addAll(getDeliverymen());
+		users.addAll(getClients());
+		return users;
+	}
 
 	public static ArrayList<Item> getItems() {
 		return items;
