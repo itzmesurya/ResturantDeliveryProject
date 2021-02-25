@@ -1,6 +1,7 @@
 package com.restaurantdeliveryviews;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +36,9 @@ public class DeliveryPanel extends JPanel{
 	private String action;
 	private JLabel lblNewLabel;
 	private JComboBox selectR_comboBox;
-	
+	public Object getDarea_table;
+	public JButton Save_btn;
+	ArrayList<String> usernamelist = new ArrayList<String>();
 	
 	public DeliveryPanel(String crudAction) {
 		 
@@ -124,7 +127,14 @@ public class DeliveryPanel extends JPanel{
 			JLabel lblNewLabel_2 = new JLabel("Select :");
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			
-			selectR_comboBox = new JComboBox();
+			
+			ArrayList<Deliveryman> deliverymanlist = Database.getDeliverymen();
+			for(Deliveryman dm:deliverymanlist ) {
+				usernamelist.add(dm.getUsername());
+				
+			}
+			
+			selectR_comboBox = new JComboBox(usernamelist.toArray(new String[usernamelist.size()]));
 			selectR_comboBox.setForeground(new Color(255, 0, 255));
 			selectR_comboBox.setBackground(new Color(255, 0, 255));
 			
@@ -137,49 +147,61 @@ public class DeliveryPanel extends JPanel{
 			JPanel panel_5 = new JPanel();
 			panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
 			
-			final JButton Save_btn = new JButton("Save");
+			Save_btn = new JButton("Save");
 			Save_btn.setForeground(Color.BLACK);
 			Save_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			Save_btn.setBackground(Color.YELLOW);
 			Save_btn.addActionListener(new ActionListener() {
-			
-//				Defining model for table
-			
-				
-				
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
-			
-					ArrayList<String> areas = new ArrayList<String>();
-					for (int i = 0; i<Darea_table.getRowCount();i++) {
-						areas.add((String) Darea_table.getValueAt(i,0));
-					}
 					
+					System.out.println("hii..123");
 					
-					Deliveryman deliveryman= new Deliveryman(User_Field.getText(),pass_Field.getText(),Name_Field.getText(),"","","",Phone_Field.getText(),areas.toArray(new String[0]));					
-					Database.addDeliveryman(deliveryman);
-					if(User_Field.getText().equals("") && pass_Field.getText().equals("") && Name_Field.getText().equals("") && Phone_Field.getText().equals(""))
-					{
-						JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
-								JOptionPane.INFORMATION_MESSAGE);	
-		
-					
-					
-			
 				}
-					else {
-						User_Field.setText("");
-						pass_Field.setText("");
-						Name_Field.setText("");
-						Phone_Field.setText("");
-						ConfirmPass_Field.setText("");
-//						Darea_table.setRowCount("","");
+				
+			});
+//			Save_btn.addActionListener(new ActionListener() {
+//			
+//
+//			
+//				
+//				
+//				@Override
+//				public void actionPerformed(ActionEvent e) {
+//			
+//					ArrayList<String> areas = new ArrayList<String>();
+//					for (int i = 0; i<Darea_table.getRowCount();i++) {
+//						areas.add((String) Darea_table.getValueAt(i,0));
+//					}
+//					
+//					
+//					Deliveryman deliveryman= new Deliveryman(User_Field.getText(),pass_Field.getText(),Name_Field.getText(),"","","",Phone_Field.getText(),areas.toArray(new String[0]));					
+//					Database.addDeliveryman(deliveryman);
+//					if(User_Field.getText().equals("") && pass_Field.getText().equals("") && Name_Field.getText().equals("") && Phone_Field.getText().equals(""))
+//					{
+//						JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
+//								JOptionPane.INFORMATION_MESSAGE);	
+//		
+//					
+//					
+//			
+//				}
+//					else {
+//						User_Field.setText("");
+//						pass_Field.setText("");
+//						Name_Field.setText("");
+//						Phone_Field.setText("");
+//						ConfirmPass_Field.setText("");
+////						Darea_table.setRowCount("","");
+//
+//						
+//						Database.saveDeliverymen();
+//
+//					}
+//				}
+//				});
 
-					}
-						
-					Database.saveDeliverymen();
-				}
-				});
 			
 			GroupLayout gl_panel = new GroupLayout(Dpanel);
 			gl_panel.setHorizontalGroup(
@@ -411,16 +433,21 @@ public class DeliveryPanel extends JPanel{
 		 
 		 
 		 case "create":
-			 lblNewLabel.setText("Create Delivery Man");
+
+			 lblNewLabel = new JLabel("Create Menu");
+			 
+
 			 selectR_comboBox.setEnabled(false);
 			 break;
 			 
 		 case "edit":
-			 lblNewLabel.setText("Edit Delivery Man");
+
+			 lblNewLabel = new JLabel("edit Menu");
 //			 selectR_comboBox.setEnabled(false);
 			 break;
 		 case "delete":
-			 lblNewLabel.setText("Delete Delivery Man");
+			 lblNewLabel = new JLabel("delete Menu");
+
 //			 selectR_comboBox.setEnabled(false);
 			 break;
 			
@@ -433,6 +460,18 @@ public class DeliveryPanel extends JPanel{
 		 }
 		 
 	 }
+	 void setPanelEnabled(JPanel panel, Boolean isEnabled) {
+		    panel.setEnabled(isEnabled);
+
+		    Component[] components = panel.getComponents();
+
+		    for (Component component : components) {
+		        if (component instanceof JPanel) {
+		            setPanelEnabled((JPanel) component, isEnabled);
+		        }
+		        component.setEnabled(isEnabled);
+		    }
+		}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -496,6 +535,14 @@ public class DeliveryPanel extends JPanel{
 	public void setSelectR_comboBox(JComboBox selectR_comboBox) {
 		this.selectR_comboBox = selectR_comboBox;
 	}
+	public JButton getSave_btn() {
+		return Save_btn;
+		
+	}
+	 
 	
 
 	}
+
+
+
