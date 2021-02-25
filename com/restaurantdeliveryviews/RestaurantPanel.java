@@ -646,19 +646,25 @@ public class RestaurantPanel extends JPanel {
 				lbl_1.setText("Add Restaurant");
 				btnRestaurant.setText("Add");
 			    lbl_2.setVisible(false);
+
 			    comboBoxName.setVisible(false);
+
 			    break;
 			case "edit":
 				lbl_1.setText("Edit Restaurant");
 				btnRestaurant.setText("Edit");
 			    lbl_2.setVisible(true);
+
 			    comboBoxName.setVisible(true);
+
 			    break;
 			case "delete":
 				lbl_1.setText("Delete Restaurant");
 				btnRestaurant.setText("Delete");
 			    lbl_2.setVisible(true);
+
 			    comboBoxName.setVisible(true);
+
 			    break;
 			default:
 			    break;

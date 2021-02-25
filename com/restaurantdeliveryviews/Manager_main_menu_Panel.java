@@ -13,11 +13,11 @@ import javax.swing.JPanel;
 
 public class Manager_main_menu_Panel extends JPanel{
 	
-	private	JButton menu_add_btn;
-	private	JButton menu_edit_btn;
-	private	JButton menu_del_btn;
-	private	JButton resto_edit_btn;
-	private	JButton log_out_btn;
+	private	static JButton menu_add_btn;
+	private	static JButton menu_edit_btn;
+	private	static JButton menu_del_btn;
+	private	static JButton resto_edit_btn;
+	private	static JButton log_out_btn;
 	private	JMenu file;
 	private	JMenu menu;
 	private	JMenuItem log_out;
@@ -134,31 +134,31 @@ public class Manager_main_menu_Panel extends JPanel{
 	
 	//Get menu_add_btn
 	
-	public JButton getMenu_Add_Btn() {
+	public static JButton getMenu_Add_Btn() {
 		return	menu_add_btn;
 	}
 	
 	//Get menu_edit_btn
 	
-	public JButton getMenu_Edit_Btn() {
+	public static JButton getMenu_Edit_Btn() {
 		return	menu_edit_btn;
 	}
 	
 	//Get menu_del_btn
 	
-	public JButton getMenu_Del_Btn() {
+	public static JButton getMenu_Del_Btn() {
 		return	menu_del_btn;
 	}
 	
 	//Get resto_edit_btn
 	
-	public JButton getResto_Edit_Btn() {
+	public static JButton getResto_Edit_Btn() {
 		return	resto_edit_btn;
 	}
 	
 	//Get log_out_btn
 	
-	public JButton log_out_btn() {
+	public static JButton getlog_out_btn() {
 		return	log_out_btn;
 	}
 	

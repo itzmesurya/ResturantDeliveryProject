@@ -1,73 +1,75 @@
 package com.restaurantdeliverycontrollers;
 
-import java.awt.Component;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.Border;
 import java.awt.Color;
-import javax.swing.border.LineBorder;
+
+import javax.swing.JOptionPane;
+
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.User;
 import com.restaurantdeliverymodels.UserHelper;
 import com.restaurantdeliveryviews.AccountPanel;
+import com.restaurantdeliveryviews.MainFrame;
+import com.restaurantdeliveryviews.UIHelper;
 
 public class AccountCore {
-	AccountPanel accountPanel;
 
-	AccountCore(AccountPanel accountPanel) {
-		this.accountPanel = accountPanel;
-		BindActionEvents(this.accountPanel);
+	AccountCore() {
+		BindActionEvents();
 	}
 
-	private void BindActionEvents(AccountPanel accountPanel) {
-		accountPanel.getCreateAccountBtn().addActionListener(e -> {
+	private void BindActionEvents() {
+		AccountPanel.getCreateAccountBtn().addActionListener(e -> {
 			// Create user object
-			User user = CreateUserObject(accountPanel);
-			if (ValidateFieldValuesAreNotEmpty(accountPanel) && UserHelper.isUsernameAvailable(user)) {
+			User user = CreateUserObject();
+			if (isAccountScreenValid()) {
 				// call the database call to add the user
-				Database.addUser(user);
+				
 			}
 		});
-	}
 
-	private boolean ValidateFieldValuesAreNotEmpty(AccountPanel accountPanel) {
-		// lets assume fields are not empty
-		boolean fieldsCheck = true;
-		// go through each component in the panel and
-		// highlight the ones that are not filled
-		Component[] components = accountPanel.getComponents();
-		for (Component field : components) {
-			if (field instanceof JComboBox) {
-				// do something
-			} else if (field instanceof JButton) {
-				// do something
-			} else if (field instanceof JTextField) {
-				// do something
-				JTextField textFieldInContext = (JTextField) field;
-				if (textFieldInContext.getText().isEmpty()) {
-					textFieldInContext.setBorder(new LineBorder(Color.RED, 2));
-					fieldsCheck = false;
-				}
-
+		AccountPanel.getUserAvailabilityBtn().addActionListener(e ->{
+			User user = CreateUserObject();
+			if (!UserHelper.isUsernameAvailable(user)) {
+				//TODO display the message saying user-name is unavailable
 			}
+		});
+		
+	}
+	
+	private boolean isAccountScreenValid() {
+		boolean result = true;
+		result = UIHelper.ValidateEmptyFields(MainFrame.getMainPanel());
+		//now that we have verified all none of the fields are empty
+		//we can proceed with other validations
+		if (result) {
+			//confirm password matches the original password
+			result = ConfirmPasswordsMatch();
 		}
-		return fieldsCheck;
+		return result;
 	}
 
-	private User CreateUserObject(AccountPanel accountPanel) {
-		String userName = accountPanel.getUserNameTextField().getText();
-		String password = accountPanel.getPasswordTextField().getText();
-		String confirmPassword = accountPanel.getConfirmPwdTextField().getText();
-		String firstName = accountPanel.getFirstNameTextField().getText();
-		String lastName = accountPanel.getLastNameTextField().getText();
-		String address = accountPanel.getAddressTextField().getText();
-		String email = accountPanel.getEmailTextfield().getText();
-		String phone = accountPanel.getPhoneTextField().getText();
-		int levelTobeAdded = accountPanel.getSelectLevelDropDown().getSelectedIndex();
-		return UserHelper.userFactory(levelTobeAdded, userName, confirmPassword, firstName, lastName, address, email,
+	private boolean ConfirmPasswordsMatch() {
+		boolean result = AccountPanel.getPasswordTextField().getText().equals(AccountPanel.getConfirmPwdTextField().getText());
+		if (!result) {
+			//highlight the fields
+			UIHelper.SetBorderColorToComponent(AccountPanel.getPasswordTextField(), Color.RED);
+			UIHelper.SetBorderColorToComponent(AccountPanel.getConfirmPwdTextField(), Color.RED);
+			//create a modal pop-up to show the validation message
+			JOptionPane.showMessageDialog(null, "Password and confirm password fields must match");
+		}
+		return result;
+	}
+
+	private User CreateUserObject() {
+		String userName = AccountPanel.getUserNameTextField().getText();
+		String password = AccountPanel.getPasswordTextField().getText();
+		String firstName = AccountPanel.getFirstNameTextField().getText();
+		String lastName = AccountPanel.getLastNameTextField().getText();
+		String address = AccountPanel.getAddressTextField().getText();
+		String email = AccountPanel.getEmailTextfield().getText();
+		String phone = AccountPanel.getPhoneTextField().getText();
+		int levelTobeAdded = AccountPanel.getSelectLevelDropDown().getSelectedIndex();
+		return UserHelper.userFactory(levelTobeAdded, userName, password, firstName, lastName, address, email,
 				phone);
 	}
 
