@@ -94,13 +94,14 @@ public class RestaurantView {
 		lbl_2.setFont(new Font("Arial", Font.BOLD, 30));
 		Panel_2.add(lbl_2);
 		
-		textField = new JTextField();
-		textField.setBackground(Color.CYAN);
-		textField.setBounds(356, 20, 500, 39);
-		textField.setPreferredSize(new Dimension(500, 50));
-		textField.setFont(new Font("Arial", Font.BOLD, 20));
-		textField.setBorder(new LineBorder(new Color(171, 173, 179), 2, true));
-		Panel_2.add(textField);
+		JComboBox comboBoxName = new JComboBox();
+		comboBoxName.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		comboBoxName.setBackground(Color.CYAN);
+		comboBoxName.setPreferredSize(new Dimension(500, 36));
+		comboBoxName.setFont(new Font("Arial", Font.BOLD, 20));
+		comboBoxName.setBounds(329, 22, 500, 36);
+		Panel_2.add(comboBoxName);
+		
 		
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setPreferredSize(new Dimension(0, 80));
@@ -139,9 +140,12 @@ public class RestaurantView {
 		panel_C22.setPreferredSize(new Dimension(580, 180));
 		panel_C2.add(panel_C22);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setPreferredSize(new Dimension(560, 170));
-		panel_C22.add(scrollPane);
+		JTextArea textDA = new JTextArea();
+		textDA.setFont(new Font("Arial", Font.BOLD, 20));
+		textDA.setBackground(Color.CYAN);
+		textDA.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		textDA.setPreferredSize(new Dimension(560, 170));
+		panel_C22.add(textDA);
 		
 		JPanel Panel_C23 = new JPanel();
 		Panel_C23.setBorder(new MatteBorder(2, 0, 0, 0, (Color) new Color(0, 0, 0)));
