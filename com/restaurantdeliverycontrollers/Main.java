@@ -20,8 +20,7 @@ public class Main {
 		new MainFrame();
 
 		MainFrame.changePanel(new LoginPanel());
-		MainFrame.changePanel(new Admin_main_menu_Panel());
-		new Admin_main_menu_Core();
+		new LoginCore();
 	}
 
 }
