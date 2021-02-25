@@ -13,11 +13,12 @@ import javax.swing.table.DefaultTableModel;
 
 public class Accept_Done__Delivery_Panel extends JPanel {
 	
-	private JTextField Delivery_Postal_Code;
-	private JTextField Delivery_address;
-	private JTextField Resturant;
-	private JTextField Order_number;
-	private	JButton btnSelect;
+	private static JTextField Delivery_Postal_Code;
+	private static JTextField Delivery_address;
+	private static JTextField Resturant;
+	private static JTextField Order_number;
+	private	static JButton btnaccept;
+	private	static JButton btndelete;
 	
 	public Accept_Done__Delivery_Panel() {
 	
@@ -88,12 +89,21 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	
 	//ORDER ACCPET & END BUTTON
 	
-	btnSelect = new JButton("Select");
-	btnSelect.setForeground(Color.WHITE);
-	btnSelect.setFont(new Font("Tahoma", Font.PLAIN, 18));
-	btnSelect.setBackground(Color.DARK_GRAY);
-	btnSelect.setBounds(375, 592, 139, 45);
-	panel_1.add(btnSelect);
+	btnaccept = new JButton("Accept");
+	btnaccept.setForeground(Color.WHITE);
+	btnaccept.setFont(new Font("Tahoma", Font.PLAIN, 18));
+	btnaccept.setBackground(Color.DARK_GRAY);
+	btnaccept.setBounds(40, 592, 139, 45);
+	panel_1.add(btnaccept);
+	
+	//ORDER ACCPET & END BUTTON
+	
+	btndelete = new JButton("Delete");
+	btndelete.setForeground(Color.WHITE);
+	btndelete.setFont(new Font("Tahoma", Font.PLAIN, 18));
+	btndelete.setBackground(Color.DARK_GRAY);
+	btndelete.setBounds(375, 592, 139, 45);
+	panel_1.add(btndelete);
 	
 	//TABLE PANNEL
 	
@@ -145,8 +155,12 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	
 	//Get Button Select
 	
-	public JButton getBtnSelect() {
-		return	btnSelect;
+	public static JButton getBtnAccept() {
+		return	btnaccept;
+	}
+	
+	public static JButton getBtnDelete() {
+		return	btndelete;
 	}
 	
 	/*	Getter's & Setter's	For Text Field's*/
@@ -154,57 +168,61 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	/**
 	 * @return	Delivery_Postal_Code
 	 */
-	public JTextField getDelivery_Postal_Code() {
+	public static JTextField getDelivery_Postal_Code() {
 		return Delivery_Postal_Code;
 	}
 
 	/**
 	 * @param delivery_Postal_Code
 	 */
-	public void setDelivery_Postal_Code(JTextField delivery_Postal_Code) {
+	public static void setDelivery_Postal_Code(JTextField delivery_Postal_Code) {
 		Delivery_Postal_Code = delivery_Postal_Code;
 	}
 
 	/**
 	 * @return	Delivery_address
 	 */
-	public JTextField getDelivery_address() {
+	public static JTextField getDelivery_address() {
 		return Delivery_address;
 	}
 
 	/**
 	 * @param delivery_address
 	 */
-	public void setDelivery_address(JTextField delivery_address) {
+	public static void setDelivery_address(JTextField delivery_address) {
 		Delivery_address = delivery_address;
 	}
 
 	/**
 	 * @return	restaurant
 	 */
-	public JTextField getResturant() {
+	public static JTextField getResturant() {
 		return Resturant;
 	}
 
 	/**
 	 * @param resturant
 	 */
-	public void setResturant(JTextField resturant) {
+	public static void setResturant(JTextField resturant) {
 		Resturant = resturant;
 	}
 
 	/**
 	 * @return	Order_number
 	 */
-	public JTextField getOrder_number() {
+	public static JTextField getOrder_number() {
 		return Order_number;
 	}
 
 	/**
 	 * @param order_number
 	 */
-	public void setOrder_number(JTextField order_number) {
+	public static void setOrder_number(JTextField order_number) {
 		Order_number = order_number;
+	}
+	
+	public Object getTable() {
+		return getTable();
 	}
 
 }

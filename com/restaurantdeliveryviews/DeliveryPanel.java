@@ -158,13 +158,26 @@ public class DeliveryPanel extends JPanel{
 					
 					Deliveryman deliveryman= new Deliveryman(User_Field.getText(),pass_Field.getText(),Name_Field.getText(),"","","",Phone_Field.getText(),areas.toArray(new String[0]));					
 					Database.addDeliveryman(deliveryman);
-					Database.saveDeliverymen();
+					if(User_Field.getText().equals("") && pass_Field.getText().equals("") && Name_Field.getText().equals("") && Phone_Field.getText().equals(""))
+					{
+						JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
+								JOptionPane.INFORMATION_MESSAGE);	
+		
 					
-//					if(User_Field.getText().equals("")||pass_Field.getText().equals("")||Name_Field.getText().equals("")||Phone_Field.getText().equals("")||areas.toArray(new String[0]))
-//					{
-//						JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
-//								JOptionPane.INFORMATION_MESSAGE);	
-//					
+					
+			
+				}
+					else {
+						User_Field.setText("");
+						pass_Field.setText("");
+						Name_Field.setText("");
+						Phone_Field.setText("");
+						ConfirmPass_Field.setText("");
+//						Darea_table.setRowCount("","");
+
+					}
+						
+					Database.saveDeliverymen();
 				}
 				});
 			
@@ -368,8 +381,8 @@ public class DeliveryPanel extends JPanel{
 			);
 			panel_4.setLayout(gl_panel_4);
 			
-			JLabel lblNewLabel = new JLabel("Create Delivery");
-			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
+			lblNewLabel = new JLabel("Create Delivery");
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
 			GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 			gl_panel_3.setHorizontalGroup(
 				gl_panel_3.createParallelGroup(Alignment.LEADING)
@@ -398,8 +411,17 @@ public class DeliveryPanel extends JPanel{
 		 
 		 
 		 case "create":
-			 lblNewLabel = new JLabel("Create Menu");
+			 lblNewLabel.setText("Create Delivery Man");
 			 selectR_comboBox.setEnabled(false);
+			 break;
+			 
+		 case "edit":
+			 lblNewLabel.setText("Edit Delivery Man");
+//			 selectR_comboBox.setEnabled(false);
+			 break;
+		 case "delete":
+			 lblNewLabel.setText("Delete Delivery Man");
+//			 selectR_comboBox.setEnabled(false);
 			 break;
 			
 		 
@@ -477,5 +499,3 @@ public class DeliveryPanel extends JPanel{
 	
 
 	}
-
-
