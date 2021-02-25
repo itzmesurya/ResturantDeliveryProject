@@ -13,10 +13,10 @@ import javax.swing.JPanel;
 
 public class Client_main_menu_Panel extends JPanel{
 	
-	private	JButton place_order_btn;
-	private	JButton view_history_btn;
-	private	JButton account_edit_btn;
-	private	JButton log_out_btn;
+	private	static JButton place_order_btn;
+	private	static JButton view_history_btn;
+	private	static JButton account_edit_btn;
+	private	static JButton log_out_btn;
 	private	JMenu file;
 	private	JMenuItem log_out;
 	private	JMenuItem exit;
@@ -117,25 +117,25 @@ public class Client_main_menu_Panel extends JPanel{
 	
 	//Get place_order_btn
 	
-	public JButton getPlace_Order_Btn() {
+	public static JButton getPlace_Order_Btn() {
 		return	place_order_btn;
 	}
 	
 	//Get view_history_btn
 	
-	public JButton getView_History_Btn() {
+	public static JButton getView_History_Btn() {
 		return	view_history_btn;
 	}
 	
 	//Get account_edit_btn
 	
-	public JButton getAccount_Edit_Btn() {
+	public static JButton getAccount_Edit_Btn() {
 		return	account_edit_btn;
 	}
 	
 	//Get log_out_btn
 	
-	public JButton log_out_btn() {
+	public static JButton getlog_out_btn() {
 		return	log_out_btn;
 	}
 	

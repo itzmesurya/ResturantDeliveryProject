@@ -14,17 +14,17 @@ import javax.swing.table.DefaultTableModel;
 
 public class Order_Food_Panel extends JPanel{
 	
-	private JButton btn_add_order;
-	private JButton btn_delete_order_id;
-	private JButton btn_place_order;
-	private JTextField add_id;
-	private JTextField add_quantity;
-	private JTextField postal_code;
-	private JTextField total;
-	private JTextField address;
-	private JComboBox<?> comboBox;
-	private JTable table;
-	private JTable table2;
+	private static JButton btn_add_order;
+	private static JButton btn_delete_order_id;
+	private static JButton btn_place_order;
+	private static JTextField add_id;
+	private static JTextField add_quantity;
+	private static JTextField postal_code;
+	private static JTextField total;
+	private static JTextField address;
+	private static JComboBox<?> comboBox;
+	private static JTable table;
+	private static JTable table2;
 	
 	public Order_Food_Panel() {
 		
@@ -243,57 +243,61 @@ public class Order_Food_Panel extends JPanel{
 	/**
 	 * @return	add_id
 	 */
-	public JTextField getAdd_Id() {
+	public static JTextField getAdd_Id() {
 		return add_id;
 	}
 
 	/**
 	 * @return	add_quantity
 	 */
-	public JTextField getAdd_Quantity() {
+	public static JTextField getAdd_Quantity() {
 		return add_quantity;
 	}
 
 	/**
 	 * @return	postal_code
 	 */
-	public JTextField getPostal_Code() {
+	public static JTextField getPostal_Code() {
 		return postal_code;
 	}
 
 	/**
 	 * @return	total
 	 */
-	public JTextField getTotal() {
+	public static JTextField getTotal() {
 		return total;
 	}
 	
 	/**
 	 * @return	address
 	 */
-	public JTextField getAddress() {
+	public static JTextField getAddress() {
 		return address;
 	}
 	
 	/**
 	 * @return	btn_add_order
 	 */
-	public JButton getBtn_Add_Order() {
+	public static JButton getBtn_Add_Order() {
 		return btn_add_order;
 	}
 	
 	/**
-	 * @return	btn_delete_order_id
+	 * @return	btn_delete_order
 	 */
-	public JButton getBtn_delete_Order_Id() {
+	public static JButton getBtn_delete_Order() {
 		return btn_delete_order_id;
 	}
 	
 	/**
 	 * @return	btn_place_order
 	 */
-	public JButton getBtn_Place_Order() {
+	public static JButton getBtn_Place_Order() {
 		return btn_place_order;
+	}
+	
+	public static JComboBox<?> getcomboBox() {
+		return comboBox;
 	}
 
 	

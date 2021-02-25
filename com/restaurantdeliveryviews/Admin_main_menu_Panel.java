@@ -21,14 +21,14 @@ public class Admin_main_menu_Panel extends JPanel{
 	private static	JButton resto_add_btn;
 	private static	JButton resto_edit_btn;
 	private static  JButton resto_del_btn;
-	private	JButton menu_add_btn;
-	private	JButton menu_edit_btn;
-	private	JButton menu_del_btn;
-	private	JButton delivery_add_btn;
-	private	JButton delivery_edit_btn;
-	private	JButton delivery_del_btn;
-	private	JButton delivery_order_btn;
-	private	JButton log_out_btn;
+	private	static JButton menu_add_btn;
+	private	static JButton menu_edit_btn;
+	private	static JButton menu_del_btn;
+	private	static JButton delivery_add_btn;
+	private	static JButton delivery_edit_btn;
+	private	static JButton delivery_del_btn;
+	private	static JButton delivery_order_btn;
+	private	static JButton log_out_btn;
 	private	JMenu file;
 	private	JMenu menu;
 	private	JMenu order;
@@ -305,49 +305,49 @@ public class Admin_main_menu_Panel extends JPanel{
 		
 		//Get menu_add_btn
 		
-		public JButton getMenu_Add_Btn() {
+		public static JButton getMenu_Add_Btn() {
 			return	menu_add_btn;
 		}
 		
 		//Get menu_edit_btn
 		
-		public JButton getMenu_Edit_Btn() {
+		public static JButton getMenu_Edit_Btn() {
 			return	menu_edit_btn;
 		}
 		
 		//Get menu_del_btn
 		
-		public JButton getMenu_Del_Btn() {
+		public static JButton getMenu_Del_Btn() {
 			return	menu_del_btn;
 		}
 		
 		//Get delivery_add_btn
 		
-		public JButton getDelivery_Add_Btn() {
+		public static JButton getDelivery_Add_Btn() {
 			return	delivery_add_btn;
 		}
 		
 		//Get delivery_edit_btn
 		
-		public JButton getDelivery_Edit_Btn() {
+		public static JButton getDelivery_Edit_Btn() {
 			return	delivery_edit_btn;
 		}
 		
 		//Get delivery_del_btn
 		
-		public JButton getDelivery_Del_Btn() {
+		public static JButton getDelivery_Del_Btn() {
 			return	delivery_del_btn;
 		}
 		
 		//Get delivery_order_btn
 		
-		public JButton getDelivery_Order_Btn() {
+		public static JButton getDelivery_Order_Btn() {
 			return	delivery_order_btn;
 		}
 		
 		//Get log_out_btn
 		
-		public JButton getLog_Out_Btn() {
+		public static JButton getLog_Out_Btn() {
 			return	log_out_btn;
 		}
 		
