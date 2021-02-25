@@ -115,6 +115,14 @@ public class Database {
 		}
 		return null;
 	}
+	
+	public static void deleteMenuById(int id) {
+		for (int i = 0; i < menus.size(); i++) {
+			if (menus.get(i).getId() == id) {
+				menus.remove(i);
+			}
+		}
+	}
 
 	private static void loadMenus() {
 		loadData("menus");
@@ -140,6 +148,14 @@ public class Database {
 		}
 		return null;
 	}
+	
+	public static void deleteRestaurantById(int id) {
+		for (int i = 0; i < restaurants.size(); i++) {
+			if (restaurants.get(i).getId() == id) {
+				restaurants.remove(i);
+			}
+		}
+	}
 
 	private static void loadRestaurants() {
 		loadData("restaurants");
@@ -164,6 +180,14 @@ public class Database {
 			}
 		}
 		return null;
+	}
+	
+	public static void deleteClientById(int id) {
+		for (int i = 0; i < clients.size(); i++) {
+			if (clients.get(i).getId() == id) {
+				clients.remove(i);
+			}
+		}
 	}
 
 	public static Client getClientByUserName(String userName) {
@@ -199,6 +223,14 @@ public class Database {
 		}
 		return null;
 	}
+	
+	public static void deleteDeliverymanById(int id) {
+		for (int i = 0; i < deliverymen.size(); i++) {
+			if (deliverymen.get(i).getId() == id) {
+				deliverymen.remove(i);
+			}
+		}
+	}
 
 	public static Deliveryman getDeliverymanByUserName(String userName) {
 		for (Deliveryman deliveryman : deliverymen) {
@@ -233,6 +265,14 @@ public class Database {
 		}
 		return null;
 	}
+	
+	public static void deleteRestaurateurById(int id) {
+		for (int i = 0; i < restaurateurs.size(); i++) {
+			if (restaurateurs.get(i).getId() == id) {
+				restaurateurs.remove(i);
+			}
+		}
+	}
 
 	public static Restaurateur getRestaurateurByUserName(String username) {
 		for (Restaurateur restaurateur : restaurateurs) {
@@ -266,6 +306,14 @@ public class Database {
 			}
 		}
 		return null;
+	}
+	
+	public static void deleteManagerById(int id) {
+		for (int i = 0; i < managers.size(); i++) {
+			if (managers.get(i).getId() == id) {
+				managers.remove(i);
+			}
+		}
 	}
 
 	public static Manager getManagerByUserName(String userName) {
@@ -316,6 +364,14 @@ public class Database {
 			}
 		}
 		return null;
+	}
+	
+	public static void deleteAdminById(int id) {
+		for (int i = 0; i < admins.size(); i++) {
+			if (admins.get(i).getId() == id) {
+				admins.remove(i);
+			}
+		}
 	}
 
 	public static Admin getAdminByUserName(String userName) {
