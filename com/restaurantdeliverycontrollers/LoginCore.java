@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import com.restaurantdeliverymodels.Database;
+import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.User;
 import com.restaurantdeliveryviews.Admin_main_menu_Panel;
 import com.restaurantdeliveryviews.Client_main_menu_Panel;
@@ -24,7 +25,7 @@ public class LoginCore {
 				
 				//Verify that username and password are not blank
 				if (LoginPanel.getUsernameTF().getText().trim().isEmpty() || LoginPanel.getPasswordTF().getText().trim().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Please enter username and password", "Error", JOptionPane.ERROR_MESSAGE);
+					Functions.displayError("Please enter username and password");
 					return;
 				}
 				//Verify username and password match a user in the database
@@ -33,11 +34,11 @@ public class LoginCore {
 					System.out.println("Verifying username: " + user.getUsername());
 					if (user.getUsername().equals(LoginPanel.getUsernameTF().getText()) && user.getPassword().equals(LoginPanel.getPasswordTF().getText())) {
 						Main.user = user;
-						System.out.println("Set user");
+						break;
 					} 
 				}
 				if (Main.user == null) {
-					JOptionPane.showMessageDialog(null, "Incorrect username and/or password", "Error", JOptionPane.ERROR_MESSAGE);
+					Functions.displayError("Incorrect username and/or password");
 				} else {
 					//Change to menu appropriate to user level
 					switch(Main.user.getLevel()) {
