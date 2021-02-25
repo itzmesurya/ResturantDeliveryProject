@@ -26,6 +26,10 @@ public class MainFrame {
 		menuBar = new CustomMenuBar();
 	}
 	
+	public static JPanel getMainPanel() {
+		return mainPanel;
+	}
+	
 	public static void setPanel(JPanel panel) {
 		mainPanel = panel;
 	}
