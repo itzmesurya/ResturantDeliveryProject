@@ -5,10 +5,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
@@ -16,8 +18,11 @@ import javax.swing.border.MatteBorder;
 
 public class OrderHistoryPanel extends JPanel {
 	
-	private JTextField tf_C11;
-	private JTextField tf_C13;
+	private static JTextField tf_C11;
+	private static JTextField tf_C13;
+	private static JTextArea textOH;
+	private static JTextArea textOrder;
+	private static JButton btnSubmit;
 	
 	public OrderHistoryPanel() {
 	
@@ -69,6 +74,13 @@ public class OrderHistoryPanel extends JPanel {
 	JScrollPane scrollPane_C2 = new JScrollPane();
 	scrollPane_C2.setPreferredSize(new Dimension(560, 210));
 	panel_C22.add(scrollPane_C2);
+	
+	textOrder = new JTextArea();
+	textOrder.setFont(new Font("Arial", Font.BOLD, 20));
+	textOrder.setBackground(Color.CYAN);
+	textOrder.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+	textOrder.setPreferredSize(new Dimension(550, 200));
+	scrollPane_C2 = new JScrollPane(textOrder);
 	
 	JPanel panel_C1 = new JPanel();
 	panel_C1.setPreferredSize(new Dimension(600, 180));
@@ -169,6 +181,13 @@ public class OrderHistoryPanel extends JPanel {
 	Panel_C33.setBorder(null);
 	panel_C3.add(Panel_C33, BorderLayout.SOUTH);
 	
+	btnSubmit = new JButton("Submit");
+	btnSubmit.setPreferredSize(new Dimension(200, 40));
+	btnSubmit.setFont(new Font("Arial", Font.BOLD, 30));
+	btnSubmit.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
+	btnSubmit.setBackground(Color.YELLOW);
+	Panel_C33.add(btnSubmit);
+	
 	JPanel panel_C32 = new JPanel();
 	panel_C32.setBorder(new MatteBorder(2, 0, 2, 0, (Color) new Color(0, 0, 0)));
 	panel_C3.add(panel_C32, BorderLayout.CENTER);
@@ -176,6 +195,29 @@ public class OrderHistoryPanel extends JPanel {
 	JScrollPane scrollPane_C3 = new JScrollPane();
 	scrollPane_C3.setPreferredSize(new Dimension(360, 420));
 	panel_C32.add(scrollPane_C3);
-}
+	
+	textOH = new JTextArea();
+	textOH.setFont(new Font("Arial", Font.BOLD, 20));
+	textOH.setBackground(Color.CYAN);
+	textOH.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+	textOH.setPreferredSize(new Dimension(350, 410));
+	scrollPane_C3 = new JScrollPane(textOH); 
+	textOH.setEditable(false);
+	
+	}
+
+	public static JButton getBtnSubmit() {
+		return btnSubmit;
+	}
+
+	public static JTextArea getTextOH() {
+		return textOH;
+	}
+
+	public static JTextArea getTextOrder() {
+		return textOrder;
+	}
+	
+	
 
 }
