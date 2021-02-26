@@ -16,11 +16,7 @@ public class Restaurateur_main_menu_Panel extends JPanel{
 	private static JButton order_accept_btn;
 	private static JButton order_ready_btn;
 	private static JButton log_out_btn;
-	private	JMenu file;
-	private	JMenu order;
-	private	JMenuItem log_out;
-	private	JMenuItem exit;
-	private	JMenuItem view_order;
+
 	
 	public Restaurateur_main_menu_Panel() {
 		
@@ -70,32 +66,7 @@ public class Restaurateur_main_menu_Panel extends JPanel{
 		log_out_btn.setBounds(1039, 10, 137, 37);
 		this.add(log_out_btn);
 		
-		//MENU BAR
-		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 40, 22);
-		this.add(menuBar);
-		
-		//File Menu BAR
-		
-		file = new JMenu("File");
-		file.setBackground(Color.BLACK);
-		menuBar.add(file);
-				
-		log_out = new JMenuItem("Log Out");
-		file.add(log_out);
-				
-		exit = new JMenuItem("Exit");
-		file.add(exit);
-		
-		//Order Menu Bar
-		
-		order = new JMenu("Orders");
-		order.setBackground(Color.BLACK);
-		menuBar.add(order);
-		
-		view_order = new JMenuItem("View Orders");
-		order.add(view_order);
+
 		
 	}
 	
@@ -120,18 +91,6 @@ public class Restaurateur_main_menu_Panel extends JPanel{
 		return log_out_btn;
 	}
 	
-	//Get MenuItem Things
-	
-	public JMenuItem getLog_Out() {
-		return log_out;
-	}
-	
-	public JMenuItem getExit() {
-		return exit;
-	}
-	
-	public JMenuItem getView_Order() {
-		return view_order;
-	}
+
 
 }

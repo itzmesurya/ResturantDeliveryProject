@@ -17,9 +17,7 @@ public class Client_main_menu_Panel extends JPanel{
 	private	static JButton view_history_btn;
 	private	static JButton account_edit_btn;
 	private	static JButton log_out_btn;
-	private	JMenu file;
-	private	JMenuItem log_out;
-	private	JMenuItem exit;
+
 	
 	public Client_main_menu_Panel() {
 		
@@ -95,23 +93,7 @@ public class Client_main_menu_Panel extends JPanel{
 		account_edit_btn.setBounds(488, 172, 118, 45);
 		panel_1.add(account_edit_btn);
 		
-		//MENU BAR
-		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 40, 22);
-		this.add(menuBar);
-				
-		//File Menu BAR
-				
-		file = new JMenu("File");
-		file.setBackground(Color.BLACK);
-		menuBar.add(file);
-				
-		log_out = new JMenuItem("Log Out");
-		file.add(log_out);
-				
-		exit = new JMenuItem("Exit");
-		file.add(exit);
+
 		
 	}
 	
@@ -139,14 +121,6 @@ public class Client_main_menu_Panel extends JPanel{
 		return	log_out_btn;
 	}
 	
-	//Get MenuItem Things
-	
-	public JMenuItem getLog_Out() {
-		return log_out;
-	}
-	
-	public JMenuItem getExit() {
-		return exit;
-	}
+
 
 }

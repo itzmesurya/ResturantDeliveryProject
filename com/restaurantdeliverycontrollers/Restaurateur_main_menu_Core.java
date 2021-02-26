@@ -18,7 +18,7 @@ public class Restaurateur_main_menu_Core {
 		Restaurateur_main_menu_Panel.getOrder_Accept_Btn().addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+			
 				MainFrame.changePanel(new OrderPanel());
 				
 			}
@@ -28,7 +28,7 @@ public class Restaurateur_main_menu_Core {
 		Restaurateur_main_menu_Panel.getOrder_Ready_Btn().addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+				
 				MainFrame.changePanel(new OrderPanel());
 				
 			}
@@ -37,7 +37,7 @@ public class Restaurateur_main_menu_Core {
 		//Log Out BTN
 		Restaurateur_main_menu_Panel.getlog_Out_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+	
 				MainFrame.changePanel(new LoginPanel());
 				
 			}

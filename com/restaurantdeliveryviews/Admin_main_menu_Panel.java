@@ -29,20 +29,7 @@ public class Admin_main_menu_Panel extends JPanel{
 	private	static JButton delivery_del_btn;
 	private	static JButton delivery_order_btn;
 	private	static JButton log_out_btn;
-	private	JMenu file;
-	private	JMenu menu;
-	private	JMenu order;
-	private	JMenu restaurant;
-	private	JMenu delivery;
-	private	JMenuItem manage_account;
-	private	JMenuItem log_out;
-	private	JMenuItem exit;
-	private	JMenuItem manage_menu;
-	private	JMenuItem view_order;
-	private	JMenuItem create_resto;
-	private	JMenuItem manage_resto;
-	private	JMenuItem create_deliveryman;
-	private	JMenuItem manage_deliveryman;
+
 	
 	public Admin_main_menu_Panel() {
 		
@@ -181,109 +168,7 @@ public class Admin_main_menu_Panel extends JPanel{
 		log_out_btn.setBounds(1039, 10, 137, 37);
 		this.add(log_out_btn);
 		
-		//MENU BAR
-		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 270, 22);
-		this.add(menuBar);
-		
-				//File Menu BAR
-		
-				file = new JMenu("File");
-				file.setBackground(Color.BLACK);
-				menuBar.add(file);
-				
-				manage_account = new JMenuItem("Manage Account");
-				file.add(manage_account);
-				
-				log_out = new JMenuItem("Log Out");
-				file.add(log_out);
-				
-				exit = new JMenuItem("Exit");
-				file.add(exit);
-				
-				//Menu menu Bar
-				
-				menu = new JMenu("Menu");
-				menu.setBackground(Color.BLACK);
-				menuBar.add(menu);
-				
-				manage_menu = new JMenuItem("Manage Menu");
-				menu.add(manage_menu);
-				
-				//Order Menu Bar
-				
-				order = new JMenu("Orders");
-				order.setBounds(new Rectangle(0, 0, 11, 0));
-				order.setBackground(Color.BLACK);
-				menuBar.add(order);
-				
-				view_order = new JMenuItem("View Orders");
-				order.add(view_order);
-				
-				//Restaurant Menu bar
-				restaurant = new JMenu("Restaurant");
-				restaurant.setBackground(Color.BLACK);
-				menuBar.add(restaurant);
-				
-				create_resto = new JMenuItem("Create Restaurant");
-				restaurant.add(create_resto);
-				
-				manage_resto = new JMenuItem("Manage Restaurant");
-				restaurant.add(manage_resto);
-				
-				//Delivery Menu bar
-				delivery = new JMenu("Delivery");
-				delivery.setBackground(Color.BLACK);
-				menuBar.add(delivery);
-						
-				create_deliveryman = new JMenuItem("Create Delivery Man");
-				delivery.add(create_deliveryman);
-						
-				manage_deliveryman = new JMenuItem("Manage Delivery Man");
-				delivery.add(manage_deliveryman);
 	}
-	
-		//Get JMenu Items
-	
-		/**
-		 * @return
-		 */
-		public JMenuItem getManage_Account() {
-			return manage_account;
-		}
-		
-		public JMenuItem getLog_Out() {
-			return log_out;
-		}
-		
-		public JMenuItem getExit() {
-			return exit;
-		}
-		
-		public JMenuItem getManage_Menu() {
-			return manage_menu;
-		}
-		
-		public JMenuItem getView_Order() {
-			return view_order;
-		}
-		
-		public JMenuItem getCreate_Resto() {
-			return create_resto;
-		}
-		
-		public JMenuItem getManage_Resto() {
-			return manage_resto;
-		}
-		
-		public JMenuItem getCreate_Deliveryman() {
-			return create_deliveryman;
-		}
-		
-		public JMenuItem getManage_Deliveryman() {
-			return manage_deliveryman;
-		}
 	
 		//Get resto_add_btn
 	
