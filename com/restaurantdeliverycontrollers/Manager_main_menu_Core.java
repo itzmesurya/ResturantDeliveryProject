@@ -17,7 +17,7 @@ public class Manager_main_menu_Core {
 		//ADD Menu BTN
 		Manager_main_menu_Panel.getMenu_Add_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+
 				MainFrame.changePanel(new MenuPanel("create"));
 				
 			}
@@ -26,7 +26,7 @@ public class Manager_main_menu_Core {
 		//Edit Menu BTN
 		Manager_main_menu_Panel.getMenu_Edit_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+
 				MainFrame.changePanel(new MenuPanel("edit"));
 				
 			}
@@ -35,7 +35,7 @@ public class Manager_main_menu_Core {
 		//DELETE Menu BTN
 		Manager_main_menu_Panel.getMenu_Del_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+
 				MainFrame.changePanel(new MenuPanel("delete"));
 				
 			}
@@ -44,7 +44,7 @@ public class Manager_main_menu_Core {
 		//EDIT RESTAURANT BTN
 		Manager_main_menu_Panel.getResto_Edit_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+
 				MainFrame.changePanel(new RestaurantPanel("edit"));
 				
 			}
@@ -53,7 +53,7 @@ public class Manager_main_menu_Core {
 		//Log Out BTN
 		Manager_main_menu_Panel.getlog_out_btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+
 				MainFrame.changePanel(new LoginPanel());
 				
 			}

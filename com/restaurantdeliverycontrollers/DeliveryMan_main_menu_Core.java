@@ -18,7 +18,7 @@ public class DeliveryMan_main_menu_Core {
 		//Accept Delivery BTN
 		DeliveryMan_main_menu_Panel. getDelivery_Accept_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+
 				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
 				
 			}
@@ -27,7 +27,7 @@ public class DeliveryMan_main_menu_Core {
 		//Done delivery BTN
 		DeliveryMan_main_menu_Panel. getDelivery_End_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+
 				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
 						
 			}
@@ -36,7 +36,7 @@ public class DeliveryMan_main_menu_Core {
 		//Edit Delivery man BTN
 		DeliveryMan_main_menu_Panel.getDelivery_Editinfo_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+
 				MainFrame.changePanel(new DeliveryPanel("edit"));
 				
 			}
@@ -45,7 +45,7 @@ public class DeliveryMan_main_menu_Core {
 		//Log Out BTN
 		DeliveryMan_main_menu_Panel.getLog_Out_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+
 				MainFrame.changePanel(new LoginPanel());
 				
 			}

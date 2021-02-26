@@ -101,9 +101,6 @@ public class Order_Food_Core {
 				DefaultTableModel model = (DefaultTableModel) Order_Food_Panel.gettable2().getModel();
 				model.addRow(new Object[] {rowData[0],rowData[1],rowData[2],q});
 				
-				
-				
-				
 			}
 		});
 		

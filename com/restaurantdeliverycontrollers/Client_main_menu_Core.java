@@ -18,7 +18,7 @@ public class Client_main_menu_Core {
 		//Place order BTN
 		Client_main_menu_Panel.getPlace_Order_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+	
 				MainFrame.changePanel(new Order_Food_Panel());
 				
 			}
@@ -27,7 +27,7 @@ public class Client_main_menu_Core {
 		//Order History BTN
 		Client_main_menu_Panel.getView_History_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+
 				MainFrame.changePanel(new OrderHistoryPanel());
 				
 			}
@@ -36,7 +36,7 @@ public class Client_main_menu_Core {
 		//Edit Account BTN
 		Client_main_menu_Panel.getAccount_Edit_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+
 				MainFrame.changePanel(new AccountPanel("edit"));
 				
 			}
@@ -45,7 +45,7 @@ public class Client_main_menu_Core {
 		//Log Out BTN
 		Client_main_menu_Panel.getlog_out_btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+
 				MainFrame.changePanel(new LoginPanel());
 				
 			}

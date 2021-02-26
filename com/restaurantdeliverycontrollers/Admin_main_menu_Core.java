@@ -19,7 +19,7 @@ public class Admin_main_menu_Core {
 		Admin_main_menu_Panel.getResto_Add_Btn().addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+				
 				MainFrame.changePanel(new RestaurantPanel("add"));
 				
 			}
@@ -28,7 +28,7 @@ public class Admin_main_menu_Core {
 		//EDIT RESTAURANT BTN
 		Admin_main_menu_Panel.getResto_Edit_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+				
 				MainFrame.changePanel(new RestaurantPanel("edit"));
 				
 			}
@@ -37,7 +37,7 @@ public class Admin_main_menu_Core {
 		//DELETE RESTAURANT BTN
 		Admin_main_menu_Panel.getResto_Del_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+				
 				MainFrame.changePanel(new RestaurantPanel("delete"));
 				
 			}
@@ -46,7 +46,7 @@ public class Admin_main_menu_Core {
 		//ADD Menu BTN
 		Admin_main_menu_Panel.getMenu_Add_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+				
 				MainFrame.changePanel(new MenuPanel("create"));
 				
 			}
@@ -55,7 +55,7 @@ public class Admin_main_menu_Core {
 		//Edit Menu BTN
 		Admin_main_menu_Panel.getMenu_Edit_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+				
 				MainFrame.changePanel(new MenuPanel("edit"));
 				
 			}
@@ -64,7 +64,7 @@ public class Admin_main_menu_Core {
 		//DELETE Menu BTN
 		Admin_main_menu_Panel.getMenu_Del_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+				
 				MainFrame.changePanel(new MenuPanel("delete"));
 				
 			}
@@ -73,7 +73,7 @@ public class Admin_main_menu_Core {
 		//Add Delivery man BTN
 		Admin_main_menu_Panel. getDelivery_Add_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+				
 				MainFrame.changePanel(new DeliveryPanel("create"));
 				
 			}
@@ -82,7 +82,7 @@ public class Admin_main_menu_Core {
 		//Edit Delivery man BTN
 		Admin_main_menu_Panel. getDelivery_Edit_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+				
 				MainFrame.changePanel(new DeliveryPanel("edit"));
 				
 			}
@@ -91,7 +91,7 @@ public class Admin_main_menu_Core {
 		//Delete Delivery man BTN
 		Admin_main_menu_Panel.getDelivery_Del_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+				
 				MainFrame.changePanel(new DeliveryPanel("delete"));
 				
 			}
@@ -100,7 +100,7 @@ public class Admin_main_menu_Core {
 		//View Order BTN
 		Admin_main_menu_Panel. getDelivery_Order_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+				
 				MainFrame.changePanel(new OrderPanel());
 				
 			}
@@ -109,7 +109,7 @@ public class Admin_main_menu_Core {
 		//Log Out BTN
 		Admin_main_menu_Panel.getLog_Out_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainFrame();
+				
 				MainFrame.changePanel(new LoginPanel());
 				
 			}
