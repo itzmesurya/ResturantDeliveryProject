@@ -40,6 +40,7 @@ public class LoginCore {
 				if (Main.user == null) {
 					Functions.displayError("Incorrect username and/or password");
 				} else {
+					MainFrame.getMainFrame().getJMenuBar().setVisible(true);
 					//Change to menu appropriate to user level
 					switch(Main.user.getLevel()) {
 					case 0:
@@ -56,7 +57,6 @@ public class LoginCore {
 						break;
 					case 100:
 						MainFrame.changePanel(new Admin_main_menu_Panel());
-						MainFrame.setBarForUser(Main.user);
 						new Admin_main_menu_Core();
 						break;
 					}

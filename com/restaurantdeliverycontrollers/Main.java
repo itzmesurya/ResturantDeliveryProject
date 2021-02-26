@@ -1,5 +1,10 @@
 package com.restaurantdeliverycontrollers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JOptionPane;
+
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.User;
 
@@ -22,11 +27,22 @@ public class Main {
 	public static User user;
 	
 	public static void main(String[] args) {
+		//Initialize
 		new Database();
 		new MainFrame();
+		
+		//Set Top Bar
+		MainFrame.getMenuBar().getCreate_account().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
 
+		//Change to Login
 		MainFrame.changePanel(new LoginPanel());
 		new LoginCore();
+		
 		
 	}
 
