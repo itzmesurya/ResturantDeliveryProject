@@ -1,5 +1,7 @@
 package com.restaurantdeliverymodels;
 
+import java.util.ArrayList;
+
 /**
  * @author Alex
  * Restaurant is assigned a manager and restaurateur, and has a menu and orders
@@ -96,6 +98,16 @@ public class Restaurant {
 
 	public void setRestaurateur_id(int restaurateur_id) {
 		this.restaurateur_id = restaurateur_id;
+	}
+	
+	public ArrayList<Order> getOrders(){
+		ArrayList<Order> orders = new ArrayList<Order>();
+		for (Order order : Database.getOrders()) {
+			if (order.getRestaurant_id() == this.id) {
+				orders.add(order);
+			}
+		}
+		return orders;
 	}
 	
 }

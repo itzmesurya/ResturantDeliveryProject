@@ -2,6 +2,7 @@ package com.restaurantdeliveryviews;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.util.Arrays;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
@@ -36,8 +37,6 @@ public class UIHelper {
 					//set the flag to false;
 					result = false;
 				}
-			} else if (component instanceof JPanel) {
-				result = ValidateEmptyFields((JPanel)component);
 			}
 		}
 		
@@ -61,5 +60,21 @@ public class UIHelper {
 			component.setBorder(new LineBorder(color, 2));
 		}
 		
+	}
+
+	public static void setPanelEnabled(JPanel panel, Boolean isEnabled) {
+		panel.setEnabled(isEnabled);
+
+		Component[] components = panel.getComponents();
+
+		for (Component component : components) {
+			if (component instanceof JPanel) {
+				setPanelEnabled((JPanel) component, isEnabled);
+			}
+			if (component instanceof JTextField) {
+				((JTextField)component).setEditable(isEnabled);
+			}
+			
+		}
 	}
 }

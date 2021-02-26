@@ -1,15 +1,20 @@
 package com.restaurantdeliverycontrollers;
 
+
+import com.restaurantdeliverymodels.CRUDAction;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
+
 
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.User;
 
 import com.restaurantdeliveryviews.Accept_Done__Delivery_Panel;
+import com.restaurantdeliveryviews.AccountPanel;
 import com.restaurantdeliveryviews.Admin_main_menu_Panel;
 import com.restaurantdeliveryviews.Client_main_menu_Panel;
 import com.restaurantdeliveryviews.CustomMenuBar;
@@ -19,6 +24,7 @@ import com.restaurantdeliveryviews.DeliveryPanel;
 import com.restaurantdeliveryviews.LoginPanel;
 import com.restaurantdeliveryviews.MainFrame;
 import com.restaurantdeliveryviews.Manager_main_menu_Panel;
+import com.restaurantdeliveryviews.MenuPanel;
 import com.restaurantdeliveryviews.OrderPanel;
 import com.restaurantdeliveryviews.Order_Food_Panel;
 import com.restaurantdeliveryviews.RestaurantPanel;
@@ -27,7 +33,7 @@ import com.restaurantdeliveryviews.Restaurateur_main_menu_Panel;
 public class Main {
 
 	public static User user;
-	
+
 	public static void main(String[] args) {
 		//Initialize
 		new Database();
@@ -36,19 +42,22 @@ public class Main {
 		//Set Top Bar
 		CustomMenuBar.getCreate_account().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new AccountPanel(CRUDAction.Create));
+				new AccountCore(CRUDAction.Create);
 			}
 			
 		});
 		CustomMenuBar.getEdit_account().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new AccountPanel(CRUDAction.Edit));
+				new AccountCore(CRUDAction.Edit);
 			}
 			
 		});
 		CustomMenuBar.getDelete_account().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new AccountPanel(CRUDAction.Delete));
+				new AccountCore(CRUDAction.Delete);
 			}
 			
 		});
@@ -94,13 +103,15 @@ public class Main {
 		});
 		CustomMenuBar.getAccept_order().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				new Accept_Done_Delivery_Core();
 			}
 			
 		});
 		CustomMenuBar.getEnd_order().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				new Accept_Done_Delivery_Core();
 			}
 			
 		});
@@ -176,7 +187,6 @@ public class Main {
 		MainFrame.changePanel(new LoginPanel());
 		new LoginCore();
 
-		
 		
 	}
 

@@ -1,16 +1,19 @@
 package com.restaurantdeliverycontrollers;
 
-import com.restaurantdeliveryviews.MainFrame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import com.restaurantdeliveryviews.OrderHistoryPanel;
 
 public class OrderHistoryCore {
 	
-	static MainFrame orderhistory_view;
-
-
-	public static void main(String[] args) {
-		orderhistory_view = new MainFrame();
-		orderhistory_view.changePanel(new OrderHistoryPanel());
+	public OrderHistoryCore() {
+		
+		OrderHistoryPanel.getBtnSubmit().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				OrderHistoryPanel.getTextOH().append(OrderHistoryPanel.getTextOrder().getText());
+			}			
+		});
 
 	}
 
