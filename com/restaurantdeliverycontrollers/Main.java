@@ -1,11 +1,18 @@
 package com.restaurantdeliverycontrollers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JOptionPane;
+
 import com.restaurantdeliverymodels.Database;
+import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.User;
 
 import com.restaurantdeliveryviews.Accept_Done__Delivery_Panel;
 import com.restaurantdeliveryviews.Admin_main_menu_Panel;
 import com.restaurantdeliveryviews.Client_main_menu_Panel;
+import com.restaurantdeliveryviews.CustomMenuBar;
 import com.restaurantdeliveryviews.DeliveryMan_main_menu_Panel;
 import com.restaurantdeliveryviews.DeliveryPanel;
 
@@ -22,12 +29,154 @@ public class Main {
 	public static User user;
 	
 	public static void main(String[] args) {
+		//Initialize
 		new Database();
 		new MainFrame();
+		
+		//Set Top Bar
+		CustomMenuBar.getCreate_account().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getEdit_account().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getDelete_account().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getLog_out().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				user = null;
+				MainFrame.getMenuBar().setVisible(false);
+				MainFrame.changePanel(new LoginPanel());
+				new LoginCore();
+			}
+			
+		});
+		CustomMenuBar.getExit().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Functions.displayMessage("Thank you for using our delivery app!");
+				System.exit(0);
+			}
+			
+		});
+		CustomMenuBar.getCreate_menu().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getEdit_menu().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getDelete_menu().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getView_order().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getAccept_order().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getEnd_order().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getOrder_food().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getOrder_history().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getCreate_resto().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getEdit_resto().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getDelete_resto().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getView_deliveries().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getAccept_deliveries().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getEnd_deliveries().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getCreate_deliveryman().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getEdit_deliveryman().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
+		CustomMenuBar.getDelete_deliveryman().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			
+		});
 
-		MainFrame.changePanel(new Order_Food_Panel());
-		//new LoginCore();
-		new Order_Food_Core();
+
+		//Change to Login
+		MainFrame.changePanel(new LoginPanel());
+		new LoginCore();
+
+		
 		
 	}
 

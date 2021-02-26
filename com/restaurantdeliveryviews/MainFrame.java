@@ -11,7 +11,7 @@ public class MainFrame {
 
 	private static JFrame mainFrame;
 	private static JPanel mainPanel;
-	private static JMenuBar menuBar;
+	private static CustomMenuBar menuBar;
 
 	/**
 	 * Create the frame
@@ -24,6 +24,20 @@ public class MainFrame {
 		mainFrame.setResizable(false);
 		mainFrame.setVisible(true);
 		menuBar = new CustomMenuBar();
+		mainFrame.setJMenuBar(menuBar);
+		menuBar.setVisible(false);
+	}
+	
+	public static JFrame getMainFrame() {
+		return mainFrame;
+	}
+	
+	public static JPanel getMainPanel() {
+		return mainPanel;
+	}
+	
+	public static CustomMenuBar getMenuBar() {
+		return menuBar;
 	}
 	
 	public static void setPanel(JPanel panel) {
@@ -34,28 +48,6 @@ public class MainFrame {
 		mainFrame.getContentPane().remove(mainPanel);
 		mainPanel = panel;
 		mainFrame.getContentPane().add(mainPanel, BorderLayout.CENTER);
-		mainFrame.revalidate();
-	}
-	
-	public static void setBarForUser(User user) {
-		mainFrame.setJMenuBar(menuBar);
-		switch(user.getLevel()) {
-		case 0:
-			//TODO
-			break;
-		case 1:
-			//TODO
-			break;
-		case 2:
-			//TODO
-			break;
-		case 3:
-			//TODO
-			break;
-		case 100:
-			//TODO
-			break;
-		}
 		mainFrame.revalidate();
 	}
 	

@@ -16,6 +16,7 @@ public class LoginPanel extends JPanel {
 	
 	private static JTextField tf_1;
 	private static JTextField tf_2;
+	private static JLabel lbl_create_account;
 	private static JButton btnLogin;
 	
 	public LoginPanel() {		
@@ -56,13 +57,13 @@ public class LoginPanel extends JPanel {
 	btnLogin.setBackground(Color.YELLOW);
 	panel_3.add(btnLogin);
 	
-	JLabel lbl_1_1 = new JLabel("Don't have an account yet? Click here to create one");
-	lbl_1_1.setForeground(Color.BLUE);
-	lbl_1_1.setPreferredSize(new Dimension(600, 20));
-	lbl_1_1.setHorizontalTextPosition(SwingConstants.CENTER);
-	lbl_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-	lbl_1_1.setFont(new Font("Arial", Font.PLAIN, 18));
-	panel_3.add(lbl_1_1);
+	lbl_create_account = new JLabel("Don't have an account yet? Click here to create one");
+	lbl_create_account.setForeground(Color.BLUE);
+	lbl_create_account.setPreferredSize(new Dimension(600, 20));
+	lbl_create_account.setHorizontalTextPosition(SwingConstants.CENTER);
+	lbl_create_account.setHorizontalAlignment(SwingConstants.CENTER);
+	lbl_create_account.setFont(new Font("Arial", Font.PLAIN, 18));
+	panel_3.add(lbl_create_account);
 	
 	JPanel panel_2 = new JPanel();
 	panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
@@ -122,6 +123,10 @@ public class LoginPanel extends JPanel {
 	
 	public static JTextField getPasswordTF() {
 		return tf_2;
+	}
+
+	public static JLabel getLbl_create_account() {
+		return lbl_create_account;
 	}
 
 }
