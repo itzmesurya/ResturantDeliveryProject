@@ -17,7 +17,7 @@ public class Item {
 	 * @param name
 	 * @param price
 	 * @param quantity
-	 * @param menu_id
+	 * @param order_id
 	 * Create an item that belongs to an order
 	 */
 	public Item(String name, double price, int quantity, int order_id) {
