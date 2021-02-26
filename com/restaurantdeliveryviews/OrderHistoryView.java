@@ -15,6 +15,7 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
 import javax.swing.JComboBox;
@@ -208,6 +209,13 @@ public class OrderHistoryView {
 		Panel_C33.setBorder(null);
 		panel_C3.add(Panel_C33, BorderLayout.SOUTH);
 		
+		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.setPreferredSize(new Dimension(200, 40));
+		btnSubmit.setFont(new Font("Arial", Font.BOLD, 30));
+		btnSubmit.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
+		btnSubmit.setBackground(Color.YELLOW);
+		Panel_C33.add(btnSubmit);
+		
 		JPanel panel_C32 = new JPanel();
 		panel_C32.setBorder(new MatteBorder(2, 0, 2, 0, (Color) new Color(0, 0, 0)));
 		panel_C3.add(panel_C32, BorderLayout.CENTER);
@@ -215,6 +223,15 @@ public class OrderHistoryView {
 		JScrollPane scrollPane_C3 = new JScrollPane();
 		scrollPane_C3.setPreferredSize(new Dimension(360, 420));
 		panel_C32.add(scrollPane_C3);
+		
+		JTextArea textOH = new JTextArea();
+		textOH.setFont(new Font("Arial", Font.BOLD, 20));
+		textOH.setBackground(Color.CYAN);
+		textOH.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		textOH.setPreferredSize(new Dimension(350, 410));
+		scrollPane_C3 = new JScrollPane(textOH); 
+		textOH.setEditable(false);
+		
 	}
 
 }
