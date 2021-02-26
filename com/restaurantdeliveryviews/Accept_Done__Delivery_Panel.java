@@ -19,6 +19,7 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	private static JTextField Order_number;
 	private	static JButton btnaccept;
 	private	static JButton btndelete;
+	private	static JTable table;
 	
 	public Accept_Done__Delivery_Panel() {
 	
@@ -114,11 +115,10 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	
 	//Table 
 	
-	JTable table = new JTable();
+	table = new JTable();
 	table.setForeground(new Color(139, 0, 0));
 	table.setBackground(new Color(255, 255, 224));
-	table.setModel(new DefaultTableModel(new Object[][] { { "1", "Mac D", "Test Street ", "2N1" },		//JUST FOR EXAMPLE
-		{ "2", "KFC", "New York", "2N2" }, { "3", "Wendys", "Example Street", "2N3" } },
+	table.setModel(new DefaultTableModel(new Object[][] {  },
 		new String[] { "Order number", "Resturant", "Delivery Address", "Postal code" }) {
 	/**
 			 * 
@@ -221,8 +221,8 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 		Order_number = order_number;
 	}
 	
-	public Object getTable() {
-		return getTable();
+	public static JTable gettable() {
+		return table;
 	}
 
 }

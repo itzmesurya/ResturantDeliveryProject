@@ -171,9 +171,11 @@ public class Main {
 			
 		});
 
+
 		//Change to Login
 		MainFrame.changePanel(new LoginPanel());
 		new LoginCore();
+
 		
 		
 	}
