@@ -22,6 +22,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.text.MaskFormatter;
 
+import com.restaurantdeliverymodels.Database;
+
 public class RestaurantPanel extends JPanel {
 	
 	private static JComboBox comboBoxName;
@@ -32,6 +34,7 @@ public class RestaurantPanel extends JPanel {
 	private static JTextArea textDA;
 	private static JButton btnRestaurant;
 	private static JButton btnC231;
+	private static JButton btnC232;
 	private static JButton btnC39;
 	
 	private static JComboBox combo_C321;
@@ -107,6 +110,12 @@ public class RestaurantPanel extends JPanel {
 		comboBoxName.setBounds(329, 22, 500, 36);
 		Panel_2.add(comboBoxName);
 		
+		String[] restaurantName = new String[Database.getRestaurants().size()];
+		for (int i = 0; i < Database.getRestaurants().size(); i++) {
+			restaurantName[i] = Database.getRestaurants().get(i).getName();
+		}
+		comboBoxName = new JComboBox(restaurantName);
+		
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setPreferredSize(new Dimension(0, 80));
 		bottomPanel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -164,7 +173,7 @@ public class RestaurantPanel extends JPanel {
 		tf_C23.setBorder(new LineBorder(new Color(171, 173, 179), 2, true));
 		Panel_C23.add(tf_C23);
 		
-		JButton btnC231 = new JButton("Add");
+		btnC231 = new JButton("Add");
 		btnC231.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
 		btnC231.setBackground(Color.YELLOW);
 		btnC231.setPreferredSize(new Dimension(100, 40));
@@ -175,7 +184,7 @@ public class RestaurantPanel extends JPanel {
 		lbl_C23.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C23.add(lbl_C23);
 		
-		JButton btnC232 = new JButton("Delete");
+		btnC232 = new JButton("Delete");
 		btnC232.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
 		btnC232.setPreferredSize(new Dimension(150, 40));
 		btnC232.setFont(new Font("Arial", Font.BOLD, 20));
@@ -700,7 +709,7 @@ public class RestaurantPanel extends JPanel {
 		return formattedTextField_1;
 	}
 	
-	public static String[] getTextDA() {
+	public static JTextArea getTextDA() {
 		return textDA;
 	}
 	
@@ -795,6 +804,18 @@ public class RestaurantPanel extends JPanel {
 	
 	public static JButton getBtnC39() {
 		return btnC39;
+	}
+	
+	public static JButton getBtnC231() {
+		return btnC231;
+	}
+
+	public static JTextField getTf_C23() {
+		return tf_C23;
+	}
+	
+	public static JButton getBtnC232() {
+		return btnC232;
 	}
 	
 }

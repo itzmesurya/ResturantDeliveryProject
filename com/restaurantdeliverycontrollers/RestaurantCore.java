@@ -14,7 +14,8 @@ import com.restaurantdeliveryviews.MainFrame;
 import com.restaurantdeliveryviews.RestaurantPanel;
 
 public class RestaurantCore {
-	//RestaurantPanel.comboBoxName.setModel(new DefaultComboBoxModel(Database.getRestaurants()));
+	
+	
 	
 	public RestaurantCore() {
 		RestaurantPanel.getRestaurantnameCB().addActionListener(new ActionListener() {
@@ -26,7 +27,7 @@ public class RestaurantCore {
 						RestaurantPanel.getTf_C11().setText(R1.getName());
 						RestaurantPanel.getTf_C12().setText(R1.getAddress());
 						RestaurantPanel.getFormattedTextField_1().setText(R1.getPhone());
-						RestaurantPanel.getTextDA().length;
+						RestaurantPanel.getTextDA().setText(R1.getDelivery_areas().toString());
 						String Sr1[][] = R1.getHours();
 						RestaurantPanel.getCombo_C321().setToolTipText(Sr1[0][0]);
 						RestaurantPanel.getCombo_C322().setToolTipText(Sr1[0][1]);
@@ -61,8 +62,10 @@ public class RestaurantCore {
 			}
 		});
 	
-	
-		String Sr2[][];
+		String[] Sr3;
+		Sr3 = RestaurantPanel.getTextDA().toString().split("\\s+");
+		
+		String[][] Sr2 = null;
 		Sr2[0][0] = RestaurantPanel.getCombo_C321().getToolTipText();
 		Sr2[0][1] = RestaurantPanel.getCombo_C322().getToolTipText();
 		Sr2[1][0] = RestaurantPanel.getCombo_C323().getToolTipText();
@@ -97,7 +100,7 @@ public class RestaurantCore {
 		} else 
 			manager_id = -1;
 		
-		Restaurant R2 = new Restaurant(RestaurantPanel.getTf_C11().getText(), RestaurantPanel.getTf_C12().getText(), RestaurantPanel.getFormattedTextField_1().getText(), RestaurantPanel.getTextDA(), Sr2, manager_id, -1);
+		Restaurant R2 = new Restaurant(RestaurantPanel.getTf_C11().getText(), RestaurantPanel.getTf_C12().getText(), RestaurantPanel.getFormattedTextField_1().getText(), Sr3, Sr2, manager_id, -1);
 		
 		RestaurantPanel.getBtnRestaurant().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -108,7 +111,7 @@ public class RestaurantCore {
 					Database.saveRestaurants();
 				}
 				else if (RestaurantPanel.getBtnRestaurant().getText() == "Delete") {
-					//Database.saveRestaurants();
+					Database.deleteRestaurantById(R2.getId());
 				} 
 			}
 			
@@ -120,6 +123,18 @@ public class RestaurantCore {
 					for (int j = 0; j < 2; j++)
 						Sr2[i][j] = "00";
 				}				
+			}			
+		});
+		
+		RestaurantPanel.getBtnC231().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RestaurantPanel.getTextDA().append(RestaurantPanel.getTf_C23().getText());
+			}			
+		});
+		
+		RestaurantPanel.getBtnC232().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RestaurantPanel.getTextDA().setText(RestaurantPanel.getTextDA().getText().replace(RestaurantPanel.getTextDA().getSelectedText(), ""));
 			}			
 		});
 	
