@@ -99,6 +99,7 @@ public class RestaurantCore {
 				}
 			}
 		});
+
 		
 		String[] Sr3;
 		Sr3 = RestaurantPanel.getTextDA().toString().split("\\s+");
@@ -140,10 +141,11 @@ public class RestaurantCore {
 		
 		Restaurant R2 = new Restaurant(RestaurantPanel.getTf_C11().getText(), RestaurantPanel.getTf_C12().getText(), RestaurantPanel.getFormattedTextField_1().getText(), Sr3, Sr2, manager_id, -1);
 		
+
 		RestaurantPanel.getBtnRestaurant().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (RestaurantPanel.getBtnRestaurant().getText() == "Add") {
-					Database.addRestaurant(R2);					
+//					Database.addRestaurant(R2);					
 				}
 				else if (RestaurantPanel.getBtnRestaurant().getText() == "Edit") {
 					Database.saveRestaurants();
@@ -157,6 +159,7 @@ public class RestaurantCore {
 		
 		RestaurantPanel.getBtnC39().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				for (int i = 0; i < 14; i++) {
 					for (int j = 0; j < 2; j++)
 						Sr2[i][j] = "00";
@@ -173,6 +176,7 @@ public class RestaurantCore {
 		RestaurantPanel.getBtnC232().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RestaurantPanel.getTextDA().setText(RestaurantPanel.getTextDA().getText().replace(RestaurantPanel.getTextDA().getSelectedText(), ""));
+
 			}			
 		});
 	

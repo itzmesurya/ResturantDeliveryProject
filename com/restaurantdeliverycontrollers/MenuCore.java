@@ -1,22 +1,36 @@
 package com.restaurantdeliverycontrollers;
 
-import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
+import javax.swing.table.DefaultTableModel;
+import javax.xml.crypto.Data;
+
+import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.Item;
-import com.restaurantdeliveryviews.AccountPanel;
+import com.restaurantdeliverymodels.Restaurant;
 import com.restaurantdeliveryviews.MenuPanel;
 
 public class MenuCore {
 	MenuPanel menuPanel;
 
-	MenuCore() {
-		
+	MenuCore(CRUDAction crudAction) {
+		BindRestrauntsToComboBox();
+
 		BindActionEvents();
+		
+	}
+
+	private void BindRestrauntsToComboBox() {
+		ArrayList<Restaurant> restaurants = Database.getRestaurants();
+		
+		
 	}
 
 	private void BindActionEvents() {
-		MenuPanel.getAddBtn().addActionListener(e -> addItemToMenuTable());
+		MenuPanel.getAddBtn().addActionListener(e -> {
+//			addItemToMenuTable(item);
+		});
 		MenuPanel.getSaveBtn().addActionListener(e -> {
 
 		});
@@ -32,8 +46,8 @@ public class MenuCore {
 
 	}
 
-	public void addItemToMenuTable() {
-		Database.addItem(new Item("", 0));
+	public void addItemToMenuTable(Item item) {
+		Database.addItem(item);
 		DefaultTableModel model = (DefaultTableModel) menuPanel.getTable().getModel();
 		model.addRow(new Object[] { MenuPanel.getItemNameTextField(), MenuPanel.getItemPriceTextField() });
 	}
