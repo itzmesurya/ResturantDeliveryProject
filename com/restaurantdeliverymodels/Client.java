@@ -61,6 +61,14 @@ public class Client extends User {
 		return orders;
 	}
 	
-	
+	public ArrayList<Order> getOrdersCompleted(){
+		ArrayList<Order> ordersCompleted = new ArrayList<Order>();
+		for (Order order : this.getOrders()) {
+			if (order.getStatus() == 4) {
+				ordersCompleted.add(order);
+			}
+		}
+		return ordersCompleted;
+	}
 
 }
