@@ -100,13 +100,15 @@ public class Main {
 		});
 		CustomMenuBar.getAccept_order().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				new Accept_Done_Delivery_Core();
 			}
 			
 		});
 		CustomMenuBar.getEnd_order().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				new Accept_Done_Delivery_Core();
 			}
 			
 		});

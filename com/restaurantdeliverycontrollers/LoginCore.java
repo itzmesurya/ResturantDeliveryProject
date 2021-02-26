@@ -32,7 +32,6 @@ public class LoginCore {
 				//Verify username and password match a user in the database
 				ArrayList<User> users = Database.getUsers();
 				for (User user : users) {
-					System.out.println("Verifying username: " + user.getUsername());
 					if (user.getUsername().equals(LoginPanel.getUsernameTF().getText()) && user.getPassword().equals(LoginPanel.getPasswordTF().getText())) {
 						Main.user = user;
 						break;
