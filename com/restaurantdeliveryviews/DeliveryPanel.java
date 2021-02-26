@@ -33,16 +33,16 @@ public class DeliveryPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JTextField Name_Field , Phone_Field ,Darea_Field , User_Field ,pass_Field , ConfirmPass_Field;	
 	private JTable Darea_table;
-	private String action;
+//	private String action;
 	private JLabel lblNewLabel;
-	private JComboBox selectR_comboBox;
+	private static JComboBox selectR_comboBox;
 	public Object getDarea_table;
-	public JButton Save_btn;
-	ArrayList<String> usernamelist = new ArrayList<String>();
+	public JButton Save_btn, Add_btn, Delete_btn, Verify_btn;
+//	ArrayList<String> usernamelist = new ArrayList<String>();
 	
-	public DeliveryPanel(String crudAction) {
+	public DeliveryPanel() {
 		 
-		action = crudAction;
+//		action = crudAction;
 //		JPanel DeliveryPanel = new JPanel();
 		JPanel Dpanel = new JPanel();
 		
@@ -119,24 +119,25 @@ public class DeliveryPanel extends JPanel{
 			);
 			panel_1.setLayout(gl_panel_1);
 			
-			JButton Uavailable_btn = new JButton("Veryfy Username availability");
-			Uavailable_btn.setBackground(Color.YELLOW);
-			Uavailable_btn.setForeground(Color.BLACK);
-			Uavailable_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			Verify_btn = new JButton("Verify Username availability");
+			Verify_btn.setBackground(Color.YELLOW);
+			Verify_btn.setForeground(Color.BLACK);
+			Verify_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			
 			JLabel lblNewLabel_2 = new JLabel("Select :");
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			
 			
-			ArrayList<Deliveryman> deliverymanlist = Database.getDeliverymen();
-			for(Deliveryman dm:deliverymanlist ) {
-				usernamelist.add(dm.getUsername());
-				
-			}
+//			ArrayList<Deliveryman> deliverymanlist = Database.getDeliverymen();
+//			for(Deliveryman dm:deliverymanlist ) {
+//				usernamelist.add(dm.getUsername());
+//				
+//			}
+//			usernamelist.toArray(new String[usernamelist.size()])
 			
-			selectR_comboBox = new JComboBox(usernamelist.toArray(new String[usernamelist.size()]));
+			selectR_comboBox = new JComboBox();
 			selectR_comboBox.setForeground(new Color(255, 0, 255));
-			selectR_comboBox.setBackground(new Color(255, 0, 255));
+			selectR_comboBox.setBackground(new Color(255, 255, 255));
 			
 			JPanel panel_3 = new JPanel();
 			panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -151,16 +152,7 @@ public class DeliveryPanel extends JPanel{
 			Save_btn.setForeground(Color.BLACK);
 			Save_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			Save_btn.setBackground(Color.YELLOW);
-			Save_btn.addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					
-					System.out.println("hii..123");
-					
-				}
-				
-			});
+		
 //			Save_btn.addActionListener(new ActionListener() {
 //			
 //
@@ -225,7 +217,7 @@ public class DeliveryPanel extends JPanel{
 								.addContainerGap()
 								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 									.addComponent(Save_btn, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE)
-									.addComponent(Uavailable_btn, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE))
+									.addComponent(Verify_btn, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE))
 								.addGap(178)))
 						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 							.addComponent(panel_5, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 214, Short.MAX_VALUE)
@@ -249,7 +241,7 @@ public class DeliveryPanel extends JPanel{
 										.addGap(35)
 										.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
 										.addGap(18)
-										.addComponent(Uavailable_btn)
+										.addComponent(Verify_btn)
 										.addGap(18)
 										.addComponent(Save_btn, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
 									.addGroup(gl_panel.createSequentialGroup()
@@ -267,26 +259,8 @@ public class DeliveryPanel extends JPanel{
 			Darea_Field = new JTextField();
 			Darea_Field.setColumns(10);
 			
-			JButton Add_btn = new JButton("Add");
+			Add_btn = new JButton("Add");
 			Add_btn.setBackground(Color.YELLOW);
-			 Add_btn.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if (Darea_Field.getText().equals("")) {
-							System.out.println("Empty textfield");
-							JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
-									JOptionPane.INFORMATION_MESSAGE);
-						}
-						else {
-							Object[] row = { Darea_Field.getText()};
-							DefaultTableModel model = (DefaultTableModel) Darea_table.getModel();
-							model.addRow(row);
-							Darea_Field.setText("");
-							
-							
-						}
-						
-					}
-					});
 			
 			JButton Delete_btn = new JButton("Delete");
 			Delete_btn.setBackground(Color.YELLOW);
@@ -336,7 +310,7 @@ public class DeliveryPanel extends JPanel{
 						Darea_Field.setText(Darea_table.getModel().getValueAt(row, 0) + "");
 						
 					}
-					}
+				}
 			);
 			
 			Darea_scrollPane.setViewportView(Darea_table);
@@ -425,41 +399,8 @@ public class DeliveryPanel extends JPanel{
 //			this.getRootPane().setLayout(groupLayout);
 //			this.getContentPane().setLayout(groupLayout);
 			
-			AdaptToAction();
+//			AdaptToAction();
 		}
-	 private void AdaptToAction() {
-		
-		 switch(this.action) {
-		 
-		 
-		 case "create":
-
-			 lblNewLabel = new JLabel("Create Menu");
-			 
-
-			 selectR_comboBox.setEnabled(false);
-			 break;
-			 
-		 case "edit":
-
-			 lblNewLabel = new JLabel("edit Menu");
-//			 selectR_comboBox.setEnabled(false);
-			 break;
-		 case "delete":
-			 lblNewLabel = new JLabel("delete Menu");
-
-//			 selectR_comboBox.setEnabled(false);
-			 break;
-			
-		 
-		 default:
-			    break;
-		 
-		 
-			
-		 }
-		 
-	 }
 	 void setPanelEnabled(JPanel panel, Boolean isEnabled) {
 		    panel.setEnabled(isEnabled);
 
@@ -472,6 +413,8 @@ public class DeliveryPanel extends JPanel{
 		        component.setEnabled(isEnabled);
 		    }
 		}
+	 
+	// Getters:
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -496,13 +439,30 @@ public class DeliveryPanel extends JPanel{
 	public JTable getDarea_table() {
 		return Darea_table;
 	}
-	public String getAction() {
-		return action;
+//	public String getAction() {
+//		return action;
+//	}
+//	public ArrayList<String> deliverymenIds() {
+//		return deliverymenIds();
+//	}
+	public JButton getSave_btn() {
+		return Save_btn;
 	}
+	public JButton getAdd_btn() {
+		return Add_btn;
+	}
+	public JButton getDelete_btn() {
+		return Delete_btn;
+	}
+	public JButton getVerify_btn() {
+		return Verify_btn;
+	}
+	
+	// Setters:
 	public JLabel getLblNewLabel() {
 		return lblNewLabel;
 	}
-	public JComboBox getSelectR_comboBox() {
+	public static JComboBox getSelectR_comboBox() {
 		return selectR_comboBox;
 	}
 	public void setName_Field(JTextField name_Field) {
@@ -526,23 +486,18 @@ public class DeliveryPanel extends JPanel{
 	public void setDarea_table(JTable darea_table) {
 		Darea_table = darea_table;
 	}
-	public void setAction(String action) {
-		this.action = action;
-	}
+//	public void setAction(String action) {
+//		this.action = action;
+//	}
 	public void setLblNewLabel(JLabel lblNewLabel) {
 		this.lblNewLabel = lblNewLabel;
 	}
 	public void setSelectR_comboBox(JComboBox selectR_comboBox) {
 		this.selectR_comboBox = selectR_comboBox;
 	}
-	public JButton getSave_btn() {
-		return Save_btn;
-		
-	}
-	 
 	
 
-	}
+}
 
 
 
