@@ -36,16 +36,18 @@ public class Client extends User {
 				index = i;
 			}
 		}
-		Client client = Database.getClients().get(index);
-		client.setFirst_name(this.getFirst_name());
-		client.setLast_name(this.getLast_name());
-		client.setPassword(this.getPassword());
-		client.setEmail(this.getEmail());
-		client.setPhone(this.getPhone());
-		client.setAddress(this.getAddress());
-		Database.saveClients();
+		if (index != -1) {
+			Client client = Database.getClients().get(index);
+			client.setFirst_name(this.getFirst_name());
+			client.setLast_name(this.getLast_name());
+			client.setPassword(this.getPassword());
+			client.setEmail(this.getEmail());
+			client.setPhone(this.getPhone());
+			client.setAddress(this.getAddress());
+			Database.saveClients();
+		}
 	}
-	
+
 	public void create() {
 		Database.addClient(this);
 		Database.saveClients();

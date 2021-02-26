@@ -45,14 +45,16 @@ public class Restaurateur extends User {
 				index = i;
 			}
 		}
-		Restaurateur restaurateur = Database.getRestaurateurs().get(index);
-		restaurateur.setFirst_name(this.getFirst_name());
-		restaurateur.setLast_name(this.getLast_name());
-		restaurateur.setPassword(this.getPassword());
-		restaurateur.setEmail(this.getEmail());
-		restaurateur.setPhone(this.getPhone());
-		restaurateur.setAddress(this.getAddress());
-		Database.saveRestaurateurs();
+		if (index != -1) {
+			Restaurateur restaurateur = Database.getRestaurateurs().get(index);
+			restaurateur.setFirst_name(this.getFirst_name());
+			restaurateur.setLast_name(this.getLast_name());
+			restaurateur.setPassword(this.getPassword());
+			restaurateur.setEmail(this.getEmail());
+			restaurateur.setPhone(this.getPhone());
+			restaurateur.setAddress(this.getAddress());
+			Database.saveRestaurateurs();
+		}
 	}
 	
 	public ArrayList<Order> getOrders(){

@@ -45,13 +45,15 @@ public class Admin extends User {
 				index = i;
 			}
 		}
-		Admin admin = Database.getAdmins().get(index);
-		admin.setFirst_name(this.getFirst_name());
-		admin.setLast_name(this.getLast_name());
-		admin.setPassword(this.getPassword());
-		admin.setEmail(this.getEmail());
-		admin.setPhone(this.getPhone());
-		admin.setAddress(this.getAddress());
-		Database.saveAdmins();
+		if (index != -1) {
+			Admin admin = Database.getAdmins().get(index);
+			admin.setFirst_name(this.getFirst_name());
+			admin.setLast_name(this.getLast_name());
+			admin.setPassword(this.getPassword());
+			admin.setEmail(this.getEmail());
+			admin.setPhone(this.getPhone());
+			admin.setAddress(this.getAddress());
+			Database.saveAdmins();
+		}
 	}
 }

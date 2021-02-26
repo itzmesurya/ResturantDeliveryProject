@@ -65,13 +65,15 @@ public class Deliveryman extends User {
 				index = i;
 			}
 		}
-		Deliveryman deliveryman = Database.getDeliverymen().get(index);
-		deliveryman.setFirst_name(this.getFirst_name());
-		deliveryman.setLast_name(this.getLast_name());
-		deliveryman.setPassword(this.getPassword());
-		deliveryman.setEmail(this.getEmail());
-		deliveryman.setPhone(this.getPhone());
-		deliveryman.setAddress(this.getAddress());
-		Database.saveDeliverymen();
+		if (index != -1) {
+			Deliveryman deliveryman = Database.getDeliverymen().get(index);
+			deliveryman.setFirst_name(this.getFirst_name());
+			deliveryman.setLast_name(this.getLast_name());
+			deliveryman.setPassword(this.getPassword());
+			deliveryman.setEmail(this.getEmail());
+			deliveryman.setPhone(this.getPhone());
+			deliveryman.setAddress(this.getAddress());
+			Database.saveDeliverymen();
+		}
 	}
 }
