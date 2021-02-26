@@ -42,19 +42,22 @@ public class Main {
 		//Set Top Bar
 		CustomMenuBar.getCreate_account().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new AccountPanel(CRUDAction.Create));
+				new AccountCore(CRUDAction.Create);
 			}
 			
 		});
 		CustomMenuBar.getEdit_account().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new AccountPanel(CRUDAction.Edit));
+				new AccountCore(CRUDAction.Edit);
 			}
 			
 		});
 		CustomMenuBar.getDelete_account().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new AccountPanel(CRUDAction.Delete));
+				new AccountCore(CRUDAction.Delete);
 			}
 			
 		});

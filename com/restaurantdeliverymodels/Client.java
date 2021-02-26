@@ -50,5 +50,17 @@ public class Client extends User {
 		Database.addClient(this);
 		Database.saveClients();
 	}
+	
+	public ArrayList<Order> getOrders(){
+		ArrayList<Order> orders = new ArrayList<Order>();
+		for (Order order : Database.getOrders()) {
+			if (order.getClient_id() == this.id) {
+				orders.add(order);
+			}
+		}
+		return orders;
+	}
+	
+	
 
 }

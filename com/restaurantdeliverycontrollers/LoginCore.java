@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.User;
@@ -66,8 +67,8 @@ public class LoginCore {
 		
 		LoginPanel.getLbl_create_account().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				MainFrame.changePanel(new AccountPanel("create"));
-				new AccountCore();
+				MainFrame.changePanel(new AccountPanel(CRUDAction.Create));
+				new AccountCore(CRUDAction.Create);
 			}
 		});
 	}

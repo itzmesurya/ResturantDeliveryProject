@@ -15,7 +15,10 @@ public class Order {
 	private int client_id;
 	private int deliveryman_id;
 	private Item[] items;
-	private int status; //0: Delivery was just made, 1:order accepted and being delivered, 2:order delivered
+	private String date;
+	private String hour;
+	private String minute;
+	private int status; //0: Delivery was just made, 1:order is being made by restaurateur, 3:order in delivery, 4: order delivered
 	
 	
 	/**
@@ -112,6 +115,36 @@ public class Order {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+
+	public String getDate() {
+		return date;
+	}
+
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+
+	public String getHour() {
+		return hour;
+	}
+
+
+	public void setHour(String hour) {
+		this.hour = hour;
+	}
+
+
+	public String getMinute() {
+		return minute;
+	}
+
+
+	public void setMinute(String minute) {
+		this.minute = minute;
 	}
 	
 }
