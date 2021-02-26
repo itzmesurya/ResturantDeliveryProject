@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.User;
@@ -32,7 +33,6 @@ public class LoginCore {
 				//Verify username and password match a user in the database
 				ArrayList<User> users = Database.getUsers();
 				for (User user : users) {
-					System.out.println("Verifying username: " + user.getUsername());
 					if (user.getUsername().equals(LoginPanel.getUsernameTF().getText()) && user.getPassword().equals(LoginPanel.getPasswordTF().getText())) {
 						Main.user = user;
 						break;
@@ -67,8 +67,8 @@ public class LoginCore {
 		
 		LoginPanel.getLbl_create_account().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				MainFrame.changePanel(new AccountPanel("create"));
-				new AccountCore();
+				MainFrame.changePanel(new AccountPanel(CRUDAction.Create));
+				new AccountCore(CRUDAction.Create);
 			}
 		});
 	}

@@ -22,6 +22,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import com.restaurantdeliverymodels.CRUDAction;
+
 public class MenuPanel extends JPanel  {
 
     private JFrame frame;
@@ -55,9 +57,8 @@ public class MenuPanel extends JPanel  {
     /**
      * Create the application.
      */
-    public MenuPanel(String crudAction) {
-	action = crudAction;
-
+    public MenuPanel(CRUDAction crudAction) {
+	
 	this.setLayout(new BorderLayout(0, 0));
 
 	topPanel = new JPanel();
@@ -191,13 +192,8 @@ public class MenuPanel extends JPanel  {
 	getSaveBtn().setBounds(263, 500, 164, 45);
 	centerPanel.add(getSaveBtn());
 
-	AdaptToAction();
-
-    }
-
-    private void AdaptToAction() {
-	switch (this.action) {
-	case "create":
+	switch (crudAction) {
+	case Create:
 	    // name the title label as Open Menu
 	    menuLabel.setText("Create Menu");
 	    // hide the delete, edit and select buttons
@@ -205,12 +201,12 @@ public class MenuPanel extends JPanel  {
 	    getBtnEdit().setVisible(false);
 	    getSelectBtn().setVisible(false);
 	    break;
-	case "edit":
+	case Edit:
 	    // name the title label as Edit Menu
 	    menuLabel.setText("Edit Menu");
 	    addItemLabel.setText("Edit Item");
 	    break;
-	case "delete":
+	case Delete:
 	    // name the title label as Delete Menu
 	    menuLabel.setText("Delete Menu");	   
 	    // hide the buttons panel
@@ -224,6 +220,7 @@ public class MenuPanel extends JPanel  {
 
     }
 
+    
 	public static JTextField getItemNameTextField() {
 		return itemNameTextField;
 	}

@@ -22,6 +22,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.text.MaskFormatter;
 
+import com.restaurantdeliverymodels.Database;
+
 public class RestaurantPanel extends JPanel {
 	
 	private static JComboBox comboBoxName;
@@ -32,6 +34,7 @@ public class RestaurantPanel extends JPanel {
 	private static JTextArea textDA;
 	private static JButton btnRestaurant;
 	private static JButton btnC231;
+	private static JButton btnC232;
 	private static JButton btnC39;
 	
 	private static JComboBox combo_C321;
@@ -64,7 +67,7 @@ public class RestaurantPanel extends JPanel {
 	private static JComboBox combo_C384;
 	
 	private String action;
-	JLabel lbl_1, lbl_2;
+	private static JLabel lbl_1, lbl_2;
 	
 	String[] hours = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};
 	String[] minutes = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"};
@@ -106,6 +109,12 @@ public class RestaurantPanel extends JPanel {
 		comboBoxName.setFont(new Font("Arial", Font.BOLD, 20));
 		comboBoxName.setBounds(329, 22, 500, 36);
 		Panel_2.add(comboBoxName);
+		
+		String[] restaurantName = new String[Database.getRestaurants().size()];
+		for (int i = 0; i < Database.getRestaurants().size(); i++) {
+			restaurantName[i] = Database.getRestaurants().get(i).getName();
+		}
+		comboBoxName = new JComboBox(restaurantName);
 		
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setPreferredSize(new Dimension(0, 80));
@@ -164,7 +173,7 @@ public class RestaurantPanel extends JPanel {
 		tf_C23.setBorder(new LineBorder(new Color(171, 173, 179), 2, true));
 		Panel_C23.add(tf_C23);
 		
-		JButton btnC231 = new JButton("Add");
+		btnC231 = new JButton("Add");
 		btnC231.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
 		btnC231.setBackground(Color.YELLOW);
 		btnC231.setPreferredSize(new Dimension(100, 40));
@@ -175,7 +184,7 @@ public class RestaurantPanel extends JPanel {
 		lbl_C23.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C23.add(lbl_C23);
 		
-		JButton btnC232 = new JButton("Delete");
+		btnC232 = new JButton("Delete");
 		btnC232.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
 		btnC232.setPreferredSize(new Dimension(150, 40));
 		btnC232.setFont(new Font("Arial", Font.BOLD, 20));
@@ -637,53 +646,8 @@ public class RestaurantPanel extends JPanel {
 		btnC39.setPreferredSize(new Dimension(360, 50));
 		btnC39.setFont(new Font("Arial", Font.BOLD, 30));
 		Panel_C39.add(btnC39);
-		AdaptToAction();
 	}
-	
-	 private void AdaptToAction() {
-			switch (this.action) {
-			case "add":
-				lbl_1.setText("Add Restaurant");
-				btnRestaurant.setText("Add");
-			    lbl_2.setVisible(false);
 
-			    comboBoxName.setVisible(false);
-
-			    break;
-			case "edit":
-				lbl_1.setText("Edit Restaurant");
-				btnRestaurant.setText("Edit");
-			    lbl_2.setVisible(true);
-
-			    comboBoxName.setVisible(true);
-
-			    break;
-			case "delete":
-				lbl_1.setText("Delete Restaurant");
-				btnRestaurant.setText("Delete");
-			    lbl_2.setVisible(true);
-
-			    comboBoxName.setVisible(true);
-
-			    break;
-			default:
-			    break;
-			}
-
-		    }
-		    void setPanelEnabled(JPanel panel, Boolean isEnabled) {
-			    panel.setEnabled(isEnabled);
-
-			    Component[] components = panel.getComponents();
-
-			    for (Component component : components) {
-			        if (component instanceof JPanel) {
-			            setPanelEnabled((JPanel) component, isEnabled);
-			        }
-			        component.setEnabled(isEnabled);
-			    }
-			}
-	
 	public static JComboBox getRestaurantnameCB() {
 		return comboBoxName;
 	}
@@ -796,5 +760,26 @@ public class RestaurantPanel extends JPanel {
 	public static JButton getBtnC39() {
 		return btnC39;
 	}
+	
+	public static JButton getBtnC231() {
+		return btnC231;
+	}
+
+	public static JTextField getTf_C23() {
+		return tf_C23;
+	}
+	
+	public static JButton getBtnC232() {
+		return btnC232;
+	}
+
+	public static JLabel getLbl_1() {
+		return lbl_1;
+	}
+
+	public static JLabel getLbl_2() {
+		return lbl_2;
+	}
+	
 	
 }

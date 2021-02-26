@@ -22,8 +22,8 @@ public class Order_Food_Panel extends JPanel{
 	private static JTextField postal_code;
 	private static JTextField total;
 	private static JTextField address;
-	private static JComboBox<?> comboBox;
-	private static JTable table;
+	private static JComboBox<String> comboBox;
+	public static JTable table;
 	private static JTable table2;
 	
 	public Order_Food_Panel() {
@@ -57,8 +57,8 @@ public class Order_Food_Panel extends JPanel{
 		table = new JTable();
 		table.setForeground(new Color(139, 0, 0));
 		table.setBackground(new Color(255, 255, 224));
-		table.setModel(new DefaultTableModel(new Object[][] { { "1", "Pizza", " 5 $ "},		//JUST FOR EXAMPLE
-			{ "2", "Burger", " 3 $" }, { "3", "Coffee", " 2 $"} },
+		table.setModel(new DefaultTableModel(new Object[][] { 
+			 },
 			new String[] { "ID", "Item Name", "Price", }) {
 		/**
 				 * 
@@ -76,8 +76,7 @@ public class Order_Food_Panel extends JPanel{
 	    panel_1.add(table, BorderLayout.CENTER);
 	    panel_1.add(table);
 		
-	    
-	    
+ 
 		//ORDER PANEL
 	    
 		JPanel panel_2 = new JPanel();
@@ -246,6 +245,20 @@ public class Order_Food_Panel extends JPanel{
 	public static JTextField getAdd_Id() {
 		return add_id;
 	}
+	
+	/**
+	 * @param string
+	 */
+	public static void setAdd_Id(JTextField Add_id) {
+		add_id = Add_id;
+	}
+	
+	/**
+	 * @param Add_quantity
+	 */
+	public static void setAdd_Quantity(JTextField Add_quantity) {
+		add_quantity = Add_quantity;
+	}	
 
 	/**
 	 * @return	add_quantity
@@ -282,6 +295,8 @@ public class Order_Food_Panel extends JPanel{
 		return btn_add_order;
 	}
 	
+	
+	
 	/**
 	 * @return	btn_delete_order
 	 */
@@ -296,8 +311,16 @@ public class Order_Food_Panel extends JPanel{
 		return btn_place_order;
 	}
 	
-	public static JComboBox<?> getcomboBox() {
+	public static JComboBox<String> getcomboBox() {
 		return comboBox;
+	}
+	
+	public static JTable gettable() {
+		return table;
+	}
+	
+	public static JTable gettable2() {
+		return table2;
 	}
 
 	

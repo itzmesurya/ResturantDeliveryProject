@@ -18,11 +18,7 @@ public class Manager_main_menu_Panel extends JPanel{
 	private	static JButton menu_del_btn;
 	private	static JButton resto_edit_btn;
 	private	static JButton log_out_btn;
-	private	JMenu file;
-	private	JMenu menu;
-	private	JMenuItem log_out;
-	private	JMenuItem exit;
-	private	JMenuItem manage_menu;
+
 	
 	public Manager_main_menu_Panel() {
 		
@@ -103,32 +99,7 @@ public class Manager_main_menu_Panel extends JPanel{
 		resto_edit_btn.setBounds(488, 172, 118, 45);
 		panel_1.add(resto_edit_btn);
 				
-		//MENU BAR
-				
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 40, 22);
-		this.add(menuBar);
-		
-		//File Menu 
-		
-		file = new JMenu("File");
-		file.setBackground(Color.BLACK);
-		menuBar.add(file);
-				
-		log_out = new JMenuItem("Log Out");
-		file.add(log_out);
-				
-		exit = new JMenuItem("Exit");
-		file.add(exit);
-				
-		//Menu menu Bar
-		
-		menu = new JMenu("Menu");
-		menu.setBackground(Color.BLACK);
-		menuBar.add(menu);
-		
-		manage_menu = new JMenuItem("Manage Menu");
-		menu.add(manage_menu);
+
 		
 	}
 	
@@ -162,18 +133,6 @@ public class Manager_main_menu_Panel extends JPanel{
 		return	log_out_btn;
 	}
 	
-	//Get MenuItem Things
-	
-	public JMenuItem getLog_Out() {
-		return log_out;
-	}
-	
-	public JMenuItem getExit() {
-		return exit;
-	}
-	
-	public JMenuItem getManage_Menu() {
-		return manage_menu;
-	}
+
 	
 }
