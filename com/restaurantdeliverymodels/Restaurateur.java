@@ -54,5 +54,35 @@ public class Restaurateur extends User {
 		restaurateur.setAddress(this.getAddress());
 		Database.saveRestaurateurs();
 	}
+	
+	public ArrayList<Order> getOrders(){
+		ArrayList<Order> orders = new ArrayList<Order>();
+		for (Restaurant restaurant : Database.getRestaurants()) {
+			if (restaurant.getRestaurateur_id() == this.id) {
+				orders.addAll(restaurant.getOrders());
+			}
+		}
+		return orders;
+	}
+	
+	public ArrayList<Order> getOrdersToAccept(){
+		ArrayList<Order> ordersToAccept = new ArrayList<Order>();
+		for (Order order : this.getOrders()) {
+			if (order.getStatus() == 0) {
+				ordersToAccept.add(order);
+			}
+		}
+		return ordersToAccept;
+	}
+	
+	public ArrayList<Order> getOrdersToMarkReady(){
+		ArrayList<Order> ordersToMarkReady = new ArrayList<Order>();
+		for (Order order : this.getOrders()) {
+			if (order.getStatus() == 1) {
+				ordersToMarkReady.add(order);
+			}
+		}
+		return ordersToMarkReady;
+	}
 
 }
