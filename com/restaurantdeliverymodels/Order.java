@@ -15,7 +15,7 @@ public class Order {
 	private int client_id;
 	private int deliveryman_id;
 	private Item[] items;
-	private int status;
+	private int status; //0: Delivery was just made, 1:order accepted and being delivered, 2:order delivered
 	
 	
 	/**
