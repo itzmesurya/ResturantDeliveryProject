@@ -3,6 +3,7 @@ package com.restaurantdeliverycontrollers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliveryviews.Admin_main_menu_Panel;
 import com.restaurantdeliveryviews.LoginPanel;
 import com.restaurantdeliveryviews.MainFrame;
@@ -18,7 +19,7 @@ public class Manager_main_menu_Core {
 		Manager_main_menu_Panel.getMenu_Add_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MainFrame();
-				MainFrame.changePanel(new MenuPanel("create"));
+				MainFrame.changePanel(new MenuPanel(CRUDAction.Create));
 				
 			}
 		});
@@ -27,7 +28,7 @@ public class Manager_main_menu_Core {
 		Manager_main_menu_Panel.getMenu_Edit_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MainFrame();
-				MainFrame.changePanel(new MenuPanel("edit"));
+				MainFrame.changePanel(new MenuPanel(CRUDAction.Edit));
 				
 			}
 		});
@@ -36,7 +37,7 @@ public class Manager_main_menu_Core {
 		Manager_main_menu_Panel.getMenu_Del_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MainFrame();
-				MainFrame.changePanel(new MenuPanel("delete"));
+				MainFrame.changePanel(new MenuPanel(CRUDAction.Delete));
 				
 			}
 		});

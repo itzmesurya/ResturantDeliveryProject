@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
+import com.restaurantdeliverymodels.CRUDAction;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -46,12 +48,12 @@ public class AccountPanel extends JPanel {
 	private JLabel lastNameLabel;
 	private JLabel firstNameLabel;
 	private JLabel personalInfoLabel;
-	private JPanel rightPanel;
+	private static JPanel rightPanel;
 	private JLabel confirmPasswordLabel;
 	private JLabel passwordLabel;
 	private JLabel userNameLabel;
 	private JLabel loginInfoLabel;
-	private JPanel leftPanel;
+	private static JPanel leftPanel;
 	private JPanel centerPanel;
 	private static JComboBox selectLevelDropDown;
 	private JLabel selectLevelLabel;
@@ -59,7 +61,7 @@ public class AccountPanel extends JPanel {
 	private JLabel accountLabel;
 	private JPanel topPanel;
 
-	public AccountPanel(String crudAction) {
+	public AccountPanel(CRUDAction crudAction) {
 
 		this.setLayout(new BorderLayout(0, 0));
 
@@ -251,44 +253,28 @@ public class AccountPanel extends JPanel {
 
 
 		switch (crudAction) {
-		case "create":
+		case Create:
 			accountLabel.setText("Open Account");
 			getCreateAccountBtn().setText("Create Account");
 			getUserAvailabilityBtn().setEnabled(true);
 			panel.setVisible(false);
-
 			break;
-		case "edit":
+		case Edit:
 			panel.setVisible(true);
 			getCreateAccountBtn().setText("Save");
 			getUserAvailabilityBtn().setEnabled(true);
 			accountLabel.setText("Edit Account");
 			break;
-		case "delete":
+		case Delete:
 			panel.setVisible(true);
 			getCreateAccountBtn().setText("Delete");
 			getUserAvailabilityBtn().setEnabled(false);
 			accountLabel.setText("Delete Account");
-			setPanelEnabled(leftPanel, false);
-			setPanelEnabled(rightPanel, false);
-			break;
-		default:
+			UIHelper.setPanelEnabled(leftPanel, false);
+			UIHelper.setPanelEnabled(rightPanel, false);
 			break;
 		}
 		
-	}
-
-	void setPanelEnabled(JPanel panel, Boolean isEnabled) {
-		panel.setEnabled(isEnabled);
-
-		Component[] components = panel.getComponents();
-
-		for (Component component : components) {
-			if (component instanceof JPanel) {
-				setPanelEnabled((JPanel) component, isEnabled);
-			}
-			component.setEnabled(isEnabled);
-		}
 	}
 
 	public static JTextField getUserNameTextField() {
@@ -385,5 +371,13 @@ public class AccountPanel extends JPanel {
 
 	public void setSelectLevelDropDown(JComboBox selectLevelDropDown) {
 		this.selectLevelDropDown = selectLevelDropDown;
+	}
+	
+	public static JPanel getLeftPanel() {
+		return leftPanel;
+	}
+	
+	public static JPanel getRightPanel() {
+		return rightPanel;
 	}
 }
