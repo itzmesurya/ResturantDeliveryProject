@@ -76,8 +76,7 @@ public class Order_Food_Panel extends JPanel{
 	    panel_1.add(table, BorderLayout.CENTER);
 	    panel_1.add(table);
 		
-	    
-	    
+ 
 		//ORDER PANEL
 	    
 		JPanel panel_2 = new JPanel();
@@ -246,6 +245,8 @@ public class Order_Food_Panel extends JPanel{
 	public static JTextField getAdd_Id() {
 		return add_id;
 	}
+	
+	
 
 	/**
 	 * @return	add_quantity
@@ -282,6 +283,8 @@ public class Order_Food_Panel extends JPanel{
 		return btn_add_order;
 	}
 	
+	
+	
 	/**
 	 * @return	btn_delete_order
 	 */
@@ -302,6 +305,10 @@ public class Order_Food_Panel extends JPanel{
 	
 	public static JTable gettable() {
 		return table;
+	}
+	
+	public static JTable gettable2() {
+		return table2;
 	}
 
 	

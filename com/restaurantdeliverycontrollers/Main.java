@@ -25,8 +25,9 @@ public class Main {
 		new Database();
 		new MainFrame();
 
-		MainFrame.changePanel(new LoginPanel());
-		new LoginCore();
+		MainFrame.changePanel(new Order_Food_Panel());
+		//new LoginCore();
+		new Order_Food_Core();
 		
 	}
 
