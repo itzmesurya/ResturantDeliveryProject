@@ -45,14 +45,15 @@ public class Manager extends User {
 				index = i;
 			}
 		}
-		Manager manager = Database.getManagers().get(index);
-		manager.setFirst_name(this.getFirst_name());
-		manager.setLast_name(this.getLast_name());
-		manager.setPassword(this.getPassword());
-		manager.setEmail(this.getEmail());
-		manager.setPhone(this.getPhone());
-		manager.setAddress(this.getAddress());
-		Database.saveManagers();
-
+		if (index != -1) {
+			Manager manager = Database.getManagers().get(index);
+			manager.setFirst_name(this.getFirst_name());
+			manager.setLast_name(this.getLast_name());
+			manager.setPassword(this.getPassword());
+			manager.setEmail(this.getEmail());
+			manager.setPhone(this.getPhone());
+			manager.setAddress(this.getAddress());
+			Database.saveManagers();
+		}
 	}
 }
