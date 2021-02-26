@@ -1,5 +1,6 @@
 package com.restaurantdeliverycontrollers;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 import com.restaurantdeliverymodels.Admin;
+import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.Restaurant;
 import com.restaurantdeliverymodels.Restaurateur;
@@ -15,9 +17,45 @@ import com.restaurantdeliveryviews.RestaurantPanel;
 
 public class RestaurantCore {
 	
-	
-	
-	public RestaurantCore() {
+	public RestaurantCore(CRUDAction crudAction) {
+		
+		switch (crudAction) {
+		case Create:
+			RestaurantPanel.getLbl_1().setText("Add Restaurant");
+			RestaurantPanel.getBtnRestaurant().setText("Add");
+			RestaurantPanel.getLbl_2().setVisible(false);
+			RestaurantPanel.getRestaurantnameCB().setVisible(false);
+			break;
+		case Edit:
+			RestaurantPanel.getLbl_1().setText("Edit Restaurant");
+			RestaurantPanel.getBtnRestaurant().setText("Edit");
+			RestaurantPanel.getLbl_2().setVisible(true);
+			RestaurantPanel.getRestaurantnameCB().setVisible(true);
+			break;
+		case Delete:
+			RestaurantPanel.getLbl_1().setText("Delete Restaurant");
+			RestaurantPanel.getBtnRestaurant().setText("Delete");
+			RestaurantPanel.getLbl_2().setVisible(true);
+			RestaurantPanel.getRestaurantnameCB().setVisible(true);
+			break;
+		default:
+		    break;
+		}
+	}
+		
+	void setPanelEnabled(JPanel panel, Boolean isEnabled) {
+		   panel.setEnabled(isEnabled);
+
+		   Component[] components = panel.getComponents();
+
+		   for (Component component : components) {
+		       if (component instanceof JPanel) {
+		           setPanelEnabled((JPanel) component, isEnabled);
+		       }
+		       component.setEnabled(isEnabled);
+		   }		
+	   
+		
 		RestaurantPanel.getRestaurantnameCB().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<Restaurant> restaurants = Database.getRestaurants();
@@ -61,7 +99,7 @@ public class RestaurantCore {
 				}
 			}
 		});
-	
+		
 		String[] Sr3;
 		Sr3 = RestaurantPanel.getTextDA().toString().split("\\s+");
 		
