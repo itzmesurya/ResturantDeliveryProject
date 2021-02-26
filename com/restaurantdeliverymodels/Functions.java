@@ -50,6 +50,14 @@ public class Functions {
 	}
 	
 	/**
+	 * @param msg
+	 * Display an informative message to the user
+	 */
+	public static void displayMessage(String msg) {
+		JOptionPane.showMessageDialog(null, msg, "Alert", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	/**
 	 * @param str
 	 * @return
 	 * Pass a string and it returns whether it is numeric or not

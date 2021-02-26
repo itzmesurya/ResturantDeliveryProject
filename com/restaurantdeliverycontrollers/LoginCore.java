@@ -2,13 +2,14 @@ package com.restaurantdeliverycontrollers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
 
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.User;
+import com.restaurantdeliveryviews.AccountPanel;
 import com.restaurantdeliveryviews.Admin_main_menu_Panel;
 import com.restaurantdeliveryviews.Client_main_menu_Panel;
 import com.restaurantdeliveryviews.DeliveryMan_main_menu_Panel;
@@ -61,6 +62,13 @@ public class LoginCore {
 						break;
 					}
 				}
+			}
+		});
+		
+		LoginPanel.getLbl_create_account().addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				MainFrame.changePanel(new AccountPanel("create"));
+				new AccountCore();
 			}
 		});
 	}
