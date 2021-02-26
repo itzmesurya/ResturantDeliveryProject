@@ -1,6 +1,8 @@
 package com.restaurantdeliverymodels;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * @author Alex
@@ -18,7 +20,7 @@ public class Order {
 	private String date;
 	private String hour;
 	private String minute;
-	private int status; //0: Delivery was just made, 1:order is being made by restaurateur, 3:order in delivery, 4: order delivered
+	private int status; //0: Order was just placed by client, 1:order is being made by restaurateur, 2:order is ready for delivery, 3: order being delivered, 4: order was delivered
 	
 	
 	/**
@@ -35,8 +37,59 @@ public class Order {
 		this.restaurant_id = restaurant_id;
 		this.client_id = client_id;
 		this.status = 0;
+		this.setTime();
 	}
 
+	public void setTime() {
+		Date date = new Date();
+		this.date = new SimpleDateFormat("dd/MM/yyyy").format(date);
+		this.hour = new SimpleDateFormat("HH").format(date);
+		this.minute = new SimpleDateFormat("mm").format(date);
+	}
+	
+	public void markRestaurateurAccepted() {
+		this.setStatus(1);
+		for (int i = 0; i < Database.getOrders().size(); i++) {
+			if (Database.getOrders().get(i).getId() == this.id) {
+				Database.getOrders().get(i).setStatus(this.status);
+				Database.saveOrders();
+			}
+		}
+	}
+	
+	public void markReadyForDelivery() {
+		this.setStatus(2);
+		for (int i = 0; i < Database.getOrders().size(); i++) {
+			if (Database.getOrders().get(i).getId() == this.id) {
+				Database.getOrders().get(i).setStatus(this.status);
+				Database.saveOrders();
+			}
+		}
+	}
+	
+	public void markDeliveryAccepted() {
+		this.setStatus(3);
+		for (int i = 0; i < Database.getOrders().size(); i++) {
+			if (Database.getOrders().get(i).getId() == this.id) {
+				Database.getOrders().get(i).setStatus(this.status);
+				Database.saveOrders();
+			}
+		}
+	}
+	
+	public void markDelivered() {
+		this.setStatus(4);
+		this.setTime();
+		for (int i = 0; i < Database.getOrders().size(); i++) {
+			if (Database.getOrders().get(i).getId() == this.id) {
+				Database.getOrders().get(i).setStatus(this.status);
+				Database.getOrders().get(i).setDate(this.date);
+				Database.getOrders().get(i).setHour(this.hour);
+				Database.getOrders().get(i).setMinute(this.minute);
+				Database.saveOrders();
+			}
+		}
+	}
 
 	public int getId() {
 		return id;
@@ -146,5 +199,7 @@ public class Order {
 	public void setMinute(String minute) {
 		this.minute = minute;
 	}
+	
+	
 	
 }
