@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.swing.JComboBox;
+
 import com.google.gson.*;
 
 /**
@@ -123,6 +125,10 @@ public class Database {
 			}
 		}
 	}
+	
+	public static void deleteItemsByMenuId(int menuId) {
+		items.removeIf(i -> i.getMenu_id() == menuId);
+	}
 
 	private static void loadMenus() {
 		loadData("menus");
@@ -147,6 +153,11 @@ public class Database {
 			}
 		}
 		return null;
+	}
+	
+	public static Restaurant getRestaurantByName(String restaurantName) {
+		return Database.getRestaurants().stream()
+				.filter(r -> r.getName().equalsIgnoreCase(restaurantName)).findFirst().get();
 	}
 	
 	public static void deleteRestaurantById(int id) {

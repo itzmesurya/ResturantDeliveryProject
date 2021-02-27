@@ -37,6 +37,11 @@ public class Restaurateur extends User {
 		Database.saveRestaurateurs();
 	}
 
+	public void create() {
+		Database.addRestaurateur(this);
+		Database.saveRestaurateurs();
+	}
+
 	public void edit() {
 		ArrayList<Restaurateur> restaurateurs = Database.getRestaurateurs();
 		int index = -1;
@@ -56,8 +61,8 @@ public class Restaurateur extends User {
 			Database.saveRestaurateurs();
 		}
 	}
-	
-	public ArrayList<Order> getOrders(){
+
+	public ArrayList<Order> getOrders() {
 		ArrayList<Order> orders = new ArrayList<Order>();
 		for (Restaurant restaurant : Database.getRestaurants()) {
 			if (restaurant.getRestaurateur_id() == this.id) {
@@ -66,8 +71,8 @@ public class Restaurateur extends User {
 		}
 		return orders;
 	}
-	
-	public ArrayList<Order> getOrdersToAccept(){
+
+	public ArrayList<Order> getOrdersToAccept() {
 		ArrayList<Order> ordersToAccept = new ArrayList<Order>();
 		for (Order order : this.getOrders()) {
 			if (order.getStatus() == 0) {
@@ -76,8 +81,8 @@ public class Restaurateur extends User {
 		}
 		return ordersToAccept;
 	}
-	
-	public ArrayList<Order> getOrdersToMarkReady(){
+
+	public ArrayList<Order> getOrdersToMarkReady() {
 		ArrayList<Order> ordersToMarkReady = new ArrayList<Order>();
 		for (Order order : this.getOrders()) {
 			if (order.getStatus() == 1) {

@@ -37,6 +37,11 @@ public class Manager extends User {
 		Database.saveManagers();
 	}
 
+	public void create() {
+		Database.addManager(this);
+		Database.saveManagers();
+	}
+
 	public void edit() {
 		ArrayList<Manager> managers = Database.getManagers();
 		int index = -1;

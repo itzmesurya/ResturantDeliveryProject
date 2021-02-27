@@ -37,6 +37,11 @@ public class Admin extends User {
 		Database.saveAdmins();
 	}
 
+	public void create() {
+		Database.addAdmin(this);
+		Database.saveAdmins();
+	}
+
 	public void edit() {
 		ArrayList<Admin> admins = Database.getAdmins();
 		int index = -1;

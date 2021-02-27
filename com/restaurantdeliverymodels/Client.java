@@ -52,8 +52,8 @@ public class Client extends User {
 		Database.addClient(this);
 		Database.saveClients();
 	}
-	
-	public ArrayList<Order> getOrders(){
+
+	public ArrayList<Order> getOrders() {
 		ArrayList<Order> orders = new ArrayList<Order>();
 		for (Order order : Database.getOrders()) {
 			if (order.getClient_id() == this.id) {
@@ -62,8 +62,8 @@ public class Client extends User {
 		}
 		return orders;
 	}
-	
-	public ArrayList<Order> getOrdersCompleted(){
+
+	public ArrayList<Order> getOrdersCompleted() {
 		ArrayList<Order> ordersCompleted = new ArrayList<Order>();
 		for (Order order : this.getOrders()) {
 			if (order.getStatus() == 4) {
