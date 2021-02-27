@@ -1,6 +1,7 @@
 package com.restaurantdeliverycontrollers;
 
 
+
 import com.restaurantdeliverymodels.CRUDAction;
 
 import java.awt.event.ActionEvent;
@@ -9,15 +10,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 
+
 import com.restaurantdeliverymodels.Database;
-import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.User;
 
 import com.restaurantdeliveryviews.Accept_Done__Delivery_Panel;
 import com.restaurantdeliveryviews.AccountPanel;
 import com.restaurantdeliveryviews.Admin_main_menu_Panel;
 import com.restaurantdeliveryviews.Client_main_menu_Panel;
-import com.restaurantdeliveryviews.CustomMenuBar;
 import com.restaurantdeliveryviews.DeliveryMan_main_menu_Panel;
 import com.restaurantdeliveryviews.DeliveryPanel;
 
@@ -25,6 +25,7 @@ import com.restaurantdeliveryviews.LoginPanel;
 import com.restaurantdeliveryviews.MainFrame;
 import com.restaurantdeliveryviews.Manager_main_menu_Panel;
 import com.restaurantdeliveryviews.MenuPanel;
+import com.restaurantdeliveryviews.OrderHistoryPanel;
 import com.restaurantdeliveryviews.OrderPanel;
 import com.restaurantdeliveryviews.Order_Food_Panel;
 import com.restaurantdeliveryviews.RestaurantPanel;
@@ -35,9 +36,9 @@ public class Main {
 	public static User user;
 
 	public static void main(String[] args) {
-		//Initialize
 		new Database();
 		new MainFrame();
+
 		
 		//Set Top Bar
 		CustomMenuBar.getCreate_account().addActionListener(new ActionListener() {
@@ -79,19 +80,22 @@ public class Main {
 		});
 		CustomMenuBar.getCreate_menu().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new MenuPanel(CRUDAction.Create));
+				new MenuCore(CRUDAction.Create);
 			}
 			
 		});
 		CustomMenuBar.getEdit_menu().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new MenuPanel(CRUDAction.Edit));
+				new MenuCore(CRUDAction.Edit);
 			}
 			
 		});
 		CustomMenuBar.getDelete_menu().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new MenuPanel(CRUDAction.Delete));
+				new MenuCore(CRUDAction.Delete);
 			}
 			
 		});
@@ -117,36 +121,42 @@ public class Main {
 		});
 		CustomMenuBar.getOrder_food().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new Order_Food_Panel());
+				new Order_Food_Core();
 			}
 			
 		});
 		CustomMenuBar.getOrder_history().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new OrderHistoryPanel());
+				new OrderHistoryCore();
 			}
 			
 		});
 		CustomMenuBar.getCreate_resto().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new RestaurantPanel());
+				new RestaurantCore(CRUDAction.Create);
 			}
 			
 		});
 		CustomMenuBar.getEdit_resto().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new RestaurantPanel());
+				new RestaurantCore(CRUDAction.Edit);
 			}
 			
 		});
 		CustomMenuBar.getDelete_resto().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new RestaurantPanel());
+				new RestaurantCore(CRUDAction.Delete);
 			}
 			
 		});
 		CustomMenuBar.getView_deliveries().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				
 			}
 			
@@ -186,6 +196,7 @@ public class Main {
 		//Change to Login
 		MainFrame.changePanel(new LoginPanel());
 		new LoginCore();
+
 
 		
 	}

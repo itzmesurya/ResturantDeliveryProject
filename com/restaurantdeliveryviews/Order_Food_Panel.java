@@ -246,7 +246,19 @@ public class Order_Food_Panel extends JPanel{
 		return add_id;
 	}
 	
+	/**
+	 * @param string
+	 */
+	public static void setAdd_Id(JTextField Add_id) {
+		add_id = Add_id;
+	}
 	
+	/**
+	 * @param Add_quantity
+	 */
+	public static void setAdd_Quantity(JTextField Add_quantity) {
+		add_quantity = Add_quantity;
+	}	
 
 	/**
 	 * @return	add_quantity
