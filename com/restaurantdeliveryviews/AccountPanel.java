@@ -37,7 +37,7 @@ public class AccountPanel extends JPanel {
 	private static JTextField phoneTextField;
 	private String action;
 	private static JComboBox comboBox;
-	private JLabel lblSelectAccount;
+	private static JLabel lblSelectAccount;
 	private JPanel panel;
 	private static JButton createAccountBtn;
 	private static JButton userAvailabilityBtn;
@@ -56,7 +56,7 @@ public class AccountPanel extends JPanel {
 	private static JPanel leftPanel;
 	private JPanel centerPanel;
 	private static JComboBox selectLevelDropDown;
-	private JLabel selectLevelLabel;
+	private static JLabel selectLevelLabel;
 	private JPanel toppanel2;
 	private JLabel accountLabel;
 	private JPanel topPanel;
@@ -81,10 +81,10 @@ public class AccountPanel extends JPanel {
 		toppanel2 = new JPanel();
 		topPanel.add(toppanel2);
 
-		selectLevelLabel = new JLabel("Select Level     :");
-		selectLevelLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		selectLevelLabel.setBounds(new Rectangle(118, 12, 164, 41));
-		toppanel2.add(selectLevelLabel);
+		setSelectLevelLabel(new JLabel("Select Level     :"));
+		getSelectLevelLabel().setFont(new Font("Tahoma", Font.PLAIN, 20));
+		getSelectLevelLabel().setBounds(new Rectangle(118, 12, 164, 41));
+		toppanel2.add(getSelectLevelLabel());
 
 		setSelectLevelDropDown(new JComboBox());
 		getSelectLevelDropDown().setBorder(new LineBorder(Color.BLACK));
@@ -240,10 +240,10 @@ public class AccountPanel extends JPanel {
 		panel.setBounds(290, 19, 820, 68);
 		centerPanel.add(panel);
 
-		lblSelectAccount = new JLabel("Select Account   :");
-		lblSelectAccount.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblSelectAccount.setBounds(new Rectangle(10, 11, 162, 41));
-		panel.add(lblSelectAccount);
+		setLblSelectAccount(new JLabel("Select Account   :"));
+		getLblSelectAccount().setFont(new Font("Tahoma", Font.PLAIN, 20));
+		getLblSelectAccount().setBounds(new Rectangle(10, 11, 162, 41));
+		panel.add(getLblSelectAccount());
 
 		setComboBox(new JComboBox());
 		getComboBox().setBorder(new LineBorder(Color.BLACK));
@@ -379,5 +379,33 @@ public class AccountPanel extends JPanel {
 	
 	public static JPanel getRightPanel() {
 		return rightPanel;
+	}
+
+	/**
+	 * @return the lblSelectAccount
+	 */
+	public static JLabel getLblSelectAccount() {
+		return lblSelectAccount;
+	}
+
+	/**
+	 * @param lblSelectAccount the lblSelectAccount to set
+	 */
+	public static void setLblSelectAccount(JLabel lblSelectAccount) {
+		AccountPanel.lblSelectAccount = lblSelectAccount;
+	}
+
+	/**
+	 * @return the selectLevelLabel
+	 */
+	public static JLabel getSelectLevelLabel() {
+		return selectLevelLabel;
+	}
+
+	/**
+	 * @param selectLevelLabel the selectLevelLabel to set
+	 */
+	public static void setSelectLevelLabel(JLabel selectLevelLabel) {
+		AccountPanel.selectLevelLabel = selectLevelLabel;
 	}
 }

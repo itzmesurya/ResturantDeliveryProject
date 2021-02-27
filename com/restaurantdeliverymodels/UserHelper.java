@@ -126,22 +126,24 @@ public class UserHelper {
 		if (user != null) {
 			switch (user.getLevel()) {
 			case 0:
-				// Modify Client
+				// create Client
 				((Client) user).create();
 				break;
 			case 1:
-				// modify DeliveryMan
-//				((Deliveryman) user).edit();
+				// create DeliveryMan
+				((Deliveryman) user).create();
 				break;
+			// create Restaurateur
 			case 2:
-//				((Restaurateur) user).edit();
+				((Restaurateur) user).create();
 				break;
+			// create Manager
 			case 3:
-//				((Manager) user).edit();
+				((Manager) user).create();
 				break;
 			case 100:
-				// modify Admin
-//				((Admin) user).edit();
+				// create Admin
+				((Admin) user).create();
 				break;
 			}
 		}

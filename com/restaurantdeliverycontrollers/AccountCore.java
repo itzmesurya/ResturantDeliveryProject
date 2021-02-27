@@ -95,8 +95,8 @@ public class AccountCore {
 
 	private User CreateUserObject() {
 		// lets make sure no fields are left empty before we create a user object
-		if (UIHelper.ValidateEmptyFields(AccountPanel.getLeftPanel()) && 
-				UIHelper.ValidateEmptyFields(AccountPanel.getRightPanel())) {
+		if (UIHelper.ValidateEmptyFields(AccountPanel.getLeftPanel())
+				&& UIHelper.ValidateEmptyFields(AccountPanel.getRightPanel())) {
 			if (crudAction == CRUDAction.Create) {
 				// create the user only if all the fields are present
 				String userName = AccountPanel.getUserNameTextField().getText();
@@ -126,7 +126,7 @@ public class AccountCore {
 	}
 
 	private void LoadUser() {
-		if (user != null) {
+		if (user != null || user.getLevel()==100)  {
 			AccountPanel.getSelectLevelDropDown().setVisible(true);
 			// check the level and adapt the screen
 			AccountPanel.getUserNameTextField().setText(user.getUsername());
@@ -141,6 +141,7 @@ public class AccountCore {
 			// there is no user hence it is assumed to be
 			// create client screen
 			// hide the level drop down
+			AccountPanel.getSelectLevelLabel().setVisible(false);
 			AccountPanel.getSelectLevelDropDown().setVisible(false);
 		}
 	}

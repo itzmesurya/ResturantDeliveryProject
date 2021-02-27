@@ -15,6 +15,7 @@ import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.Item;
 import com.restaurantdeliverymodels.Manager;
 import com.restaurantdeliverymodels.Menu;
+import com.restaurantdeliverymodels.Order;
 import com.restaurantdeliverymodels.Restaurant;
 import com.restaurantdeliverymodels.User;
 import com.restaurantdeliveryviews.MenuPanel;
@@ -22,6 +23,10 @@ import com.restaurantdeliveryviews.MenuPanel;
 public class MenuCore {
 	MenuPanel menuPanel;
 	Restaurant restaurantInContext;
+	// in case the user selects a row
+	// and picks an item to edit we need
+	// we need to store the selected row id
+	int selectedRow = -1;
 
 	MenuCore(CRUDAction crudAction) {
 		BindRestrauntsToComboBox();
@@ -60,19 +65,38 @@ public class MenuCore {
 	private void BindActionEvents(CRUDAction crudAction) {
 		MenuPanel.getAddBtn().addActionListener(e -> {
 			addItemtoTable();
+			Functions.displayMessage("Item added successfuly");
+			fillItemToEditField("", "");
 		});
-		MenuPanel.getSaveBtn().addActionListener(e -> {
-			// save the menu
-			getMenuObject().save();
-		});
-		MenuPanel.getBtnEdit().addActionListener(e -> {
 
+		MenuPanel.getSaveBtn().addActionListener(e -> {
+
+			if (crudAction == CRUDAction.Delete) {
+				// delete the Menu
+				getMenuObject().delete();
+				Functions.displayMessage("Items Deleted Successfully");
+				fillItemToEditField("", "");
+			} else {
+				// save the menu
+				getMenuObject().save();
+				Functions.displayMessage("Item saved Successfully");
+				fillItemToEditField("", "");
+			}
+			loadMenuItemsBasedOnRestraunt();
+		});
+
+		MenuPanel.getBtnEdit().addActionListener(e -> {
+			AssignValueToTableAtRow();
+			Functions.displayMessage("Item Edited  successfuly");
 		});
 		MenuPanel.getBtnDelete().addActionListener(e -> {
-
+			deleteEntryFromTable();
+			fillItemToEditField("", "");
 		});
 		MenuPanel.getSelectBtn().addActionListener(e -> {
 			if (crudAction == CRUDAction.Edit || crudAction == CRUDAction.Delete) {
+				// store the selectedRow to use it while returning the values back to the JTAble
+				selectedRow = MenuPanel.getTable().getSelectedRow();
 				fillItemToEditField(
 						MenuPanel.getTable().getValueAt(MenuPanel.getTable().getSelectedRow(), 0).toString(),
 						MenuPanel.getTable().getValueAt(MenuPanel.getTable().getSelectedRow(), 1).toString());
@@ -86,6 +110,25 @@ public class MenuCore {
 			loadMenuItemsBasedOnRestraunt();
 		});
 
+	}
+
+	private void AssignValueToTableAtRow() {
+		DefaultTableModel model = (DefaultTableModel) MenuPanel.getTable().getModel();
+		model.setValueAt(MenuPanel.getItemNameTextField().getText(), selectedRow, 0);
+		model.setValueAt(MenuPanel.getItemPriceTextField().getText(), selectedRow, 1);
+
+		// reset the selection of row
+		selectedRow = -1;
+		// clear the boxes
+		fillItemToEditField("", "");
+	}
+
+	private void deleteEntryFromTable() {
+		if (MenuPanel.getTable().getSelectedRow() != -1) {
+			// remove selected row from the model
+			((DefaultTableModel) MenuPanel.getTable().getModel()).removeRow(MenuPanel.getTable().getSelectedRow());
+			Functions.displayMessage("Selected row deleted successfully");
+		}
 	}
 
 	private Menu getMenuObject() {
@@ -133,12 +176,32 @@ public class MenuCore {
 	public void addItemtoTable() {
 		String item = MenuPanel.getItemNameTextField().getText();
 		String itemp = MenuPanel.getItemPriceTextField().getText();
-		DefaultTableModel model = (DefaultTableModel) MenuPanel.getTable().getModel();
-		model.addRow(new Object[] { item, itemp });
+		if (itemIsNotPresentInTable()) {
+
+			DefaultTableModel model = (DefaultTableModel) MenuPanel.getTable().getModel();
+			model.addRow(new Object[] { item, itemp });
+		} else {
+			Functions.displayError(String
+					.format("You cannot add '%s' as it already is a part of the menu you are trying to edit", item));
+		}
+	}
+
+	private boolean itemIsNotPresentInTable() {
+		DefaultTableModel itemTableModel = (DefaultTableModel) MenuPanel.getTable().getModel();
+
+		for (int i = 0; i < itemTableModel.getRowCount(); i++) {
+			// compare the current row's item value to the value in the edit item textbox.
+			if (itemTableModel.getValueAt(i, 0).toString().equals(MenuPanel.getItemNameTextField().getText())) {
+				// if found return the loop
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public void fillItemToEditField(String item, String price) {
 		MenuPanel.getItemNameTextField().setText(item);
 		MenuPanel.getItemPriceTextField().setText(price);
 	}
+
 }

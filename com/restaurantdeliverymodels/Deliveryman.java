@@ -57,6 +57,11 @@ public class Deliveryman extends User {
 		Database.saveDeliverymen();
 	}
 
+	public void create() {
+		Database.addDeliveryman(this);
+		Database.saveDeliverymen();
+	}
+
 	public void edit() {
 		ArrayList<Deliveryman> deliverymen = Database.getDeliverymen();
 		int index = -1;

@@ -3,15 +3,14 @@ package com.restaurantdeliverymodels;
 import java.util.ArrayList;
 
 /**
- * @author Alex
- * Menu belongs to a restaurant and contains items
+ * @author Alex Menu belongs to a restaurant and contains items
  */
 public class Menu {
-	
+
 	private int id;
 	private int restaurant_id;
 	private ArrayList<Item> items;
-	
+
 	/**
 	 * @param restaurant_id
 	 */
@@ -36,8 +35,7 @@ public class Menu {
 	public void setRestaurant_id(int restaurant_id) {
 		this.restaurant_id = restaurant_id;
 	}
-	
-	
+
 	public ArrayList<Item> getMenuItemsFromDataBase() {
 		ArrayList<Item> menuItems = new ArrayList<Item>();
 		for (Item item : Database.getItems()) {
@@ -57,15 +55,22 @@ public class Menu {
 	}
 
 	public void save() {
-		//remove all the items for the resaraunt/menu_id
-		//and add all the new Items.
-		
+		// remove all the items for the resaraunt/menu_id
+		// and add all the new Items.
+
 		Database.deleteItemsByMenuId(this.restaurant_id);
 		for (Item item : this.getItems()) {
 			Database.addItem(item);
 		}
 		Database.saveItems();
-		
+
+	}
+
+	public void delete() {
+		// remove all the items for the restaurant/menu_id
+		Database.deleteItemsByMenuId(this.restaurant_id);
+		Database.saveItems();
+
 	}
 
 }
