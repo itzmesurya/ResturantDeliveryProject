@@ -30,7 +30,7 @@ public class AccountCore {
 
 			if (crudAction != CRUDAction.Delete) {
 				// Create user object
-				user = CreateUserObject();
+				user = doUserCheckAvailabilityAndCreateUserObject();
 			}
 
 			if (user != null) {
@@ -54,12 +54,18 @@ public class AccountCore {
 		});
 
 		AccountPanel.getUserAvailabilityBtn().addActionListener(e -> {
-			User user = CreateUserObject();
-			if (!UserHelper.isUsernameAvailable(user)) {
-				// TODO display the message saying user-name is unavailable
-			}
+			doUserCheckAvailabilityAndCreateUserObject();
 		});
 
+	}
+
+	private User doUserCheckAvailabilityAndCreateUserObject() {
+		User user = CreateUserObject();
+		if (!UserHelper.isUsernameAvailable(user)) {
+			Functions.displayError("User has been taken. Please try with different User");
+			return null;
+		}
+		return user;
 	}
 
 	private boolean isAccountScreenValid() {
@@ -89,7 +95,8 @@ public class AccountCore {
 
 	private User CreateUserObject() {
 		// lets make sure no fields are left empty before we create a user object
-		if (UIHelper.ValidateEmptyFields(AccountPanel.getLeftPanel()) && UIHelper.ValidateEmptyFields(AccountPanel.getRightPanel())) {
+		if (UIHelper.ValidateEmptyFields(AccountPanel.getLeftPanel()) && 
+				UIHelper.ValidateEmptyFields(AccountPanel.getRightPanel())) {
 			if (crudAction == CRUDAction.Create) {
 				// create the user only if all the fields are present
 				String userName = AccountPanel.getUserNameTextField().getText();
@@ -134,7 +141,7 @@ public class AccountCore {
 			// there is no user hence it is assumed to be
 			// create client screen
 			// hide the level drop down
-			AccountPanel.getSelectLevelDropDown().setEnabled(false);
+			AccountPanel.getSelectLevelDropDown().setVisible(false);
 		}
 	}
 

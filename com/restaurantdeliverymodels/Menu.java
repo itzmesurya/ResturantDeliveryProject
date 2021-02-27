@@ -10,6 +10,7 @@ public class Menu {
 	
 	private int id;
 	private int restaurant_id;
+	private ArrayList<Item> items;
 	
 	/**
 	 * @param restaurant_id
@@ -17,6 +18,7 @@ public class Menu {
 	public Menu(int restaurant_id) {
 		this.id = Database.getIdCounter().getIdCounterMenu();
 		this.restaurant_id = restaurant_id;
+		this.items = this.getMenuItemsFromDataBase();
 	}
 
 	public int getId() {
@@ -36,7 +38,7 @@ public class Menu {
 	}
 	
 	
-	public ArrayList<Item> getMenuItems() {
+	public ArrayList<Item> getMenuItemsFromDataBase() {
 		ArrayList<Item> menuItems = new ArrayList<Item>();
 		for (Item item : Database.getItems()) {
 			if (item.getMenu_id() == this.id) {
@@ -44,6 +46,26 @@ public class Menu {
 			}
 		}
 		return menuItems;
+	}
+
+	public ArrayList<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(ArrayList<Item> items) {
+		this.items = items;
+	}
+
+	public void save() {
+		//remove all the items for the resaraunt/menu_id
+		//and add all the new Items.
+		
+		Database.deleteItemsByMenuId(this.restaurant_id);
+		for (Item item : this.getItems()) {
+			Database.addItem(item);
+		}
+		Database.saveItems();
+		
 	}
 
 }
