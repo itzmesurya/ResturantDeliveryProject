@@ -1,6 +1,7 @@
 package com.restaurantdeliverycontrollers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.swing.JTextField;
@@ -9,9 +10,11 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import com.restaurantdeliverymodels.Database;
+import com.restaurantdeliverymodels.Deliveryman;
 import com.restaurantdeliverymodels.Item;
 import com.restaurantdeliverymodels.Order;
 import com.restaurantdeliveryviews.Accept_Done__Delivery_Panel;
+import com.restaurantdeliveryviews.OrderHistoryPanel;
 import com.restaurantdeliveryviews.Order_Food_Panel;
 
 public class Accept_Done_Delivery_Core {
@@ -26,6 +29,16 @@ public class Accept_Done_Delivery_Core {
 		
 			ArrayList<Order> orders  = Database.getOrders();
 			
+			//Getting Areas Of All the Orders
+			for(int k = 0 ; k < orders.size(); k++ ) {
+			String postal_code  = orders.get(k).getDelivery_area();
+			
+//			for(int g = 0 ; g < orders.size(); g++ ) {
+//				//String postal_code  = orders.get(g).getDelivery_area();
+//				ArrayList<String> delivery_guy_area = Deliveryman.getDelivery_areas();
+//					System.out.println(delivery_guy_area);
+//				}
+			}
 			for(int j = 0 ; j < orders.size() ;j++) {
 				
 			//Printing items from menu 		
@@ -64,14 +77,7 @@ public class Accept_Done_Delivery_Core {
 			}
 		});
 		
-		// Delivery Done Button
-		Accept_Done__Delivery_Panel.getBtnDelete().addActionListener(new ActionListener() {			
-			public void actionPerformed(ActionEvent e) {
-				
-				//delete Data in DB of Delivery man delivers
-				
-			}
-		});
+
 		
 	}
 

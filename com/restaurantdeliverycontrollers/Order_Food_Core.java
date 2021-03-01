@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import com.restaurantdeliverymodels.Database;
+import com.restaurantdeliverymodels.IdCounter;
 import com.restaurantdeliverymodels.Item;
 import com.restaurantdeliverymodels.Menu;
 import com.restaurantdeliverymodels.Restaurant;
@@ -18,7 +20,7 @@ import com.restaurantdeliveryviews.Accept_Done__Delivery_Panel;
 import com.restaurantdeliveryviews.Order_Food_Panel;
 
 public class Order_Food_Core {
-	
+	private static int currentId = 0;
 	public Order_Food_Core() {
 		
 		//Add Restaurant Names To Combo Box
@@ -72,45 +74,102 @@ public class Order_Food_Core {
 
 		
 		// Add Order Button
+		ArrayList<Double> list = new ArrayList<Double>();
 		
 		Order_Food_Panel.getBtn_Add_Order().addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
-				
+			
 				//Get Id
 				
 				JTextField add = Order_Food_Panel.getAdd_Id(); 
 				int id = 0;
-				id = Integer.parseInt(add.getText());				
+				id = Integer.parseInt(add.getText());		
 				
-				//Display Order in Order Menu
-				Object[] rowData = new Object[Order_Food_Panel.gettable().getColumnCount()];
+				if(id < Order_Food_Panel.gettable().getRowCount()) {
 				
-				for (int i = 0; i < Order_Food_Panel.gettable().getColumnCount(); i++) {
+					//Display Order in Order Menu
+					Object[] rowData = new Object[Order_Food_Panel.gettable().getColumnCount()];
+				
+					for (int i = 0; i < Order_Food_Panel.gettable().getColumnCount(); i++) {
+	
 									
-					rowData[i] = Order_Food_Panel.gettable().getValueAt(id-1, i);
+						rowData[i] = Order_Food_Panel.gettable().getValueAt(id-1, i);
 					
+					}
+				
+					//Get Quantity
+				
+					JTextField quantity = Order_Food_Panel.getAdd_Quantity(); 
+					int q = 0;
+					q = Integer.parseInt(quantity.getText());				
+				
+					DefaultTableModel model = (DefaultTableModel) Order_Food_Panel.gettable2().getModel();
+					
+					model.addRow(new Object[] { ++currentId,rowData[1],rowData[2],q});
+					
+				
+					//For TotaL
+
+					double d3 = 0;
+					for (int i = 0; i <  Order_Food_Panel.gettable2().getRowCount(); i++) {
+						
+						Object value = model.getValueAt(i,2);
+						if (value!=null) {
+					
+							Double d= Double.parseDouble(String.valueOf( model.getValueAt(i,2)));
+							Double d2= Double.parseDouble(String.valueOf( model.getValueAt(i,3)));
+							d3=d*d2;
+                                        
+						}					
+					}
+					list.add(d3);
+					//Calculating TOTAl
+					double sum = 0;
+					for (double i : list) {
+			     	sum += i;
+					}
+					
+					//Displaying Total
+					Order_Food_Panel.getTotal().setText(""+sum+ " $");
+				}else {
+					JOptionPane.showMessageDialog(null, "Please Give Valid Id", "Error",
+							JOptionPane.WARNING_MESSAGE);
 				}
-				
-				//Get Quantity
-				
-				JTextField quantity = Order_Food_Panel.getAdd_Quantity(); 
-				int q = 0;
-				q = Integer.parseInt(quantity.getText());
-				
-			
-				DefaultTableModel model = (DefaultTableModel) Order_Food_Panel.gettable2().getModel();
-				model.addRow(new Object[] {rowData[0],rowData[1],rowData[2],q});
-				
-			}
-		});
+		}
+	});
 		
-		
+		ArrayList<Double> list2 = new ArrayList<Double>();
 		// Delete Order Button
 		Order_Food_Panel.getBtn_delete_Order().addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
+				
+				 
 						
-			//Delete Order in Order Menu
-						 
+				JTextField add = Order_Food_Panel.getAdd_Id(); 
+				int id = 0;
+				id = Integer.parseInt(add.getText())-1;
+				
+				if(id < Order_Food_Panel.gettable2().getRowCount()) {
+				//Removing Id	
+				((DefaultTableModel) Order_Food_Panel.gettable2().getModel()).removeRow(id);
+				
+				//For TotaL
+	
+				list.remove(id);
+
+				//Calculating TOTAl Again
+				double sum = 0;
+				for (double i : list) {
+		     	sum += i;
+				}
+				
+				//Displaying Total
+				Order_Food_Panel.getTotal().setText(""+sum+ " $");
+							
+				}else {
+					JOptionPane.showMessageDialog(null, "Please Give Valid Id", "Error",
+							JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
 		
@@ -118,9 +177,29 @@ public class Order_Food_Core {
 		// Place Order Button
 		Order_Food_Panel.getBtn_Place_Order().addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
-						
-			//Get Address, Postal Code, Total Info
-			//Store in Order DB
+				boolean exit = false;
+				if((Order_Food_Panel.getAddress().getText().isBlank())){
+					JOptionPane.showMessageDialog(null, "Please Insert Address", "Error",
+							JOptionPane.WARNING_MESSAGE);
+					 exit = true;
+				}else if(Order_Food_Panel.getPostal_Code().getText().isBlank()){
+					JOptionPane.showMessageDialog(null, "Please Insert Postal Code", "Error",
+							JOptionPane.WARNING_MESSAGE);
+					exit = true;
+				}else if(Order_Food_Panel.getTotal().getText().isBlank() ){
+					JOptionPane.showMessageDialog(null, "Please Give Order First", "Error",
+							JOptionPane.WARNING_MESSAGE);
+					exit = true;
+				}else if(Order_Food_Panel.gettable2().getRowCount() >= 0 && exit == false){
+					
+					
+				//	System.out.println("Placed");
+					
+					Order_Food_Panel.getAddress();		//Store These Values in to DataBase
+					Order_Food_Panel.getPostal_Code();	//Store These Values in to DataBase
+					Order_Food_Panel.getTotal();		//Store These Values in to DataBase
+					
+				}
 						 
 			}
 		});
