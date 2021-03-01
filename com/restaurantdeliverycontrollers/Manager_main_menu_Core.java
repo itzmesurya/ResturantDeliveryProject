@@ -20,8 +20,8 @@ public class Manager_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 
 
-				MainFrame.changePanel(new MenuPanel("create"));
-
+				MainFrame.changePanel(new MenuPanel(CRUDAction.Create));
+				new MenuCore(CRUDAction.Create);
 				
 			}
 		});
@@ -31,7 +31,8 @@ public class Manager_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 
 
-				MainFrame.changePanel(new MenuPanel("edit"));
+				MainFrame.changePanel(new MenuPanel(CRUDAction.Edit));
+				new MenuCore(CRUDAction.Edit);
 
 				
 			}
@@ -42,7 +43,8 @@ public class Manager_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 
 
-				MainFrame.changePanel(new MenuPanel("delete"));
+				MainFrame.changePanel(new MenuPanel(CRUDAction.Delete));
+				new MenuCore(CRUDAction.Delete);
 
 				
 			}
@@ -52,8 +54,8 @@ public class Manager_main_menu_Core {
 		Manager_main_menu_Panel.getResto_Edit_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				MainFrame.changePanel(new RestaurantPanel("edit"));
-				
+				MainFrame.changePanel(new RestaurantPanel());
+				new RestaurantCore(CRUDAction.Edit);
 			}
 		});
 		

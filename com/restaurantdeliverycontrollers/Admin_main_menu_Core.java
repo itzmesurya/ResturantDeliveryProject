@@ -22,8 +22,8 @@ public class Admin_main_menu_Core {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				MainFrame.changePanel(new RestaurantPanel("add"));
-				
+				MainFrame.changePanel(new RestaurantPanel());
+				new RestaurantCore(CRUDAction.Create);
 			}
 		});
 		
@@ -31,8 +31,8 @@ public class Admin_main_menu_Core {
 		Admin_main_menu_Panel.getResto_Edit_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				MainFrame.changePanel(new RestaurantPanel("edit"));
-				
+				MainFrame.changePanel(new RestaurantPanel());
+				new RestaurantCore(CRUDAction.Edit);
 			}
 		});
 		
@@ -40,8 +40,8 @@ public class Admin_main_menu_Core {
 		Admin_main_menu_Panel.getResto_Del_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				MainFrame.changePanel(new RestaurantPanel("delete"));
-				
+				MainFrame.changePanel(new RestaurantPanel());
+				new RestaurantCore(CRUDAction.Delete);
 			}
 		});
 		
@@ -50,8 +50,8 @@ public class Admin_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 
 				
-				MainFrame.changePanel(new MenuPanel("create"));
-
+				MainFrame.changePanel(new MenuPanel(CRUDAction.Create));
+				new MenuCore(CRUDAction.Create);
 				
 			}
 		});
@@ -61,7 +61,8 @@ public class Admin_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 
 				
-				MainFrame.changePanel(new MenuPanel("edit"));
+				MainFrame.changePanel(new MenuPanel(CRUDAction.Edit));
+				new MenuCore(CRUDAction.Edit);
 
 				
 			}
@@ -72,7 +73,8 @@ public class Admin_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 
 				
-				MainFrame.changePanel(new MenuPanel("delete"));
+				MainFrame.changePanel(new MenuPanel(CRUDAction.Delete));
+				new MenuCore(CRUDAction.Delete);
 
 				
 			}
@@ -82,7 +84,7 @@ public class Admin_main_menu_Core {
 		Admin_main_menu_Panel. getDelivery_Add_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				MainFrame.changePanel(new DeliveryPanel("create"));
+//				MainFrame.changePanel(new DeliveryPanel("create"));
 				
 			}
 		});
@@ -91,7 +93,7 @@ public class Admin_main_menu_Core {
 		Admin_main_menu_Panel. getDelivery_Edit_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				MainFrame.changePanel(new DeliveryPanel("edit"));
+//				MainFrame.changePanel(new DeliveryPanel("edit"));
 				
 			}
 		});
@@ -100,7 +102,7 @@ public class Admin_main_menu_Core {
 		Admin_main_menu_Panel.getDelivery_Del_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				MainFrame.changePanel(new DeliveryPanel("delete"));
+//				MainFrame.changePanel(new DeliveryPanel("delete"));
 				
 			}
 		});
