@@ -18,7 +18,6 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	private static JTextField Resturant;
 	private static JTextField Order_number;
 	private	static JButton btnaccept;
-	private	static JButton btndelete;
 	private	static JTable table;
 	
 	public Accept_Done__Delivery_Panel() {
@@ -97,15 +96,6 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	btnaccept.setBounds(40, 592, 139, 45);
 	panel_1.add(btnaccept);
 	
-	//ORDER ACCPET & END BUTTON
-	
-	btndelete = new JButton("Delete");
-	btndelete.setForeground(Color.WHITE);
-	btndelete.setFont(new Font("Tahoma", Font.PLAIN, 18));
-	btndelete.setBackground(Color.DARK_GRAY);
-	btndelete.setBounds(375, 592, 139, 45);
-	panel_1.add(btndelete);
-	
 	//TABLE PANNEL
 	
 	JPanel panel_2 = new JPanel();
@@ -159,9 +149,7 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 		return	btnaccept;
 	}
 	
-	public static JButton getBtnDelete() {
-		return	btndelete;
-	}
+
 	
 	/*	Getter's & Setter's	For Text Field's*/
 
@@ -224,5 +212,4 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	public static JTable gettable() {
 		return table;
 	}
-
 }

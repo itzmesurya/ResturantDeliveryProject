@@ -35,7 +35,6 @@ public class Order_Food_Panel extends JPanel{
 		lblNewLabel.setFont(new Font("Lucida Console", Font.BOLD | Font.ITALIC, 24));
 		lblNewLabel.setBounds(10, 10, 190, 45);
 		this.add(lblNewLabel);
-		
 		//RESTURANT LABEL 
 		
 		JLabel lblNewLabel_1 = new JLabel("Select Resturant");
@@ -89,11 +88,17 @@ public class Order_Food_Panel extends JPanel{
 		table2 = new JTable();
 		table2.setForeground(new Color(139, 0, 0));
 		table2.setBackground(new Color(255, 255, 224));
-		table2.setModel(new DefaultTableModel(new Object[][] { { }},
+		table2.setModel(new DefaultTableModel(new Object[][] { },
 			new String[] { "ID", "Item Name", "Price","Quantity" }) {
 		/**
 				 * 
 				 */
+			Class[] columnTypes = new Class[] {
+					String.class, String.class, double.class, double.class
+				};
+				public Class getColumnClass(double columnIndex) {
+					return columnTypes[(int) columnIndex];
+				}
 				private static final long serialVersionUID = 1L;
 		boolean[] columnEditables = new boolean[] { false, false, false, false };
 
@@ -232,8 +237,6 @@ public class Order_Food_Panel extends JPanel{
 		lblNewLabel_3_1.setBounds(225, 10, 158, 35);
 		panel_4_1.add(lblNewLabel_3_1);
 		
-		
-		
 	}
 	
 
@@ -247,7 +250,7 @@ public class Order_Food_Panel extends JPanel{
 	}
 	
 	/**
-	 * @param string
+	 * @param Add_id
 	 */
 	public static void setAdd_Id(JTextField Add_id) {
 		add_id = Add_id;
@@ -280,6 +283,14 @@ public class Order_Food_Panel extends JPanel{
 	public static JTextField getTotal() {
 		return total;
 	}
+	
+	/**
+	 * @param total
+	 */
+	public static void setTotal(JTextField Total) {
+		total = Total;
+	}
+	
 	
 	/**
 	 * @return	address
@@ -322,6 +333,8 @@ public class Order_Food_Panel extends JPanel{
 	public static JTable gettable2() {
 		return table2;
 	}
+	
+	
 
 	
 }
