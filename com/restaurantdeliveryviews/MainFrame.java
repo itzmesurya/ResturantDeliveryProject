@@ -1,5 +1,8 @@
 package com.restaurantdeliveryviews;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -12,6 +15,11 @@ public class MainFrame {
 	private static JFrame mainFrame;
 	private static JPanel mainPanel;
 	private static CustomMenuBar menuBar;
+	public static Font headerFont;
+	public static Font titleFont;
+	public static Font labelFont;
+	public static Color mainColor;
+	public static Color offColor;
 
 	/**
 	 * Create the frame
@@ -26,6 +34,13 @@ public class MainFrame {
 		menuBar = new CustomMenuBar();
 		mainFrame.setJMenuBar(menuBar);
 		menuBar.setVisible(false);
+		
+		headerFont = new Font("Harlow Solid Italic", Font.BOLD, 30);
+		titleFont = new Font("Impact", Font.PLAIN, 30);
+		labelFont = new Font("Arial", Font.BOLD, 20);
+		mainColor = Color.RED;
+		offColor = Color.DARK_GRAY;
+		
 	}
 	
 	public static JFrame getMainFrame() {
