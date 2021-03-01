@@ -21,7 +21,7 @@ public class Client_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 	
 				MainFrame.changePanel(new Order_Food_Panel());
-				
+				new Order_Food_Core();
 			}
 		});
 		
@@ -30,7 +30,7 @@ public class Client_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 
 				MainFrame.changePanel(new OrderHistoryPanel());
-				
+				new OrderHistoryCore();
 			}
 		});
 		
@@ -39,8 +39,8 @@ public class Client_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 
 
-				MainFrame.changePanel(new AccountPanel("edit"));
-
+				MainFrame.changePanel(new AccountPanel(CRUDAction.Edit));
+				new AccountCore(CRUDAction.Edit);
 				
 			}
 		});
