@@ -1,6 +1,7 @@
 package com.restaurantdeliveryviews;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.GroupLayout;
@@ -240,6 +241,18 @@ public OrderPanel() {
 	Opanel.setLayout(gl_panel);
 //	frame.getContentPane().setLayout(groupLayout);
 
+}
+void setPanelEnabled(JPanel panel, Boolean isEnabled) {
+    panel.setEnabled(isEnabled);
+
+    Component[] components = panel.getComponents();
+
+    for (Component component : components) {
+        if (component instanceof JPanel) {
+            setPanelEnabled((JPanel) component, isEnabled);
+        }
+        component.setEnabled(isEnabled);
+    }
 }
 
 }
