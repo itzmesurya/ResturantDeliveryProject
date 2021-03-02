@@ -47,11 +47,11 @@ public class Database {
 	
 	public static ArrayList<User> getUsers(){
 		ArrayList<User> users = new ArrayList<User>();
-		users.addAll(getAdmins());
-		users.addAll(getManagers());
-		users.addAll(getRestaurateurs());
-		users.addAll(getDeliverymen());
-		users.addAll(getClients());
+		users.addAll(admins);
+		users.addAll(managers);
+		users.addAll(restaurateurs);
+		users.addAll(deliverymen);
+		users.addAll(clients);
 		return users;
 	}
 
