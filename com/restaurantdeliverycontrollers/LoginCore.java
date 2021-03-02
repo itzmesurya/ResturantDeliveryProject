@@ -127,7 +127,11 @@ public class LoginCore {
 		
 		LoginPanel.getLbl_create_account().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				MainFrame.changePanel(new AccountPanel(CRUDAction.Create));
+				try {
+					MainFrame.changePanel(new AccountPanel(CRUDAction.Create));
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 				new AccountCore(CRUDAction.Create);
 			}
 		});

@@ -153,7 +153,7 @@ public class AccountCore {
 				String address = AccountPanel.getAddressTextField().getText();
 				String email = AccountPanel.getEmailTextfield().getText();
 				String phone = AccountPanel.getPhoneTextField().getText();
-				int levelTobeAdded = AccountPanel.getSelectLevelDropDown().getSelectedIndex();
+				int levelTobeAdded = Integer.valueOf((String)AccountPanel.getSelectLevelDropDown().getSelectedItem());
 				return UserHelper.userFactory(levelTobeAdded, userName, password, firstName, lastName, address, email,
 						phone);
 			} else {

@@ -45,21 +45,33 @@ public class Main {
 		//Set Top Bar
 		CustomMenuBar.getCreate_account().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new AccountPanel(CRUDAction.Create));
+				try {
+					MainFrame.changePanel(new AccountPanel(CRUDAction.Create));
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 				new AccountCore(CRUDAction.Create);
 			}
 			
 		});
 		CustomMenuBar.getEdit_account().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new AccountPanel(CRUDAction.Edit));
+				try {
+					MainFrame.changePanel(new AccountPanel(CRUDAction.Edit));
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 				new AccountCore(CRUDAction.Edit);
 			}
 			
 		});
 		CustomMenuBar.getDelete_account().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new AccountPanel(CRUDAction.Delete));
+				try {
+					MainFrame.changePanel(new AccountPanel(CRUDAction.Delete));
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 				new AccountCore(CRUDAction.Delete);
 			}
 			
