@@ -94,15 +94,17 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	//ORDER ACCPET & END BUTTON
 	
 	btnaccept = new JButton("Accept");
-	btnaccept.setForeground(Color.WHITE);
+	//btnaccept.setOpaque(false);
+	btnaccept.setForeground(Color.white);
 	btnaccept.setFont(MainFrame.labelFont);
-	btnaccept.setBackground(MainFrame.mainColor);
+	btnaccept.setBackground(Color.red);
 	btnaccept.setBounds(160, 630, 139, 40);
 	panel_1.add(btnaccept);
 	
-	btndone = new JButton("Accept");
-	btndone.setForeground(Color.WHITE);
+	btndone = new JButton("Done");
+	btndone.setForeground(Color.white);
 	btndone.setFont(MainFrame.labelFont);
+	btndone.setBackground(Color.red);
 	btndone.setBounds(160, 630, 139, 40);
 	panel_1.add(btndone);
 	
@@ -118,7 +120,7 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	table = new JTable();
 	table.setForeground(new Color(139, 0, 0));
 	table.setBackground(Color.white);
-	table.setModel(new DefaultTableModel(new Object[][] {  },
+	table.setModel(new DefaultTableModel(new Object[][] { },
 		new String[] { "Order number", "Resturant", "Delivery Address", "Postal code" }) {
 			/**
 			 * 
