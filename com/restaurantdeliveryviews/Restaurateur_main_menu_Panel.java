@@ -20,48 +20,52 @@ public class Restaurateur_main_menu_Panel extends JPanel{
 	
 	public Restaurateur_main_menu_Panel() {
 		
-		this.setBackground(new Color(233, 150, 122));
+		this.setBackground(Color.white);
 		this.setLayout(null);
 		
 		//RESTAURATEUR
 		
-		JLabel lblRestaurateur = new JLabel("RESTAURATEUR");
-		lblRestaurateur.setFont(new Font("Constantia", Font.BOLD, 30));
-		lblRestaurateur.setBounds(511, 22, 250, 45);
+		JLabel lblRestaurateur = new JLabel("Restaurateur");
+		lblRestaurateur.setFont(MainFrame.headerFont);
+		lblRestaurateur.setBounds(511, 22, 270, 45);
 		this.add(lblRestaurateur);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(72, 183, 1059, 509);
-		panel_1.setBackground(new Color(250, 240, 230));
+		panel_1.setBackground(Color.white);
 		this.add(panel_1);
 		panel_1.setLayout(null);
 		
 		//ORDERS
 		
-		JLabel lblOrder = new JLabel("ORDER");
-		lblOrder.setBounds(483, 47, 137, 46);
+		JLabel lblOrder = new JLabel("   ORDER");
+		lblOrder.setOpaque(true);
+		lblOrder.setBackground(MainFrame.offColor);
+		lblOrder.setForeground(Color.WHITE);
+		lblOrder.setFont(MainFrame.titleFont);
+		lblOrder.setBounds(430, 47, 135, 46);
 		panel_1.add(lblOrder);
-		lblOrder.setFont(new Font("Constantia", Font.PLAIN, 30));
+		
 		
 		order_accept_btn = new JButton("<html>ACCPET<br />ORDERS</html>");
 		order_accept_btn.setForeground(Color.WHITE);
-		order_accept_btn.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		order_accept_btn.setBackground(Color.DARK_GRAY);
-		order_accept_btn.setBounds(305, 228, 118, 63);
+		order_accept_btn.setFont(MainFrame.labelFont);
+		order_accept_btn.setBackground(MainFrame.mainColor);
+		order_accept_btn.setBounds(248, 228, 118, 63);
 		panel_1.add(order_accept_btn);
 		
 		order_ready_btn = new JButton("<html>MARK<br />READY</html>");
 		order_ready_btn.setForeground(Color.WHITE);
-		order_ready_btn.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		order_ready_btn.setBackground(Color.DARK_GRAY);
+		order_ready_btn.setFont(MainFrame.labelFont);
+		order_ready_btn.setBackground(MainFrame.mainColor);
 		order_ready_btn.setBounds(620, 228, 118, 63);
 		panel_1.add(order_ready_btn);
 		
 		//LOG OUT BUTTON
 		
 		log_out_btn = new JButton("LOG OUT");
-		log_out_btn.setForeground(new Color(255, 255, 224));
-		log_out_btn.setBackground(new Color(138, 43, 226));
+		log_out_btn.setForeground(Color.white);
+		log_out_btn.setBackground(MainFrame.offColor);
 		log_out_btn.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		log_out_btn.setBounds(1039, 10, 137, 37);
 		this.add(log_out_btn);

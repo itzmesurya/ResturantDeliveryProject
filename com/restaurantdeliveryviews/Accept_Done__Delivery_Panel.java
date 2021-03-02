@@ -23,41 +23,42 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	public Accept_Done__Delivery_Panel() {
 	
 	this.setLayout(null);
-	this.setBackground(new Color(233, 150, 122));
+	this.setBackground(Color.WHITE);
 	
 	//ORDER INFO PANEL
 	
 	JPanel panel_1 = new JPanel();
-	panel_1.setBounds(10, 67, 570, 666);
+	panel_1.setBackground(Color.WHITE);
+	panel_1.setBounds(10, 10, 570, 723);
 	this.add(panel_1);
 	panel_1.setLayout(null);
 	
 	//ORDER INFORMATION
 	
 	JLabel lblOrderInfo = new JLabel("Order Information");
-	lblOrderInfo.setFont(new Font("DialogInput", Font.BOLD, 25));
+	lblOrderInfo.setFont(MainFrame.titleFont);
 	lblOrderInfo.setBounds(10, 10, 270, 45);
 	panel_1.add(lblOrderInfo);
 	
 	//LABELS 
 	
 	JLabel lblOrderNumber = new JLabel("Order number");
-	lblOrderNumber.setFont(new Font("Consolas", Font.PLAIN, 18));
+	lblOrderNumber.setFont(MainFrame.labelFont);
 	lblOrderNumber.setBounds(10, 127, 162, 45);
 	panel_1.add(lblOrderNumber);
 	
 	JLabel lblResturant = new JLabel("Resturant");
-	lblResturant.setFont(new Font("Consolas", Font.PLAIN, 18));
+	lblResturant.setFont(MainFrame.labelFont);
 	lblResturant.setBounds(10, 245, 162, 45);
 	panel_1.add(lblResturant);
 	
 	JLabel lblDeliveryAddress = new JLabel("Delivery Address");
-	lblDeliveryAddress.setFont(new Font("Consolas", Font.PLAIN, 18));
+	lblDeliveryAddress.setFont(MainFrame.labelFont);
 	lblDeliveryAddress.setBounds(10, 354, 179, 45);
 	panel_1.add(lblDeliveryAddress);
 	
 	JLabel lblDeliveryPostalCode = new JLabel("Delivery Postal code");
-	lblDeliveryPostalCode.setFont(new Font("Consolas", Font.PLAIN, 18));
+	lblDeliveryPostalCode.setFont(MainFrame.labelFont);
 	lblDeliveryPostalCode.setBounds(10, 480, 214, 45);
 	panel_1.add(lblDeliveryPostalCode);
 	
@@ -65,35 +66,35 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	
 	Delivery_Postal_Code = new JTextField();
 	Delivery_Postal_Code.setEditable(false);
-	Delivery_Postal_Code.setBounds(251, 479, 276, 45);
+	Delivery_Postal_Code.setBounds(251, 479, 276, 40);
 	panel_1.add(Delivery_Postal_Code);
 	Delivery_Postal_Code.setColumns(10);
 	
 	Delivery_address = new JTextField();
 	Delivery_address.setEditable(false);
 	Delivery_address.setColumns(10);
-	Delivery_address.setBounds(251, 353, 276, 45);
+	Delivery_address.setBounds(251, 353, 276, 40);
 	panel_1.add(Delivery_address);
 	
 	Resturant = new JTextField();
 	Resturant.setEditable(false);
 	Resturant.setColumns(10);
-	Resturant.setBounds(251, 244, 276, 45);
+	Resturant.setBounds(251, 244, 276, 40);
 	panel_1.add(Resturant);
 	
 	Order_number = new JTextField();
 	Order_number.setEditable(false);
 	Order_number.setColumns(10);
-	Order_number.setBounds(251, 127, 276, 45);
+	Order_number.setBounds(251, 127, 276, 40);
 	panel_1.add(Order_number);
 	
 	//ORDER ACCPET & END BUTTON
 	
 	btnaccept = new JButton("Accept");
 	btnaccept.setForeground(Color.WHITE);
-	btnaccept.setFont(new Font("Tahoma", Font.PLAIN, 18));
-	btnaccept.setBackground(Color.DARK_GRAY);
-	btnaccept.setBounds(40, 592, 139, 45);
+	btnaccept.setFont(MainFrame.labelFont);
+	btnaccept.setBackground(MainFrame.mainColor);
+	btnaccept.setBounds(160, 630, 139, 40);
 	panel_1.add(btnaccept);
 	
 	//TABLE PANNEL
@@ -107,7 +108,7 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	
 	table = new JTable();
 	table.setForeground(new Color(139, 0, 0));
-	table.setBackground(new Color(255, 255, 224));
+	table.setBackground(Color.white);
 	table.setModel(new DefaultTableModel(new Object[][] {  },
 		new String[] { "Order number", "Resturant", "Delivery Address", "Postal code" }) {
 	/**
@@ -130,15 +131,15 @@ public class Accept_Done__Delivery_Panel extends JPanel {
     //DELIVERY LABLE PANNEL 
     
     JPanel panel_3 = new JPanel();
-    panel_3.setBackground(new Color(255, 255, 204));
-    panel_3.setBounds(608, 67, 550, 61);
+    panel_3.setBackground(Color.WHITE);
+    panel_3.setBounds(608, 27, 550, 101);
     this.add(panel_3);
     panel_3.setLayout(null);
     
     JLabel lblDeliveries = new JLabel("Deliveries");
     lblDeliveries.setBounds(199, 10, 164, 45);
     panel_3.add(lblDeliveries);
-    lblDeliveries.setFont(new Font("DialogInput", Font.BOLD, 25));
+    lblDeliveries.setFont(MainFrame.titleFont);
     
 	}
 	

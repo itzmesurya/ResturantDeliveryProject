@@ -41,12 +41,8 @@ public class Accept_Done_Delivery_Core {
 			for(int k = 0 ; k < orders.size(); k++ ) {
 			String postal_code  = orders.get(k).getDelivery_area();
 			
-//			for(int g = 0 ; g < orders.size(); g++ ) {
-//				//String postal_code  = orders.get(g).getDelivery_area();
-//				ArrayList<String> delivery_guy_area = Deliveryman.getDelivery_areas();
-//					System.out.println(delivery_guy_area);
-//				}
 			}
+				
 			for(int j = 0 ; j < orders.size() ;j++) {
 				
 			//Printing items from menu 		
