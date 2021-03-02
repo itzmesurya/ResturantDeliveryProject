@@ -1,6 +1,7 @@
 package com.restaurantdeliverymodels;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class UserHelper {
 
@@ -149,4 +150,50 @@ public class UserHelper {
 		}
 	}
 
+	public static ArrayList<User> getUsersBasedOnLevel(int selectedLevelFromDropDown) {
+		switch (selectedLevelFromDropDown) {
+		case 0:
+			// Return list of Client
+			return (ArrayList<User>) Database.getClients().stream().map(x -> (User) x).collect(Collectors.toList());
+		case 1:
+			// Return list of DeliveryMan
+			return (ArrayList<User>) Database.getDeliverymen().stream().map(x -> (User) x).collect(Collectors.toList());
+		case 2:
+			// Return list of Restaurateur
+			return (ArrayList<User>) Database.getRestaurateurs().stream().map(x -> (User) x)
+					.collect(Collectors.toList());
+		case 3:
+			// Return list of Managers
+			return (ArrayList<User>) Database.getManagers().stream().map(x -> (User) x).collect(Collectors.toList());
+		case 100:
+			// modify Admins
+			return (ArrayList<User>) Database.getAdmins().stream().map(x -> (User) x).collect(Collectors.toList());
+		}
+		return null;
+	}
+
+	public static User getUserByUserNameAndLevel(int level, String userName) {
+		switch (level) {
+		case 0:
+			// Return list of Client
+			return (User) Database.getClients().stream().filter(x -> x.getUsername().equals(userName)).findFirst()
+					.get();
+		case 1:
+			// Return list of DeliveryMan
+			return (User) Database.getDeliverymen().stream().filter(x -> x.getUsername().equals(userName)).findFirst()
+					.get();
+		case 2:
+			// Return list of Restaurateur
+			return (User) Database.getRestaurateurs().stream().filter(x -> x.getUsername().equals(userName)).findFirst()
+					.get();
+		case 3:
+			// Return list of Managers
+			return (User) Database.getManagers().stream().filter(x -> x.getUsername().equals(userName)).findFirst()
+					.get();
+		case 100:
+			// modify Admins
+			return (User) Database.getAdmins().stream().filter(x -> x.getUsername().equals(userName)).findFirst().get();
+		}
+		return null;
+	}
 }

@@ -1,8 +1,11 @@
 package com.restaurantdeliverycontrollers;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 import com.restaurantdeliverymodels.CRUDAction;
@@ -22,7 +25,9 @@ public class AccountCore {
 		this.crudAction = crudAction;
 		user = Main.user;
 		BindActionEvents(crudAction);
+		loadAccountsBasedOnLevelSelected();
 		LoadUser();
+
 	}
 
 	private void BindActionEvents(CRUDAction crudAction) {
@@ -57,6 +62,12 @@ public class AccountCore {
 			doUserCheckAvailabilityAndCreateUserObject();
 		});
 
+		AccountPanel.getSelectLevelDropDown().addActionListener(e -> {
+			loadAccountsBasedOnLevelSelected();
+		});
+		AccountPanel.getComboBox().addActionListener(e -> {
+			loadUserIntoPanels();
+		});
 	}
 
 	private User doUserCheckAvailabilityAndCreateUserObject() {
@@ -126,24 +137,53 @@ public class AccountCore {
 	}
 
 	private void LoadUser() {
-		if (user != null || user.getLevel()==100)  {
-			AccountPanel.getSelectLevelDropDown().setVisible(true);
-			// check the level and adapt the screen
-			AccountPanel.getUserNameTextField().setText(user.getUsername());
-			AccountPanel.getPasswordTextField().setText(user.getPassword());
-			AccountPanel.getConfirmPwdTextField().setText(user.getPassword());
-			AccountPanel.getFirstNameTextField().setText(user.getFirst_name());
-			AccountPanel.getLastNameTextField().setText(user.getLast_name());
-			AccountPanel.getAddressTextField().setText(user.getAddress());
-			AccountPanel.getEmailTextfield().setText(user.getEmail());
-			AccountPanel.getPhoneTextField().setText(user.getPhone());
+		// by default if the user is present, display his/her details
+		if (user != null) {
+			if (user.getLevel() == 100) {
+				AccountPanel.getSelectLevelDropDown().setVisible(true);
+				AccountPanel.getSelectLevelLabel().setVisible(true);
+			}
+			if (crudAction!=CRUDAction.Create) {
+				fillUserDetails(user);
+			}
 		} else {
 			// there is no user hence it is assumed to be
 			// create client screen
 			// hide the level drop down
-			AccountPanel.getSelectLevelLabel().setVisible(false);
 			AccountPanel.getSelectLevelDropDown().setVisible(false);
+			AccountPanel.getSelectLevelLabel().setVisible(false);
 		}
 	}
 
+	@SuppressWarnings("unused")
+	private void loadAccountsBasedOnLevelSelected() {
+		int selectedLevelFromDropDown = Integer
+				.parseInt(AccountPanel.getSelectLevelDropDown().getSelectedItem().toString());
+		ArrayList<User> users = UserHelper.getUsersBasedOnLevel(selectedLevelFromDropDown);
+		ArrayList<String> userArray = (ArrayList<String>) users.stream().map(x -> x.getUsername())
+				.collect(Collectors.toList());
+		AccountPanel.getComboBox()
+				.setModel(new DefaultComboBoxModel<String>(userArray.toArray(new String[userArray.size()])));
+	}
+
+	private void fillUserDetails(User fillUserObject) {
+		AccountPanel.getUserNameTextField().setText(fillUserObject.getUsername());
+		AccountPanel.getPasswordTextField().setText(fillUserObject.getPassword());
+		AccountPanel.getConfirmPwdTextField().setText(fillUserObject.getPassword());
+		AccountPanel.getFirstNameTextField().setText(fillUserObject.getFirst_name());
+		AccountPanel.getLastNameTextField().setText(fillUserObject.getLast_name());
+		AccountPanel.getAddressTextField().setText(fillUserObject.getAddress());
+		AccountPanel.getEmailTextfield().setText(fillUserObject.getEmail());
+		AccountPanel.getPhoneTextField().setText(fillUserObject.getPhone());
+	}
+
+	private int getLevel() {
+		return Integer.parseInt(AccountPanel.getSelectLevelDropDown().getSelectedItem().toString());
+	}
+
+	private void loadUserIntoPanels() {
+		User userToEdit = UserHelper.getUserByUserNameAndLevel(getLevel(),
+				AccountPanel.getComboBox().getSelectedItem().toString());
+		fillUserDetails(userToEdit);
+	}
 }
