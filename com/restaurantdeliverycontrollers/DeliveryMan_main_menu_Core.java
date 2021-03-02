@@ -21,7 +21,7 @@ public class DeliveryMan_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 
 				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Accept));
-				new Accept_Done_Delivery_Core(CRUDAction.Accept);
+				
 			}
 		});
 		
@@ -30,7 +30,7 @@ public class DeliveryMan_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 
 				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Ready));
-				new Accept_Done_Delivery_Core(CRUDAction.Ready);
+				
 			}
 		});
 		
