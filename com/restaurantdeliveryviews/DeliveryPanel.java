@@ -45,6 +45,8 @@ public class DeliveryPanel extends JPanel{
 //		action = crudAction;
 //		JPanel DeliveryPanel = new JPanel();
 		JPanel Dpanel = new JPanel();
+		Dpanel.setBackground(Color.WHITE);
+		
 		
 		GroupLayout groupLayout = new GroupLayout( this);
 		groupLayout.setHorizontalGroup(
@@ -68,23 +70,24 @@ public class DeliveryPanel extends JPanel{
 			JPanel panel_1 = new JPanel();
 			panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 			panel_1.setForeground(Color.BLACK);
+			panel_1.setBackground(Color.WHITE);
 			
 			JLabel lblNewLabel_1 = new JLabel("Name");
-			lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 14));
 			
 			Name_Field = new JTextField();
-			Name_Field.setBackground(new Color(127, 255, 212));
+			Name_Field.setBackground(Color.white);
 			Name_Field.setColumns(10);
 			
 			JLabel lblPostalCode = new JLabel("TelePhone Number");
-			lblPostalCode.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			lblPostalCode.setFont(new Font("Arial", Font.BOLD, 14));
 			
 			Phone_Field = new JTextField();
-			Phone_Field.setBackground(new Color(127, 255, 212));
+			Phone_Field.setBackground(Color.white);
 			Phone_Field.setColumns(10);
 			
 			JLabel lblPersnolInformation = new JLabel("Personal Information");
-			lblPersnolInformation.setFont(new Font("Tahoma", Font.BOLD, 16));
+			lblPersnolInformation.setFont(new Font("Arial", Font.BOLD, 20));
 			GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 			gl_panel_1.setHorizontalGroup(
 				gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -93,14 +96,15 @@ public class DeliveryPanel extends JPanel{
 						.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 							.addComponent(lblPersnolInformation)
 							.addGroup(gl_panel_1.createSequentialGroup()
+								.addGap(37)
 								.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 									.addComponent(lblNewLabel_1)
 									.addComponent(lblPostalCode))
-								.addGap(43)
+								.addGap(114)
 								.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-									.addComponent(Phone_Field, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE)
-									.addComponent(Name_Field, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE))))
-						.addContainerGap(60, Short.MAX_VALUE))
+									.addComponent(Phone_Field, GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+									.addComponent(Name_Field, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))))
+						.addGap(35))
 			);
 			gl_panel_1.setVerticalGroup(
 				gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -109,49 +113,53 @@ public class DeliveryPanel extends JPanel{
 						.addComponent(lblPersnolInformation, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 						.addGap(21)
 						.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-							.addComponent(lblNewLabel_1)
-							.addComponent(Name_Field, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addComponent(Name_Field, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblNewLabel_1))
 						.addGap(18)
 						.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-							.addComponent(lblPostalCode, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
-							.addComponent(Phone_Field, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(30, Short.MAX_VALUE))
+							.addComponent(Phone_Field, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblPostalCode, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(52, Short.MAX_VALUE))
 			);
 			panel_1.setLayout(gl_panel_1);
 			
 			Verify_btn = new JButton("Verify Username availability");
-			Verify_btn.setBackground(Color.YELLOW);
-			Verify_btn.setForeground(Color.BLACK);
-			Verify_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			Verify_btn.setBackground(Color.black);
+			Verify_btn.setForeground(Color.white);
+			Verify_btn.setFont(new Font("Arial", Font.BOLD, 14));
 			
 			JLabel lblNewLabel_2 = new JLabel("Select :");
-			lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			lblNewLabel_2.setForeground(Color.RED);
+			lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 20));
 			
 			
 //			ArrayList<Deliveryman> deliverymanlist = Database.getDeliverymen();
-//			for(Deliveryman dm:deliverymanlist ) {
 //				usernamelist.add(dm.getUsername());
 //				
 //			}
 //			usernamelist.toArray(new String[usernamelist.size()])
 			
 			selectR_comboBox = new JComboBox();
-			selectR_comboBox.setForeground(new Color(255, 0, 255));
-			selectR_comboBox.setBackground(new Color(255, 255, 255));
+			selectR_comboBox.setForeground( Color.white);
+			selectR_comboBox.setBackground( Color.white);
 			
 			JPanel panel_3 = new JPanel();
 			panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
+			panel_3.setBackground(Color.black);
+			panel_3.setForeground( Color.white);
+			
 			
 			JPanel panel_4 = new JPanel();
 			panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
+			panel_4.setBackground(Color.WHITE);
 			
 			JPanel panel_5 = new JPanel();
 			panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
 			
 			Save_btn = new JButton("Save");
-			Save_btn.setForeground(Color.BLACK);
-			Save_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			Save_btn.setBackground(Color.YELLOW);
+			Save_btn.setForeground(Color.white);
+			Save_btn.setFont(new Font("Arial", Font.BOLD, 14));
+			Save_btn.setBackground(Color.black);
 		
 //			Save_btn.addActionListener(new ActionListener() {
 //			
@@ -200,29 +208,28 @@ public class DeliveryPanel extends JPanel{
 				gl_panel.createParallelGroup(Alignment.TRAILING)
 					.addGroup(gl_panel.createSequentialGroup()
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(50)
-									.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 332, Short.MAX_VALUE)
-									.addComponent(lblNewLabel_2)
-									.addGap(27))
-								.addGroup(gl_panel.createSequentialGroup()
-									.addContainerGap(199, Short.MAX_VALUE)
-									.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-										.addComponent(panel_4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(panel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-									.addGap(124)))
-							.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-								.addContainerGap()
+							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(50)
+								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 476, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_2)
+								.addGap(27))
+							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(62)
 								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-									.addComponent(Save_btn, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE)
-									.addComponent(Verify_btn, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE))
-								.addGap(178)))
+									.addComponent(panel_4, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
+									.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+								.addGap(60)))
+						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+							.addComponent(selectR_comboBox, 0, 255, Short.MAX_VALUE)
+							.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE))
+						.addGap(45))
+					.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+						.addGap(247)
 						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-							.addComponent(panel_5, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 214, Short.MAX_VALUE)
-							.addComponent(selectR_comboBox, Alignment.LEADING, 0, 214, Short.MAX_VALUE))
-						.addGap(156))
+							.addComponent(Save_btn, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE)
+							.addComponent(Verify_btn, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(560, Short.MAX_VALUE))
 			);
 			gl_panel.setVerticalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
@@ -231,26 +238,25 @@ public class DeliveryPanel extends JPanel{
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGap(33)
 								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-									.addComponent(selectR_comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addComponent(lblNewLabel_2))
-								.addGap(41)
-								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-									.addGroup(gl_panel.createSequentialGroup()
-										.addGap(18)
-										.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
-										.addGap(35)
-										.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
-										.addGap(18)
-										.addComponent(Verify_btn)
-										.addGap(18)
-										.addComponent(Save_btn, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-									.addGroup(gl_panel.createSequentialGroup()
-										.addGap(7)
-										.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 458, GroupLayout.PREFERRED_SIZE))))
+									.addComponent(selectR_comboBox, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+									.addComponent(lblNewLabel_2)))
 							.addGroup(gl_panel.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap(171, Short.MAX_VALUE))
+								.addGap(24)
+								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(58)
+								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+								.addGap(60)
+								.addComponent(panel_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(34)
+								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 458, GroupLayout.PREFERRED_SIZE)))
+						.addGap(18)
+						.addComponent(Verify_btn, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addComponent(Save_btn, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+						.addGap(63))
 			);
 			
 			JScrollPane Darea_scrollPane = new JScrollPane();
@@ -260,40 +266,38 @@ public class DeliveryPanel extends JPanel{
 			Darea_Field.setColumns(10);
 			
 			Add_btn = new JButton("Add");
-			Add_btn.setBackground(Color.YELLOW);
+			Add_btn.setBackground(Color.black);
+			Add_btn.setForeground(Color.white);
 			
 			JButton Delete_btn = new JButton("Delete");
-			Delete_btn.setBackground(Color.YELLOW);
+			Delete_btn.setBackground(Color.black);
+			Delete_btn.setForeground(Color.white);
 			GroupLayout gl_panel_5 = new GroupLayout(panel_5);
 			gl_panel_5.setHorizontalGroup(
 				gl_panel_5.createParallelGroup(Alignment.LEADING)
+					.addComponent(Darea_scrollPane, GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
 					.addGroup(gl_panel_5.createSequentialGroup()
-						.addGroup(gl_panel_5.createParallelGroup(Alignment.LEADING)
-							.addComponent(Darea_scrollPane, GroupLayout.PREFERRED_SIZE, 212, GroupLayout.PREFERRED_SIZE)
+						.addGap(29)
+						.addGroup(gl_panel_5.createParallelGroup(Alignment.LEADING, false)
 							.addGroup(gl_panel_5.createSequentialGroup()
-								.addGap(10)
-								.addComponent(Darea_Field, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap())
-					.addGroup(gl_panel_5.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(Add_btn, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-						.addComponent(Delete_btn, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-						.addGap(21))
+								.addComponent(Add_btn, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(Delete_btn, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
+							.addComponent(Darea_Field, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(32, Short.MAX_VALUE))
 			);
 			gl_panel_5.setVerticalGroup(
 				gl_panel_5.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel_5.createSequentialGroup()
-						.addComponent(Darea_scrollPane, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE)
-						.addGap(18)
+						.addComponent(Darea_scrollPane, GroupLayout.PREFERRED_SIZE, 349, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
 						.addComponent(Darea_Field, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 						.addGap(18)
-						.addGroup(gl_panel_5.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_5.createParallelGroup(Alignment.BASELINE)
 							.addComponent(Add_btn, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-							.addComponent(Delete_btn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addComponent(Delete_btn, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
 						.addContainerGap())
 			);
-			
 
 			Darea_table = new JTable();
 			Darea_table.setModel(new DefaultTableModel(
@@ -317,44 +321,47 @@ public class DeliveryPanel extends JPanel{
 			panel_5.setLayout(gl_panel_5);
 			
 			JLabel lblNewLabel_3 = new JLabel("Login Information");
-			lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 16));
+			lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 20));
 			
 			JLabel lblNewLabel_4 = new JLabel("User Name");
-			lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 14));
 			
 			JLabel lblPassword = new JLabel("Password");
-			lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			lblPassword.setFont(new Font("Arial", Font.BOLD, 14));
 			
 			JLabel lblConfirmPassword = new JLabel("Confirm Password");
-			lblConfirmPassword.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			lblConfirmPassword.setFont(new Font("Arial", Font.BOLD, 14));
 			
 			User_Field = new JTextField();
 			User_Field.setColumns(10);
-			User_Field.setBackground(new Color(127, 255, 212));
+			User_Field.setBackground( Color.white);
 			
 			pass_Field = new JTextField();
 			pass_Field.setColumns(10);
-			pass_Field.setBackground(new Color(127, 255, 212));
+			pass_Field.setBackground(Color.WHITE);
 			
 			ConfirmPass_Field = new JTextField();
 			ConfirmPass_Field.setColumns(10);
-			ConfirmPass_Field.setBackground(new Color(127, 255, 212));
+			ConfirmPass_Field.setBackground(Color.white);
 			GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 			gl_panel_4.setHorizontalGroup(
 				gl_panel_4.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel_4.createSequentialGroup()
 						.addGap(21)
 						.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
-							.addComponent(lblNewLabel_4)
-							.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE)
-							.addComponent(lblConfirmPassword))
-						.addPreferredGap(ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-						.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
-							.addComponent(User_Field, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE)
-							.addComponent(pass_Field, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE)
-							.addComponent(ConfirmPass_Field, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(44, Short.MAX_VALUE))
+							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE)
+							.addGroup(gl_panel_4.createSequentialGroup()
+								.addGap(44)
+								.addGroup(gl_panel_4.createParallelGroup(Alignment.TRAILING)
+									.addComponent(lblNewLabel_4, Alignment.LEADING)
+									.addComponent(lblConfirmPassword, Alignment.LEADING)
+									.addComponent(lblPassword, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))))
+						.addGap(71)
+						.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING, false)
+							.addComponent(ConfirmPass_Field)
+							.addComponent(pass_Field)
+							.addComponent(User_Field, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE))
+						.addContainerGap(70, Short.MAX_VALUE))
 			);
 			gl_panel_4.setVerticalGroup(
 				gl_panel_4.createParallelGroup(Alignment.LEADING)
@@ -364,34 +371,33 @@ public class DeliveryPanel extends JPanel{
 						.addGap(18)
 						.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
 							.addComponent(lblNewLabel_4)
-							.addComponent(User_Field, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(User_Field, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+						.addGap(23)
 						.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
 							.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
-							.addComponent(pass_Field, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(pass_Field, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+						.addGap(18)
 						.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
 							.addComponent(lblConfirmPassword, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
-							.addComponent(ConfirmPass_Field, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(68, Short.MAX_VALUE))
+							.addComponent(ConfirmPass_Field, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(51, Short.MAX_VALUE))
 			);
 			panel_4.setLayout(gl_panel_4);
 			
 			lblNewLabel = new JLabel("Create Delivery");
-			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
+			lblNewLabel.setFont(new Font("Arial", Font.BOLD, 30));
+			lblNewLabel.setForeground( Color.white);
 			GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 			gl_panel_3.setHorizontalGroup(
 				gl_panel_3.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel_3.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(lblNewLabel)
-						.addContainerGap(81, Short.MAX_VALUE))
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 232, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 			);
 			gl_panel_3.setVerticalGroup(
-				gl_panel_3.createParallelGroup(Alignment.LEADING)
-					.addGroup(Alignment.TRAILING, gl_panel_3.createSequentialGroup()
-						.addContainerGap(18, Short.MAX_VALUE)
-						.addComponent(lblNewLabel)
+				gl_panel_3.createParallelGroup(Alignment.TRAILING)
+					.addGroup(Alignment.LEADING, gl_panel_3.createSequentialGroup()
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 32, Short.MAX_VALUE)
 						.addContainerGap())
 			);
 			panel_3.setLayout(gl_panel_3);
