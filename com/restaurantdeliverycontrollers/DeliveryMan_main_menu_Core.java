@@ -3,6 +3,7 @@ package com.restaurantdeliverycontrollers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliveryviews.Accept_Done__Delivery_Panel;
 import com.restaurantdeliveryviews.Admin_main_menu_Panel;
 import com.restaurantdeliveryviews.DeliveryMan_main_menu_Panel;
@@ -19,8 +20,8 @@ public class DeliveryMan_main_menu_Core {
 		DeliveryMan_main_menu_Panel. getDelivery_Accept_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
-				
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Accept));
+				new Accept_Done_Delivery_Core(CRUDAction.Accept);
 			}
 		});
 		
@@ -28,8 +29,8 @@ public class DeliveryMan_main_menu_Core {
 		DeliveryMan_main_menu_Panel. getDelivery_End_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
-						
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Ready));
+				new Accept_Done_Delivery_Core(CRUDAction.Ready);
 			}
 		});
 		
