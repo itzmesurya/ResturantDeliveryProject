@@ -16,7 +16,7 @@ import com.restaurantdeliveryviews.RestaurantPanel;
 public class Admin_main_menu_Core {
 
 	public Admin_main_menu_Core() {
-		
+
 		//ADD RESTAURANT BTN 
 		Admin_main_menu_Panel.getResto_Add_Btn().addActionListener(new ActionListener() {
 			
