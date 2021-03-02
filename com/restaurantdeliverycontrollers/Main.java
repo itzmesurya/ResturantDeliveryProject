@@ -159,6 +159,8 @@ public class Main {
 		});
 		CustomMenuBar.getView_deliveries().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Read));
+				new Accept_Done_Delivery_Core(CRUDAction.Read);
 				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Accept));
 				new Accept_Done_Delivery_Core(CRUDAction.Accept);
 			}
@@ -178,27 +180,27 @@ public class Main {
 			}
 			
 		});
-//		CustomMenuBar.getCreate_deliveryman().addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				MainFrame.changePanel(new DeliveryPanel());
-//				new DeliveryCore(CRUDAction.Create);
-//			}
-//			
-//		});
-//		CustomMenuBar.getEdit_deliveryman().addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				MainFrame.changePanel(new DeliveryPanel());
-//				new DeliveryCore(CRUDAction.Edit);
-//			}
-//			
-//		});
-//		CustomMenuBar.getDelete_deliveryman().addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				MainFrame.changePanel(new DeliveryPanel());
-//				new DeliveryCore(CRUDAction.Delete);
-//			}
+		CustomMenuBar.getCreate_deliveryman().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.changePanel(new DeliveryPanel());
+				new DeliveryCore(CRUDAction.Create);
+			}
 			
-//		});
+		});
+		CustomMenuBar.getEdit_deliveryman().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.changePanel(new DeliveryPanel());
+				new DeliveryCore(CRUDAction.Edit);
+			}
+			
+		});
+		CustomMenuBar.getDelete_deliveryman().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.changePanel(new DeliveryPanel());
+				new DeliveryCore(CRUDAction.Delete);
+			}
+			
+		});
 
 
 		//Change to Login
