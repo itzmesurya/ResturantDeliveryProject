@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+import java.awt.SystemColor;
 
 public class Order_Food_View {
 
@@ -59,20 +60,24 @@ public class Order_Food_View {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(233, 150, 122));
+		panel.setBackground(Color.WHITE);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("ORDER FOOD");
-		lblNewLabel.setFont(new Font("Lucida Console", Font.BOLD | Font.ITALIC, 24));
-		lblNewLabel.setBounds(10, 10, 190, 45);
+		JLabel lblNewLabel = new JLabel("  ORDER FOOD");
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setBackground(Color.BLACK);
+		lblNewLabel.setFont(new Font("Impact", Font.PLAIN, 30));
+		lblNewLabel.setBounds(10, 10, 166, 45);
 		panel.add(lblNewLabel);
 		
 		//RESTURANT LABEL 
 		
 		JLabel lblNewLabel_1 = new JLabel("Select Resturant");
-		lblNewLabel_1.setFont(new Font("Constantia", Font.PLAIN, 22));
-		lblNewLabel_1.setBounds(374, 17, 160, 38);
+		lblNewLabel_1.setForeground(new Color(255, 127, 80));
+		lblNewLabel_1.setFont(new Font("Monotype Corsiva", Font.PLAIN, 30));
+		lblNewLabel_1.setBounds(365, 11, 194, 53);
 		panel.add(lblNewLabel_1);
 		
 		//COMBOBOX FOR RESTURANT
@@ -82,13 +87,14 @@ public class Order_Food_View {
 		
 		//MENU PANEL
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(230, 230, 250));
 		panel_1.setBounds(10, 142, 581, 360);
 		panel.add(panel_1);
 		
 		//MENU TABLE
 		JTable table = new JTable();
-		table.setForeground(new Color(139, 0, 0));
-		table.setBackground(new Color(255, 255, 224));
+		table.setForeground(new Color(0, 0, 0));
+		table.setBackground(new Color(135, 206, 235));
 		table.setModel(new DefaultTableModel(new Object[][] { { "1", "Pizza", " 5 $ "},		//JUST FOR EXAMPLE
 			{ "2", "Burger", " 3 $" }, { "3", "Coffee", " 2 $"} },
 			new String[] { "ID", "Item Name", "Price", }) {
@@ -121,7 +127,7 @@ public class Order_Food_View {
 		
 		JTable table2 = new JTable();
 		table2.setForeground(new Color(139, 0, 0));
-		table2.setBackground(new Color(255, 255, 224));
+		table2.setBackground(new Color(135, 206, 235));
 		table2.setModel(new DefaultTableModel(new Object[][] { { }},
 			new String[] { "ID", "Item Name", "Price","Quantity" }) {
 		/**
@@ -142,17 +148,20 @@ public class Order_Food_View {
 		
 		//LABELS FOR ADDING ORDER
 		JLabel lblNewLabel_2 = new JLabel("Enter ID");
-		lblNewLabel_2.setFont(new Font("Sitka Display", Font.PLAIN, 25));
+		lblNewLabel_2.setForeground(new Color(248,86,73));
+		lblNewLabel_2.setFont(new Font("Monotype Corsiva", Font.PLAIN, 30));
 		lblNewLabel_2.setBounds(20, 521, 106, 38);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Quantity");
-		lblNewLabel_2_1.setFont(new Font("Sitka Display", Font.PLAIN, 25));
+		lblNewLabel_2_1.setForeground(new Color(248,86,73));
+		lblNewLabel_2_1.setFont(new Font("Monotype Corsiva", Font.PLAIN, 30));
 		lblNewLabel_2_1.setBounds(20, 617, 106, 38);
 		panel.add(lblNewLabel_2_1);
 		
 		//ADD ID TF
 		add_id = new JTextField();
+		add_id.setBackground(Color.WHITE);
 		add_id.setBounds(169, 521, 150, 38);
 		panel.add(add_id);
 		add_id.setColumns(10);
@@ -201,23 +210,26 @@ public class Order_Food_View {
 		panel.add(btn_delete_order_id);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(216, 191, 216));
+		panel_3.setBackground(new Color(255, 255, 255));
 		panel_3.setBounds(486, 507, 710, 255);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 		
 		JLabel lblNewLabel_2_3 = new JLabel("ADDRESS");
-		lblNewLabel_2_3.setFont(new Font("Sitka Display", Font.PLAIN, 25));
+		lblNewLabel_2_3.setForeground(new Color(248,86,73));
+		lblNewLabel_2_3.setFont(new Font("Monotype Corsiva", Font.PLAIN, 25));
 		lblNewLabel_2_3.setBounds(27, 32, 119, 38);
 		panel_3.add(lblNewLabel_2_3);
 		
 		JLabel lblNewLabel_2_3_1 = new JLabel("POSTAL CODE");
-		lblNewLabel_2_3_1.setFont(new Font("Sitka Display", Font.PLAIN, 25));
+		lblNewLabel_2_3_1.setForeground(new Color(248,86,73));
+		lblNewLabel_2_3_1.setFont(new Font("Monotype Corsiva", Font.PLAIN, 25));
 		lblNewLabel_2_3_1.setBounds(27, 106, 155, 38);
 		panel_3.add(lblNewLabel_2_3_1);
 		
 		JLabel lblNewLabel_2_3_2 = new JLabel("TOTAL");
-		lblNewLabel_2_3_2.setFont(new Font("Sitka Display", Font.PLAIN, 25));
+		lblNewLabel_2_3_2.setForeground(new Color(248,86,73));
+		lblNewLabel_2_3_2.setFont(new Font("Monotype Corsiva", Font.PLAIN, 30));
 		lblNewLabel_2_3_2.setBounds(27, 182, 119, 38);
 		panel_3.add(lblNewLabel_2_3_2);
 		
@@ -244,23 +256,27 @@ public class Order_Food_View {
 		panel_3.add(btn_place_order);
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setForeground(new Color(255, 255, 255));
 		panel_4.setBounds(10, 87, 581, 55);
-		panel_4.setBackground(Color.LIGHT_GRAY);
+		panel_4.setBackground(Color.DARK_GRAY);
 		panel.add(panel_4);
 		panel_4.setLayout(null);
 		
 		JLabel lblNewLabel_3 = new JLabel("MENU");
+		lblNewLabel_3.setBackground(Color.WHITE);
+		lblNewLabel_3.setForeground(new Color(255, 140, 0));
 		lblNewLabel_3.setFont(new Font("MS Reference Sans Serif", Font.BOLD, 20));
 		lblNewLabel_3.setBounds(243, 10, 83, 35);
 		panel_4.add(lblNewLabel_3);
 		
 		JPanel panel_4_1 = new JPanel();
 		panel_4_1.setBounds(615, 87, 581, 55);
-		panel_4_1.setBackground(Color.LIGHT_GRAY);
+		panel_4_1.setBackground(Color.DARK_GRAY);
 		panel.add(panel_4_1);
 		panel_4_1.setLayout(null);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("YOUR ORDER");
+		lblNewLabel_3_1.setForeground(new Color(255, 140, 0));
 		lblNewLabel_3_1.setFont(new Font("MS Reference Sans Serif", Font.BOLD, 20));
 		lblNewLabel_3_1.setBounds(225, 10, 158, 35);
 		panel_4_1.add(lblNewLabel_3_1);

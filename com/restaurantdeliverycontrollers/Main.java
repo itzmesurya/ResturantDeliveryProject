@@ -161,6 +161,8 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Read));
 				new Accept_Done_Delivery_Core(CRUDAction.Read);
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Accept));
+				new Accept_Done_Delivery_Core(CRUDAction.Accept);
 			}
 			
 		});
