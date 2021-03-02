@@ -103,21 +103,22 @@ public class Main {
 		});
 		CustomMenuBar.getView_order().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new OrderPanel());
+				new OrderCore(CRUDAction.Read);
 			}
 			
 		});
 		CustomMenuBar.getAccept_order().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
-				new Accept_Done_Delivery_Core();
+				MainFrame.changePanel(new OrderPanel());
+				new OrderCore(CRUDAction.Accept);
 			}
 			
 		});
 		CustomMenuBar.getEnd_order().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
-				new Accept_Done_Delivery_Core();
+				MainFrame.changePanel(new OrderPanel());
+				new OrderCore(CRUDAction.Ready);
 			}
 			
 		});
@@ -158,38 +159,43 @@ public class Main {
 		});
 		CustomMenuBar.getView_deliveries().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				new Accept_Done_Delivery_Core(CRUDAction.Read);
 			}
 			
 		});
 		CustomMenuBar.getAccept_deliveries().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				new Accept_Done_Delivery_Core(CRUDAction.Accept);
 			}
 			
 		});
 		CustomMenuBar.getEnd_deliveries().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				new Accept_Done_Delivery_Core(CRUDAction.Ready);
 			}
 			
 		});
 		CustomMenuBar.getCreate_deliveryman().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new DeliveryPanel());
+				new DeliveryCore(CRUDAction.Create);
 			}
 			
 		});
 		CustomMenuBar.getEdit_deliveryman().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new DeliveryPanel());
+				new DeliveryCore(CRUDAction.Edit);
 			}
 			
 		});
 		CustomMenuBar.getDelete_deliveryman().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainFrame.changePanel(new DeliveryPanel());
+				new DeliveryCore(CRUDAction.Delete);
 			}
 			
 		});

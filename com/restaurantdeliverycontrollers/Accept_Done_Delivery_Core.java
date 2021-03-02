@@ -9,6 +9,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
+import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.Deliveryman;
 import com.restaurantdeliverymodels.Item;
@@ -19,9 +20,16 @@ import com.restaurantdeliveryviews.Order_Food_Panel;
 
 public class Accept_Done_Delivery_Core {
 	
-	public Accept_Done_Delivery_Core() {
+	public Accept_Done_Delivery_Core(CRUDAction action) {
 		
-		
+		switch(action) {
+		case Read:
+			break;
+		case Accept:
+			break;
+		case Ready:
+			break;
+		}
 			
 		//  Getting Items 
 		String str = Accept_Done__Delivery_Panel.getOrder_number().getText();		
