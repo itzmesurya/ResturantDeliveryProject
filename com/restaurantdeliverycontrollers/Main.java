@@ -159,21 +159,21 @@ public class Main {
 		});
 		CustomMenuBar.getView_deliveries().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Read));
 				new Accept_Done_Delivery_Core(CRUDAction.Read);
 			}
 			
 		});
 		CustomMenuBar.getAccept_deliveries().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Accept));
 				new Accept_Done_Delivery_Core(CRUDAction.Accept);
 			}
 			
 		});
 		CustomMenuBar.getEnd_deliveries().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Ready));
 				new Accept_Done_Delivery_Core(CRUDAction.Ready);
 			}
 			
