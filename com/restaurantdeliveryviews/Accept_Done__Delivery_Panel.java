@@ -11,6 +11,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import com.restaurantdeliverymodels.CRUDAction;
+
 public class Accept_Done__Delivery_Panel extends JPanel {
 	
 	private static JTextField Delivery_Postal_Code;
@@ -18,9 +20,10 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	private static JTextField Resturant;
 	private static JTextField Order_number;
 	private	static JButton btnaccept;
+	private	static JButton btndone;
 	private	static JTable table;
 	
-	public Accept_Done__Delivery_Panel() {
+	public Accept_Done__Delivery_Panel(CRUDAction crudAction) {
 	
 	this.setLayout(null);
 	this.setBackground(Color.WHITE);
@@ -97,6 +100,12 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	btnaccept.setBounds(160, 630, 139, 40);
 	panel_1.add(btnaccept);
 	
+	btndone = new JButton("Accept");
+	btndone.setForeground(Color.WHITE);
+	btndone.setFont(MainFrame.labelFont);
+	btndone.setBounds(160, 630, 139, 40);
+	panel_1.add(btndone);
+	
 	//TABLE PANNEL
 	
 	JPanel panel_2 = new JPanel();
@@ -111,7 +120,7 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	table.setBackground(Color.white);
 	table.setModel(new DefaultTableModel(new Object[][] {  },
 		new String[] { "Order number", "Resturant", "Delivery Address", "Postal code" }) {
-	/**
+			/**
 			 * 
 			 */
 			private static final long serialVersionUID = 1L;
@@ -141,6 +150,22 @@ public class Accept_Done__Delivery_Panel extends JPanel {
     panel_3.add(lblDeliveries);
     lblDeliveries.setFont(MainFrame.titleFont);
     
+    
+	switch (crudAction) {
+	case Accept:
+		getBtnDone().setVisible(false);
+
+		break;
+	case Ready:
+		getBtnAccept().setVisible(false);
+		break;
+
+	default:
+		break;
+	}
+    
+    
+    
 	}
 	
 	
@@ -150,7 +175,9 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 		return	btnaccept;
 	}
 	
-
+	public static JButton getBtnDone() {
+		return	btndone;
+	}
 	
 	/*	Getter's & Setter's	For Text Field's*/
 

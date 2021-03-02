@@ -12,9 +12,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import com.restaurantdeliverymodels.Database;
+import com.restaurantdeliverymodels.Deliveryman;
 import com.restaurantdeliverymodels.IdCounter;
 import com.restaurantdeliverymodels.Item;
 import com.restaurantdeliverymodels.Menu;
+import com.restaurantdeliverymodels.Order;
 import com.restaurantdeliverymodels.Restaurant;
 import com.restaurantdeliveryviews.Accept_Done__Delivery_Panel;
 import com.restaurantdeliveryviews.Order_Food_Panel;
@@ -174,6 +176,7 @@ public class Order_Food_Core {
 		});
 		
 		
+		
 		// Place Order Button
 		Order_Food_Panel.getBtn_Place_Order().addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
@@ -193,11 +196,10 @@ public class Order_Food_Core {
 				}else if(Order_Food_Panel.gettable2().getRowCount() >= 0 && exit == false){
 					
 					
-				//	System.out.println("Placed");
-					
-					Order_Food_Panel.getAddress();		//Store These Values in to DataBase
-					Order_Food_Panel.getPostal_Code();	//Store These Values in to DataBase
-					Order_Food_Panel.getTotal();		//Store These Values in to DataBase
+					Database.addOrder(new Order(Order_Food_Panel.getPostal_Code().getText() , 
+												Order_Food_Panel.getAddress().getText() , 
+												null, Order_Food_Panel.getcomboBox().getSelectedIndex()+1 ,
+												Main.user.getId()));
 					
 				}
 						 
