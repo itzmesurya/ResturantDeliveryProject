@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
+import javax.swing.text.MaskFormatter;
 
 import com.restaurantdeliverymodels.CRUDAction;
 
@@ -19,7 +20,10 @@ import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import java.awt.Rectangle;
+import java.text.ParseException;
+
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
@@ -62,7 +66,7 @@ public class AccountPanel extends JPanel {
 	private JPanel topPanel;
 	private JPanel panel_2;
 
-	public AccountPanel(CRUDAction crudAction) {
+	public AccountPanel(CRUDAction crudAction) throws ParseException {
 
 		this.setLayout(new BorderLayout(0, 0));
 
@@ -233,8 +237,9 @@ public class AccountPanel extends JPanel {
 		getEmailTextfield().setBackground(Color.WHITE);
 		getEmailTextfield().setBounds(168, 241, 350, 40);
 		rightPanel.add(getEmailTextfield());
-
-		setPhoneTextField(new JTextField());
+		
+		MaskFormatter mf = new MaskFormatter("***-***-****");
+		setPhoneTextField(new JFormattedTextField(mf));
 		getPhoneTextField().setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 		getPhoneTextField().setColumns(10);
 		getPhoneTextField().setBackground(Color.WHITE);
