@@ -59,6 +59,7 @@ public class AccountView {
     private JLabel accountLabel;
     private JPanel topPanel;
     private JPanel mainPanel;
+    private JPanel panel_2;
 
     /**
      * Launch the application.
@@ -67,7 +68,7 @@ public class AccountView {
 	EventQueue.invokeLater(new Runnable() {
 	    public void run() {
 		try {
-		    AccountView window = new AccountView("delete");
+		    AccountView window = new AccountView("edit");
 		    window.frame.setVisible(true);
 		} catch (Exception e) {
 		    e.printStackTrace();
@@ -98,29 +99,34 @@ public class AccountView {
 	mainPanel.setLayout(new BorderLayout(0, 0));
 
 	topPanel = new JPanel();
+	topPanel.setBackground(Color.DARK_GRAY);
 	topPanel.setPreferredSize(new Dimension(0, 80));
 	topPanel.setFont(new Font("Tahoma", Font.BOLD, 40));
 	mainPanel.add(topPanel, BorderLayout.NORTH);
 	topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
 
 	accountLabel = new JLabel();
+	accountLabel.setForeground(Color.WHITE);
+	accountLabel.setBackground(Color.WHITE);
+	accountLabel.setPreferredSize(new Dimension(300, 50));
 	accountLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
-	accountLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
-	accountLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+	accountLabel.setBorder(new MatteBorder(2, 0, 2, 2, (Color) new Color(0, 0, 0)));
+	accountLabel.setFont(new Font("Harlow Solid Italic", Font.BOLD, 30));
 
 	topPanel.add(accountLabel);
 
 	toppanel2 = new JPanel();
 	topPanel.add(toppanel2);
 
-	selectLevelLabel = new JLabel("Select Level     :");
-	selectLevelLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	selectLevelLabel = new JLabel("Select Level  :");
+	selectLevelLabel.setForeground(Color.RED);
+	selectLevelLabel.setFont(new Font("Impact", Font.PLAIN, 30));
 	selectLevelLabel.setBounds(new Rectangle(118, 12, 164, 41));
 	toppanel2.add(selectLevelLabel);
 
 	selectLevelDropDown = new JComboBox();
-	selectLevelDropDown.setBorder(new LineBorder(Color.BLACK));
-	selectLevelDropDown.setBackground(new Color(224, 63, 216));
+	selectLevelDropDown.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+	selectLevelDropDown.setBackground(Color.WHITE);
 	selectLevelDropDown.setPreferredSize(new Dimension(612, 41));
 	selectLevelDropDown.addItem("0");
 	selectLevelDropDown.addItem("1");
@@ -135,152 +141,173 @@ public class AccountView {
 	centerPanel.setLayout(null);
 
 	leftPanel = new JPanel(null);
-	leftPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
-	leftPanel.setBounds(10, 98, 599, 230);
+	leftPanel.setBackground(Color.WHITE);
+	leftPanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+	leftPanel.setBounds(10, 98, 599, 263);
 	centerPanel.add(leftPanel);
 
-	loginInfoLabel = new JLabel("Login Information");
-	loginInfoLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-	loginInfoLabel.setBounds(10, 11, 299, 34);
-	leftPanel.add(loginInfoLabel);
-
-	userNameLabel = new JLabel("    Username :");
-	userNameLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-	userNameLabel.setBounds(56, 56, 110, 26);
+	userNameLabel = new JLabel("      Username :");
+	userNameLabel.setFont(new Font("Arial", Font.BOLD, 20));
+	userNameLabel.setBounds(56, 98, 148, 26);
 	leftPanel.add(userNameLabel);
 
 	passwordLabel = new JLabel("          Password :");
-	passwordLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-	passwordLabel.setBounds(34, 110, 132, 26);
+	passwordLabel.setFont(new Font("Arial", Font.BOLD, 20));
+	passwordLabel.setBounds(39, 151, 169, 26);
 	leftPanel.add(passwordLabel);
 
 	confirmPasswordLabel = new JLabel("Confirm Password :");
-	confirmPasswordLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-	confirmPasswordLabel.setBounds(10, 157, 156, 26);
+	confirmPasswordLabel.setFont(new Font("Arial", Font.BOLD, 20));
+	confirmPasswordLabel.setBounds(14, 204, 194, 26);
 	leftPanel.add(confirmPasswordLabel);
 
 	userNameTextField = new JTextField();
-	userNameTextField.setBorder(new LineBorder(Color.BLACK));
-	userNameTextField.setBackground(new Color(151, 203, 255));
-	userNameTextField.setBounds(188, 63, 360, 34);
+	userNameTextField.setCaretColor(Color.BLACK);
+	userNameTextField.setForeground(Color.BLACK);
+	userNameTextField.setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
+	userNameTextField.setBackground(Color.WHITE);
+	userNameTextField.setBounds(227, 93, 350, 40);
 	leftPanel.add(userNameTextField);
 	userNameTextField.setColumns(10);
 
 	passwordTextField = new JTextField();
-	passwordTextField.setBorder(new LineBorder(Color.BLACK));
-	passwordTextField.setBackground(new Color(151, 203, 255));
+	passwordTextField.setForeground(Color.DARK_GRAY);
+	passwordTextField.setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
+	passwordTextField.setBackground(Color.WHITE);
 	passwordTextField.setColumns(10);
-	passwordTextField.setBounds(188, 108, 360, 34);
+	passwordTextField.setBounds(227, 146, 350, 40);
 	leftPanel.add(passwordTextField);
 
 	confirmPwdTextField = new JTextField();
-	confirmPwdTextField.setBorder(new LineBorder(Color.BLACK));
-	confirmPwdTextField.setBackground(new Color(151, 203, 255));
+	confirmPwdTextField.setForeground(Color.DARK_GRAY);
+	confirmPwdTextField.setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
+	confirmPwdTextField.setBackground(Color.WHITE);
 	confirmPwdTextField.setColumns(10);
-	confirmPwdTextField.setBounds(188, 155, 360, 34);
+	confirmPwdTextField.setBounds(227, 199, 350, 40);
 	leftPanel.add(confirmPwdTextField);
+	
+	JPanel panel_1 = new JPanel();
+	panel_1.setBackground(Color.DARK_GRAY);
+	panel_1.setBounds(0, 13, 599, 45);
+	leftPanel.add(panel_1);
+	
+		loginInfoLabel = new JLabel("Login Information");
+		panel_1.add(loginInfoLabel);
+		loginInfoLabel.setForeground(Color.WHITE);
+		loginInfoLabel.setBackground(Color.BLACK);
+		loginInfoLabel.setFont(new Font("Impact", Font.PLAIN, 30));
 
 	rightPanel = new JPanel(null);
-	rightPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
-	rightPanel.setBounds(634, 98, 540, 352);
+	rightPanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+	rightPanel.setBounds(634, 98, 540, 354);
 	centerPanel.add(rightPanel);
 
-	personalInfoLabel = new JLabel("Personal Information");
-	personalInfoLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-	personalInfoLabel.setBounds(10, 11, 299, 34);
-	rightPanel.add(personalInfoLabel);
-
 	firstNameLabel = new JLabel("First Name :");
-	firstNameLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-	firstNameLabel.setBounds(42, 56, 102, 26);
+	firstNameLabel.setFont(new Font("Arial", Font.BOLD, 20));
+	firstNameLabel.setBounds(40, 85, 126, 26);
 	rightPanel.add(firstNameLabel);
 
 	lastNameLabel = new JLabel("Last Name :");
-	lastNameLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-	lastNameLabel.setBounds(42, 118, 102, 26);
+	lastNameLabel.setFont(new Font("Arial", Font.BOLD, 20));
+	lastNameLabel.setBounds(40, 140, 126, 26);
 	rightPanel.add(lastNameLabel);
 
-	addressLabel = new JLabel("   Address :");
-	addressLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-	addressLabel.setBounds(47, 183, 97, 26);
+	addressLabel = new JLabel("    Address :");
+	addressLabel.setFont(new Font("Arial", Font.BOLD, 20));
+	addressLabel.setBounds(40, 189, 126, 26);
 	rightPanel.add(addressLabel);
 
-	emailLabel = new JLabel("       Email :");
-	emailLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-	emailLabel.setBounds(53, 252, 91, 26);
+	emailLabel = new JLabel("    Email :");
+	emailLabel.setFont(new Font("Arial", Font.BOLD, 20));
+	emailLabel.setBounds(69, 243, 97, 26);
 	rightPanel.add(emailLabel);
 
 	phoneLabel = new JLabel(" Phone Number : ");
-	phoneLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-	phoneLabel.setBounds(10, 315, 133, 26);
+	phoneLabel.setFont(new Font("Arial", Font.BOLD, 20));
+	phoneLabel.setBounds(0, 294, 170, 26);
 	rightPanel.add(phoneLabel);
 
 	firstNameTextField = new JTextField();
-	firstNameTextField.setBorder(new LineBorder(Color.BLACK));
+	firstNameTextField.setForeground(Color.DARK_GRAY);
+	firstNameTextField.setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 	firstNameTextField.setColumns(10);
-	firstNameTextField.setBackground(new Color(151, 203, 255));
-	firstNameTextField.setBounds(147, 56, 360, 34);
+	firstNameTextField.setBackground(Color.WHITE);
+	firstNameTextField.setBounds(168, 83, 350, 40);
 	rightPanel.add(firstNameTextField);
 
 	lastNameTextField = new JTextField();
-	lastNameTextField.setBorder(new LineBorder(Color.BLACK));
+	lastNameTextField.setForeground(Color.DARK_GRAY);
+	lastNameTextField.setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 	lastNameTextField.setColumns(10);
-	lastNameTextField.setBackground(new Color(151, 203, 255));
-	lastNameTextField.setBounds(147, 118, 360, 34);
+	lastNameTextField.setBackground(Color.WHITE);
+	lastNameTextField.setBounds(168, 135, 350, 40);
 	rightPanel.add(lastNameTextField);
 
 	addressTextField = new JTextField();
-	addressTextField.setBorder(new LineBorder(Color.BLACK));
+	addressTextField.setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 	addressTextField.setColumns(10);
-	addressTextField.setBackground(new Color(151, 203, 255));
-	addressTextField.setBounds(147, 183, 360, 34);
+	addressTextField.setBackground(Color.WHITE);
+	addressTextField.setBounds(168, 187, 350, 40);
 	rightPanel.add(addressTextField);
 
 	emailTextfield = new JTextField();
-	emailTextfield.setBorder(new LineBorder(Color.BLACK));
+	emailTextfield.setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 	emailTextfield.setColumns(10);
-	emailTextfield.setBackground(new Color(151, 203, 255));
-	emailTextfield.setBounds(147, 250, 360, 34);
+	emailTextfield.setBackground(Color.WHITE);
+	emailTextfield.setBounds(168, 241, 350, 40);
 	rightPanel.add(emailTextfield);
 
 	phoneTextField = new JTextField();
-	phoneTextField.setBorder(new LineBorder(Color.BLACK));
+	phoneTextField.setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 	phoneTextField.setColumns(10);
-	phoneTextField.setBackground(new Color(151, 203, 255));
-	phoneTextField.setBounds(147, 307, 360, 34);
+	phoneTextField.setBackground(Color.WHITE);
+	phoneTextField.setBounds(168, 292, 350, 40);
 	rightPanel.add(phoneTextField);
+	
+	panel_2 = new JPanel();
+	panel_2.setBackground(Color.DARK_GRAY);
+	panel_2.setBounds(0, 13, 540, 46);
+	rightPanel.add(panel_2);
+	
+		personalInfoLabel = new JLabel("Personal Information");
+		panel_2.add(personalInfoLabel);
+		personalInfoLabel.setForeground(Color.WHITE);
+		personalInfoLabel.setFont(new Font("Impact", Font.PLAIN, 30));
 
 	btnPanel = new JPanel(null);
-	btnPanel.setBounds(10, 352, 614, 98);
+	btnPanel.setBounds(8, 379, 614, 98);
 	centerPanel.add(btnPanel);
 
 	userAvailabilityBtn = new JButton("Verify Username  Availability");
-	userAvailabilityBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
-	userAvailabilityBtn.setBackground(new Color(252, 220, 86));
-	userAvailabilityBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+	userAvailabilityBtn.setForeground(Color.WHITE);
+	userAvailabilityBtn.setBorder(new MatteBorder(3, 3, 3, 3, (Color) new Color(0, 0, 0)));
+	userAvailabilityBtn.setBackground(Color.RED);
+	userAvailabilityBtn.setFont(new Font("Arial", Font.BOLD, 20));
 	userAvailabilityBtn.setBounds(90, 11, 444, 33);
 	btnPanel.add(userAvailabilityBtn);
 
 	createAccountBtn = new JButton();
-	createAccountBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
-	createAccountBtn.setBackground(new Color(252, 220, 86));
-	createAccountBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+	createAccountBtn.setForeground(Color.WHITE);
+	createAccountBtn.setBorder(new MatteBorder(3, 3, 3, 3, (Color) new Color(0, 0, 0)));
+	createAccountBtn.setBackground(Color.RED);
+	createAccountBtn.setFont(new Font("Arial", Font.BOLD, 20));
 	createAccountBtn.setBounds(90, 54, 444, 33);
 	btnPanel.add(createAccountBtn);
 
 	panel = new JPanel(null);
-	panel.setBounds(290, 19, 820, 68);
+	panel.setBounds(247, 13, 893, 68);
 	centerPanel.add(panel);
 
-	lblSelectAccount = new JLabel("Select Account   :");
-	lblSelectAccount.setFont(new Font("Tahoma", Font.PLAIN, 20));
-	lblSelectAccount.setBounds(new Rectangle(10, 11, 162, 41));
+	lblSelectAccount = new JLabel("Select Account      :");
+	lblSelectAccount.setForeground(Color.RED);
+	lblSelectAccount.setFont(new Font("Impact", Font.PLAIN, 30));
+	lblSelectAccount.setBounds(new Rectangle(41, 11, 222, 41));
 	panel.add(lblSelectAccount);
 
 	comboBox = new JComboBox();
-	comboBox.setBorder(new LineBorder(Color.BLACK));
-	comboBox.setBackground(new Color(224, 63, 216));
-	comboBox.setBounds(198, 11, 612, 41);
+	comboBox.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+	comboBox.setBackground(Color.WHITE);
+	comboBox.setBounds(269, 11, 612, 41);
 	panel.add(comboBox);
 	AdaptToAction();
     }
@@ -288,7 +315,7 @@ public class AccountView {
     private void AdaptToAction() {
 	switch (this.action) {
 	case "create":
-	    accountLabel.setText("Open Account");
+	    accountLabel.setText("    Open Account");
 	    createAccountBtn.setText("Create Account");
 	    userAvailabilityBtn.setEnabled(true);
 	    panel.setVisible(false);
@@ -298,13 +325,13 @@ public class AccountView {
 	    panel.setVisible(true);
 	    createAccountBtn.setText("Save");
 	    userAvailabilityBtn.setEnabled(true);
-	    accountLabel.setText("Edit Account");
+	    accountLabel.setText("   Edit Account");
 	    break;
 	case "delete":
 	    panel.setVisible(true);
 	    createAccountBtn.setText("Delete");
 	    userAvailabilityBtn.setEnabled(false);
-	    accountLabel.setText("Delete Account");
+	    accountLabel.setText("   Delete Account");
 	    setPanelEnabled(leftPanel, false);
 	    setPanelEnabled(rightPanel, false);
 	    break;

@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -49,6 +50,8 @@ public class MenuView {
     private JLabel menuLabel;
     private JPanel topPanel;
     private JPanel mainPanel;
+    private JPanel panel_1;
+    private JPanel panel_2;
 
     /**
      * Launch the application.
@@ -57,7 +60,7 @@ public class MenuView {
 	EventQueue.invokeLater(new Runnable() {
 	    public void run() {
 		try {
-		    MenuView window = new MenuView("delete");
+		    MenuView window = new MenuView("create");
 		    window.frame.setVisible(true);
 		} catch (Exception e) {
 		    e.printStackTrace();
@@ -87,29 +90,34 @@ public class MenuView {
 	mainPanel.setLayout(new BorderLayout(0, 0));
 
 	topPanel = new JPanel();
+	topPanel.setBackground(Color.DARK_GRAY);
 	topPanel.setPreferredSize(new Dimension(0, 80));
 	topPanel.setFont(new Font("Tahoma", Font.BOLD, 40));
 	mainPanel.add(topPanel, BorderLayout.NORTH);
 	topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
 
 	menuLabel = new JLabel(" Create Menu ");
+	menuLabel.setForeground(Color.WHITE);
+	menuLabel.setBackground(Color.WHITE);
+	menuLabel.setPreferredSize(new Dimension(300, 50));
 	menuLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
-	menuLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
-	menuLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+	menuLabel.setBorder(new MatteBorder(2, 0, 2, 2, (Color) new Color(0, 0, 0)));
+	menuLabel.setFont(new Font("Harlow Solid Italic", Font.BOLD, 30));
 	topPanel.add(menuLabel);
 
 	toppanel2 = new JPanel(null);
 	topPanel.add(toppanel2);
 
 	selectRestoLabel = new JLabel("Select Restaurant     :");
-	selectRestoLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-	selectRestoLabel.setBounds(new Rectangle(118, 12, 228, 41));
+	selectRestoLabel.setForeground(Color.RED);
+	selectRestoLabel.setFont(new Font("Impact", Font.PLAIN, 30));
+	selectRestoLabel.setBounds(new Rectangle(57, 12, 289, 41));
 	toppanel2.add(selectRestoLabel);
 
 	selectRestoDropDown = new JComboBox();
-	selectRestoDropDown.setBorder(new LineBorder(Color.BLACK));
-	selectRestoDropDown.setBackground(new Color(224, 63, 216));
-	selectRestoDropDown.setBounds(360, 12, 547, 41);
+	selectRestoDropDown.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+	selectRestoDropDown.setBackground(Color.WHITE);
+	selectRestoDropDown.setBounds(325, 12, 547, 41);
 	toppanel2.add(selectRestoDropDown);
 
 	centerPanel = new JPanel();
@@ -126,94 +134,118 @@ public class MenuView {
 	separator.setBounds(0, 47, 331, 2);
 	rightPanel.add(separator);
 
-	lblNewLabel = new JLabel("Menu");
-	lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-	lblNewLabel.setBounds(127, 11, 78, 25);
-	rightPanel.add(lblNewLabel);
-
 	scrollPane = new JScrollPane();
-	scrollPane.setBorder(new LineBorder(new Color(130, 135, 144)));
+	scrollPane.setFont(new Font("Arial", Font.PLAIN, 20));
+	scrollPane.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 	scrollPane.setBounds(0, 47, 323, 378);
 	rightPanel.add(scrollPane);
 
 	table = new JTable();
+	table.setForeground(new Color(139, 0, 0));
+	table.setBackground(new Color(255, 255, 224));
+	table.setFont(new Font("Arial", Font.BOLD, 20));
 	scrollPane.setViewportView(table);
-	table.setModel(new DefaultTableModel(new Object[][] { { null, null }, { null, null }, { null, null },
-		{ null, null }, { null, null }, { null, null }, { null, null }, { null, null }, { null, null },
-		{ null, null }, { null, null }, { null, null }, { null, null }, { null, null }, { null, null },
-		{ null, null }, { null, null }, { null, null }, { null, null }, { null, null }, { null, null },
-		{ null, null }, { null, null }, }, new String[] { "Item", "Price" }));
+	table.setModel(new DefaultTableModel(
+		new Object[][] {
+		},
+		new String[] {
+			"Item", "Price"
+		}
+	));
+	table.getColumnModel().getColumn(0).setPreferredWidth(79);
+	table.getColumnModel().getColumn(0).setMinWidth(20);
+	
+	panel_2 = new JPanel();
+	panel_2.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+	panel_2.setBackground(Color.DARK_GRAY);
+	panel_2.setBounds(0, 0, 323, 49);
+	rightPanel.add(panel_2);
+	
+		lblNewLabel = new JLabel("Menu");
+		panel_2.add(lblNewLabel);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Impact", Font.PLAIN, 30));
 
 	leftPanel = new JPanel(null);
-	leftPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
-	leftPanel.setBounds(90, 205, 610, 240);
+	leftPanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+	leftPanel.setBounds(90, 205, 610, 257);
 	centerPanel.add(leftPanel);
 
-	addItemLabel = new JLabel("Add Item");
-	addItemLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-	addItemLabel.setBounds(10, 11, 297, 32);
-	leftPanel.add(addItemLabel);
-
 	itemNameLabel = new JLabel("Item Name :");
-	itemNameLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-	itemNameLabel.setBounds(10, 69, 108, 32);
+	itemNameLabel.setFont(new Font("Arial", Font.BOLD, 20));
+	itemNameLabel.setBounds(10, 69, 135, 32);
 	leftPanel.add(itemNameLabel);
 
 	itemPriceLabel = new JLabel("Item Price  :");
-	itemPriceLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-	itemPriceLabel.setBounds(10, 138, 108, 32);
+	itemPriceLabel.setFont(new Font("Arial", Font.BOLD, 20));
+	itemPriceLabel.setBounds(10, 138, 124, 32);
 	leftPanel.add(itemPriceLabel);
 
 	textField = new JTextField();
-	textField.setBorder(new LineBorder(new Color(171, 173, 179)));
-	textField.setBackground(new Color(151, 203, 255));
-	textField.setBounds(152, 65, 384, 36);
+	textField.setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
+	textField.setBackground(Color.WHITE);
+	textField.setBounds(175, 69, 350, 40);
 	leftPanel.add(textField);
 	textField.setColumns(10);
 
 	textField_1 = new JTextField();
-	textField_1.setBorder(new LineBorder(new Color(171, 173, 179)));
-	textField_1.setBackground(new Color(151, 203, 255));
+	textField_1.setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
+	textField_1.setBackground(Color.WHITE);
 	textField_1.setColumns(10);
-	textField_1.setBounds(152, 138, 384, 36);
+	textField_1.setBounds(175, 138, 350, 40);
 	leftPanel.add(textField_1);
 
 	addBtn = new JButton("Add");
-	addBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
-	addBtn.setBackground(new Color(252, 220, 86));
-	addBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-	addBtn.setBounds(435, 189, 101, 40);
+	addBtn.setForeground(Color.WHITE);
+	addBtn.setBorder(new MatteBorder(3, 3, 3, 3, (Color) new Color(0, 0, 0)));
+	addBtn.setBackground(Color.RED);
+	addBtn.setFont(new Font("Arial", Font.BOLD, 20));
+	addBtn.setBounds(435, 204, 101, 40);
 	leftPanel.add(addBtn);
 
 	btnEdit = new JButton("Edit");
-	btnEdit.setBorder(new LineBorder(new Color(0, 0, 0)));
-	btnEdit.setBackground(new Color(252, 220, 86));
-	btnEdit.setFont(new Font("Tahoma", Font.BOLD, 15));
-	btnEdit.setBounds(277, 189, 101, 40);
+	btnEdit.setForeground(Color.WHITE);
+	btnEdit.setBorder(new MatteBorder(3, 3, 3, 3, (Color) new Color(0, 0, 0)));
+	btnEdit.setBackground(Color.RED);
+	btnEdit.setFont(new Font("Arial", Font.BOLD, 20));
+	btnEdit.setBounds(277, 204, 101, 40);
 	leftPanel.add(btnEdit);
 
 	btnDelete = new JButton("Delete");
-	btnDelete.setBorder(new LineBorder(new Color(0, 0, 0)));
-	btnDelete.setBackground(new Color(252, 220, 86));
-	btnDelete.setFont(new Font("Tahoma", Font.BOLD, 15));
-	btnDelete.setBounds(125, 189, 101, 40);
+	btnDelete.setForeground(Color.WHITE);
+	btnDelete.setBorder(new MatteBorder(3, 3, 3, 3, (Color) new Color(0, 0, 0)));
+	btnDelete.setBackground(Color.RED);
+	btnDelete.setFont(new Font("Arial", Font.BOLD, 20));
+	btnDelete.setBounds(125, 204, 101, 40);
 	leftPanel.add(btnDelete);
+	
+	panel_1 = new JPanel();
+	panel_1.setBackground(Color.DARK_GRAY);
+	panel_1.setBounds(0, 13, 610, 43);
+	leftPanel.add(panel_1);
+	
+		addItemLabel = new JLabel("Add Item");
+		addItemLabel.setForeground(Color.WHITE);
+		panel_1.add(addItemLabel);
+		addItemLabel.setFont(new Font("Impact", Font.PLAIN, 30));
 
 	panel = new JPanel(null);
 	panel.setBounds(779, 523, 323, 63);
 	centerPanel.add(panel);
 
 	selectBtn = new JButton("Select");
-	selectBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-	selectBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
-	selectBtn.setBackground(new Color(252, 220, 86));
+	selectBtn.setForeground(Color.WHITE);
+	selectBtn.setFont(new Font("Arial", Font.BOLD, 20));
+	selectBtn.setBorder(new MatteBorder(3, 3, 3, 3, (Color) new Color(0, 0, 0)));
+	selectBtn.setBackground(Color.RED);
 	selectBtn.setBounds(0, 0, 323, 52);
 	panel.add(selectBtn);
 
 	saveBtn = new JButton("Save");
-	saveBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
-	saveBtn.setBackground(new Color(252, 220, 86));
-	saveBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+	saveBtn.setForeground(Color.WHITE);
+	saveBtn.setBorder(new MatteBorder(3, 3, 3, 3, (Color) new Color(0, 0, 0)));
+	saveBtn.setBackground(Color.RED);
+	saveBtn.setFont(new Font("Arial", Font.BOLD, 20));
 	saveBtn.setBounds(263, 500, 164, 45);
 	centerPanel.add(saveBtn);
 
@@ -225,7 +257,7 @@ public class MenuView {
 	switch (this.action) {
 	case "create":
 	    // name the title label as Open Menu
-	    menuLabel.setText("Create Menu");
+	    menuLabel.setText("   Create Menu");
 	    // hide the delete, edit and select buttons
 	    btnDelete.setVisible(false);
 	    btnEdit.setVisible(false);
@@ -233,12 +265,12 @@ public class MenuView {
 	    break;
 	case "edit":
 	    // name the title label as Edit Menu
-	    menuLabel.setText("Edit Menu");
+	    menuLabel.setText("   Edit Menu");
 	    addItemLabel.setText("Edit Item");
 	    break;
 	case "delete":
 	    // name the title label as Delete Menu
-	    menuLabel.setText("Delete Menu");	   
+	    menuLabel.setText("   Delete Menu");	   
 	    // hide the buttons panel
 	    leftPanel.setVisible(false);
 	    // rename the "save" button to "delete"
