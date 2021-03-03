@@ -18,6 +18,20 @@ public class UserHelper {
 		//If no matches were made, return true
 		return true;
 	}
+	
+	/*
+	 * This method will return 'true' if the username is available to be created
+	 */
+	public static boolean isUsernameAvailable(String userName) {
+		//Search through all users in database if username is a match
+		for (User existingUser : Database.getUsers()) {
+			if (existingUser.getUsername().equals(userName))
+				//If it's a match, return false
+				return false;
+		}
+		//If no matches were made, return true
+		return true;
+	}
 
 	public static User userFactory(int levelTobeAdded, String userName, String password, String firstName,
 			String lastName, String address, String email, String phone) {

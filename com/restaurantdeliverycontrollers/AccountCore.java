@@ -23,13 +23,44 @@ public class AccountCore {
 	CRUDAction crudAction;
 	User user;
 
+	private class LevelSelectOption {
+		int level;
+		String name;
+
+		public LevelSelectOption(int level, String name) {
+			this.level = level;
+			this.name = name;
+
+		}
+
+		@Override
+		public String toString() {
+			return name;
+
+		}
+
+		public int getlevel() {
+			return level;
+
+		}
+	}
+
 	AccountCore(CRUDAction crudAction) {
 		this.crudAction = crudAction;
 		user = Main.user;
+		BindLevelsComboBox();
 		BindActionEvents(crudAction);
 		loadAccountsBasedOnLevelSelected();
 		LoadUser();
 
+	}
+
+	private void BindLevelsComboBox() {
+		AccountPanel.getSelectLevelDropDown().addItem(new LevelSelectOption(0, "Client"));
+		AccountPanel.getSelectLevelDropDown().addItem(new LevelSelectOption(1, "Delivery Man"));
+		AccountPanel.getSelectLevelDropDown().addItem(new LevelSelectOption(2, "Restaurateur"));
+		AccountPanel.getSelectLevelDropDown().addItem(new LevelSelectOption(3, "Manager"));
+		AccountPanel.getSelectLevelDropDown().addItem(new LevelSelectOption(100, "Administrator"));
 	}
 
 	private void BindActionEvents(CRUDAction crudAction) {
@@ -37,7 +68,9 @@ public class AccountCore {
 
 			if (crudAction != CRUDAction.Delete) {
 				// Create user object
-				user = doUserCheckAvailabilityAndCreateUserObject();
+				if (doUserCheckAvailability()) {
+					user = CreateUserObject();
+				}
 			}
 
 			if (user != null) {
@@ -61,7 +94,7 @@ public class AccountCore {
 		});
 
 		AccountPanel.getUserAvailabilityBtn().addActionListener(e -> {
-			doUserCheckAvailabilityAndCreateUserObject();
+			doUserCheckAvailability();
 		});
 
 		AccountPanel.getSelectLevelDropDown().addActionListener(e -> {
@@ -106,13 +139,18 @@ public class AccountCore {
 		});
 	}
 
-	private User doUserCheckAvailabilityAndCreateUserObject() {
-		User user = CreateUserObject();
-		if (!UserHelper.isUsernameAvailable(user)) {
-			Functions.displayError("User has been taken. Please try with different User");
-			return null;
+	private Boolean doUserCheckAvailability() {
+		if (!AccountPanel.getUserNameTextField().getText().isEmpty()) {
+			if (!UserHelper.isUsernameAvailable(AccountPanel.getUserNameTextField().getText())) {
+				Functions.displayError("User has been taken. Please try with different User");
+				return false;
+			}
+		} else {
+			Functions.displayError("Please enter the user name to check!");
+			return false;
 		}
-		return user;
+		Functions.displayMessage(String.format("Username %s is available", AccountPanel.getUserNameTextField().getText()));
+		return true;
 	}
 
 	private boolean isAccountScreenValid() {
@@ -153,7 +191,7 @@ public class AccountCore {
 				String address = AccountPanel.getAddressTextField().getText();
 				String email = AccountPanel.getEmailTextfield().getText();
 				String phone = AccountPanel.getPhoneTextField().getText();
-				int levelTobeAdded = Integer.valueOf((String)AccountPanel.getSelectLevelDropDown().getSelectedItem());
+				int levelTobeAdded = Integer.valueOf((String) AccountPanel.getSelectLevelDropDown().getSelectedItem());
 				return UserHelper.userFactory(levelTobeAdded, userName, password, firstName, lastName, address, email,
 						phone);
 			} else {
@@ -193,8 +231,7 @@ public class AccountCore {
 
 	@SuppressWarnings("unused")
 	private void loadAccountsBasedOnLevelSelected() {
-		int selectedLevelFromDropDown = Integer
-				.parseInt(AccountPanel.getSelectLevelDropDown().getSelectedItem().toString());
+		int selectedLevelFromDropDown = getLevel();
 		ArrayList<User> users = UserHelper.getUsersBasedOnLevel(selectedLevelFromDropDown);
 		ArrayList<String> userArray = (ArrayList<String>) users.stream().map(x -> x.getUsername())
 				.collect(Collectors.toList());
@@ -214,7 +251,7 @@ public class AccountCore {
 	}
 
 	private int getLevel() {
-		return Integer.parseInt(AccountPanel.getSelectLevelDropDown().getSelectedItem().toString());
+		return ((LevelSelectOption) AccountPanel.getSelectLevelDropDown().getSelectedItem()).getlevel();
 	}
 
 	private void loadUserIntoPanels() {
@@ -222,4 +259,5 @@ public class AccountCore {
 				AccountPanel.getComboBox().getSelectedItem().toString());
 		fillUserDetails(userToEdit);
 	}
+
 }

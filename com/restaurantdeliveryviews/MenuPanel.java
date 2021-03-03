@@ -74,7 +74,6 @@ public class MenuPanel extends JPanel {
 		menuLabel.setBackground(Color.WHITE);
 		menuLabel.setPreferredSize(new Dimension(300, 50));
 		menuLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		menuLabel.setBorder(new MatteBorder(2, 0, 2, 2, (Color) new Color(0, 0, 0)));
 		menuLabel.setFont(new Font("Harlow Solid Italic", Font.BOLD, 30));
 		topPanel.add(menuLabel);
 
@@ -87,6 +86,7 @@ public class MenuPanel extends JPanel {
 		toppanel2.add(selectRestoLabel);
 
 		setSelectRestoDropDown(new JComboBox());
+		getSelectRestoDropDown().setFont(MainFrame.labelFont);
 		getSelectRestoDropDown().setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		getSelectRestoDropDown().setBackground(Color.WHITE);
 		getSelectRestoDropDown().setBounds(325, 12, 547, 41);
@@ -98,6 +98,7 @@ public class MenuPanel extends JPanel {
 		centerPanel.setLayout(null);
 
 		rightPanel = new JPanel(null);
+		rightPanel.setBackground(Color.WHITE);
 		rightPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		rightPanel.setBounds(779, 98, 323, 425);
 		centerPanel.add(rightPanel);
@@ -131,6 +132,7 @@ public class MenuPanel extends JPanel {
 		getTable().getColumnModel().getColumn(0).setMinWidth(20);
 
 		leftPanel = new JPanel(null);
+		leftPanel.setBackground(Color.WHITE);
 		leftPanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		leftPanel.setBounds(90, 205, 610, 257);
 		centerPanel.add(leftPanel);
@@ -156,6 +158,7 @@ public class MenuPanel extends JPanel {
 		leftPanel.add(itemPriceLabel);
 
 		setItemNameTextField(new JTextField());
+		getItemNameTextField().setFont(MainFrame.labelFont);
 		getItemNameTextField().setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 		getItemNameTextField().setBackground(Color.WHITE);
 		getItemNameTextField().setBounds(175, 69, 350, 40);
@@ -163,6 +166,7 @@ public class MenuPanel extends JPanel {
 		getItemNameTextField().setColumns(10);
 
 		setItemPriceTextField(new JTextField());
+		getItemPriceTextField().setFont(MainFrame.labelFont);
 		getItemPriceTextField().setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 		getItemPriceTextField().setBackground(Color.WHITE);
 		getItemPriceTextField().setColumns(10);
