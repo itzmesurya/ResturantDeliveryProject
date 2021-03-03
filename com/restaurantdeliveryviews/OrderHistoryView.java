@@ -221,11 +221,11 @@ public class OrderHistoryView {
 		Panel_C33.add(btnSubmit);
 		
 		JPanel panel_C32 = new JPanel();
-		panel_C32.setBorder(new MatteBorder(2, 0, 2, 0, (Color) new Color(0, 0, 0)));
+		panel_C32.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
 		panel_C3.add(panel_C32, BorderLayout.CENTER);
 		
 		JScrollPane scrollPane_C3 = new JScrollPane();
-		scrollPane_C3.setPreferredSize(new Dimension(360, 420));
+		scrollPane_C3.setPreferredSize(new Dimension(400, 440));
 		panel_C32.add(scrollPane_C3);
 		
 		JTextArea textOH = new JTextArea();

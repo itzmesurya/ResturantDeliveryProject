@@ -11,11 +11,13 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableModel;
 
 public class OrderHistoryPanel extends JPanel {
 	
@@ -24,6 +26,10 @@ public class OrderHistoryPanel extends JPanel {
 	private static JTextArea textOH;
 	private static JTextArea textOrder;
 	private static JButton btnSubmit;
+	private static JTextField tf_hours;
+	private static JTextField tf_minutes;
+	private static JTable orderTable;
+	private static JTable menuTable;
 	
 	public OrderHistoryPanel() {
 	
@@ -88,12 +94,15 @@ public class OrderHistoryPanel extends JPanel {
 	scrollPane_C2.setPreferredSize(new Dimension(560, 210));
 	panel_C22.add(scrollPane_C2);
 	
-	textOrder = new JTextArea();
-	textOrder.setFont(MainFrame.labelFont);
-	textOrder.setBackground(Color.white);
-	textOrder.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-	textOrder.setPreferredSize(new Dimension(550, 200));
-	scrollPane_C2 = new JScrollPane(textOrder);
+	//Menu
+	
+	menuTable = new JTable();
+	menuTable.setForeground(new Color(139, 0, 0));
+	menuTable.setBackground(new Color(255, 255, 224));
+	scrollPane_C2.setViewportView(menuTable);
+	menuTable.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Item Name", "Price", "Quantity" }));
+	menuTable.getColumnModel().getColumn(0).setPreferredWidth(79);
+	menuTable.getColumnModel().getColumn(0).setMinWidth(20);
 	
 	JPanel panel_C1 = new JPanel();
 	panel_C1.setPreferredSize(new Dimension(600, 180));
@@ -118,6 +127,7 @@ public class OrderHistoryPanel extends JPanel {
 	tf_C11.setPreferredSize(new Dimension(350, 40));
 	tf_C11.setFont(MainFrame.labelFont);
 	tf_C11.setBorder(new LineBorder(new Color(0,0,0), 2, true));
+	tf_C11.setEnabled(false);
 	Panel_C11.add(tf_C11);
 	
 	JPanel Panel_C12 = new JPanel();
@@ -135,28 +145,28 @@ public class OrderHistoryPanel extends JPanel {
 	lbl_C122.setBackground(Color.white);
 	Panel_C12.add(lbl_C122);
 	
-	JComboBox combo_C121 = new JComboBox();
-	combo_C121.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
-	combo_C121.setBackground(Color.black);
-	combo_C121.setToolTipText("");
-	combo_C121.setPreferredSize(new Dimension(60, 30));
-	combo_C121.setFont(MainFrame.labelFont);
-	combo_C121.setForeground(Color.white);
-	Panel_C12.add(combo_C121);
+	tf_hours = new JTextField();
+	tf_hours.setBackground(Color.WHITE);
+	tf_hours.setPreferredSize(new Dimension(60, 30));
+	tf_hours.setBorder(new LineBorder(new Color(0,0,0), 2, true));
+	tf_hours.setFont(MainFrame.labelFont);
+	tf_hours.setForeground(Color.BLACK);
+	tf_hours.setEnabled(false);
+	Panel_C12.add(tf_hours);
 	
 	JLabel lbl_C123 = new JLabel(" h     ");
 	lbl_C123.setForeground(Color.black);
 	lbl_C123.setFont(MainFrame.labelFont);
 	Panel_C12.add(lbl_C123);
 	
-	JComboBox combo_C122 = new JComboBox();
-	combo_C122.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
-	combo_C122.setBackground(Color.black);
-	combo_C122.setToolTipText("");
-	combo_C122.setPreferredSize(new Dimension(60, 30));
-	combo_C122.setFont(MainFrame.labelFont);
-	combo_C122.setForeground(Color.white);
-	Panel_C12.add(combo_C122);
+	tf_minutes = new JTextField();
+	tf_minutes.setBackground(Color.WHITE);
+	tf_minutes.setPreferredSize(new Dimension(60, 30));
+	tf_minutes.setBorder(new LineBorder(new Color(0,0,0), 2, true));
+	tf_minutes.setFont(MainFrame.labelFont);
+	tf_minutes.setForeground(Color.BLACK);
+	tf_minutes.setEnabled(false);
+	Panel_C12.add(tf_minutes);
 	
 	JPanel Panel_C13 = new JPanel();
 	Panel_C13.setPreferredSize(new Dimension(580, 50));
@@ -174,6 +184,7 @@ public class OrderHistoryPanel extends JPanel {
 	tf_C13.setPreferredSize(new Dimension(350, 40));
 	tf_C13.setFont(MainFrame.labelFont);
 	tf_C13.setBorder(new LineBorder(new Color(0,0,0), 2, true));
+	tf_C13.setEnabled(false);
 	Panel_C13.add(tf_C13);
 	
 	JPanel panel_C3 = new JPanel();
@@ -211,22 +222,25 @@ public class OrderHistoryPanel extends JPanel {
 	Panel_C33.add(btnSubmit);
 	
 	JPanel panel_C32 = new JPanel();
-	panel_C32.setBorder(new MatteBorder(2, 0, 2, 0, (Color) new Color(0, 0, 0)));
+	panel_C32.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
 	panel_C32.setBackground(Color.WHITE);
 	panel_C3.add(panel_C32, BorderLayout.CENTER);
 	
 	JScrollPane scrollPane_C3 = new JScrollPane();
 	scrollPane_C3.setBackground(Color.white);
-	scrollPane_C3.setPreferredSize(new Dimension(360, 420));
+	scrollPane_C3.setPreferredSize(new Dimension(400, 440));
 	panel_C32.add(scrollPane_C3);
 	
-	textOH = new JTextArea();
-	textOH.setFont(MainFrame.labelFont);
-	textOH.setBackground(Color.white);
-	textOH.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-	textOH.setPreferredSize(new Dimension(350, 410));
-	scrollPane_C3 = new JScrollPane(textOH); 
-	textOH.setEditable(false);
+	//Orders
+	orderTable = new JTable();
+	orderTable.setForeground(new Color(139, 0, 0));
+	orderTable.setBackground(new Color(255, 255, 224));
+	scrollPane_C3.setViewportView(orderTable);
+	orderTable.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Restaurant", "Date" }));
+	orderTable.getColumnModel().getColumn(0).setPreferredWidth(79);
+	orderTable.getColumnModel().getColumn(0).setMinWidth(20);
+	
+	
 	
 	}
 
@@ -240,6 +254,22 @@ public class OrderHistoryPanel extends JPanel {
 
 	public static JTextArea getTextOrder() {
 		return textOrder;
+	}
+
+	public static JTextField getTf_hours() {
+		return tf_hours;
+	}
+
+	public static JTextField getTf_minutes() {
+		return tf_minutes;
+	}
+
+	public static JTable getOrderTable() {
+		return orderTable;
+	}
+
+	public static JTable getMenuTable() {
+		return menuTable;
 	}
 	
 	
