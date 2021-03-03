@@ -19,7 +19,6 @@ public class Manager_main_menu_Core {
 		Manager_main_menu_Panel.getMenu_Add_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-
 				MainFrame.changePanel(new MenuPanel(CRUDAction.Create));
 				new MenuCore(CRUDAction.Create);
 				

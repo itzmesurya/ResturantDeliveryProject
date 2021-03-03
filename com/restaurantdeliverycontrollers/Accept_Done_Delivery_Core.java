@@ -21,6 +21,7 @@ import com.restaurantdeliveryviews.Order_Food_Panel;
 
 public class Accept_Done_Delivery_Core {
 	
+	
 	public Accept_Done_Delivery_Core(CRUDAction action) {
 		
 		ArrayList<Order> orders  = Database.getOrders();
@@ -41,8 +42,12 @@ public class Accept_Done_Delivery_Core {
 							
 				    //Printing items from delivery_order 		
 					DefaultTableModel model = (DefaultTableModel) Accept_Done__Delivery_Panel.gettable().getModel();
-					model.addRow(new Object[] {delivery_order.get(j).getId(),restaurant_name.get(j).getName(),delivery_order.get(j).getDelivery_address(),delivery_order.get(j).getDelivery_area()});
-								
+					model.addRow(new Object[] {delivery_order.get(j).getId(),delivery_order.get(j).getRestaurant_id(),delivery_order.get(j).getDelivery_address(),delivery_order.get(j).getDelivery_area()});
+					//restaurant_name.get(j).getName()
+					Accept_Done__Delivery_Panel.gettable().getColumnModel().getColumn(0).setPreferredWidth(1);
+					Accept_Done__Delivery_Panel.gettable().getColumnModel().getColumn(1).setPreferredWidth(100);
+					Accept_Done__Delivery_Panel.gettable().getColumnModel().getColumn(2).setPreferredWidth(100);
+					Accept_Done__Delivery_Panel.gettable().getColumnModel().getColumn(3).setPreferredWidth(1);
 								
 					Accept_Done__Delivery_Panel.gettable().getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 						public void valueChanged(ListSelectionEvent event) {
@@ -131,6 +136,8 @@ public class Accept_Done_Delivery_Core {
 			
 			
 			
+			break;
+		default:
 			break;
 		}
 

@@ -22,6 +22,7 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	private	static JButton btnaccept;
 	private	static JButton btndone;
 	private	static JTable table;
+	Font font1 = new Font("SansSerif", Font.BOLD, 20);
 	
 	public Accept_Done__Delivery_Panel(CRUDAction crudAction) {
 	
@@ -39,8 +40,10 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	//ORDER INFORMATION
 	
 	JLabel lblOrderInfo = new JLabel("Order Information");
-	lblOrderInfo.setFont(MainFrame.titleFont);
-	lblOrderInfo.setBounds(10, 10, 270, 45);
+	lblOrderInfo.setForeground(new Color(255, 255, 255));
+	lblOrderInfo.setBackground(Color.BLACK);
+	lblOrderInfo.setFont(MainFrame.headerFont);
+	lblOrderInfo.setBounds(10, 22, 270, 45);
 	panel_1.add(lblOrderInfo);
 	
 	//LABELS 
@@ -68,24 +71,28 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	//TEXT FIELDS
 	
 	Delivery_Postal_Code = new JTextField();
+	Delivery_Postal_Code.setFont(font1);
 	Delivery_Postal_Code.setEditable(false);
 	Delivery_Postal_Code.setBounds(251, 479, 276, 40);
 	panel_1.add(Delivery_Postal_Code);
 	Delivery_Postal_Code.setColumns(10);
 	
 	Delivery_address = new JTextField();
+	Delivery_address.setFont(font1);
 	Delivery_address.setEditable(false);
 	Delivery_address.setColumns(10);
 	Delivery_address.setBounds(251, 353, 276, 40);
 	panel_1.add(Delivery_address);
 	
 	Resturant = new JTextField();
+	Resturant.setFont(font1);
 	Resturant.setEditable(false);
 	Resturant.setColumns(10);
 	Resturant.setBounds(251, 244, 276, 40);
 	panel_1.add(Resturant);
 	
 	Order_number = new JTextField();
+	Order_number.setFont(font1);
 	Order_number.setEditable(false);
 	Order_number.setColumns(10);
 	Order_number.setBounds(251, 127, 276, 40);
@@ -107,6 +114,12 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 	btndone.setBackground(Color.red);
 	btndone.setBounds(160, 630, 139, 40);
 	panel_1.add(btndone);
+	
+	JPanel panel = new JPanel();
+	panel.setBackground(new Color(0, 0, 0));
+	panel.setBounds(10, 22, 270, 45);
+	panel_1.add(panel);
+	panel.setLayout(null);
 	
 	//TABLE PANNEL
 	
@@ -155,10 +168,11 @@ public class Accept_Done__Delivery_Panel extends JPanel {
     
 	switch (crudAction) {
 	case Accept:
+		lblOrderInfo.setText(" Accept Delivery");
 		getBtnDone().setVisible(false);
-
 		break;
 	case Ready:
+		lblOrderInfo.setText(" Done Delivery");
 		getBtnAccept().setVisible(false);
 		break;
 
@@ -166,9 +180,7 @@ public class Accept_Done__Delivery_Panel extends JPanel {
 		break;
 	}
     
-    
-    
-	}
+}
 	
 	
 	//Get Button Select
