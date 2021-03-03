@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -32,7 +33,7 @@ public class OrderHistoryPanel extends JPanel {
 	topPanel.setPreferredSize(new Dimension(0, 80));
 	topPanel.setBackground(MainFrame.offColor);
 	this.add(topPanel, BorderLayout.NORTH);
-	topPanel.setLayout(null);
+	topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
 	
 	JLabel lbl_1 = new JLabel("Order History");
 	lbl_1.setBounds(0, 20, 300, 50);
@@ -44,7 +45,6 @@ public class OrderHistoryPanel extends JPanel {
 	topPanel.add(lbl_1);
 	
 	JPanel Panel_2 = new JPanel();
-	Panel_2.setPreferredSize(new Dimension(500, 30));
 	Panel_2.setBackground(Color.white);
 	topPanel.add(Panel_2);
 	Panel_2.setLayout(null);
@@ -56,6 +56,7 @@ public class OrderHistoryPanel extends JPanel {
 	
 	JPanel centerPanel = new JPanel();
 	centerPanel.setLayout(null);
+	centerPanel.setBackground(Color.white);
 	centerPanel.setPreferredSize(new Dimension(500, 0));
 	this.add(centerPanel, BorderLayout.CENTER);
 	
@@ -78,10 +79,12 @@ public class OrderHistoryPanel extends JPanel {
 	Panel_C21.add(lbl_C21);
 	
 	JPanel panel_C22 = new JPanel();
+	panel_C22.setBackground(Color.white);
 	panel_C22.setPreferredSize(new Dimension(580, 220));
 	panel_C2.add(panel_C22);
 	
 	JScrollPane scrollPane_C2 = new JScrollPane();
+	scrollPane_C2.setBackground(Color.white);
 	scrollPane_C2.setPreferredSize(new Dimension(560, 210));
 	panel_C22.add(scrollPane_C2);
 	
@@ -107,7 +110,7 @@ public class OrderHistoryPanel extends JPanel {
 	JLabel lbl_C11 = new JLabel("Delivery Date: ");
 	lbl_C11.setPreferredSize(new Dimension(200, 40));
 	lbl_C11.setForeground(Color.black);
-	lbl_C11.setFont(MainFrame.titleFont);
+	lbl_C11.setFont(MainFrame.labelFont);
 	Panel_C11.add(lbl_C11);
 	
 	tf_C11 = new JTextField();
@@ -128,7 +131,7 @@ public class OrderHistoryPanel extends JPanel {
 	lbl_C121.setFont(MainFrame.labelFont);
 	Panel_C12.add(lbl_C121);
 	
-	JLabel lbl_C122 = new JLabel("                                               ");
+	JLabel lbl_C122 = new JLabel("                                                     ");
 	lbl_C122.setBackground(Color.white);
 	Panel_C12.add(lbl_C122);
 	
@@ -183,12 +186,12 @@ public class OrderHistoryPanel extends JPanel {
 	
 	JPanel Panel_C31 = new JPanel();
 	Panel_C31.setPreferredSize(new Dimension(396, 50));
-	Panel_C31.setBackground(Color.white);
+	Panel_C31.setBackground(MainFrame.offColor);
 	Panel_C31.setBorder(null);
 	panel_C3.add(Panel_C31, BorderLayout.NORTH);
 	
 	JLabel lbl_C311 = new JLabel("Orders");
-	lbl_C311.setPreferredSize(new Dimension(80, 30));
+	lbl_C311.setPreferredSize(new Dimension(120, 30));
 	lbl_C311.setForeground(Color.white);
 	lbl_C311.setFont(MainFrame.titleFont);
 	Panel_C31.add(lbl_C311);
@@ -199,8 +202,8 @@ public class OrderHistoryPanel extends JPanel {
 	Panel_C33.setBorder(null);
 	panel_C3.add(Panel_C33, BorderLayout.SOUTH);
 	
-	btnSubmit = new JButton("Submit");
-	btnSubmit.setPreferredSize(new Dimension(200, 40));
+	btnSubmit = new JButton("Select");
+	btnSubmit.setPreferredSize(new Dimension(396, 40));
 	btnSubmit.setForeground(Color.white);
 	btnSubmit.setFont(MainFrame.labelFont);
 	btnSubmit.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
@@ -213,6 +216,7 @@ public class OrderHistoryPanel extends JPanel {
 	panel_C3.add(panel_C32, BorderLayout.CENTER);
 	
 	JScrollPane scrollPane_C3 = new JScrollPane();
+	scrollPane_C3.setBackground(Color.white);
 	scrollPane_C3.setPreferredSize(new Dimension(360, 420));
 	panel_C32.add(scrollPane_C3);
 	
