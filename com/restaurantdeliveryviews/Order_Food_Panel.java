@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.border.LineBorder;
 
 public class Order_Food_Panel extends JPanel{
 	
@@ -25,16 +26,12 @@ public class Order_Food_Panel extends JPanel{
 	private static JComboBox<String> comboBox;
 	public static JTable table;
 	private static JTable table2;
+	Font font1 = new Font("SansSerif", Font.BOLD, 20);
 	
 	public Order_Food_Panel() {
 		
 		this.setBackground(Color.white);
 		this.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Order Food");
-		lblNewLabel.setFont(MainFrame.headerFont);
-		lblNewLabel.setBounds(10, 10, 190, 45);
-		this.add(lblNewLabel);
 		//RESTURANT LABEL 
 		
 		JLabel lblNewLabel_1 = new JLabel("Select Resturant");
@@ -50,11 +47,12 @@ public class Order_Food_Panel extends JPanel{
 		
 		//MENU PANEL
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 142, 581, 360);
+		panel_1.setBounds(10, 147, 581, 355);
 		this.add(panel_1);
 		
 		//MENU TABLE
 		table = new JTable();
+		table.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		table.setForeground(new Color(139, 0, 0));
 		table.setBackground(new Color(255, 255, 224));
 		table.setModel(new DefaultTableModel(new Object[][] { 
@@ -83,13 +81,14 @@ public class Order_Food_Panel extends JPanel{
 		//ORDER PANEL
 	    
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(615, 142, 593, 360);
+		panel_2.setBounds(615, 142, 563, 360);
 		this.add(panel_2);
 		panel_2.setLayout(null);
 		
 		//Order Table
 		
 		table2 = new JTable();
+		table2.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		table2.setForeground(new Color(139, 0, 0));
 		table2.setBackground(new Color(255, 255, 224));
 		table2.setModel(new DefaultTableModel(new Object[][] { },
@@ -123,16 +122,17 @@ public class Order_Food_Panel extends JPanel{
 		//LABELS FOR ADDING ORDER
 		JLabel lblNewLabel_2 = new JLabel("Enter ID");
 		lblNewLabel_2.setFont(MainFrame.labelFont);
-		lblNewLabel_2.setBounds(20, 521, 106, 38);
+		lblNewLabel_2.setBounds(10, 520, 106, 38);
 		this.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Quantity");
 		lblNewLabel_2_1.setFont(MainFrame.labelFont);
-		lblNewLabel_2_1.setBounds(20, 617, 106, 38);
+		lblNewLabel_2_1.setBounds(10, 616, 106, 38);
 		this.add(lblNewLabel_2_1);
 		
 		//ADD ID TF
 		add_id = new JTextField();
+		add_id.setFont(font1);
 		add_id.setBounds(169, 521, 150, 38);
 		this.add(add_id);
 		add_id.setColumns(10);
@@ -150,6 +150,7 @@ public class Order_Food_Panel extends JPanel{
 		//QUANTITY TF
 		add_quantity = new JTextField();
 		add_quantity.setColumns(10);
+		add_quantity.setFont(font1);
 		add_quantity.setBounds(169, 617, 150, 38);
 		this.add(add_quantity);
 		
@@ -168,7 +169,7 @@ public class Order_Food_Panel extends JPanel{
 		btn_add_order.setBackground(MainFrame.mainColor);
 		btn_add_order.setFont(MainFrame.labelFont);
 		btn_add_order.setForeground(Color.WHITE);
-		btn_add_order.setBounds(87, 691, 113, 47);
+		btn_add_order.setBounds(83, 705, 113, 47);
 		this.add(btn_add_order);
 		
 		
@@ -177,12 +178,12 @@ public class Order_Food_Panel extends JPanel{
 		btn_delete_order_id.setBackground(MainFrame.mainColor);
 		btn_delete_order_id.setFont(MainFrame.labelFont);
 		btn_delete_order_id.setForeground(Color.WHITE);
-		btn_delete_order_id.setBounds(273, 691, 113, 47);
+		btn_delete_order_id.setBounds(273, 705, 113, 47);
 		this.add(btn_delete_order_id);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(Color.WHITE);
-		panel_3.setBounds(486, 507, 710, 255);
+		panel_3.setBounds(431, 507, 765, 275);
 		this.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -198,22 +199,25 @@ public class Order_Food_Panel extends JPanel{
 		
 		JLabel lblNewLabel_2_3_2 = new JLabel("TOTAL");
 		lblNewLabel_2_3_2.setFont(MainFrame.labelFont);
-		lblNewLabel_2_3_2.setBounds(27, 182, 119, 38);
+		lblNewLabel_2_3_2.setBounds(27, 202, 119, 38);
 		panel_3.add(lblNewLabel_2_3_2);
 		
 		address = new JTextField();
+		address.setFont(font1);
 		address.setBounds(214, 11, 484, 38);
 		panel_3.add(address);
 		
 		postal_code = new JTextField();
+		postal_code.setFont(font1);
 		postal_code.setBounds(214, 106, 215, 38);
 		panel_3.add(postal_code);
 		postal_code.setColumns(10);
 		
 		total = new JTextField();
+		total.setFont(font1);
 		total.setEditable(false);
 		total.setColumns(10);
-		total.setBounds(214, 182, 215, 38);
+		total.setBounds(214, 203, 215, 38);
 		panel_3.add(total);
 		
 		btn_place_order = new JButton("Place Order");
@@ -236,7 +240,7 @@ public class Order_Food_Panel extends JPanel{
 		panel_4.add(lblNewLabel_3);
 		
 		JPanel panel_4_1 = new JPanel();
-		panel_4_1.setBounds(615, 87, 581, 55);
+		panel_4_1.setBounds(614, 87, 564, 55);
 		panel_4_1.setBackground(Color.DARK_GRAY);
 		this.add(panel_4_1);
 		panel_4_1.setLayout(null);
@@ -246,6 +250,18 @@ public class Order_Food_Panel extends JPanel{
 		lblNewLabel_3_1.setFont(MainFrame.titleFont);
 		lblNewLabel_3_1.setBounds(225, 10, 158, 35);
 		panel_4_1.add(lblNewLabel_3_1);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.BLACK);
+		panel.setBounds(-30, 10, 230, 45);
+		add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Order Food");
+		lblNewLabel.setBounds(32, 0, 198, 45);
+		panel.add(lblNewLabel);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(MainFrame.headerFont);
 		
 	}
 	
@@ -262,7 +278,10 @@ public class Order_Food_Panel extends JPanel{
 	/**
 	 * @param Add_id
 	 */
-	public static void setAdd_Id(JTextField Add_id) {
+	/**
+	 * @param total
+	 */
+	public static void setAdd_id(JTextField Add_id) {
 		add_id = Add_id;
 	}
 	
@@ -343,8 +362,4 @@ public class Order_Food_Panel extends JPanel{
 	public static JTable gettable2() {
 		return table2;
 	}
-	
-	
-
-	
 }

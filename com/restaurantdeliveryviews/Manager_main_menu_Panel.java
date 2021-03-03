@@ -10,6 +10,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Manager_main_menu_Panel extends JPanel{
 	
@@ -47,29 +49,33 @@ public class Manager_main_menu_Panel extends JPanel{
 		lblMenu.setBackground(MainFrame.offColor);
 		lblMenu.setForeground(Color.white);
 		lblMenu.setFont(MainFrame.titleFont);
-		lblMenu.setBounds(506, 29, 99, 45);
+		lblMenu.setBounds(115, 106, 99, 45);
 		panel_2.add(lblMenu);
 
 		
 		menu_add_btn = new JButton("ADD");
+		menu_add_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		menu_add_btn.setForeground(Color.WHITE);
 		menu_add_btn.setFont(MainFrame.labelFont);
 		menu_add_btn.setBackground(MainFrame.mainColor);
-		menu_add_btn.setBounds(255, 171, 118, 45);
+		menu_add_btn.setBounds(477, 106, 118, 45);
 		panel_2.add(menu_add_btn);
 		
 		menu_edit_btn = new JButton("EDIT");
 		menu_edit_btn.setForeground(Color.WHITE);
 		menu_edit_btn.setFont(MainFrame.labelFont);
 		menu_edit_btn.setBackground(MainFrame.mainColor);
-		menu_edit_btn.setBounds(492,171, 118, 45);
+		menu_edit_btn.setBounds(678,106, 118, 45);
 		panel_2.add(menu_edit_btn);
 		
 		menu_del_btn = new JButton("DELETE");
 		menu_del_btn.setForeground(Color.WHITE);
 		menu_del_btn.setFont(MainFrame.labelFont);
 		menu_del_btn.setBackground(MainFrame.mainColor);
-		menu_del_btn.setBounds(740, 171, 118, 45);
+		menu_del_btn.setBounds(877, 106, 118, 45);
 		panel_2.add(menu_del_btn);
 		
 		//LOG OUT BUTTON
@@ -91,12 +97,12 @@ public class Manager_main_menu_Panel extends JPanel{
 		
 		//RESTURANT
 		
-		JLabel lblResturant = new JLabel("   RESTURANT");
+		JLabel lblResturant = new JLabel("  RESTAURANT");
 		lblResturant.setOpaque(true);
 		lblResturant.setBackground(MainFrame.offColor);
 		lblResturant.setForeground(Color.white);
 		lblResturant.setFont(MainFrame.titleFont);
-		lblResturant.setBounds(470, 30, 173, 45);
+		lblResturant.setBounds(115, 172, 173, 45);
 		panel_1.add(lblResturant);
 	
 		
@@ -104,7 +110,7 @@ public class Manager_main_menu_Panel extends JPanel{
 		resto_edit_btn.setForeground(Color.WHITE);
 		resto_edit_btn.setFont(MainFrame.labelFont);
 		resto_edit_btn.setBackground(MainFrame.mainColor);
-		resto_edit_btn.setBounds(488, 172, 118, 45);
+		resto_edit_btn.setBounds(477, 172, 118, 45);
 		panel_1.add(resto_edit_btn);
 				
 

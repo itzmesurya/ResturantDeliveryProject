@@ -21,7 +21,7 @@ public class DeliveryMan_main_menu_Panel extends JPanel{
 
 	public DeliveryMan_main_menu_Panel() {
 		
-		this.setBackground(new Color(255, 165, 0));
+		this.setBackground(Color.white);
 		this.setLayout(null);
 		
 		//RESTAURATEUR
@@ -32,7 +32,7 @@ public class DeliveryMan_main_menu_Panel extends JPanel{
 		this.add(lblDeliveryMan);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(72, 183, 1059, 509);
+		panel_1.setBounds(72, 183, 1059, 559);
 		panel_1.setBackground(new Color(255, 255, 255));
 		this.add(panel_1);
 		panel_1.setLayout(null);
@@ -52,21 +52,21 @@ public class DeliveryMan_main_menu_Panel extends JPanel{
 		delivery_accept_btn.setForeground(Color.WHITE);
 		delivery_accept_btn.setFont(MainFrame.labelFont);
 		delivery_accept_btn.setBackground(MainFrame.mainColor);
-		delivery_accept_btn.setBounds(305, 228, 118, 63);
+		delivery_accept_btn.setBounds(237, 228, 118, 63);
 		panel_1.add(delivery_accept_btn);
 		
 		delivery_end_btn = new JButton("<html>END<br />Delivery</html>");
 		delivery_end_btn.setForeground(Color.WHITE);
 		delivery_end_btn.setFont(MainFrame.labelFont);
 		delivery_end_btn.setBackground(MainFrame.mainColor);
-		delivery_end_btn.setBounds(681, 228, 118, 63);
+		delivery_end_btn.setBounds(741, 228, 118, 63);
 		panel_1.add(delivery_end_btn);
 		
 		delivery_editinfo_btn = new JButton("<html>EDIT<br />Personal<br />Info</html>");
 		delivery_editinfo_btn.setForeground(Color.WHITE);
 		delivery_editinfo_btn.setFont(MainFrame.labelFont);
 		delivery_editinfo_btn.setBackground(MainFrame.mainColor);
-		delivery_editinfo_btn.setBounds(491, 389, 118, 75);
+		delivery_editinfo_btn.setBounds(489, 452, 118, 75);
 		panel_1.add(delivery_editinfo_btn);
 		
 		//LOG OUT BUTTON
