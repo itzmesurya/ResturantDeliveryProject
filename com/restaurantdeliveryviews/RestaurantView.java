@@ -257,6 +257,7 @@ public class RestaurantView {
 		try{
 			MaskFormatter tel1 = new MaskFormatter("### ### - ####");
 			formattedTextField_1 = new JFormattedTextField(tel1);
+			formattedTextField_1.setBorder(new LineBorder(new Color(171, 173, 179), 2, true));
 			formattedTextField_1.setBackground(Color.WHITE);
 			formattedTextField_1.setFont(new Font("Arial", Font.BOLD, 20));
 			formattedTextField_1.setPreferredSize(new Dimension(150, 40));

@@ -66,15 +66,19 @@ public class OrderHistoryView {
 		JPanel topPanel = new JPanel();
 		topPanel.setPreferredSize(new Dimension(0, 80));
 		panel_OrderHistory.add(topPanel, BorderLayout.NORTH);
-		topPanel.setLayout(null);
+		topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
 		
 		JLabel lbl_1 = new JLabel("Order History");
-		lbl_1.setBounds(0, 20, 300, 50);
 		lbl_1.setPreferredSize(new Dimension(300, 50));
 		lbl_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_1.setFont(new Font("Arial", Font.BOLD, 30));
 		lbl_1.setBorder(new MatteBorder(2, 0, 2, 2, (Color) new Color(0, 0, 0)));
 		topPanel.add(lbl_1);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		topPanel.add(panel);
+		panel.setLayout(null);
 		
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setPreferredSize(new Dimension(0, 80));
@@ -233,5 +237,4 @@ public class OrderHistoryView {
 		textOH.setEditable(false);
 		
 	}
-
 }

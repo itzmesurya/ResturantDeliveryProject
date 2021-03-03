@@ -43,23 +43,61 @@ public class Main {
 
 		
 		//Set Top Bar
+		CustomMenuBar.getReturn_menu().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switch(Main.user.getLevel()) {
+				case 0:
+					MainFrame.changePanel(new Client_main_menu_Panel());
+					new Client_main_menu_Core();
+					break;
+				case 1:
+					MainFrame.changePanel(new DeliveryMan_main_menu_Panel());
+					new DeliveryMan_main_menu_Core();
+					break;
+				case 2:
+					MainFrame.changePanel(new Restaurateur_main_menu_Panel());
+					new Restaurateur_main_menu_Core();
+					break;
+				case 3:
+					MainFrame.changePanel(new Manager_main_menu_Panel());
+					new Manager_main_menu_Core();
+					break;
+				case 100:
+					MainFrame.changePanel(new Admin_main_menu_Panel());
+					new Admin_main_menu_Core();
+					break;
+				}
+			}
+		});
 		CustomMenuBar.getCreate_account().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new AccountPanel(CRUDAction.Create));
+				try {
+					MainFrame.changePanel(new AccountPanel(CRUDAction.Create));
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 				new AccountCore(CRUDAction.Create);
 			}
 			
 		});
 		CustomMenuBar.getEdit_account().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new AccountPanel(CRUDAction.Edit));
+				try {
+					MainFrame.changePanel(new AccountPanel(CRUDAction.Edit));
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 				new AccountCore(CRUDAction.Edit);
 			}
 			
 		});
 		CustomMenuBar.getDelete_account().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new AccountPanel(CRUDAction.Delete));
+				try {
+					MainFrame.changePanel(new AccountPanel(CRUDAction.Delete));
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 				new AccountCore(CRUDAction.Delete);
 			}
 			
@@ -159,21 +197,23 @@ public class Main {
 		});
 		CustomMenuBar.getView_deliveries().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Read));
 				new Accept_Done_Delivery_Core(CRUDAction.Read);
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Accept));
+				new Accept_Done_Delivery_Core(CRUDAction.Accept);
 			}
 			
 		});
 		CustomMenuBar.getAccept_deliveries().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Accept));
 				new Accept_Done_Delivery_Core(CRUDAction.Accept);
 			}
 			
 		});
 		CustomMenuBar.getEnd_deliveries().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.changePanel(new Accept_Done__Delivery_Panel());
+				MainFrame.changePanel(new Accept_Done__Delivery_Panel(CRUDAction.Ready));
 				new Accept_Done_Delivery_Core(CRUDAction.Ready);
 			}
 			

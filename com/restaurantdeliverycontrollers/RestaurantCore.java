@@ -17,7 +17,34 @@ import com.restaurantdeliveryviews.RestaurantPanel;
 
 public class RestaurantCore {
 	
+	private class RestaurantSelection {
+		int id;
+		String name;
+		
+		public RestaurantSelection(int id, String name) {
+			this.id = id;
+			this.name = name;
+		}
+		
+		@Override
+		public String toString() {
+			return name;
+		}
+		public int getValue() {
+			return id;
+		}
+	}
+	
+	
 	public RestaurantCore(CRUDAction crudAction) {
+		
+		ArrayList<Restaurant> restaurants = Database.getRestaurants();
+		//RestaurantPanel.getRestaurantnameCB().addItem("");
+		for (int i = 0; i < restaurants.size(); i++) {
+			RestaurantPanel.getRestaurantnameCB().addItem(new RestaurantSelection(restaurants.get(i).getId(), restaurants.get(i).getName()));
+			System.out.println("Restaurant Name: " + RestaurantPanel.getRestaurantnameCB().getSelectedItem().toString() + ", Restaurant id: " +  ((RestaurantSelection)RestaurantPanel.getRestaurantnameCB().getSelectedItem()).getValue());
+		}
+		
 		
 		switch (crudAction) {
 		case Create:
@@ -29,36 +56,18 @@ public class RestaurantCore {
 		case Edit:
 			RestaurantPanel.getLbl_1().setText("Edit Restaurant");
 			RestaurantPanel.getBtnRestaurant().setText("Edit");
-			RestaurantPanel.getLbl_2().setVisible(true);
-			RestaurantPanel.getRestaurantnameCB().setVisible(true);
 			break;
 		case Delete:
 			RestaurantPanel.getLbl_1().setText("Delete Restaurant");
 			RestaurantPanel.getBtnRestaurant().setText("Delete");
-			RestaurantPanel.getLbl_2().setVisible(true);
-			RestaurantPanel.getRestaurantnameCB().setVisible(true);
 			break;
 		default:
 		    break;
 		}
-	}
-		
-	void setPanelEnabled(JPanel panel, Boolean isEnabled) {
-		   panel.setEnabled(isEnabled);
-
-		   Component[] components = panel.getComponents();
-
-		   for (Component component : components) {
-		       if (component instanceof JPanel) {
-		           setPanelEnabled((JPanel) component, isEnabled);
-		       }
-		       component.setEnabled(isEnabled);
-		   }		
-	   
 		
 		RestaurantPanel.getRestaurantnameCB().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrayList<Restaurant> restaurants = Database.getRestaurants();
+				
 				for (Restaurant restaurant : restaurants) {
 					if (restaurant.getName().equals(RestaurantPanel.getRestaurantnameCB().getToolTipText())) {
 						Restaurant R1 = Database.getRestaurantById(restaurant.getId());
@@ -104,7 +113,7 @@ public class RestaurantCore {
 		String[] Sr3;
 		Sr3 = RestaurantPanel.getTextDA().toString().split("\\s+");
 		
-		String[][] Sr2 = null;
+		String[][] Sr2 = new String[14][2];
 		Sr2[0][0] = RestaurantPanel.getCombo_C321().getToolTipText();
 		Sr2[0][1] = RestaurantPanel.getCombo_C322().getToolTipText();
 		Sr2[1][0] = RestaurantPanel.getCombo_C323().getToolTipText();
@@ -179,7 +188,10 @@ public class RestaurantCore {
 
 			}			
 		});
-	
+		
 	}
+		
 }
+
+
 

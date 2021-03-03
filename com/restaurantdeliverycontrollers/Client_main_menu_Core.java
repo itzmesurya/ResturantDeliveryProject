@@ -2,6 +2,7 @@ package com.restaurantdeliverycontrollers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliveryviews.AccountPanel;
@@ -39,7 +40,12 @@ public class Client_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 
 
-				MainFrame.changePanel(new AccountPanel(CRUDAction.Edit));
+				try {
+					MainFrame.changePanel(new AccountPanel(CRUDAction.Edit));
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				new AccountCore(CRUDAction.Edit);
 				
 			}

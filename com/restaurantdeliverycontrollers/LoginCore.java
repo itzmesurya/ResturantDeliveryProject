@@ -72,14 +72,17 @@ public class LoginCore {
 					
 					//Change to menu appropriate to user level
 					switch(Main.user.getLevel()) {
+					
 					case 0: // Client
 						MainFrame.changePanel(new Client_main_menu_Panel());
+						new Client_main_menu_Core();
 						CustomMenuBar.getOrder().setVisible(true);
 						CustomMenuBar.getOrder_food().setVisible(true);
 						CustomMenuBar.getOrder_history().setVisible(true);
 						break;
 					case 1: //Deliveryman
 						MainFrame.changePanel(new DeliveryMan_main_menu_Panel());
+						new DeliveryMan_main_menu_Core();
 						CustomMenuBar.getDelivery().setVisible(true);
 						CustomMenuBar.getView_deliveries().setVisible(true);
 						CustomMenuBar.getAccept_deliveries().setVisible(true);
@@ -87,12 +90,14 @@ public class LoginCore {
 						break;
 					case 2: //Restaurateur
 						MainFrame.changePanel(new Restaurateur_main_menu_Panel());
+						new Restaurateur_main_menu_Core();
 						CustomMenuBar.getOrder().setVisible(true);
 						CustomMenuBar.getAccept_order().setVisible(true);
 						CustomMenuBar.getEnd_order().setVisible(true);
 						break;
 					case 3: //Manager
 						MainFrame.changePanel(new Manager_main_menu_Panel());
+						new Manager_main_menu_Core();
 						CustomMenuBar.getRestaurant().setVisible(true);
 						CustomMenuBar.getEdit_resto().setVisible(true);
 						CustomMenuBar.getMenu().setVisible(true);
@@ -107,7 +112,6 @@ public class LoginCore {
 						new Admin_main_menu_Core();
 						CustomMenuBar.getDelivery().setVisible(true);
 						CustomMenuBar.getMenu().setVisible(true);
-						CustomMenuBar.getOrder().setVisible(true);
 						CustomMenuBar.getRestaurant().setVisible(true);
 						CustomMenuBar.getCreate_account().setVisible(true);
 						CustomMenuBar.getCreate_menu().setVisible(true);
@@ -127,7 +131,11 @@ public class LoginCore {
 		
 		LoginPanel.getLbl_create_account().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				MainFrame.changePanel(new AccountPanel(CRUDAction.Create));
+				try {
+					MainFrame.changePanel(new AccountPanel(CRUDAction.Create));
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 				new AccountCore(CRUDAction.Create);
 			}
 		});

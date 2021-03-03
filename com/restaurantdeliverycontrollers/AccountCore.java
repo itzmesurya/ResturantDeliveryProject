@@ -1,6 +1,8 @@
 package com.restaurantdeliverycontrollers;
 
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -68,6 +70,40 @@ public class AccountCore {
 		AccountPanel.getComboBox().addActionListener(e -> {
 			loadUserIntoPanels();
 		});
+		AccountPanel.getFirstNameTextField().addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				char c = e.getKeyChar();
+				if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+					AccountPanel.getFirstNameTextField().setEditable(true);
+				} else {
+					AccountPanel.getFirstNameTextField().setEditable(false);
+				}
+			}
+		});
+
+		AccountPanel.getLastNameTextField().addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				char c = e.getKeyChar();
+				if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+					AccountPanel.getLastNameTextField().setEditable(true);
+				} else {
+					AccountPanel.getLastNameTextField().setEditable(false);
+				}
+			}
+		});
+		AccountPanel.getPhoneTextField().addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				char c = e.getKeyChar();
+				if (!Character.isLetter(c)) {
+					AccountPanel.getPhoneTextField().setEditable(true);
+				} else {
+					AccountPanel.getPhoneTextField().setEditable(false);
+				}
+			}
+		});
 	}
 
 	private User doUserCheckAvailabilityAndCreateUserObject() {
@@ -117,7 +153,7 @@ public class AccountCore {
 				String address = AccountPanel.getAddressTextField().getText();
 				String email = AccountPanel.getEmailTextfield().getText();
 				String phone = AccountPanel.getPhoneTextField().getText();
-				int levelTobeAdded = AccountPanel.getSelectLevelDropDown().getSelectedIndex();
+				int levelTobeAdded = Integer.valueOf((String)AccountPanel.getSelectLevelDropDown().getSelectedItem());
 				return UserHelper.userFactory(levelTobeAdded, userName, password, firstName, lastName, address, email,
 						phone);
 			} else {
@@ -143,7 +179,7 @@ public class AccountCore {
 				AccountPanel.getSelectLevelDropDown().setVisible(true);
 				AccountPanel.getSelectLevelLabel().setVisible(true);
 			}
-			if (crudAction!=CRUDAction.Create) {
+			if (crudAction != CRUDAction.Create) {
 				fillUserDetails(user);
 			}
 		} else {

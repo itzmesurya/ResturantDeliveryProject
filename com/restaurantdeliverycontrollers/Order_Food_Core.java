@@ -12,9 +12,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import com.restaurantdeliverymodels.Database;
+import com.restaurantdeliverymodels.Deliveryman;
 import com.restaurantdeliverymodels.IdCounter;
 import com.restaurantdeliverymodels.Item;
 import com.restaurantdeliverymodels.Menu;
+import com.restaurantdeliverymodels.Order;
 import com.restaurantdeliverymodels.Restaurant;
 import com.restaurantdeliveryviews.Accept_Done__Delivery_Panel;
 import com.restaurantdeliveryviews.Order_Food_Panel;
@@ -26,7 +28,7 @@ public class Order_Food_Core {
 		//Add Restaurant Names To Combo Box
 		
 		ArrayList<Restaurant> restaurants = Database.getRestaurants();
-
+		Order_Food_Panel.getcomboBox().addItem("");
 		for(int i = 0 ; i < restaurants.size() ;i++) {
 			Order_Food_Panel.getcomboBox().addItem(restaurants.get(i).getName());
 		}
@@ -59,11 +61,13 @@ public class Order_Food_Core {
 					
 				for(int j = 0 ; j < item.size() ;j++) {
 		
-					if( Order_Food_Panel.getcomboBox().getSelectedIndex() + 1 == item.get(j).getMenu_id()) {
+					if( Order_Food_Panel.getcomboBox().getSelectedIndex() == item.get(j).getMenu_id()) {
 						//Printing items from menu 		
 						DefaultTableModel model = (DefaultTableModel) Order_Food_Panel.gettable().getModel();
 						model.addRow(new Object[] {item.get(j).getId(),item.get(j).getName(),item.get(j).getPrice()});
-						
+						Order_Food_Panel.gettable().getColumnModel().getColumn(0).setPreferredWidth(1);
+						Order_Food_Panel.gettable().getColumnModel().getColumn(1).setPreferredWidth(350);
+						Order_Food_Panel.gettable().getColumnModel().getColumn(2).setPreferredWidth(3);
 					}
 						
 				}
@@ -80,7 +84,16 @@ public class Order_Food_Core {
 			public void actionPerformed(ActionEvent e) {
 			
 				//Get Id
-				
+				boolean out = false;
+				if((Order_Food_Panel.getAdd_Id().getText().isBlank())){
+					JOptionPane.showMessageDialog(null, "Please Insert Order ID", "Error",
+							JOptionPane.WARNING_MESSAGE);
+					 out = true;
+				}else if(Order_Food_Panel.getAdd_Quantity().getText().isBlank()){
+					JOptionPane.showMessageDialog(null, "Please Insert Quantity", "Error",
+							JOptionPane.WARNING_MESSAGE);
+					out = true;
+				}else if(out == false) {
 				JTextField add = Order_Food_Panel.getAdd_Id(); 
 				int id = 0;
 				id = Integer.parseInt(add.getText());		
@@ -135,6 +148,10 @@ public class Order_Food_Core {
 					JOptionPane.showMessageDialog(null, "Please Give Valid Id", "Error",
 							JOptionPane.WARNING_MESSAGE);
 				}
+				}	
+				Order_Food_Panel.getAdd_Id().setText("");
+				Order_Food_Panel.getAdd_Quantity().setText("");
+				
 		}
 	});
 		
@@ -174,6 +191,7 @@ public class Order_Food_Core {
 		});
 		
 		
+		
 		// Place Order Button
 		Order_Food_Panel.getBtn_Place_Order().addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
@@ -193,11 +211,10 @@ public class Order_Food_Core {
 				}else if(Order_Food_Panel.gettable2().getRowCount() >= 0 && exit == false){
 					
 					
-				//	System.out.println("Placed");
-					
-					Order_Food_Panel.getAddress();		//Store These Values in to DataBase
-					Order_Food_Panel.getPostal_Code();	//Store These Values in to DataBase
-					Order_Food_Panel.getTotal();		//Store These Values in to DataBase
+					Database.addOrder(new Order(Order_Food_Panel.getPostal_Code().getText() , 
+												Order_Food_Panel.getAddress().getText() , 
+												null, Order_Food_Panel.getcomboBox().getSelectedIndex()+1 ,
+												Main.user.getId()));
 					
 				}
 						 
