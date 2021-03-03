@@ -54,10 +54,6 @@ public class Manager_main_menu_Panel extends JPanel{
 
 		
 		menu_add_btn = new JButton("ADD");
-		menu_add_btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		menu_add_btn.setForeground(Color.WHITE);
 		menu_add_btn.setFont(MainFrame.labelFont);
 		menu_add_btn.setBackground(MainFrame.mainColor);

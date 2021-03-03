@@ -71,15 +71,19 @@ public class LoginCore {
 					CustomMenuBar.getDelete_deliveryman().setVisible(false);
 					
 					//Change to menu appropriate to user level
+					System.out.println(Main.user.getLevel() + "");
 					switch(Main.user.getLevel()) {
+					
 					case 0: // Client
 						MainFrame.changePanel(new Client_main_menu_Panel());
+						new Client_main_menu_Core();
 						CustomMenuBar.getOrder().setVisible(true);
 						CustomMenuBar.getOrder_food().setVisible(true);
 						CustomMenuBar.getOrder_history().setVisible(true);
 						break;
 					case 1: //Deliveryman
 						MainFrame.changePanel(new DeliveryMan_main_menu_Panel());
+						new DeliveryMan_main_menu_Core();
 						CustomMenuBar.getDelivery().setVisible(true);
 						CustomMenuBar.getView_deliveries().setVisible(true);
 						CustomMenuBar.getAccept_deliveries().setVisible(true);
@@ -87,12 +91,15 @@ public class LoginCore {
 						break;
 					case 2: //Restaurateur
 						MainFrame.changePanel(new Restaurateur_main_menu_Panel());
+						new Restaurateur_main_menu_Core();
 						CustomMenuBar.getOrder().setVisible(true);
 						CustomMenuBar.getAccept_order().setVisible(true);
 						CustomMenuBar.getEnd_order().setVisible(true);
 						break;
 					case 3: //Manager
+						System.out.println("manager");
 						MainFrame.changePanel(new Manager_main_menu_Panel());
+						new Manager_main_menu_Core();
 						CustomMenuBar.getRestaurant().setVisible(true);
 						CustomMenuBar.getEdit_resto().setVisible(true);
 						CustomMenuBar.getMenu().setVisible(true);
