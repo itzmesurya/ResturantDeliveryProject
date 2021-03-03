@@ -103,19 +103,14 @@ public class RestaurantPanel extends JPanel {
 		lbl_2.setFont(MainFrame.titleFont);
 		Panel_2.add(lbl_2);
 		
-		JComboBox comboBoxName = new JComboBox();
+		
+		comboBoxName = new JComboBox();
 		comboBoxName.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		comboBoxName.setBackground(Color.white);
 		comboBoxName.setPreferredSize(new Dimension(500, 36));
 		comboBoxName.setFont(MainFrame.labelFont);
 		comboBoxName.setBounds(329, 22, 500, 36);
 		Panel_2.add(comboBoxName);
-		
-		String[] restaurantName = new String[Database.getRestaurants().size()];
-		for (int i = 0; i < Database.getRestaurants().size(); i++) {
-			restaurantName[i] = Database.getRestaurants().get(i).getName();
-		}
-		comboBoxName = new JComboBox(restaurantName);
 		
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setPreferredSize(new Dimension(0, 80));
@@ -131,6 +126,7 @@ public class RestaurantPanel extends JPanel {
 		bottomPanel.add(btnRestaurant);
 		
 		JPanel centerPanel = new JPanel();
+		centerPanel.setBackground(Color.WHITE);
 		centerPanel.setPreferredSize(new Dimension(500, 0));
 		this.add(centerPanel, BorderLayout.CENTER);
 		centerPanel.setLayout(null);
@@ -154,6 +150,7 @@ public class RestaurantPanel extends JPanel {
 		Panel_C21.add(lbl_C21);
 		
 		JPanel panel_C22 = new JPanel();
+		panel_C22.setBackground(Color.white);
 		panel_C22.setPreferredSize(new Dimension(580, 180));
 		panel_C2.add(panel_C22);
 		
@@ -165,6 +162,7 @@ public class RestaurantPanel extends JPanel {
 		panel_C22.add(textDA);
 		
 		JPanel Panel_C23 = new JPanel();
+		Panel_C23.setBackground(Color.WHITE);
 		Panel_C23.setBorder(new MatteBorder(2, 0, 0, 0, (Color) new Color(0, 0, 0)));
 		Panel_C23.setPreferredSize(new Dimension(596, 50));
 		panel_C2.add(Panel_C23);
@@ -210,7 +208,7 @@ public class RestaurantPanel extends JPanel {
 		JLabel lbl_C11 = new JLabel("Restaurant Name: ");
 		lbl_C11.setPreferredSize(new Dimension(200, 40));
 		lbl_C11.setForeground(Color.black);
-		lbl_C11.setFont(MainFrame.titleFont);
+		lbl_C11.setFont(MainFrame.labelFont);
 		Panel_C11.add(lbl_C11);
 		
 		tf_C11 = new JTextField();
@@ -254,6 +252,7 @@ public class RestaurantPanel extends JPanel {
 		try{
 			MaskFormatter tel1 = new MaskFormatter("### ### - ####");
 			formattedTextField_1 = new JFormattedTextField(tel1);
+			formattedTextField_1.setBorder(new LineBorder(new Color(0,0,0), 2, true));
 			formattedTextField_1.setBackground(Color.white);
 			formattedTextField_1.setFont(MainFrame.labelFont);
 			formattedTextField_1.setPreferredSize(new Dimension(150, 40));
@@ -262,7 +261,7 @@ public class RestaurantPanel extends JPanel {
 		}
 		Panel_C13.add(formattedTextField_1);
 		
-		JLabel lbl_C132 = new JLabel("                                                   ");
+		JLabel lbl_C132 = new JLabel("                                                             ");
 		lbl_C132.setBackground(Color.white);
 		Panel_C13.add(lbl_C132);
 		
@@ -276,7 +275,7 @@ public class RestaurantPanel extends JPanel {
 		JPanel Panel_C31 = new JPanel();
 		Panel_C31.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
 		Panel_C31.setPreferredSize(new Dimension(396, 50));
-		Panel_C31.setBackground(Color.white);
+		Panel_C31.setBackground(MainFrame.offColor);
 		panel_C3.add(Panel_C31);
 		
 		JLabel lbl_C311 = new JLabel("Day");
@@ -304,8 +303,8 @@ public class RestaurantPanel extends JPanel {
 		
 		JLabel lbl_C321 = new JLabel("Sun");
 		lbl_C321.setPreferredSize(new Dimension(60, 30));
-		lbl_C311.setForeground(Color.black);
-		lbl_C311.setFont(MainFrame.labelFont);
+		lbl_C321.setForeground(Color.black);
+		lbl_C321.setFont(MainFrame.labelFont);
 		Panel_C32.add(lbl_C321);
 		
 		combo_C321 = new JComboBox(hours);
@@ -705,7 +704,8 @@ public class RestaurantPanel extends JPanel {
 		btnC39.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
 		btnC39.setBackground(MainFrame.mainColor);
 		btnC39.setPreferredSize(new Dimension(360, 50));
-		btnC39.setFont(MainFrame.labelFont);
+		btnC39.setForeground(Color.white);
+		btnC39.setFont(MainFrame.titleFont);
 		Panel_C39.add(btnC39);
 	}
 
