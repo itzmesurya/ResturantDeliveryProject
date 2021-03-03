@@ -107,7 +107,6 @@ public class LoginCore {
 						new Admin_main_menu_Core();
 						CustomMenuBar.getDelivery().setVisible(true);
 						CustomMenuBar.getMenu().setVisible(true);
-						CustomMenuBar.getOrder().setVisible(true);
 						CustomMenuBar.getRestaurant().setVisible(true);
 						CustomMenuBar.getCreate_account().setVisible(true);
 						CustomMenuBar.getCreate_menu().setVisible(true);
