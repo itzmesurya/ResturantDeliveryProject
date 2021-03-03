@@ -71,7 +71,6 @@ public class LoginCore {
 					CustomMenuBar.getDelete_deliveryman().setVisible(false);
 					
 					//Change to menu appropriate to user level
-					System.out.println(Main.user.getLevel() + "");
 					switch(Main.user.getLevel()) {
 					
 					case 0: // Client
@@ -97,7 +96,6 @@ public class LoginCore {
 						CustomMenuBar.getEnd_order().setVisible(true);
 						break;
 					case 3: //Manager
-						System.out.println("manager");
 						MainFrame.changePanel(new Manager_main_menu_Panel());
 						new Manager_main_menu_Core();
 						CustomMenuBar.getRestaurant().setVisible(true);
