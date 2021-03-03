@@ -52,21 +52,21 @@ public class DeliveryMan_main_menu_Panel extends JPanel{
 		delivery_accept_btn.setForeground(Color.WHITE);
 		delivery_accept_btn.setFont(MainFrame.labelFont);
 		delivery_accept_btn.setBackground(MainFrame.mainColor);
-		delivery_accept_btn.setBounds(237, 228, 118, 63);
+		delivery_accept_btn.setBounds(212, 411, 118, 63);
 		panel_1.add(delivery_accept_btn);
 		
 		delivery_end_btn = new JButton("<html>END<br />Delivery</html>");
 		delivery_end_btn.setForeground(Color.WHITE);
 		delivery_end_btn.setFont(MainFrame.labelFont);
 		delivery_end_btn.setBackground(MainFrame.mainColor);
-		delivery_end_btn.setBounds(741, 228, 118, 63);
+		delivery_end_btn.setBounds(757, 411, 118, 63);
 		panel_1.add(delivery_end_btn);
 		
-		delivery_editinfo_btn = new JButton("<html>EDIT<br />Personal<br />Info</html>");
+		delivery_editinfo_btn = new JButton("<html>EDIT<br />Information</html>");
 		delivery_editinfo_btn.setForeground(Color.WHITE);
 		delivery_editinfo_btn.setFont(MainFrame.labelFont);
 		delivery_editinfo_btn.setBackground(MainFrame.mainColor);
-		delivery_editinfo_btn.setBounds(489, 452, 118, 75);
+		delivery_editinfo_btn.setBounds(487, 411, 136, 63);
 		panel_1.add(delivery_editinfo_btn);
 		
 		//LOG OUT BUTTON
