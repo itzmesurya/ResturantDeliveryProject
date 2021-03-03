@@ -9,6 +9,7 @@ import com.restaurantdeliverymodels.User;
 public class CustomMenuBar extends JMenuBar {
 	
 	private static JMenu file;
+	private static JMenuItem return_menu;
 	private static JMenuItem create_account;
 	private static JMenuItem edit_account;
 	private static JMenuItem delete_account;
@@ -41,6 +42,8 @@ public class CustomMenuBar extends JMenuBar {
 		//File Menu BAR
 		file = new JMenu("File");
 		this.add(file);
+		return_menu = new JMenuItem("Return to Main Menu");
+		file.add(return_menu);
 		create_account = new JMenuItem("Create Account");
 		file.add(create_account);
 		edit_account = new JMenuItem("Edit Account");
@@ -106,6 +109,10 @@ public class CustomMenuBar extends JMenuBar {
 
 	public static JMenu getFile() {
 		return file;
+	}
+	
+	public static JMenuItem getReturn_menu() {
+		return return_menu;
 	}
 
 	public static JMenuItem getCreate_account() {
