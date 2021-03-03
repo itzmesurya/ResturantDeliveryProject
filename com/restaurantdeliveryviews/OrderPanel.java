@@ -25,7 +25,9 @@ public class OrderPanel extends JPanel {
 
 	private JTextField textField,textField_1,textField_2,textField_3;
 	  JTable table,table_1;
-	  JRadioButton Progress_RadioButton;
+	  JRadioButton Progress_RadioButton, Incoming_RadioButton;
+	JComboBox selectR_comboBox;
+	JButton Accept_btn;
 public OrderPanel() {
 	
 	
@@ -47,15 +49,15 @@ public OrderPanel() {
 				.addComponent(Opanel, GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE))
 	);
 	
-	JLabel lblNewLabel = new JLabel("Accept Order");
-	lblNewLabel.setFont(new Font("Arial", Font.BOLD, 30));
-	lblNewLabel.setForeground(Color.BLACK);
-	lblNewLabel.setBackground(Color.WHITE);
-	lblNewLabel.setPreferredSize(new Dimension(300, 50));
-	lblNewLabel.setBorder(new MatteBorder(2, 0, 2, 2, (Color) new Color(0, 0, 0)));
-	lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	lblNewLabel.setFont(new Font("Arial", Font.BOLD, 30));
-	Opanel.add(lblNewLabel);
+//	JLabel lblNewLabel = new JLabel("Accept Order");
+//	lblNewLabel.setPreferredSize(new Dimension(300, 50));
+//	lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//	lblNewLabel.setForeground(Color.WHITE);
+//	lblNewLabel.setFont(new Font("Arial", Font.BOLD, 30));
+//	lblNewLabel.setBorder(new MatteBorder(2, 0, 2, 2, (Color) new Color(0, 0, 0)));
+//	lblNewLabel.setBackground(Color.BLACK);
+////	.add();
+//	panel_5.add(lblNewLabel);
 	
 	JPanel panel_1 = new JPanel();
 	panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -80,7 +82,7 @@ public OrderPanel() {
 	textField_2.setBackground(Color.white);
 	textField_2.setColumns(10);
 	
-	JLabel lblPostalCode = new JLabel("Postal Code");
+	JLabel lblPostalCode = new JLabel("Address");
 	lblPostalCode.setFont(new Font("Tahoma", Font.BOLD, 14));
 	
 	textField_3 = new JTextField();
@@ -130,8 +132,8 @@ public OrderPanel() {
 	Meal_scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
 	Meal_scrollPane.setBackground(Color.white);
 	
-	JButton Accept_btn = new JButton("Accept");
-	Accept_btn.setBackground(Color.BLACK);
+	Accept_btn = new JButton("Accept");
+	Accept_btn.setBackground(Color.RED);
 	Accept_btn.setForeground(Color.WHITE);
 	Accept_btn.setFont(new Font("Arial", Font.BOLD, 14));
 	
@@ -170,7 +172,7 @@ public OrderPanel() {
 	lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 20));
 	
 	
-	JComboBox selectR_comboBox = new JComboBox();
+	selectR_comboBox = new JComboBox();
 	selectR_comboBox.setForeground(Color.WHITE);
 	selectR_comboBox.setBackground(Color.WHITE);
 	
@@ -179,28 +181,39 @@ public OrderPanel() {
 	Progress_RadioButton.setBackground(Color.white);
 
 //	start from here//
-	JRadioButton Incoming_RadioButton = new JRadioButton("In Coming");
+	Incoming_RadioButton = new JRadioButton("In Coming");
 	Incoming_RadioButton.setBackground(Color.white);
 	Incoming_RadioButton.setFont(new Font("Arial", Font.BOLD, 14));
+	JPanel panel_3 = new JPanel();
+	panel_3.setBackground(Color.BLACK);
+	panel_3.setForeground(Color.WHITE);
+	
+	JPanel panel_4 = new JPanel();
+	panel_4.setBackground(Color.BLACK);
+	
+	
+	JPanel panel_5 = new JPanel();
+	panel_5.setBackground(Color.BLACK);
 	GroupLayout gl_panel = new GroupLayout(Opanel);
 	gl_panel.setHorizontalGroup(
 		gl_panel.createParallelGroup(Alignment.TRAILING)
 			.addGroup(gl_panel.createSequentialGroup()
-				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(57)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+							.addGap(52)
+							.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(lblNewLabel_2)
 							.addGap(27))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(156)
-							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-								.addComponent(Meal_scrollPane, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 477, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(Meal_scrollPane, GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+								.addComponent(panel_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createSequentialGroup()
 						.addContainerGap()
 						.addComponent(Accept_btn, GroupLayout.PREFERRED_SIZE, 261, GroupLayout.PREFERRED_SIZE)
 						.addGap(127)))
@@ -208,67 +221,129 @@ public OrderPanel() {
 					.addGroup(gl_panel.createSequentialGroup()
 						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(42)
 								.addComponent(Progress_RadioButton)
-								.addGap(18)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(Incoming_RadioButton, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-								.addGap(157))
+								.addGap(79))
 							.addGroup(gl_panel.createSequentialGroup()
-								.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-									.addComponent(Order_scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-									.addComponent(selectR_comboBox, 0, 396, Short.MAX_VALUE))
+								.addComponent(selectR_comboBox, 0, 342, Short.MAX_VALUE)
 								.addPreferredGap(ComponentPlacement.RELATED)))
 						.addGap(96))
 					.addGroup(gl_panel.createSequentialGroup()
 						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 410, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap())))
+						.addContainerGap())
+					.addGroup(gl_panel.createSequentialGroup()
+						.addGap(56)
+						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(panel_3, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+							.addComponent(Order_scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
+						.addContainerGap(42, Short.MAX_VALUE))))
 	);
 	gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(33)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(selectR_comboBox, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2))
-					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(Progress_RadioButton)
-						.addComponent(Incoming_RadioButton))
-					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-							.addComponent(Meal_scrollPane, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
-							.addGap(18))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(Order_scrollPane, GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
-							.addGap(18)))
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-						.addComponent(Accept_btn, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
-					.addGap(27))
-		);
-
-	JButton Select_btn = new JButton("Select");
-	Select_btn.setBackground( Color.black);
-	Select_btn.setForeground(Color.WHITE);
-	Select_btn.setFont(new Font("Arial", Font.BOLD, 14));
-	GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-	gl_panel_2.setHorizontalGroup(
-		gl_panel_2.createParallelGroup(Alignment.LEADING)
-			.addGroup(gl_panel_2.createSequentialGroup()
-				.addContainerGap()
-				.addComponent(Select_btn, GroupLayout.PREFERRED_SIZE, 386, GroupLayout.PREFERRED_SIZE)
-				.addContainerGap(14, Short.MAX_VALUE))
+		gl_panel.createParallelGroup(Alignment.LEADING)
+			.addGroup(gl_panel.createSequentialGroup()
+				.addGap(33)
+				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+					.addComponent(selectR_comboBox, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+					.addComponent(lblNewLabel_2))
+				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panel.createSequentialGroup()
+						.addGap(18)
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addComponent(Incoming_RadioButton)
+							.addComponent(Progress_RadioButton))
+						.addPreferredGap(ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(Order_scrollPane, GroupLayout.PREFERRED_SIZE, 441, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_panel.createSequentialGroup()
+						.addGap(42)
+						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addComponent(panel_4, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(Meal_scrollPane, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE)))
+				.addGap(18)
+				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+					.addComponent(Accept_btn, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
+				.addGap(27))
+			.addGroup(gl_panel.createSequentialGroup()
+				.addGap(23)
+				.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+				.addContainerGap(655, Short.MAX_VALUE))
 	);
-	gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addComponent(Select_btn, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-	panel_2.setLayout(gl_panel_2);
+	
+	JLabel label = new JLabel("Accept Order");
+	label.setPreferredSize(new Dimension(300, 50));
+	label.setHorizontalAlignment(SwingConstants.CENTER);
+	label.setForeground(Color.WHITE);
+	label.setFont(new Font("Arial", Font.BOLD, 30));
+	label.setBorder(new MatteBorder(2, 0, 2, 2, (Color) new Color(0, 0, 0)));
+	label.setBackground(Color.BLACK);
+	panel_5.add(label);
+	
+	JLabel lblNewLabel_4 = new JLabel("Meal In Order");
+	lblNewLabel_4.setForeground(Color.WHITE);
+	lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 20));
+	GroupLayout gl_panel_4 = new GroupLayout(panel_4);
+	gl_panel_4.setHorizontalGroup(
+		gl_panel_4.createParallelGroup(Alignment.LEADING)
+			.addGroup(gl_panel_4.createSequentialGroup()
+				.addGap(218)
+				.addComponent(lblNewLabel_4)
+				.addContainerGap(218, Short.MAX_VALUE))
+	);
+	gl_panel_4.setVerticalGroup(
+		gl_panel_4.createParallelGroup(Alignment.LEADING)
+			.addGroup(gl_panel_4.createSequentialGroup()
+				.addContainerGap()
+				.addComponent(lblNewLabel_4)
+				.addContainerGap(16, Short.MAX_VALUE))
+	);
+	panel_4.setLayout(gl_panel_4);
+	
+	JLabel lblNewLabel_3 = new JLabel("Orders");
+	lblNewLabel_3.setForeground(Color.WHITE);
+	lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 20));
+	GroupLayout gl_panel_3 = new GroupLayout(panel_3);
+	gl_panel_3.setHorizontalGroup(
+		gl_panel_3.createParallelGroup(Alignment.LEADING)
+			.addGroup(gl_panel_3.createSequentialGroup()
+				.addGap(137)
+				.addComponent(lblNewLabel_3)
+				.addContainerGap(157, Short.MAX_VALUE))
+	);
+	gl_panel_3.setVerticalGroup(
+		gl_panel_3.createParallelGroup(Alignment.LEADING)
+			.addGroup(Alignment.TRAILING, gl_panel_3.createSequentialGroup()
+				.addContainerGap(34, Short.MAX_VALUE)
+				.addComponent(lblNewLabel_3)
+				.addContainerGap())
+	);
+	panel_3.setLayout(gl_panel_3);
+	
+//	JButton Select_btn = new JButton("Select");
+//	Select_btn.setBackground(Color.RED);
+//	Select_btn.setForeground(Color.WHITE);
+//	Select_btn.setFont(new Font("Arial", Font.BOLD, 14));
+//	GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+//	gl_panel_2.setHorizontalGroup(
+//		gl_panel_2.createParallelGroup(Alignment.LEADING)
+//			.addGroup(gl_panel_2.createSequentialGroup()
+//				.addGap(53)
+//				.addComponent(Select_btn, GroupLayout.PREFERRED_SIZE, 343, GroupLayout.PREFERRED_SIZE)
+//				.addContainerGap(14, Short.MAX_VALUE))
+//	);
+//	gl_panel_2.setVerticalGroup(
+//		gl_panel_2.createParallelGroup(Alignment.LEADING)
+//			.addGroup(gl_panel_2.createSequentialGroup()
+//				.addComponent(Select_btn, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+//				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+//	);
+//
+//	panel_2.setLayout(gl_panel_2);
 	Opanel.setLayout(gl_panel);
 //	frame.getContentPane().setLayout(groupLayout);
 
@@ -293,6 +368,24 @@ public JTable getTable_1() {
 }
 public JRadioButton getProgress_RadioButton() {
 	return Progress_RadioButton;
+}
+public JComboBox getSelectR_comboBox() {
+	return selectR_comboBox;
+}
+public JRadioButton getIncoming_RadioButton() {
+	return Incoming_RadioButton;
+}
+public JButton getAccept_btn() {
+		return Accept_btn;
+}
+public void setAccept_btn(JButton accept_btn) {
+	Accept_btn = accept_btn;
+}
+public void setIncoming_RadioButton(JRadioButton incoming_RadioButton) {
+	Incoming_RadioButton = incoming_RadioButton;
+}
+public void setSelectR_comboBox(JComboBox selectR_comboBox) {
+	this.selectR_comboBox = selectR_comboBox;
 }
 public void setTextField(JTextField textField) {
 	this.textField = textField;

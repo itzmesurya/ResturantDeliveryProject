@@ -31,14 +31,22 @@ public class DeliveryPanel extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField Name_Field , Phone_Field ,Darea_Field , User_Field ,pass_Field , ConfirmPass_Field;	
-	private JTable Darea_table;
+	private static JTextField Name_Field;
+	private static JTextField Phone_Field;
+	private static JTextField Darea_Field;
+	private static JTextField User_Field;
+	private static JTextField pass_Field;
+	private static JTextField ConfirmPass_Field;	
+	private static JTable Darea_table;
 //	private String action;
-	private JLabel lblNewLabel;
+	private static JLabel lblNewLabel;
 	private static JComboBox selectR_comboBox;
 	public Object getDarea_table;
-	public JButton Save_btn, Add_btn, Delete_btn, Verify_btn;
+	public static JButton Save_btn;
 //	ArrayList<String> usernamelist = new ArrayList<String>();
+	public static JButton Add_btn;
+	public JButton Delete_btn;
+	public static JButton Verify_btn;
 	
 	public DeliveryPanel() {
 		 
@@ -46,6 +54,8 @@ public class DeliveryPanel extends JPanel{
 //		JPanel DeliveryPanel = new JPanel();
 		JPanel Dpanel = new JPanel();
 		Dpanel.setBackground(Color.WHITE);
+		
+		
 		
 		
 		GroupLayout groupLayout = new GroupLayout( this);
@@ -61,6 +71,22 @@ public class DeliveryPanel extends JPanel{
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(Dpanel, GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE))
+		);
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		GroupLayout groupLayout1 = new GroupLayout(this);
+		groupLayout1.setHorizontalGroup(
+			groupLayout1.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, groupLayout1.createSequentialGroup()
+					.addGap(88)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 1136, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		groupLayout1.setVerticalGroup(
+			groupLayout1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout1.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE))
 		);
 		
 
@@ -124,7 +150,7 @@ public class DeliveryPanel extends JPanel{
 			panel_1.setLayout(gl_panel_1);
 			
 			Verify_btn = new JButton("Verify Username availability");
-			Verify_btn.setBackground(Color.black);
+			Verify_btn.setBackground(Color.red);
 			Verify_btn.setForeground(Color.white);
 			Verify_btn.setFont(new Font("Arial", Font.BOLD, 14));
 			
@@ -155,11 +181,12 @@ public class DeliveryPanel extends JPanel{
 			
 			JPanel panel_5 = new JPanel();
 			panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
+			panel_5.setBackground(Color.WHITE);
 			
 			Save_btn = new JButton("Save");
 			Save_btn.setForeground(Color.white);
 			Save_btn.setFont(new Font("Arial", Font.BOLD, 14));
-			Save_btn.setBackground(Color.black);
+			Save_btn.setBackground(Color.RED);
 		
 //			Save_btn.addActionListener(new ActionListener() {
 //			
@@ -205,36 +232,40 @@ public class DeliveryPanel extends JPanel{
 			
 			GroupLayout gl_panel = new GroupLayout(Dpanel);
 			gl_panel.setHorizontalGroup(
-				gl_panel.createParallelGroup(Alignment.TRAILING)
+				gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel.createSequentialGroup()
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(50)
+									.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
+									.addComponent(lblNewLabel_2)
+									.addGap(27))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(62)
+									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+										.addComponent(panel_4, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
+										.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+									.addGap(60)))
 							.addGroup(gl_panel.createSequentialGroup()
-								.addGap(50)
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED, 476, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_2)
-								.addGap(27))
-							.addGroup(gl_panel.createSequentialGroup()
-								.addGap(62)
-								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-									.addComponent(panel_4, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
-									.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
-								.addGap(60)))
+								.addGap(247)
+								.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+									.addComponent(Save_btn, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE)
+									.addComponent(Verify_btn, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE))
+								.addGap(260)))
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-							.addComponent(selectR_comboBox, 0, 255, Short.MAX_VALUE)
-							.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE))
-						.addGap(45))
-					.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-						.addGap(247)
-						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-							.addComponent(Save_btn, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE)
-							.addComponent(Verify_btn, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(560, Short.MAX_VALUE))
+							.addGroup(gl_panel.createSequentialGroup()
+								.addComponent(selectR_comboBox, 0, 255, Short.MAX_VALUE)
+								.addGap(45))
+							.addGroup(gl_panel.createSequentialGroup()
+								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap())))
 			);
 			gl_panel.setVerticalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel.createSequentialGroup()
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGap(33)
 								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
@@ -242,23 +273,25 @@ public class DeliveryPanel extends JPanel{
 									.addComponent(lblNewLabel_2)))
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGap(24)
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGap(58)
 								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
 								.addGap(60)
-								.addComponent(panel_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addComponent(panel_4, GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+								.addGap(18)
+								.addComponent(Verify_btn, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+								.addGap(18)
+								.addComponent(Save_btn, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+								.addGap(63))
 							.addGroup(gl_panel.createSequentialGroup()
-								.addGap(34)
-								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 458, GroupLayout.PREFERRED_SIZE)))
-						.addGap(18)
-						.addComponent(Verify_btn, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-						.addGap(18)
-						.addComponent(Save_btn, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
-						.addGap(63))
+								.addGap(18)
+								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 588, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap())))
 			);
 			
+				
 			JScrollPane Darea_scrollPane = new JScrollPane();
 			Darea_scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
 			
@@ -266,39 +299,67 @@ public class DeliveryPanel extends JPanel{
 			Darea_Field.setColumns(10);
 			
 			Add_btn = new JButton("Add");
-			Add_btn.setBackground(Color.black);
-			Add_btn.setForeground(Color.white);
+			Add_btn.setBackground(Color.RED);
+			Add_btn.setForeground(Color.WHITE);
 			
 			JButton Delete_btn = new JButton("Delete");
-			Delete_btn.setBackground(Color.black);
-			Delete_btn.setForeground(Color.white);
+			Delete_btn.setBackground(Color.RED);
+			Delete_btn.setForeground(Color.WHITE);
+			
+			JPanel panel_2 = new JPanel();
+			panel_2.setBackground(Color.black);
 			GroupLayout gl_panel_5 = new GroupLayout(panel_5);
 			gl_panel_5.setHorizontalGroup(
 				gl_panel_5.createParallelGroup(Alignment.LEADING)
-					.addComponent(Darea_scrollPane, GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
 					.addGroup(gl_panel_5.createSequentialGroup()
-						.addGap(29)
-						.addGroup(gl_panel_5.createParallelGroup(Alignment.LEADING, false)
+						.addGap(21)
+						.addGroup(gl_panel_5.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_panel_5.createSequentialGroup()
+								.addComponent(Darea_Field, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap())
 							.addGroup(gl_panel_5.createSequentialGroup()
 								.addComponent(Add_btn, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(Delete_btn, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
-							.addComponent(Darea_Field, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(32, Short.MAX_VALUE))
+								.addPreferredGap(ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+								.addComponent(Delete_btn, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+								.addGap(24))))
+					.addComponent(Darea_scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
 			);
 			gl_panel_5.setVerticalGroup(
 				gl_panel_5.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel_5.createSequentialGroup()
-						.addComponent(Darea_scrollPane, GroupLayout.PREFERRED_SIZE, 349, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(Darea_scrollPane, GroupLayout.PREFERRED_SIZE, 365, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
 						.addComponent(Darea_Field, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 						.addGap(18)
 						.addGroup(gl_panel_5.createParallelGroup(Alignment.BASELINE)
-							.addComponent(Add_btn, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-							.addComponent(Delete_btn, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+							.addComponent(Add_btn, GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+							.addComponent(Delete_btn, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
 						.addContainerGap())
 			);
-
+			
+			JLabel label = new JLabel("Delivery Area");
+			label.setFont(new Font("Arial", Font.BOLD, 20));
+			label.setForeground(Color.white);
+			GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+			gl_panel_2.setHorizontalGroup(
+				gl_panel_2.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panel_2.createSequentialGroup()
+						.addGap(57)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(71, Short.MAX_VALUE))
+			);
+			gl_panel_2.setVerticalGroup(
+				gl_panel_2.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panel_2.createSequentialGroup()
+						.addGap(35)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(37, Short.MAX_VALUE))
+			);
+			panel_2.setLayout(gl_panel_2);
+			
 			Darea_table = new JTable();
 			Darea_table.setModel(new DefaultTableModel(
 				new Object[][] {
@@ -387,6 +448,8 @@ public class DeliveryPanel extends JPanel{
 			lblNewLabel = new JLabel("Create Delivery");
 			lblNewLabel.setFont(new Font("Arial", Font.BOLD, 30));
 			lblNewLabel.setForeground( Color.white);
+			
+			
 			GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 			gl_panel_3.setHorizontalGroup(
 				gl_panel_3.createParallelGroup(Alignment.LEADING)
@@ -424,48 +487,43 @@ public class DeliveryPanel extends JPanel{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public JTextField getName_Field() {
+	public static JTextField getName_Field() {
 		return Name_Field;
 	}
-	public JTextField getPhone_Field() {
+	public static JTextField getPhone_Field() {
 		return Phone_Field;
 	}
-	public JTextField getDarea_Field() {
+	public static JTextField getDarea_Field() {
 		return Darea_Field;
 	}
-	public JTextField getUser_Field() {
+	public static JTextField getUser_Field() {
 		return User_Field;
 	}
-	public JTextField getPass_Field() {
+	public static JTextField getPass_Field() {
 		return pass_Field;
 	}
-	public JTextField getConfirmPass_Field() {
+	public static JTextField getConfirmPass_Field() {
 		return ConfirmPass_Field;
 	}
-	public JTable getDarea_table() {
+	public static JTable getDarea_table() {
 		return Darea_table;
 	}
-//	public String getAction() {
-//		return action;
-//	}
-//	public ArrayList<String> deliverymenIds() {
-//		return deliverymenIds();
-//	}
-	public JButton getSave_btn() {
+
+	public static JButton getSave_btn() {
 		return Save_btn;
 	}
-	public JButton getAdd_btn() {
+	public static JButton getAdd_btn() {
 		return Add_btn;
 	}
 	public JButton getDelete_btn() {
 		return Delete_btn;
 	}
-	public JButton getVerify_btn() {
+	public static JButton getVerify_btn() {
 		return Verify_btn;
 	}
 	
 	// Setters:
-	public JLabel getLblNewLabel() {
+	public static JLabel getLblNewLabel() {
 		return lblNewLabel;
 	}
 	public static JComboBox getSelectR_comboBox() {

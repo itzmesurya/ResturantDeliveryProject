@@ -77,6 +77,16 @@ public class DeliveryCore {
 			        	DeliveryPanel.getUser_Field().setText(deliveryman.getUsername());
 			        	DeliveryPanel.getPass_Field().setText(deliveryman.getPassword());
 			        	DeliveryPanel.getConfirmPass_Field().setText(deliveryman.getPassword());
+			        	DeliveryPanel.getDarea_table().getModel();
+
+						DefaultTableModel model1 = (DefaultTableModel) DeliveryPanel.getDarea_table().getModel();
+						model1.setRowCount(0);
+			        	for(int i = 0; i<=deliveryman.getDelivery_areas().size()-1; i++ ) {
+			        		Object[] row = { deliveryman.getDelivery_areas().get(i)};
+				        	
+							DefaultTableModel model = (DefaultTableModel) DeliveryPanel.getDarea_table().getModel();
+							model.addRow(row);
+			        	}
 			        	
 			         }
 				 });
@@ -95,7 +105,7 @@ public class DeliveryCore {
 						}
 						
 						Deliveryman deliveryman = new Deliveryman(DeliveryPanel.getUser_Field().getText(),
-								DeliveryPanel.getPass_Field().getText(), deliveryPanel.getName_Field().getText(), "", "", "",
+								DeliveryPanel.getPass_Field().getText(), DeliveryPanel.getName_Field().getText(), "", "", "",
 								DeliveryPanel.getPhone_Field().getText(), areas.toArray(new String[0]));
 
 						if (DeliveryPanel.getUser_Field().getText().equals("") && DeliveryPanel.getPass_Field().equals("")
@@ -142,13 +152,37 @@ public class DeliveryCore {
 								DeliveryPanel.getName_Field().setText("");
 								DeliveryPanel.getPhone_Field().setText("");
 								DeliveryPanel.getConfirmPass_Field().setText("");
-			//			deliveryPanel.getDarea_table().setRowCount("","");
 								
+
+								DefaultTableModel model = (DefaultTableModel) DeliveryPanel.getDarea_table().getModel();
+								model.setRowCount(0);
+		            			
 								if (action == CRUDAction.Create) {
 									Database.addDeliveryman(deliveryman);
 								} else if (action == CRUDAction.Edit) {
-									// edit
+									int index = -1;
+									ArrayList<Deliveryman> deliverymen = Database.getDeliverymen();
+									for (int i = 0; i < deliverymen.size(); i++) {
+										if (deliverymen.get(i).getId() == deliveryman.getId()) {
+											index = i;
+										}
+									}
+									if (index != -1) {
+										
+										Deliveryman deliveryman1 = Database.getDeliverymen().get(index);
+										deliveryman1.setFirst_name(deliveryman.getFirst_name());
+										deliveryman1.setLast_name(deliveryman.getLast_name());
+										deliveryman1.setPassword(deliveryman.getPassword());
+										deliveryman1.setEmail(deliveryman.getEmail());
+										deliveryman1.setPhone(deliveryman.getPhone());
+										deliveryman1.setAddress(deliveryman.getAddress());
+										Database.saveDeliverymen();
+									}
+									
+									
 								} else if (action == CRUDAction.Delete) {
+									Database.deleteDeliverymanById(deliveryman.getId());
+//									Database.deleteDeliverymanById(this.getId(deliveryman));
 									// delete
 								}
 								Database.saveDeliverymen();
