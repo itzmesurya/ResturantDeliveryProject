@@ -26,7 +26,7 @@ public class Accept_Done_Delivery_Core {
 		
 		ArrayList<Order> orders  = Database.getOrders();
 		ArrayList<Order> delivery_order  = new ArrayList<>();
-		ArrayList<Restaurant> restaurant_name  = new ArrayList<>();
+		
 		
 		switch(action) {
 	
@@ -42,7 +42,7 @@ public class Accept_Done_Delivery_Core {
 							
 				    //Printing items from delivery_order 		
 					DefaultTableModel model = (DefaultTableModel) Accept_Done__Delivery_Panel.gettable().getModel();
-					model.addRow(new Object[] {delivery_order.get(j).getId(),delivery_order.get(j).getRestaurant_id(),delivery_order.get(j).getDelivery_address(),delivery_order.get(j).getDelivery_area()});
+					model.addRow(new Object[] {delivery_order.get(j).getId(),Database.getRestaurantById(delivery_order.get(j).getId()).getName(),delivery_order.get(j).getDelivery_address(),delivery_order.get(j).getDelivery_area()});
 					//restaurant_name.get(j).getName()
 					Accept_Done__Delivery_Panel.gettable().getColumnModel().getColumn(0).setPreferredWidth(1);
 					Accept_Done__Delivery_Panel.gettable().getColumnModel().getColumn(1).setPreferredWidth(100);
@@ -98,7 +98,7 @@ public class Accept_Done_Delivery_Core {
 							
 				    //Printing items from delivery_order 		
 					DefaultTableModel model = (DefaultTableModel) Accept_Done__Delivery_Panel.gettable().getModel();
-					model.addRow(new Object[] {delivery_order.get(j).getId(),delivery_order.get(j).getRestaurant_id(),delivery_order.get(j).getDelivery_address(),delivery_order.get(j).getDelivery_area()});
+					model.addRow(new Object[] {delivery_order.get(j).getId(),Database.getRestaurantById(j).getName(),delivery_order.get(j).getDelivery_address(),delivery_order.get(j).getDelivery_area()});
 								
 								
 					Accept_Done__Delivery_Panel.gettable().getSelectionModel().addListSelectionListener(new ListSelectionListener(){
