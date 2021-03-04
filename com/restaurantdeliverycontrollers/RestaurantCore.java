@@ -117,13 +117,28 @@ public class RestaurantCore {
 							hours[i][j] = (String)cb_hours[i][j].getSelectedItem();
 						}
 					}
+					
 					if (validateRestaurant(name, address, phone, delivery_areas, hours)) {
-						Database.addRestaurant(new Restaurant(name, address, phone, delivery_areas, hours, manager_id, -1));
-						Database.saveRestaurants();
-						//Change to confirm box
-						Functions.displayMessage(
-								"Restaurant Added!"
-								);
+						String msg = "";
+						msg += "Restaurant name: " + name + "\n";
+						msg += "Restaurant address: " + address + "\n";
+						msg += "Telephone number: " + phone + "\n";
+						msg += "Delivery areas: " + "\n";
+						for (String area : delivery_areas) {
+							msg += area + "\n";
+						}
+						msg += "Business Hours:" + "\n";
+						for (int i = 0; i < 7; i++) {
+							msg += numberToDay(i) + ": " + hours[i][0] + ":" + hours[i][1] + " - " + hours[i][2] + ":" + hours[i][3] + "\n";
+						}
+						int input = JOptionPane.showConfirmDialog(null, msg,"Are you sure you want to add this restaurant?",JOptionPane.YES_NO_OPTION);
+						if (input == JOptionPane.YES_OPTION) {
+							Database.addRestaurant(new Restaurant(name, address, phone, delivery_areas, hours, manager_id, -1));
+							Database.saveRestaurants();
+							//Change to confirm box
+							Functions.displayMessage("Restaurant Added!");
+						} 
+						
 					}
 				}
 			});
@@ -149,16 +164,31 @@ public class RestaurantCore {
 						}
 					}
 					if (validateRestaurant(name, address, phone, delivery_areas, hours)) {
-						restaurant.setName(name);
-						restaurant.setAddress(address);
-						restaurant.setPhone(phone);
-						restaurant.setDelivery_areas(delivery_areas);
-						restaurant.setHours(hours);
-						restaurant.edit();
-						//Change to confirm box
-						Functions.displayMessage(
-								"Restaurant Updated!"
-								);
+						
+						String msg = "";
+						msg += "Restaurant name: " + name + "\n";
+						msg += "Restaurant address: " + address + "\n";
+						msg += "Telephone number: " + phone + "\n";
+						msg += "Delivery areas: " + "\n";
+						for (String area : delivery_areas) {
+							msg += area + "\n";
+						}
+						msg += "Business Hours:" + "\n";
+						for (int i = 0; i < 7; i++) {
+							msg += numberToDay(i) + ": " + hours[i][0] + ":" + hours[i][1] + " - " + hours[i][2] + ":" + hours[i][3] + "\n";
+						}
+						int input = JOptionPane.showConfirmDialog(null, msg,"Are you sure you want to edit this restaurant?",JOptionPane.YES_NO_OPTION);
+						if (input == JOptionPane.YES_OPTION) {
+							restaurant.setName(name);
+							restaurant.setAddress(address);
+							restaurant.setPhone(phone);
+							restaurant.setDelivery_areas(delivery_areas);
+							restaurant.setHours(hours);
+							restaurant.edit();
+							//Change to confirm box
+							Functions.displayMessage("Restaurant Updated!");
+						} 
+						
 					}
 				}
 			});
@@ -176,10 +206,13 @@ public class RestaurantCore {
 			
 			RestaurantPanel.getBtnRestaurant().addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					//Add confirm box
-					Database.deleteRestaurantById(restaurant.getId());
-					Database.saveRestaurants();
-					Functions.displayMessage("Restaurant deleted!");
+					int input = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this restaurant?", "Confirm", JOptionPane.YES_NO_OPTION);
+					if (input == JOptionPane.YES_OPTION) {
+						//Add confirm box
+						Database.deleteRestaurantById(restaurant.getId());
+						Database.saveRestaurants();
+						Functions.displayMessage("Restaurant deleted!");
+					}					
 				}
 			});
 			break;
