@@ -65,7 +65,7 @@ public class AccountPanel extends JPanel {
 	private JLabel accountLabel;
 	private JPanel topPanel;
 	private JPanel panel_2;
-
+	private static JLabel lblNewLabel;
 	public AccountPanel(CRUDAction crudAction) throws ParseException {
 
 		this.setLayout(new BorderLayout(0, 0));
@@ -285,6 +285,16 @@ public class AccountPanel extends JPanel {
 		getComboBox().setBackground(Color.WHITE);
 		getComboBox().setBounds(269, 11, 612, 41);
 		panel.add(getComboBox());
+		
+		setLblNewLabel(new JLabel("Click here to go back to login page."));
+		getLblNewLabel().setBackground(Color.WHITE);
+		getLblNewLabel().setForeground(Color.BLUE);
+		getLblNewLabel().setPreferredSize(new Dimension(600, 20));
+		getLblNewLabel().setHorizontalTextPosition(SwingConstants.CENTER);
+		getLblNewLabel().setHorizontalAlignment(SwingConstants.CENTER);
+		getLblNewLabel().setFont(new Font("Arial", Font.PLAIN, 20));
+		getLblNewLabel().setBounds(374, 582, 489, 26);
+		centerPanel.add(getLblNewLabel());
 
 		switch (crudAction) {
 		case Create:
@@ -441,5 +451,19 @@ public class AccountPanel extends JPanel {
 	 */
 	public static void setSelectLevelLabel(JLabel selectLevelLabel) {
 		AccountPanel.selectLevelLabel = selectLevelLabel;
+	}
+
+	/**
+	 * @return the lblNewLabel
+	 */
+	public static JLabel getLblNewLabel() {
+		return lblNewLabel;
+	}
+
+	/**
+	 * @param lblNewLabel the lblNewLabel to set
+	 */
+	public static void setLblNewLabel(JLabel lblNewLabel) {
+		AccountPanel.lblNewLabel = lblNewLabel;
 	}
 }
