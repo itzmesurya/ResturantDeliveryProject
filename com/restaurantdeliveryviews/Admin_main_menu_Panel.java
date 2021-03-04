@@ -27,7 +27,6 @@ public class Admin_main_menu_Panel extends JPanel{
 	private	static JButton delivery_add_btn;
 	private	static JButton delivery_edit_btn;
 	private	static JButton delivery_del_btn;
-	private	static JButton delivery_order_btn;
 	private	static JButton log_out_btn;
 
 	
@@ -86,27 +85,6 @@ public class Admin_main_menu_Panel extends JPanel{
 		delivery_add_btn.setBounds(375, 600, 106, 40);
 		this.add(delivery_add_btn);
 		
-		delivery_edit_btn = new JButton("EDIT");
-		delivery_edit_btn.setForeground(Color.WHITE);
-		delivery_edit_btn.setFont(MainFrame.labelFont);
-		delivery_edit_btn.setBackground(MainFrame.mainColor);
-		delivery_edit_btn.setBounds(529, 600, 106, 40);
-		this.add(delivery_edit_btn);
-		
-		delivery_del_btn = new JButton("DELETE");
-		delivery_del_btn.setForeground(Color.WHITE);
-		delivery_del_btn.setFont(MainFrame.labelFont);
-		delivery_del_btn.setBackground(MainFrame.mainColor);
-		delivery_del_btn.setBounds(672, 600, 120, 40);
-		this.add(delivery_del_btn);
-		
-		delivery_order_btn = new JButton("ORDERS");
-		delivery_order_btn.setForeground(Color.WHITE);
-		delivery_order_btn.setFont(MainFrame.labelFont);
-		delivery_order_btn.setBackground(MainFrame.mainColor);
-		delivery_order_btn.setBounds(814, 600, 120, 40);
-		this.add(delivery_order_btn);
-		
 		
 		//RESTURANT
 		
@@ -117,16 +95,6 @@ public class Admin_main_menu_Panel extends JPanel{
 		lblResturant.setFont(MainFrame.titleFont);
 		lblResturant.setBounds(162, 170, 170, 45);
 		this.add(lblResturant);
-		
-		//DELIVERY MAN
-		
-		JLabel lblDeliveryMan = new JLabel("   DELIVERY MAN");
-		lblDeliveryMan.setOpaque(true);
-		lblDeliveryMan.setBackground(MainFrame.offColor);
-		lblDeliveryMan.setForeground(Color.white);
-		lblDeliveryMan.setFont(MainFrame.titleFont);
-		lblDeliveryMan.setBounds(546, 495, 195, 45);
-		this.add(lblDeliveryMan);
 		
 		//ADMIN
 		
@@ -141,8 +109,9 @@ public class Admin_main_menu_Panel extends JPanel{
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.white);
-		panel_1.setBounds(10, 67, 568, 399);
+		panel_1.setBounds(10, 67, 549, 399);
 		this.add(panel_1);
+		panel_1.setLayout(null);
 		
 		//MENU PANNEL
 		
@@ -168,6 +137,31 @@ public class Admin_main_menu_Panel extends JPanel{
 		panel_3.setBackground(Color.white);
 		panel_3.setBounds(10, 489, 1166, 239);
 		this.add(panel_3);
+		panel_3.setLayout(null);
+		
+		delivery_del_btn = new JButton("DELETE");
+		delivery_del_btn.setBounds(723, 111, 120, 40);
+		panel_3.add(delivery_del_btn);
+		delivery_del_btn.setForeground(Color.WHITE);
+		delivery_del_btn.setFont(MainFrame.labelFont);
+		delivery_del_btn.setBackground(MainFrame.mainColor);
+		
+		delivery_edit_btn = new JButton("EDIT");
+		delivery_edit_btn.setBounds(545, 111, 106, 40);
+		panel_3.add(delivery_edit_btn);
+		delivery_edit_btn.setForeground(Color.WHITE);
+		delivery_edit_btn.setFont(MainFrame.labelFont);
+		delivery_edit_btn.setBackground(MainFrame.mainColor);
+		
+		//DELIVERY MAN
+		
+		JLabel lblDeliveryMan = new JLabel("   DELIVERY MAN");
+		lblDeliveryMan.setBounds(502, 10, 195, 45);
+		panel_3.add(lblDeliveryMan);
+		lblDeliveryMan.setOpaque(true);
+		lblDeliveryMan.setBackground(MainFrame.offColor);
+		lblDeliveryMan.setForeground(Color.white);
+		lblDeliveryMan.setFont(MainFrame.titleFont);
 		
 		
 		//LOG OUT NUTTON
@@ -235,10 +229,7 @@ public class Admin_main_menu_Panel extends JPanel{
 		}
 		
 		//Get delivery_order_btn
-		
-		public static JButton getDelivery_Order_Btn() {
-			return	delivery_order_btn;
-		}
+
 		
 		//Get log_out_btn
 		
