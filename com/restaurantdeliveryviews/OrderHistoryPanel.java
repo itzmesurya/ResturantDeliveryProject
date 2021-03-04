@@ -23,9 +23,7 @@ public class OrderHistoryPanel extends JPanel {
 	
 	private static JTextField tf_C11;
 	private static JTextField tf_C13;
-	private static JTextArea textOH;
-	private static JTextArea textOrder;
-	private static JButton btnSubmit;
+	private static JButton btnSelect;
 	private static JTextField tf_hours;
 	private static JTextField tf_minutes;
 	private static JTable orderTable;
@@ -86,12 +84,13 @@ public class OrderHistoryPanel extends JPanel {
 	
 	JPanel panel_C22 = new JPanel();
 	panel_C22.setBackground(Color.white);
-	panel_C22.setPreferredSize(new Dimension(580, 220));
+	panel_C22.setPreferredSize(new Dimension(596, 230));
 	panel_C2.add(panel_C22);
+	panel_C22.setLayout(new BorderLayout(0, 0));
 	
 	JScrollPane scrollPane_C2 = new JScrollPane();
 	scrollPane_C2.setBackground(Color.white);
-	scrollPane_C2.setPreferredSize(new Dimension(560, 210));
+	scrollPane_C2.setPreferredSize(new Dimension(596, 220));
 	panel_C22.add(scrollPane_C2);
 	
 	//Menu
@@ -202,7 +201,7 @@ public class OrderHistoryPanel extends JPanel {
 	panel_C3.add(Panel_C31, BorderLayout.NORTH);
 	
 	JLabel lbl_C311 = new JLabel("Orders");
-	lbl_C311.setPreferredSize(new Dimension(120, 30));
+	lbl_C311.setPreferredSize(new Dimension(90, 30));
 	lbl_C311.setForeground(Color.white);
 	lbl_C311.setFont(MainFrame.titleFont);
 	Panel_C31.add(lbl_C311);
@@ -213,13 +212,13 @@ public class OrderHistoryPanel extends JPanel {
 	Panel_C33.setBorder(null);
 	panel_C3.add(Panel_C33, BorderLayout.SOUTH);
 	
-	btnSubmit = new JButton("Select");
-	btnSubmit.setPreferredSize(new Dimension(396, 40));
-	btnSubmit.setForeground(Color.white);
-	btnSubmit.setFont(MainFrame.labelFont);
-	btnSubmit.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
-	btnSubmit.setBackground(MainFrame.mainColor);
-	Panel_C33.add(btnSubmit);
+	btnSelect = new JButton("Select");
+	btnSelect.setPreferredSize(new Dimension(396, 40));
+	btnSelect.setForeground(Color.white);
+	btnSelect.setFont(MainFrame.labelFont);
+	btnSelect.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
+	btnSelect.setBackground(MainFrame.mainColor);
+	Panel_C33.add(btnSelect);
 	
 	JPanel panel_C32 = new JPanel();
 	panel_C32.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
@@ -243,17 +242,9 @@ public class OrderHistoryPanel extends JPanel {
 	
 	
 	}
-
-	public static JButton getBtnSubmit() {
-		return btnSubmit;
-	}
-
-	public static JTextArea getTextOH() {
-		return textOH;
-	}
-
-	public static JTextArea getTextOrder() {
-		return textOrder;
+	
+	public static JButton getBtnSelect() {
+		return btnSelect;
 	}
 
 	public static JTextField getTf_hours() {
