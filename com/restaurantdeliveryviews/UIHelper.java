@@ -10,6 +10,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
 public class UIHelper {
 
@@ -48,7 +49,7 @@ public class UIHelper {
 		Component[] componentsOfThePanel = panel.getComponents();
 		for (Component component : componentsOfThePanel) {
 			if ((component instanceof JTextField) || (component instanceof JComboBox)) {
-				((JComponent) component).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+				((JComponent) component).setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 			}
 		}
 	}

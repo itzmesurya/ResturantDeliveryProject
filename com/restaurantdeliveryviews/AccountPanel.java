@@ -66,6 +66,8 @@ public class AccountPanel extends JPanel {
 	private JPanel topPanel;
 	private JPanel panel_2;
 
+	private static JLabel lblNewLabel;
+
 	public AccountPanel(CRUDAction crudAction) throws ParseException {
 
 		this.setLayout(new BorderLayout(0, 0));
@@ -82,7 +84,6 @@ public class AccountPanel extends JPanel {
 		accountLabel.setBackground(Color.WHITE);
 		accountLabel.setPreferredSize(new Dimension(300, 50));
 		accountLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		accountLabel.setBorder(new MatteBorder(2, 0, 2, 2, (Color) new Color(0, 0, 0)));
 		accountLabel.setFont(new Font("Harlow Solid Italic", Font.BOLD, 30));
 
 		topPanel.add(accountLabel);
@@ -97,14 +98,10 @@ public class AccountPanel extends JPanel {
 		toppanel2.add(getSelectLevelLabel());
 
 		setSelectLevelDropDown(new JComboBox());
+		getSelectLevelDropDown().setFont(MainFrame.labelFont);
 		getSelectLevelDropDown().setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		getSelectLevelDropDown().setBackground(Color.WHITE);
 		getSelectLevelDropDown().setPreferredSize(new Dimension(612, 41));
-		getSelectLevelDropDown().addItem("0");
-		getSelectLevelDropDown().addItem("1");
-		getSelectLevelDropDown().addItem("2");
-		getSelectLevelDropDown().addItem("3");
-		getSelectLevelDropDown().addItem("100");
 		toppanel2.add(getSelectLevelDropDown());
 
 		centerPanel = new JPanel();
@@ -145,7 +142,7 @@ public class AccountPanel extends JPanel {
 		leftPanel.add(confirmPasswordLabel);
 
 		setUserNameTextField(new JTextField());
-		getUserNameTextField().setCaretColor(Color.BLACK);
+		getUserNameTextField().setFont(MainFrame.labelFont);
 		getUserNameTextField().setForeground(Color.BLACK);
 		getUserNameTextField().setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 		getUserNameTextField().setBackground(Color.WHITE);
@@ -154,6 +151,7 @@ public class AccountPanel extends JPanel {
 		getUserNameTextField().setColumns(10);
 
 		setPasswordTextField(new JTextField());
+		getPasswordTextField().setFont(MainFrame.labelFont);
 		getPasswordTextField().setForeground(Color.DARK_GRAY);
 		getPasswordTextField().setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 		getPasswordTextField().setBackground(Color.WHITE);
@@ -162,6 +160,7 @@ public class AccountPanel extends JPanel {
 		leftPanel.add(getPasswordTextField());
 
 		setConfirmPwdTextField(new JTextField());
+		getConfirmPwdTextField().setFont(MainFrame.labelFont);
 		getConfirmPwdTextField().setForeground(Color.DARK_GRAY);
 		getConfirmPwdTextField().setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 		getConfirmPwdTextField().setBackground(Color.WHITE);
@@ -170,6 +169,7 @@ public class AccountPanel extends JPanel {
 		leftPanel.add(getConfirmPwdTextField());
 
 		rightPanel = new JPanel(null);
+		rightPanel.setBackground(Color.WHITE);
 		rightPanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		rightPanel.setBounds(634, 98, 540, 354);
 		centerPanel.add(rightPanel);
@@ -209,6 +209,7 @@ public class AccountPanel extends JPanel {
 		rightPanel.add(phoneLabel);
 
 		setFirstNameTextField(new JTextField());
+		getFirstNameTextField().setFont(MainFrame.labelFont);
 		getFirstNameTextField().setForeground(Color.DARK_GRAY);
 		getFirstNameTextField().setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 		getFirstNameTextField().setColumns(10);
@@ -217,6 +218,7 @@ public class AccountPanel extends JPanel {
 		rightPanel.add(getFirstNameTextField());
 
 		setLastNameTextField(new JTextField());
+		getLastNameTextField().setFont(MainFrame.labelFont);
 		getLastNameTextField().setForeground(Color.DARK_GRAY);
 		getLastNameTextField().setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 		getLastNameTextField().setColumns(10);
@@ -225,6 +227,7 @@ public class AccountPanel extends JPanel {
 		rightPanel.add(getLastNameTextField());
 
 		setAddressTextField(new JTextField());
+		getAddressTextField().setFont(MainFrame.labelFont);
 		getAddressTextField().setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 		getAddressTextField().setColumns(10);
 		getAddressTextField().setBackground(Color.WHITE);
@@ -232,6 +235,7 @@ public class AccountPanel extends JPanel {
 		rightPanel.add(getAddressTextField());
 
 		setEmailTextfield(new JTextField());
+		getEmailTextfield().setFont(MainFrame.labelFont);
 		getEmailTextfield().setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 		getEmailTextfield().setColumns(10);
 		getEmailTextfield().setBackground(Color.WHITE);
@@ -240,6 +244,9 @@ public class AccountPanel extends JPanel {
 		
 		MaskFormatter mf = new MaskFormatter("***-***-****");
 		setPhoneTextField(new JFormattedTextField(mf));
+
+		getPhoneTextField().setFont(MainFrame.labelFont);
+
 		getPhoneTextField().setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 		getPhoneTextField().setColumns(10);
 		getPhoneTextField().setBackground(Color.WHITE);
@@ -278,9 +285,20 @@ public class AccountPanel extends JPanel {
 
 		setComboBox(new JComboBox());
 		getComboBox().setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+		getComboBox().setFont(MainFrame.labelFont);
 		getComboBox().setBackground(Color.WHITE);
 		getComboBox().setBounds(269, 11, 612, 41);
 		panel.add(getComboBox());
+		
+		setLblNewLabel(new JLabel("Click here to go back to login page."));
+		getLblNewLabel().setBackground(Color.WHITE);
+		getLblNewLabel().setForeground(Color.BLUE);
+		getLblNewLabel().setPreferredSize(new Dimension(600, 20));
+		getLblNewLabel().setHorizontalTextPosition(SwingConstants.CENTER);
+		getLblNewLabel().setHorizontalAlignment(SwingConstants.CENTER);
+		getLblNewLabel().setFont(new Font("Arial", Font.PLAIN, 20));
+		getLblNewLabel().setBounds(374, 582, 489, 26);
+		centerPanel.add(getLblNewLabel());
 
 		switch (crudAction) {
 		case Create:
@@ -437,5 +455,19 @@ public class AccountPanel extends JPanel {
 	 */
 	public static void setSelectLevelLabel(JLabel selectLevelLabel) {
 		AccountPanel.selectLevelLabel = selectLevelLabel;
+	}
+
+	/**
+	 * @return the lblNewLabel
+	 */
+	public static JLabel getLblNewLabel() {
+		return lblNewLabel;
+	}
+
+	/**
+	 * @param lblNewLabel the lblNewLabel to set
+	 */
+	public static void setLblNewLabel(JLabel lblNewLabel) {
+		AccountPanel.lblNewLabel = lblNewLabel;
 	}
 }

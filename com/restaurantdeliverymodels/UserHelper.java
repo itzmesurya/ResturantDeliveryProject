@@ -17,6 +17,22 @@ public class UserHelper {
 		}
 		//If no matches were made, return true
 		return true;
+
+	}
+	
+	/*
+	 * This method will return 'true' if the username is available to be created
+	 */
+	public static boolean isUsernameAvailable(String userName) {
+		//Search through all users in database if username is a match
+		for (User existingUser : Database.getUsers()) {
+			if (existingUser.getUsername().equals(userName))
+				//If it's a match, return false
+				return false;
+		}
+		//If no matches were made, return true
+		return true;
+
 	}
 
 	public static User userFactory(int levelTobeAdded, String userName, String password, String firstName,
@@ -161,6 +177,27 @@ public class UserHelper {
 		case 100:
 			// modify Admins
 			return (User) Database.getAdmins().stream().filter(x -> x.getUsername().equals(userName)).findFirst().get();
+		}
+		return null;
+	}
+	
+	public static User getUserByUser(int level, int id) {
+		switch (level) {
+		case 0:
+			// Return list of Client
+			return (User) Database.getClientById(id);
+		case 1:
+			// Return list of DeliveryMan
+			return (User) Database.getDeliverymanById(id);
+		case 2:
+			// Return list of Restaurateur
+			return (User) Database.getRestaurateurById(id);
+		case 3:
+			// Return list of Managers
+			return (User) Database.getManagerById(id);
+		case 100:
+			// modify Admins
+			return (User) Database.getAdminById(id);
 		}
 		return null;
 	}

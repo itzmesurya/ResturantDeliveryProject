@@ -6,6 +6,7 @@ import com.restaurantdeliverymodels.CRUDAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JOptionPane;
 
@@ -37,7 +38,7 @@ public class Main {
 
 	public static User user;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		new Database();
 		new MainFrame();
 
@@ -241,10 +242,13 @@ public class Main {
 		});
 
 
+
+		
 		//Change to Login
 		MainFrame.changePanel(new LoginPanel());
 		new LoginCore();
-
+		LoginPanel.getUsernameTF().setText("Johndoeadmin");
+		LoginPanel.getPasswordTF().setText("Admin123");
 
 		
 	}

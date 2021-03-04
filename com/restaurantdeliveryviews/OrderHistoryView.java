@@ -95,23 +95,26 @@ public class OrderHistoryView {
 		panel_C2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		panel_C2.setBounds(59, 259, 600, 300);
 		centerPanel.add(panel_C2);
+		panel_C2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JPanel Panel_C21 = new JPanel();
 		Panel_C21.setPreferredSize(new Dimension(596, 50));
 		Panel_C21.setFont(new Font("Arial", Font.BOLD, 16));
 		Panel_C21.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
 		panel_C2.add(Panel_C21);
+		Panel_C21.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JLabel lbl_C21 = new JLabel("Meal in Order");
 		lbl_C21.setFont(new Font("Arial", Font.BOLD, 20));
 		Panel_C21.add(lbl_C21);
 		
 		JPanel panel_C22 = new JPanel();
-		panel_C22.setPreferredSize(new Dimension(580, 220));
+		panel_C22.setPreferredSize(new Dimension(596, 230));
 		panel_C2.add(panel_C22);
+		panel_C22.setLayout(new BorderLayout(0, 0));
 		
 		JScrollPane scrollPane_C2 = new JScrollPane();
-		scrollPane_C2.setPreferredSize(new Dimension(560, 210));
+		scrollPane_C2.setPreferredSize(new Dimension(596, 220));
 		panel_C22.add(scrollPane_C2);
 		
 		JPanel panel_C1 = new JPanel();
@@ -202,7 +205,7 @@ public class OrderHistoryView {
 		panel_C3.add(Panel_C31, BorderLayout.NORTH);
 		
 		JLabel lbl_C311 = new JLabel("Orders");
-		lbl_C311.setPreferredSize(new Dimension(80, 30));
+		lbl_C311.setPreferredSize(new Dimension(70, 30));
 		lbl_C311.setFont(new Font("Arial", Font.BOLD, 20));
 		Panel_C31.add(lbl_C311);
 		
@@ -221,11 +224,11 @@ public class OrderHistoryView {
 		Panel_C33.add(btnSubmit);
 		
 		JPanel panel_C32 = new JPanel();
-		panel_C32.setBorder(new MatteBorder(2, 0, 2, 0, (Color) new Color(0, 0, 0)));
+		panel_C32.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
 		panel_C3.add(panel_C32, BorderLayout.CENTER);
 		
 		JScrollPane scrollPane_C3 = new JScrollPane();
-		scrollPane_C3.setPreferredSize(new Dimension(360, 420));
+		scrollPane_C3.setPreferredSize(new Dimension(400, 440));
 		panel_C32.add(scrollPane_C3);
 		
 		JTextArea textOH = new JTextArea();

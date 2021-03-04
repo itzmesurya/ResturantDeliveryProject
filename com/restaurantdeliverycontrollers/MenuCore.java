@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.crypto.Data;
 
@@ -27,6 +28,7 @@ public class MenuCore {
 	// and picks an item to edit we need
 	// we need to store the selected row id
 	int selectedRow = -1;
+	int dialogButton = JOptionPane.YES_NO_OPTION;
 
 	MenuCore(CRUDAction crudAction) {
 		BindRestrauntsToComboBox();
@@ -73,14 +75,26 @@ public class MenuCore {
 
 			if (crudAction == CRUDAction.Delete) {
 				// delete the Menu
-				getMenuObject().delete();
-				Functions.displayMessage("Items Deleted Successfully");
-				fillItemToEditField("", "");
+				int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to Delete Menu", "Warning",
+						dialogButton);
+				if (dialogResult == JOptionPane.YES_OPTION) {
+					getMenuObject().delete();
+					Functions.displayMessage("Items removed Successfully");
+					fillItemToEditField("", "");
+				} else {
+					fillItemToEditField("", "");
+				}
 			} else {
 				// save the menu
-				getMenuObject().save();
-				Functions.displayMessage("Item saved Successfully");
-				fillItemToEditField("", "");
+				int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to Save", "Warning", dialogButton);
+				if (dialogResult == JOptionPane.YES_OPTION) {
+					getMenuObject().save();
+					Functions.displayMessage("Item saved Successfully");
+					fillItemToEditField("", "");
+				} else {
+
+					fillItemToEditField("", "");
+				}
 			}
 			loadMenuItemsBasedOnRestraunt();
 		});
@@ -90,8 +104,15 @@ public class MenuCore {
 			Functions.displayMessage("Item Edited  successfuly");
 		});
 		MenuPanel.getBtnDelete().addActionListener(e -> {
-			deleteEntryFromTable();
-			fillItemToEditField("", "");
+			int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to Delete this item", "Warning",
+					dialogButton);
+			if (dialogResult == JOptionPane.YES_OPTION) {
+				deleteEntryFromTable();
+				Functions.displayMessage("item removed successfully");
+				fillItemToEditField("", "");
+			} else {
+				fillItemToEditField("", "");
+			}
 		});
 		MenuPanel.getSelectBtn().addActionListener(e -> {
 			if (crudAction == CRUDAction.Edit || crudAction == CRUDAction.Delete) {

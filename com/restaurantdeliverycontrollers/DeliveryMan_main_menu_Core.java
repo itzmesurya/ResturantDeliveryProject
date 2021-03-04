@@ -41,7 +41,8 @@ public class DeliveryMan_main_menu_Core {
 		DeliveryMan_main_menu_Panel.getDelivery_Editinfo_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-//				MainFrame.changePanel(new DeliveryPanel("edit"));
+				MainFrame.changePanel(new DeliveryPanel());
+				new DeliveryCore(CRUDAction.Edit);
 				
 			}
 		});

@@ -24,6 +24,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class RestaurantView {
 
@@ -33,6 +36,7 @@ public class RestaurantView {
 	private JTextField tf_C12;
 	private JFormattedTextField formattedTextField_1;
 	private JTextField tf_C23;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -152,12 +156,17 @@ public class RestaurantView {
 		panel_C22.setPreferredSize(new Dimension(580, 180));
 		panel_C2.add(panel_C22);
 		
-		JTextArea textDA = new JTextArea();
-		textDA.setFont(new Font("Arial", Font.BOLD, 20));
-		textDA.setBackground(Color.WHITE);
-		textDA.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		textDA.setPreferredSize(new Dimension(560, 170));
-		panel_C22.add(textDA);
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"New column"
+			}
+		));
+		table.setFont(MainFrame.labelFont);
+		table.setBackground(Color.WHITE);
+		panel_C22.add(table);
 		
 		JPanel Panel_C23 = new JPanel();
 		Panel_C23.setBackground(Color.BLACK);
