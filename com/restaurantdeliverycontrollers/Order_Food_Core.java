@@ -227,14 +227,27 @@ public class Order_Food_Core {
 						ArrayList<Item> final_order = new ArrayList<Item>();	//Created Array List
 						
 						
-						for(int q = 0 ;q < Order_Food_Panel.gettable2().getRowCount() ; q++) {	//for Rows
-							
-							for(int q1 = 0 ; q1 < 3 ; q1++) {		//For Columns	
-								
-							final_order.add((Item) Order_Food_Panel.gettable2().getValueAt(q,q1));
-							
-							}
-						}
+						
+								for(int q = 0 ;q < Order_Food_Panel.gettable2().getRowCount() ; q++) {  //for Rows
+								              
+									//"ID", "Item Name", "Price","Quantity"
+								             //public Item(String name, double price, int quantity, int order_id)
+			final_order.add(new Item(Order_Food_Panel.gettable2().getValueAt(q,1).toString(),
+										Double.parseDouble(Order_Food_Panel.gettable2().getValueAt(q,2).toString()), 
+										Integer.parseInt(Order_Food_Panel.gettable2().getValueAt(q,3).toString()), 
+										Database.getIdCounter().getCurrentIdCounterOrder()));
+								              
+								              
+							 }
+						
+//						for(int q = 0 ;q < Order_Food_Panel.gettable2().getRowCount() ; q++) {	//for Rows
+//							
+//							for(int q1 = 0 ; q1 < 3 ; q1++) {		//For Columns	
+//								
+//							final_order.add((Item) Order_Food_Panel.gettable2().getValueAt(q,q1));
+//							
+//							}
+//						}
 						
 						Item[] Final_order = new Item[final_order .size()]; 	//created Array
 						Final_order =final_order.toArray(Final_order);			//Putting Items from Array List To Array
