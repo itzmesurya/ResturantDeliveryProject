@@ -60,7 +60,7 @@ public class AccountView {
     private JPanel topPanel;
     private JPanel mainPanel;
     private JPanel panel_2;
-
+    private JLabel lblNewLabel;
     /**
      * Launch the application.
      */
@@ -309,6 +309,8 @@ public class AccountView {
 	comboBox.setBackground(Color.WHITE);
 	comboBox.setBounds(269, 11, 612, 41);
 	panel.add(comboBox);
+	
+	
 	AdaptToAction();
     }
 

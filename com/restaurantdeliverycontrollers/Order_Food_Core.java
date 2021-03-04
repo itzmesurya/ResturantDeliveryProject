@@ -19,10 +19,14 @@ import com.restaurantdeliverymodels.Menu;
 import com.restaurantdeliverymodels.Order;
 import com.restaurantdeliverymodels.Restaurant;
 import com.restaurantdeliveryviews.Accept_Done__Delivery_Panel;
+import com.restaurantdeliveryviews.Client_main_menu_Panel;
+import com.restaurantdeliveryviews.MainFrame;
 import com.restaurantdeliveryviews.Order_Food_Panel;
 
 public class Order_Food_Core {
 	private static int currentId = 0;
+	private static int currentId2 = 0;
+	int dialogButton = JOptionPane.YES_NO_OPTION;
 	public Order_Food_Core() {
 		
 		//Add Restaurant Names To Combo Box
@@ -64,7 +68,9 @@ public class Order_Food_Core {
 					if( Order_Food_Panel.getcomboBox().getSelectedIndex() == item.get(j).getMenu_id()) {
 						//Printing items from menu 		
 						DefaultTableModel model = (DefaultTableModel) Order_Food_Panel.gettable().getModel();
-						model.addRow(new Object[] {item.get(j).getId(),item.get(j).getName(),item.get(j).getPrice()});
+
+						model.addRow(new Object[] {++currentId2,item.get(j).getName(),item.get(j).getPrice()});
+
 						Order_Food_Panel.gettable().getColumnModel().getColumn(0).setPreferredWidth(1);
 						Order_Food_Panel.gettable().getColumnModel().getColumn(1).setPreferredWidth(350);
 						Order_Food_Panel.gettable().getColumnModel().getColumn(2).setPreferredWidth(3);
@@ -209,12 +215,26 @@ public class Order_Food_Core {
 							JOptionPane.WARNING_MESSAGE);
 					exit = true;
 				}else if(Order_Food_Panel.gettable2().getRowCount() >= 0 && exit == false){
-					
-					
-					Database.addOrder(new Order(Order_Food_Panel.getPostal_Code().getText() , 
-												Order_Food_Panel.getAddress().getText() , 
-												null, Order_Food_Panel.getcomboBox().getSelectedIndex()+1 ,
-												Main.user.getId()));
+
+								
+					int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to Place This Order", "Information",
+							dialogButton);
+					if (dialogResult == JOptionPane.YES_OPTION) {
+						
+						JOptionPane.showMessageDialog(null, "Order Placed");
+											
+						Database.addOrder(new Order(Order_Food_Panel.getPostal_Code().getText() , 
+													Order_Food_Panel.getAddress().getText() , 
+													null/*Order_Food_Panel.gettable2().getComponents()*/,
+													Order_Food_Panel.getcomboBox().getSelectedIndex()+1 ,
+													Main.user.getId()));
+						
+						MainFrame.changePanel(new Client_main_menu_Panel());
+						new Client_main_menu_Core();
+					}else {
+						
+					}			
+
 					
 				}
 						 

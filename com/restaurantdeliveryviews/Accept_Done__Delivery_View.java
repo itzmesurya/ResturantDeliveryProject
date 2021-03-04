@@ -223,12 +223,14 @@ public class Accept_Done__Delivery_View {
 	    //DELIVERY LABLE PANNEL 
 	    
 	    JPanel panel_3 = new JPanel();
-	    panel_3.setBackground(new Color(255, 255, 204));
+	    panel_3.setBackground(Color.DARK_GRAY);
 	    panel_3.setBounds(608, 67, 550, 61);
 	    panel.add(panel_3);
 	    panel_3.setLayout(null);
 	    
 	    JLabel lblDeliveries = new JLabel("Deliveries");
+	    lblDeliveries.setForeground(Color.WHITE);
+	    lblDeliveries.setBackground(Color.WHITE);
 	    lblDeliveries.setBounds(199, 10, 164, 45);
 	    panel_3.add(lblDeliveries);
 	    lblDeliveries.setFont(new Font("DialogInput", Font.BOLD, 25));

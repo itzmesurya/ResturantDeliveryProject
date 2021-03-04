@@ -84,8 +84,8 @@ public class Admin_main_menu_Core {
 		Admin_main_menu_Panel. getDelivery_Add_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-//				MainFrame.changePanel(new DeliveryPanel("create"));
-				
+				MainFrame.changePanel(new DeliveryPanel());
+				new DeliveryCore(CRUDAction.Create);
 			}
 		});
 		
@@ -93,7 +93,8 @@ public class Admin_main_menu_Core {
 		Admin_main_menu_Panel. getDelivery_Edit_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-//				MainFrame.changePanel(new DeliveryPanel("edit"));
+				MainFrame.changePanel(new DeliveryPanel());
+				new DeliveryCore(CRUDAction.Edit);
 				
 			}
 		});
@@ -102,19 +103,11 @@ public class Admin_main_menu_Core {
 		Admin_main_menu_Panel.getDelivery_Del_Btn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-//				MainFrame.changePanel(new DeliveryPanel("delete"));
-				
+				MainFrame.changePanel(new DeliveryPanel());
+				new DeliveryCore(CRUDAction.Delete);
 			}
 		});
 		
-		//View Order BTN
-		Admin_main_menu_Panel. getDelivery_Order_Btn().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				MainFrame.changePanel(new OrderPanel());
-				
-			}
-		});
 		
 		//Log Out BTN
 		Admin_main_menu_Panel.getLog_Out_Btn().addActionListener(new ActionListener() {

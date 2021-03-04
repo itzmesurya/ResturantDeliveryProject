@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -12,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.Deliveryman;
+import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.Item;
 import com.restaurantdeliverymodels.Order;
 import com.restaurantdeliverymodels.Restaurant;
@@ -21,7 +23,9 @@ import com.restaurantdeliveryviews.Order_Food_Panel;
 
 public class Accept_Done_Delivery_Core {
 	
+
 	
+
 	public Accept_Done_Delivery_Core(CRUDAction action) {
 		
 		ArrayList<Order> orders  = Database.getOrders();
@@ -51,6 +55,8 @@ public class Accept_Done_Delivery_Core {
 								
 					Accept_Done__Delivery_Panel.gettable().getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 						public void valueChanged(ListSelectionEvent event) {
+
+
 							  if (Accept_Done__Delivery_Panel.gettable().getSelectedRow() >= 0) {
 							       Accept_Done__Delivery_Panel.getOrder_number().setText(Accept_Done__Delivery_Panel.gettable().getValueAt(Accept_Done__Delivery_Panel.gettable().getSelectedRow(), 0).toString());
 							       Accept_Done__Delivery_Panel.getResturant().setText( Accept_Done__Delivery_Panel.gettable().getValueAt( Accept_Done__Delivery_Panel.gettable().getSelectedRow(), 1).toString());
@@ -58,7 +64,9 @@ public class Accept_Done_Delivery_Core {
 							       Accept_Done__Delivery_Panel.getDelivery_Postal_Code().setText( Accept_Done__Delivery_Panel.gettable().getValueAt( Accept_Done__Delivery_Panel.gettable().getSelectedRow(), 3).toString());
 							        	
 							   } else {
+
 							        		
+
 							       Accept_Done__Delivery_Panel.getOrder_number().setText(" ");
 							       Accept_Done__Delivery_Panel.getResturant().setText(" ");
 							       Accept_Done__Delivery_Panel.getDelivery_address().setText(" ");
@@ -76,10 +84,12 @@ public class Accept_Done_Delivery_Core {
 			// Delivery Accept Button
 			Accept_Done__Delivery_Panel.getBtnAccept().addActionListener(new ActionListener() {			
 				public void actionPerformed(ActionEvent e) {
+
 						int t = Accept_Done__Delivery_Panel.gettable().getSelectedRow();
 							orders.get(Accept_Done__Delivery_Panel.gettable().getSelectedRow()).setStatus(3);
 							Accept_Done__Delivery_Panel.gettable().remove(t);
 					
+
 				}
 			});
 			
@@ -89,7 +99,9 @@ public class Accept_Done_Delivery_Core {
 			
 			for(int k = 0 ; k < orders.size(); k++) {
 				
+
 				if(orders.get(k).getStatus() == 2) {
+
 					
 				if(((Deliveryman)Main.user).getDelivery_areas().contains(orders.get(k).getDelivery_area())) {						
 					delivery_order.add(orders.get(k));
@@ -98,11 +110,13 @@ public class Accept_Done_Delivery_Core {
 							
 				    //Printing items from delivery_order 		
 					DefaultTableModel model = (DefaultTableModel) Accept_Done__Delivery_Panel.gettable().getModel();
+
 					model.addRow(new Object[] {delivery_order.get(j).getId(),Database.getRestaurantById(j).getName(),delivery_order.get(j).getDelivery_address(),delivery_order.get(j).getDelivery_area()});
 								
 								
 					Accept_Done__Delivery_Panel.gettable().getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 						public void valueChanged(ListSelectionEvent event) {
+
 							  if (Accept_Done__Delivery_Panel.gettable().getSelectedRow() >= 0) {
 							       Accept_Done__Delivery_Panel.getOrder_number().setText(Accept_Done__Delivery_Panel.gettable().getValueAt(Accept_Done__Delivery_Panel.gettable().getSelectedRow(), 0).toString());
 							       Accept_Done__Delivery_Panel.getResturant().setText( Accept_Done__Delivery_Panel.gettable().getValueAt( Accept_Done__Delivery_Panel.gettable().getSelectedRow(), 1).toString());
@@ -110,7 +124,9 @@ public class Accept_Done_Delivery_Core {
 							       Accept_Done__Delivery_Panel.getDelivery_Postal_Code().setText( Accept_Done__Delivery_Panel.gettable().getValueAt( Accept_Done__Delivery_Panel.gettable().getSelectedRow(), 3).toString());
 							        	
 							   } else {
+
 							        		
+
 							       Accept_Done__Delivery_Panel.getOrder_number().setText(" ");
 							       Accept_Done__Delivery_Panel.getResturant().setText(" ");
 							       Accept_Done__Delivery_Panel.getDelivery_address().setText(" ");
@@ -127,9 +143,11 @@ public class Accept_Done_Delivery_Core {
 			// Delivery Accept Button
 			Accept_Done__Delivery_Panel.getBtnDone().addActionListener(new ActionListener() {			
 				public void actionPerformed(ActionEvent e) {
+
 						int t = Accept_Done__Delivery_Panel.gettable().getSelectedRow();
 							orders.get(Accept_Done__Delivery_Panel.gettable().getSelectedRow()).setStatus(4);
 							Accept_Done__Delivery_Panel.gettable().remove(t);
+
 					
 				}
 			});

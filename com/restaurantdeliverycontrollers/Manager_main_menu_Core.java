@@ -9,6 +9,7 @@ import com.restaurantdeliveryviews.LoginPanel;
 import com.restaurantdeliveryviews.MainFrame;
 import com.restaurantdeliveryviews.Manager_main_menu_Panel;
 import com.restaurantdeliveryviews.MenuPanel;
+import com.restaurantdeliveryviews.OrderPanel;
 import com.restaurantdeliveryviews.RestaurantPanel;
 
 public class Manager_main_menu_Core {
@@ -48,6 +49,17 @@ public class Manager_main_menu_Core {
 				
 			}
 		});
+		
+		//View Order BTN
+			Manager_main_menu_Panel.getOrder_View_Btn().addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+
+					MainFrame.changePanel(new OrderPanel());
+					new OrderCore(CRUDAction.Read);
+
+						
+				}
+			});
 		
 		//EDIT RESTAURANT BTN
 		Manager_main_menu_Panel.getResto_Edit_Btn().addActionListener(new ActionListener() {

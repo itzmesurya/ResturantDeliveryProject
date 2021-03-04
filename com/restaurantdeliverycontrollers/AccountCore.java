@@ -3,6 +3,10 @@ package com.restaurantdeliverycontrollers;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -16,6 +20,7 @@ import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.User;
 import com.restaurantdeliverymodels.UserHelper;
 import com.restaurantdeliveryviews.AccountPanel;
+import com.restaurantdeliveryviews.LoginPanel;
 import com.restaurantdeliveryviews.MainFrame;
 import com.restaurantdeliveryviews.UIHelper;
 
@@ -23,11 +28,11 @@ public class AccountCore {
 	CRUDAction crudAction;
 	User user;
 
-	private class LevelSelectOption {
+	private class ComboBoxOptionItem {
 		int level;
 		String name;
 
-		public LevelSelectOption(int level, String name) {
+		public ComboBoxOptionItem(int level, String name) {
 			this.level = level;
 			this.name = name;
 
@@ -56,49 +61,87 @@ public class AccountCore {
 	}
 
 	private void BindLevelsComboBox() {
-		AccountPanel.getSelectLevelDropDown().addItem(new LevelSelectOption(0, "Client"));
-		AccountPanel.getSelectLevelDropDown().addItem(new LevelSelectOption(1, "Delivery Man"));
-		AccountPanel.getSelectLevelDropDown().addItem(new LevelSelectOption(2, "Restaurateur"));
-		AccountPanel.getSelectLevelDropDown().addItem(new LevelSelectOption(3, "Manager"));
-		AccountPanel.getSelectLevelDropDown().addItem(new LevelSelectOption(100, "Administrator"));
+		AccountPanel.getSelectLevelDropDown().addItem(new ComboBoxOptionItem(0, "Client"));
+		AccountPanel.getSelectLevelDropDown().addItem(new ComboBoxOptionItem(1, "Delivery Man"));
+		AccountPanel.getSelectLevelDropDown().addItem(new ComboBoxOptionItem(2, "Restaurateur"));
+		AccountPanel.getSelectLevelDropDown().addItem(new ComboBoxOptionItem(3, "Manager"));
+		AccountPanel.getSelectLevelDropDown().addItem(new ComboBoxOptionItem(100, "Administrator"));
 	}
 
 	private void BindActionEvents(CRUDAction crudAction) {
 		AccountPanel.getCreateAccountBtn().addActionListener(e -> {
 
-			if (crudAction != CRUDAction.Delete) {
+			User userInContext = null;
+			if (crudAction == CRUDAction.Delete) {
+				userInContext = CreateUserObject();
+			} else {
 				// Create user object
-				if (doUserCheckAvailability()) {
-					user = CreateUserObject();
+				if (doUserCheckAvailability(false)) {
+					userInContext = CreateUserObject();
 				}
 			}
 
-			if (user != null) {
+			if (userInContext != null) {
 				switch (crudAction) {
 				case Create:
-					UserHelper.CreateAccount(user);
+					int response = JOptionPane.showConfirmDialog(null,
+							"Do you want to Create user : " + AccountPanel.getUserNameTextField().getText(), "Confirm",
+							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+					if (response == JOptionPane.YES_OPTION) {
+						UserHelper.CreateAccount(userInContext);
+						Functions.displayMessage("Account created Successfully");
+					} else {
+						clearAccountPanel();
+					}
 					break;
 				case Edit:
-					UserHelper.EditUser(user);
+					int responseEd = JOptionPane.showConfirmDialog(null,
+							"Do you want to Edit user : " + AccountPanel.getUserNameTextField().getText(), "Confirm",
+							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+					if (responseEd == JOptionPane.YES_OPTION) {
+						UserHelper.EditUser(userInContext);
+						Functions.displayMessage("Account Updated Successfully");
+					} else {
+						clearAccountPanel();
+					}
 					break;
 				case Delete:
-					UserHelper.DeleteUser(user);
+					int responseDe = JOptionPane.showConfirmDialog(null,
+							"Do you want to Delete user : " + AccountPanel.getUserNameTextField().getText(), "Confirm",
+							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+					if (responseDe == JOptionPane.YES_OPTION) {
+						UserHelper.DeleteUser(userInContext);
+						Functions.displayMessage("Account Deleted Successfully");
+					} else {
+						clearAccountPanel();
+					}
 					break;
 				case Read:
 					break;
 				default:
 					break;
 				}
+				loadAccountsBasedOnLevelSelected();
 			}
 
 		});
 
 		AccountPanel.getUserAvailabilityBtn().addActionListener(e -> {
-			doUserCheckAvailability();
+			doUserCheckAvailability(true);
 		});
 
 		AccountPanel.getSelectLevelDropDown().addActionListener(e -> {
 			loadAccountsBasedOnLevelSelected();
+		});
+		AccountPanel.getLblNewLabel().addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				try {
+					MainFrame.changePanel(new LoginPanel());
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+				new LoginCore();
+			}
 		});
 		AccountPanel.getComboBox().addActionListener(e -> {
 			loadUserIntoPanels();
@@ -114,6 +157,8 @@ public class AccountCore {
 				}
 			}
 		});
+
+
 
 		AccountPanel.getLastNameTextField().addKeyListener(new KeyAdapter() {
 			@Override
@@ -139,7 +184,7 @@ public class AccountCore {
 		});
 	}
 
-	private Boolean doUserCheckAvailability() {
+	private Boolean doUserCheckAvailability(Boolean showMessage) {
 		if (!AccountPanel.getUserNameTextField().getText().isEmpty()) {
 			if (!UserHelper.isUsernameAvailable(AccountPanel.getUserNameTextField().getText())) {
 				Functions.displayError("User has been taken. Please try with different User");
@@ -149,20 +194,11 @@ public class AccountCore {
 			Functions.displayError("Please enter the user name to check!");
 			return false;
 		}
-		Functions.displayMessage(String.format("Username %s is available", AccountPanel.getUserNameTextField().getText()));
-		return true;
-	}
-
-	private boolean isAccountScreenValid() {
-		boolean result = true;
-		result = UIHelper.ValidateEmptyFields(MainFrame.getMainPanel());
-		// now that we have verified all none of the fields are empty
-		// we can proceed with other validations
-		if (result) {
-			// confirm password matches the original password
-			result = ConfirmPasswordsMatch();
+		if (showMessage) {
+			Functions.displayMessage(
+					String.format("Username %s is available", AccountPanel.getUserNameTextField().getText()));
 		}
-		return result;
+		return true;
 	}
 
 	private boolean ConfirmPasswordsMatch() {
@@ -182,28 +218,35 @@ public class AccountCore {
 		// lets make sure no fields are left empty before we create a user object
 		if (UIHelper.ValidateEmptyFields(AccountPanel.getLeftPanel())
 				&& UIHelper.ValidateEmptyFields(AccountPanel.getRightPanel())) {
+			// if we are creating the user then we must make sure that the paswords
+			// match
+			if (crudAction == CRUDAction.Create && !ConfirmPasswordsMatch()) {
+				return null;
+			}
+			// create the user only if all the fields are present
+			String userName = AccountPanel.getUserNameTextField().getText();
+			String password = AccountPanel.getPasswordTextField().getText();
+			String firstName = AccountPanel.getFirstNameTextField().getText();
+			String lastName = AccountPanel.getLastNameTextField().getText();
+			String address = AccountPanel.getAddressTextField().getText();
+			String email = AccountPanel.getEmailTextfield().getText();
+			String phone = AccountPanel.getPhoneTextField().getText();
+			int levelTobeAdded = getLevel();
+			User userObject = null;
 			if (crudAction == CRUDAction.Create) {
-				// create the user only if all the fields are present
-				String userName = AccountPanel.getUserNameTextField().getText();
-				String password = AccountPanel.getPasswordTextField().getText();
-				String firstName = AccountPanel.getFirstNameTextField().getText();
-				String lastName = AccountPanel.getLastNameTextField().getText();
-				String address = AccountPanel.getAddressTextField().getText();
-				String email = AccountPanel.getEmailTextfield().getText();
-				String phone = AccountPanel.getPhoneTextField().getText();
-				int levelTobeAdded = Integer.valueOf((String) AccountPanel.getSelectLevelDropDown().getSelectedItem());
+
+				// user object will be returned without any ID
+
 				return UserHelper.userFactory(levelTobeAdded, userName, password, firstName, lastName, address, email,
 						phone);
 			} else {
-				user.setUsername(AccountPanel.getUserNameTextField().getText());
-				user.setPassword(AccountPanel.getPasswordTextField().getText());
-				user.setFirst_name(AccountPanel.getFirstNameTextField().getText());
-				user.setLast_name(AccountPanel.getLastNameTextField().getText());
-				user.setAddress(AccountPanel.getAddressTextField().getText());
-				user.setEmail(AccountPanel.getEmailTextfield().getText());
-				user.setPhone(AccountPanel.getPhoneTextField().getText());
-				return user;
+				// user object will be returned with the right ID
+				userObject = UserHelper.userFactory(levelTobeAdded, userName, password, firstName, lastName, address,
+						email, phone);
+				userObject.setId(((ComboBoxOptionItem) AccountPanel.getComboBox().getSelectedItem()).getlevel());
+				return userObject;
 			}
+
 		} else {
 			Functions.displayError("Please fill all the fields");
 			return null;
@@ -212,31 +255,43 @@ public class AccountCore {
 
 	private void LoadUser() {
 		// by default if the user is present, display his/her details
-		if (user != null) {
-			if (user.getLevel() == 100) {
+		if (Main.user != null) {
+			if (Main.user.getLevel() == 100) {
+				AccountPanel.getLblNewLabel().setVisible(false);
 				AccountPanel.getSelectLevelDropDown().setVisible(true);
 				AccountPanel.getSelectLevelLabel().setVisible(true);
 			}
 			if (crudAction != CRUDAction.Create) {
-				fillUserDetails(user);
+
+				fillUserDetails(Main.user);
+
 			}
+		} else if (Main.user == null) {
+			AccountPanel.getSelectLevelDropDown().setVisible(false);
+			AccountPanel.getSelectLevelLabel().setVisible(false);
+
 		} else {
 			// there is no user hence it is assumed to be
 			// create client screen
 			// hide the level drop down
+			AccountPanel.getLblNewLabel().setVisible(false);
 			AccountPanel.getSelectLevelDropDown().setVisible(false);
 			AccountPanel.getSelectLevelLabel().setVisible(false);
 		}
 	}
 
-	@SuppressWarnings("unused")
 	private void loadAccountsBasedOnLevelSelected() {
 		int selectedLevelFromDropDown = getLevel();
 		ArrayList<User> users = UserHelper.getUsersBasedOnLevel(selectedLevelFromDropDown);
-		ArrayList<String> userArray = (ArrayList<String>) users.stream().map(x -> x.getUsername())
-				.collect(Collectors.toList());
-		AccountPanel.getComboBox()
-				.setModel(new DefaultComboBoxModel<String>(userArray.toArray(new String[userArray.size()])));
+		DefaultComboBoxModel<ComboBoxOptionItem> model = new DefaultComboBoxModel<ComboBoxOptionItem>();
+		for (User userObj : users) {
+			model.addElement(new ComboBoxOptionItem(userObj.getId(), userObj.getUsername()));
+		}
+		AccountPanel.getComboBox().setModel(model);
+		clearAccountPanel();
+		if (crudAction == CRUDAction.Edit || crudAction == CRUDAction.Delete) {
+			loadUserIntoPanels();
+		}
 	}
 
 	private void fillUserDetails(User fillUserObject) {
@@ -251,13 +306,28 @@ public class AccountCore {
 	}
 
 	private int getLevel() {
-		return ((LevelSelectOption) AccountPanel.getSelectLevelDropDown().getSelectedItem()).getlevel();
+		return ((ComboBoxOptionItem) AccountPanel.getSelectLevelDropDown().getSelectedItem()).getlevel();
+	}
+
+	private int getUserIdFromComboBox() {
+
+		return ((ComboBoxOptionItem) AccountPanel.getComboBox().getSelectedItem()).getlevel();
 	}
 
 	private void loadUserIntoPanels() {
-		User userToEdit = UserHelper.getUserByUserNameAndLevel(getLevel(),
-				AccountPanel.getComboBox().getSelectedItem().toString());
+		User userToEdit = UserHelper.getUserByUser(getLevel(), getUserIdFromComboBox());
 		fillUserDetails(userToEdit);
+	}
+
+	private void clearAccountPanel() {
+		AccountPanel.getUserNameTextField().setText("");
+		AccountPanel.getPasswordTextField().setText("");
+		AccountPanel.getConfirmPwdTextField().setText("");
+		AccountPanel.getFirstNameTextField().setText("");
+		AccountPanel.getLastNameTextField().setText("");
+		AccountPanel.getAddressTextField().setText("");
+		AccountPanel.getEmailTextfield().setText("");
+		AccountPanel.getPhoneTextField().setText("");
 	}
 
 }

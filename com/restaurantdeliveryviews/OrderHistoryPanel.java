@@ -84,13 +84,17 @@ public class OrderHistoryPanel extends JPanel {
 	
 	JPanel panel_C22 = new JPanel();
 	panel_C22.setBackground(Color.white);
+
 	panel_C22.setPreferredSize(new Dimension(596, 230));
+
 	panel_C2.add(panel_C22);
 	panel_C22.setLayout(new BorderLayout(0, 0));
 	
 	JScrollPane scrollPane_C2 = new JScrollPane();
 	scrollPane_C2.setBackground(Color.white);
+
 	scrollPane_C2.setPreferredSize(new Dimension(596, 220));
+
 	panel_C22.add(scrollPane_C2);
 	
 	//Menu
@@ -172,7 +176,7 @@ public class OrderHistoryPanel extends JPanel {
 	Panel_C13.setBackground(Color.white);
 	panel_C1.add(Panel_C13);
 	
-	JLabel lbl_C13 = new JLabel("Postal Code:");
+	JLabel lbl_C13 = new JLabel("Delivery Address:");
 	lbl_C13.setPreferredSize(new Dimension(200, 40));
 	lbl_C13.setForeground(Color.black);
 	lbl_C13.setFont(MainFrame.labelFont);
@@ -201,7 +205,9 @@ public class OrderHistoryPanel extends JPanel {
 	panel_C3.add(Panel_C31, BorderLayout.NORTH);
 	
 	JLabel lbl_C311 = new JLabel("Orders");
+
 	lbl_C311.setPreferredSize(new Dimension(90, 30));
+
 	lbl_C311.setForeground(Color.white);
 	lbl_C311.setFont(MainFrame.titleFont);
 	Panel_C31.add(lbl_C311);
@@ -212,6 +218,7 @@ public class OrderHistoryPanel extends JPanel {
 	Panel_C33.setBorder(null);
 	panel_C3.add(Panel_C33, BorderLayout.SOUTH);
 	
+
 	btnSelect = new JButton("Select");
 	btnSelect.setPreferredSize(new Dimension(396, 40));
 	btnSelect.setForeground(Color.white);
@@ -219,6 +226,7 @@ public class OrderHistoryPanel extends JPanel {
 	btnSelect.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
 	btnSelect.setBackground(MainFrame.mainColor);
 	Panel_C33.add(btnSelect);
+
 	
 	JPanel panel_C32 = new JPanel();
 	panel_C32.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
@@ -227,7 +235,9 @@ public class OrderHistoryPanel extends JPanel {
 	
 	JScrollPane scrollPane_C3 = new JScrollPane();
 	scrollPane_C3.setBackground(Color.white);
+
 	scrollPane_C3.setPreferredSize(new Dimension(400, 440));
+
 	panel_C32.add(scrollPane_C3);
 	
 	//Orders
@@ -262,7 +272,13 @@ public class OrderHistoryPanel extends JPanel {
 	public static JTable getMenuTable() {
 		return menuTable;
 	}
-	
-	
+
+	public static JTextField getTf_C11() {
+		return tf_C11;
+	}
+
+	public static JTextField getTf_C13() {
+		return tf_C13;
+	}
 
 }

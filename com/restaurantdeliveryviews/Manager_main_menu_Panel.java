@@ -19,6 +19,7 @@ public class Manager_main_menu_Panel extends JPanel{
 	private	static JButton menu_edit_btn;
 	private	static JButton menu_del_btn;
 	private	static JButton resto_edit_btn;
+	private	static JButton order_view_btn;
 	private	static JButton log_out_btn;
 
 	
@@ -74,6 +75,21 @@ public class Manager_main_menu_Panel extends JPanel{
 		menu_del_btn.setBounds(877, 106, 118, 45);
 		panel_2.add(menu_del_btn);
 		
+		JLabel lblOrder= new JLabel("  ORDER");
+		lblOrder.setBounds(115, 270, 115, 45);
+		panel_2.add(lblOrder);
+		lblOrder.setOpaque(true);
+		lblOrder.setBackground(MainFrame.offColor);
+		lblOrder.setForeground(Color.white);
+		lblOrder.setFont(MainFrame.titleFont);
+		
+		order_view_btn = new JButton("View");
+		order_view_btn.setBounds(477, 280, 118, 45);
+		panel_2.add(order_view_btn);
+		order_view_btn.setForeground(Color.WHITE);
+		order_view_btn.setFont(MainFrame.labelFont);
+		order_view_btn.setBackground(MainFrame.mainColor);
+		
 		//LOG OUT BUTTON
 		
 		log_out_btn = new JButton("LOG OUT");
@@ -98,7 +114,9 @@ public class Manager_main_menu_Panel extends JPanel{
 		lblResturant.setBackground(MainFrame.offColor);
 		lblResturant.setForeground(Color.white);
 		lblResturant.setFont(MainFrame.titleFont);
-		lblResturant.setBounds(115, 172, 173, 45);
+
+		lblResturant.setBounds(115, 133, 173, 45);
+
 		panel_1.add(lblResturant);
 	
 		
@@ -106,7 +124,9 @@ public class Manager_main_menu_Panel extends JPanel{
 		resto_edit_btn.setForeground(Color.WHITE);
 		resto_edit_btn.setFont(MainFrame.labelFont);
 		resto_edit_btn.setBackground(MainFrame.mainColor);
-		resto_edit_btn.setBounds(477, 172, 118, 45);
+
+		resto_edit_btn.setBounds(479, 133, 118, 45);
+
 		panel_1.add(resto_edit_btn);
 				
 
@@ -137,12 +157,15 @@ public class Manager_main_menu_Panel extends JPanel{
 		return	resto_edit_btn;
 	}
 	
+	//Get order_view
+	
+	public static JButton getOrder_View_Btn() {
+		return	order_view_btn;
+	}
+	
 	//Get log_out_btn
 	
 	public static JButton getlog_out_btn() {
 		return	log_out_btn;
 	}
-	
-
-	
 }
