@@ -164,7 +164,14 @@ public class RestaurantPanel extends JPanel {
 		tableDeliveryArea.setForeground(Color.black);
 		tableDeliveryArea.setBackground(Color.white);
 		scrollPane_C22.setViewportView(tableDeliveryArea);
-		tableDeliveryArea.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "" }));
+		tableDeliveryArea.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "" })
+				{boolean[] columnEditables = new boolean[] {
+						false
+				};
+				public boolean isCellEditable(int row, int column) {
+					return columnEditables[column];
+				}
+				});
 		tableDeliveryArea.getColumnModel().getColumn(0).setPreferredWidth(400);
 		tableDeliveryArea.getColumnModel().getColumn(0).setMinWidth(30);
 		
@@ -714,6 +721,8 @@ public class RestaurantPanel extends JPanel {
 		btnC39.setForeground(Color.white);
 		btnC39.setFont(MainFrame.titleFont);
 		Panel_C39.add(btnC39);
+		
+		
 	}
 
 	public static JComboBox getRestaurantnameCB() {
