@@ -2,6 +2,10 @@ package com.restaurantdeliverymodels;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
+import com.restaurantdeliveryviews.AccountPanel;
+
 /**
  * @author Alex Client can create, edit or delete their account, order food and
  *         view their order history
@@ -38,6 +42,7 @@ public class Client extends User {
 		}
 		if (index != -1) {
 			Client client = Database.getClients().get(index);
+			client.setUsername(this.getUsername());
 			client.setFirst_name(this.getFirst_name());
 			client.setLast_name(this.getLast_name());
 			client.setPassword(this.getPassword());

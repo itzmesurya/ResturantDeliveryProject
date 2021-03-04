@@ -178,4 +178,25 @@ public class UserHelper {
 		}
 		return null;
 	}
+	
+	public static User getUserByUser(int level, int id) {
+		switch (level) {
+		case 0:
+			// Return list of Client
+			return (User) Database.getClientById(id);
+		case 1:
+			// Return list of DeliveryMan
+			return (User) Database.getDeliverymanById(id);
+		case 2:
+			// Return list of Restaurateur
+			return (User) Database.getRestaurateurById(id);
+		case 3:
+			// Return list of Managers
+			return (User) Database.getManagerById(id);
+		case 100:
+			// modify Admins
+			return (User) Database.getAdminById(id);
+		}
+		return null;
+	}
 }
