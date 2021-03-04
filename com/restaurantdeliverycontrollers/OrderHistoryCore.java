@@ -10,15 +10,6 @@ public class OrderHistoryCore {
 	
 	public OrderHistoryCore() {
 		
-		final String newline = "\n";
-		OrderHistoryPanel.getTextOH().append(((Client)Main.user).getOrdersCompleted() + newline);
-		
-		OrderHistoryPanel.getBtnSubmit().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String text = OrderHistoryPanel.getTextOH().getSelectedText();
-				OrderHistoryPanel.getTextOrder().append(text);
-			}			
-		});
 
 	}
 

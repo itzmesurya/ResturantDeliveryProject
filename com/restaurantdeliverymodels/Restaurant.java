@@ -35,6 +35,27 @@ public class Restaurant {
 		this.manager_id = manager_id;
 		this.restaurateur_id = restaurateur_id;
 	}
+	
+	public void edit() {
+		ArrayList<Restaurant> restaurants = Database.getRestaurants();
+		int index = -1;
+		for (int i = 0; i < restaurants.size(); i++) {
+			if (restaurants.get(i).getId() == this.getId()) {
+				index = i;
+			}
+		}
+		if (index != -1) {
+			Restaurant restaurant = Database.getRestaurants().get(index);
+			restaurant.setName(this.getName());
+			restaurant.setAddress(this.getAddress());
+			restaurant.setPhone(this.getPhone());
+			restaurant.setDelivery_areas(this.getDelivery_areas());
+			restaurant.setHours(this.getHours());
+			restaurant.setManager_id(this.getManager_id());
+			restaurant.setRestaurateur_id(this.getRestaurateur_id());
+			Database.saveRestaurants();
+		}
+	}
 
 	public int getId() {
 		return id;
