@@ -176,7 +176,7 @@ public class OrderHistoryPanel extends JPanel {
 	Panel_C13.setBackground(Color.white);
 	panel_C1.add(Panel_C13);
 	
-	JLabel lbl_C13 = new JLabel("Postal Code:");
+	JLabel lbl_C13 = new JLabel("Delivery Address:");
 	lbl_C13.setPreferredSize(new Dimension(200, 40));
 	lbl_C13.setForeground(Color.black);
 	lbl_C13.setFont(MainFrame.labelFont);
@@ -272,7 +272,13 @@ public class OrderHistoryPanel extends JPanel {
 	public static JTable getMenuTable() {
 		return menuTable;
 	}
-	
-	
+
+	public static JTextField getTf_C11() {
+		return tf_C11;
+	}
+
+	public static JTextField getTf_C13() {
+		return tf_C13;
+	}
 
 }
