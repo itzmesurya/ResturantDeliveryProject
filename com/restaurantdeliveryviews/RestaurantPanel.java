@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
 import com.restaurantdeliverymodels.Database;
@@ -31,7 +32,7 @@ public class RestaurantPanel extends JPanel {
 	private static JTextField tf_C12;
 	private static JFormattedTextField formattedTextField_1;
 	private static JTextField tf_C23;
-	private static JTextArea textDA;
+	private static JTable tableDeliveryArea;
 	private static JButton btnRestaurant;
 	private static JButton btnC231;
 	private static JButton btnC232;
@@ -154,12 +155,18 @@ public class RestaurantPanel extends JPanel {
 		panel_C22.setPreferredSize(new Dimension(580, 180));
 		panel_C2.add(panel_C22);
 		
-		textDA = new JTextArea();
-		textDA.setFont(MainFrame.labelFont);
-		textDA.setBackground(Color.white);
-		textDA.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		textDA.setPreferredSize(new Dimension(560, 170));
-		panel_C22.add(textDA);
+		JScrollPane scrollPane_C22 = new JScrollPane();
+		scrollPane_C22.setBackground(Color.white);
+		scrollPane_C22.setPreferredSize(new Dimension(580, 170));
+		panel_C22.add(scrollPane_C22);
+		
+		tableDeliveryArea = new JTable();
+		tableDeliveryArea.setForeground(Color.black);
+		tableDeliveryArea.setBackground(Color.white);
+		scrollPane_C22.setViewportView(tableDeliveryArea);
+		tableDeliveryArea.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "" }));
+		tableDeliveryArea.getColumnModel().getColumn(0).setPreferredWidth(400);
+		tableDeliveryArea.getColumnModel().getColumn(0).setMinWidth(30);
 		
 		JPanel Panel_C23 = new JPanel();
 		Panel_C23.setBackground(Color.WHITE);
@@ -725,10 +732,10 @@ public class RestaurantPanel extends JPanel {
 		return formattedTextField_1;
 	}
 	
-	public static JTextArea getTextDA() {
-		return textDA;
+	public static JTable getTableDeliveryArea() {
+		return tableDeliveryArea;
 	}
-	
+
 	public static JComboBox getCombo_C321() {
 		return combo_C321;
 	}

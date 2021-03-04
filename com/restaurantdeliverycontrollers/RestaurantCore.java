@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 import com.restaurantdeliverymodels.Admin;
 import com.restaurantdeliverymodels.CRUDAction;
@@ -42,7 +44,7 @@ public class RestaurantCore {
 		//RestaurantPanel.getRestaurantnameCB().addItem("");
 		for (int i = 0; i < restaurants.size(); i++) {
 			RestaurantPanel.getRestaurantnameCB().addItem(new RestaurantSelection(restaurants.get(i).getId(), restaurants.get(i).getName()));
-			System.out.println("Restaurant Name: " + RestaurantPanel.getRestaurantnameCB().getSelectedItem().toString() + ", Restaurant id: " +  ((RestaurantSelection)RestaurantPanel.getRestaurantnameCB().getSelectedItem()).getValue());
+			//System.out.println("Restaurant Name: " + RestaurantPanel.getRestaurantnameCB().getSelectedItem().toString() + ", Restaurant id: " +  ((RestaurantSelection)RestaurantPanel.getRestaurantnameCB().getSelectedItem()).getValue());
 		}
 		
 		
@@ -74,7 +76,7 @@ public class RestaurantCore {
 						RestaurantPanel.getTf_C11().setText(R1.getName());
 						RestaurantPanel.getTf_C12().setText(R1.getAddress());
 						RestaurantPanel.getFormattedTextField_1().setText(R1.getPhone());
-						RestaurantPanel.getTextDA().setText(R1.getDelivery_areas().toString());
+						RestaurantPanel.getTableDeliveryArea().setToolTipText(R1.getDelivery_areas().toString());
 						String Sr1[][] = R1.getHours();
 						RestaurantPanel.getCombo_C321().setToolTipText(Sr1[0][0]);
 						RestaurantPanel.getCombo_C322().setToolTipText(Sr1[0][1]);
@@ -111,7 +113,7 @@ public class RestaurantCore {
 
 		
 		String[] Sr3;
-		Sr3 = RestaurantPanel.getTextDA().toString().split("\\s+");
+		Sr3 = RestaurantPanel.getTableDeliveryArea().toString().split("\\s+");
 		
 		String[][] Sr2 = new String[14][2];
 		Sr2[0][0] = RestaurantPanel.getCombo_C321().getToolTipText();
@@ -154,7 +156,7 @@ public class RestaurantCore {
 		RestaurantPanel.getBtnRestaurant().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (RestaurantPanel.getBtnRestaurant().getText() == "Add") {
-//					Database.addRestaurant(R2);					
+					Database.addRestaurant(R2);					
 				}
 				else if (RestaurantPanel.getBtnRestaurant().getText() == "Edit") {
 					Database.saveRestaurants();
@@ -177,18 +179,35 @@ public class RestaurantCore {
 		});
 		
 		RestaurantPanel.getBtnC231().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				RestaurantPanel.getTextDA().append(RestaurantPanel.getTf_C23().getText());
+			public void actionPerformed(ActionEvent e) {				
+				DefaultTableModel model = (DefaultTableModel) RestaurantPanel.getTableDeliveryArea().getModel();
+				if (validatePostcode()) {
+					model.addRow(new Restaurant.getDelivery_areas() {RestaurantPanel.getTf_C23().getText()});
+					RestaurantPanel.getTf_C23().setText("");
+				}				
 			}			
 		});
 		
 		RestaurantPanel.getBtnC232().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RestaurantPanel.getTextDA().setText(RestaurantPanel.getTextDA().getText().replace(RestaurantPanel.getTextDA().getSelectedText(), ""));
-
+				if (RestaurantPanel.getTableDeliveryArea().getSelectedRow() >= 0) {
+					DefaultTableModel model = (DefaultTableModel) RestaurantPanel.getTableDeliveryArea().getModel();
+					model.removeRow(RestaurantPanel.getTableDeliveryArea().getSelectedRow());
+				} else {
+					JOptionPane.showMessageDialog(null, "You must select a row first!", "Error", JOptionPane.ERROR_MESSAGE);
+				}
 			}			
 		});
 		
+	}
+	
+	public boolean validatePostcode() {
+		boolean validated = true;		
+		if (RestaurantPanel.getTf_C23().getText().equals("")) {
+			validated = false;
+			JOptionPane.showMessageDialog(null, "First name must not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+		} 
+		return validated;
 	}
 		
 }
