@@ -10,6 +10,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Client_main_menu_Panel extends JPanel{
 	
@@ -29,7 +31,7 @@ public class Client_main_menu_Panel extends JPanel{
 		
 		JLabel lblClient = new JLabel("Client");
 		lblClient.setFont(MainFrame.headerFont);
-		lblClient.setBounds(545, 22, 170, 45);
+		lblClient.setBounds(591, 22, 170, 45);
 		this.add(lblClient);
 		
 		//Order PANNEL
@@ -47,23 +49,23 @@ public class Client_main_menu_Panel extends JPanel{
 		lblOrder.setBackground(MainFrame.offColor);
 		lblOrder.setForeground(Color.white);
 		lblOrder.setFont(MainFrame.titleFont);
-		lblOrder.setBounds(506, 29, 110, 50);
+		lblOrder.setBounds(35, 154, 110, 50);
 		panel_2.add(lblOrder);
 	
 		
-		place_order_btn = new JButton("<html>Place<br /> Order<html>");
+		place_order_btn = new JButton("Place Order");
 		place_order_btn.setForeground(Color.WHITE);
 		place_order_btn.setFont(MainFrame.labelFont);
 		place_order_btn.setBackground(MainFrame.mainColor);
-		place_order_btn.setBounds(255, 171, 118, 55);
+		place_order_btn.setBounds(362, 152, 173, 55);
 		panel_2.add(place_order_btn);
 		
 		
-		view_history_btn = new JButton("<html>View<br /> History<html>");
+		view_history_btn = new JButton("View History");
 		view_history_btn.setForeground(Color.WHITE);
 		view_history_btn.setFont(MainFrame.labelFont);
 		view_history_btn.setBackground(MainFrame.mainColor);
-		view_history_btn.setBounds(757, 171, 118, 55);
+		view_history_btn.setBounds(702, 152, 173, 55);
 		panel_2.add(view_history_btn);
 		
 		//LOG OUT BUTTON
@@ -90,15 +92,15 @@ public class Client_main_menu_Panel extends JPanel{
 		lblAccount.setBackground(MainFrame.offColor);
 		lblAccount.setForeground(Color.white);
 		lblAccount.setFont(MainFrame.titleFont);
-		lblAccount.setBounds(478, 30, 185, 55);
+		lblAccount.setBounds(35, 140, 150, 55);
 		panel_1.add(lblAccount);
 	
 		
-		account_edit_btn = new JButton("<html>Edit<br /> Account<html>");
+		account_edit_btn = new JButton("Edit Account");
 		account_edit_btn.setForeground(Color.WHITE);
 		account_edit_btn.setFont(MainFrame.labelFont);
 		account_edit_btn.setBackground(MainFrame.mainColor);
-		account_edit_btn.setBounds(488, 172, 118, 55);
+		account_edit_btn.setBounds(362, 140, 173, 55);
 		panel_1.add(account_edit_btn);
 		
 

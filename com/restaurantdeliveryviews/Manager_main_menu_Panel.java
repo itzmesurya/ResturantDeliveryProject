@@ -50,7 +50,7 @@ public class Manager_main_menu_Panel extends JPanel{
 		lblMenu.setBackground(MainFrame.offColor);
 		lblMenu.setForeground(Color.white);
 		lblMenu.setFont(MainFrame.titleFont);
-		lblMenu.setBounds(115, 106, 99, 45);
+		lblMenu.setBounds(115, 270, 95, 45);
 		panel_2.add(lblMenu);
 
 		
@@ -58,25 +58,25 @@ public class Manager_main_menu_Panel extends JPanel{
 		menu_add_btn.setForeground(Color.WHITE);
 		menu_add_btn.setFont(MainFrame.labelFont);
 		menu_add_btn.setBackground(MainFrame.mainColor);
-		menu_add_btn.setBounds(477, 106, 118, 45);
+		menu_add_btn.setBounds(471, 280, 118, 45);
 		panel_2.add(menu_add_btn);
 		
 		menu_edit_btn = new JButton("EDIT");
 		menu_edit_btn.setForeground(Color.WHITE);
 		menu_edit_btn.setFont(MainFrame.labelFont);
 		menu_edit_btn.setBackground(MainFrame.mainColor);
-		menu_edit_btn.setBounds(678,106, 118, 45);
+		menu_edit_btn.setBounds(680,280, 118, 45);
 		panel_2.add(menu_edit_btn);
 		
 		menu_del_btn = new JButton("DELETE");
 		menu_del_btn.setForeground(Color.WHITE);
 		menu_del_btn.setFont(MainFrame.labelFont);
 		menu_del_btn.setBackground(MainFrame.mainColor);
-		menu_del_btn.setBounds(877, 106, 118, 45);
+		menu_del_btn.setBounds(877, 280, 118, 45);
 		panel_2.add(menu_del_btn);
 		
 		JLabel lblOrder= new JLabel("  ORDER");
-		lblOrder.setBounds(115, 270, 115, 45);
+		lblOrder.setBounds(115, 119, 101, 45);
 		panel_2.add(lblOrder);
 		lblOrder.setOpaque(true);
 		lblOrder.setBackground(MainFrame.offColor);
@@ -84,7 +84,7 @@ public class Manager_main_menu_Panel extends JPanel{
 		lblOrder.setFont(MainFrame.titleFont);
 		
 		order_view_btn = new JButton("View");
-		order_view_btn.setBounds(477, 280, 118, 45);
+		order_view_btn.setBounds(471, 119, 118, 45);
 		panel_2.add(order_view_btn);
 		order_view_btn.setForeground(Color.WHITE);
 		order_view_btn.setFont(MainFrame.labelFont);
@@ -125,7 +125,7 @@ public class Manager_main_menu_Panel extends JPanel{
 		resto_edit_btn.setFont(MainFrame.labelFont);
 		resto_edit_btn.setBackground(MainFrame.mainColor);
 
-		resto_edit_btn.setBounds(479, 133, 118, 45);
+		resto_edit_btn.setBounds(464, 133, 118, 45);
 
 		panel_1.add(resto_edit_btn);
 				

@@ -12,7 +12,6 @@ import com.restaurantdeliveryviews.MenuPanel;
 import com.restaurantdeliveryviews.OrderPanel;
 import com.restaurantdeliveryviews.RestaurantPanel;
 
-
 public class Admin_main_menu_Core {
 
 	public Admin_main_menu_Core() {
