@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -12,6 +13,7 @@ import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliverymodels.Client;
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.Item;
+import com.restaurantdeliverymodels.Manager;
 import com.restaurantdeliverymodels.Order;
 import com.restaurantdeliverymodels.Restaurant;
 import com.restaurantdeliverymodels.Restaurateur;
@@ -19,35 +21,38 @@ import com.restaurantdeliveryviews.DeliveryPanel;
 import com.restaurantdeliveryviews.OrderPanel;
 
 public class OrderCore {
-	OrderPanel panel;
+	
 	ArrayList<Order> orders = new ArrayList<Order>();
 	Order order;
 
- 	OrderCore(OrderPanel orderPanel, CRUDAction action) {
- 		this.panel = orderPanel;
+ 	OrderCore( CRUDAction action) {
+// 		this.panel = orderPanel;
 		
 		 switch(action) {
 		 case Read:
-			 panel.getAccept_btn().setVisible(false);
-			 ArrayList<Restaurant> restaurants = Database.getRestaurants();
+			 OrderPanel.getAccept_btn().setVisible(false);
+			 OrderPanel.getlabel().setText("View Order");
+			 JLabel label = new JLabel("Accept Order");
+			 ArrayList<Restaurant> restaurants = ((Manager) Main.user).getRestaurants();
+//			 ArrayList<Restaurant> restaurants = Database.getRestaurants();
 			 for(Restaurant restaurant: restaurants) {
-				 panel.getSelectR_comboBox().addItem(restaurant.getName());
+				 OrderPanel.getSelectR_comboBox().addItem(restaurant.getName());
 			 }
-			 panel.getSelectR_comboBox().addActionListener(new ActionListener() {
+			 OrderPanel.getSelectR_comboBox().addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					changeFilters();
 				}
 			});
-			panel.getProgress_RadioButton().addActionListener(new ActionListener() {
+			 OrderPanel.getProgress_RadioButton().addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					changeFilters();
 				}
 			});
-			panel.getIncoming_RadioButton().addActionListener(new ActionListener() {
+			 OrderPanel.getIncoming_RadioButton().addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -57,16 +62,18 @@ public class OrderCore {
 			 break;
 			 
 		 case Accept:
-			 panel.getIncoming_RadioButton().setVisible(false);
-			 panel.getProgress_RadioButton().setVisible(false);
-			 panel.getSelectR_comboBox().setVisible(false);
+			 OrderPanel.getlabel().setText("Accept Order");
+			 OrderPanel.getIncoming_RadioButton().setVisible(false);
+			 OrderPanel.getProgress_RadioButton().setVisible(false);
+			 OrderPanel.getSelectR_comboBox().setVisible(false);
 			 
-			 orders = ((Restaurateur) Main.user).getOrders();
-//			 orders = ((Restaurateur) Main.user).getOrdersToAccept();
+			 
+//			 orders = ((Restaurateur) Main.user).getOrders();
+			 orders = ((Restaurateur) Main.user).getOrdersToAccept();
 			 
 			 displayOrders();
 			 
-			 panel.getAccept_btn().addActionListener(new ActionListener() {
+			 OrderPanel.getAccept_btn().addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -80,18 +87,19 @@ public class OrderCore {
 			 break;
 			 
 		 case Ready:
-			 panel.getIncoming_RadioButton().setVisible(false);
-			 panel.getProgress_RadioButton().setVisible(false);
-			 panel.getSelectR_comboBox().setVisible(false);
+			 OrderPanel.getlabel().setText("Ready Order");
+			 OrderPanel.getIncoming_RadioButton().setVisible(false);
+			 OrderPanel.getProgress_RadioButton().setVisible(false);
+			 OrderPanel.getSelectR_comboBox().setVisible(false);
 
-			 orders = ((Restaurateur) Main.user).getOrders();
-//			 orders = ((Restaurateur) Main.user).getOrdersToMarkReady();
+//			 orders = ((Restaurateur) Main.user).getOrders();
+			 orders = ((Restaurateur) Main.user).getOrdersToMarkReady();
 			 
 			 displayOrders();
 
-			 panel.getAccept_btn().setText("Ready");
+			 OrderPanel.getAccept_btn().setText("Ready");
 			 
-			 panel.getAccept_btn().addActionListener(new ActionListener() {
+			 OrderPanel.getAccept_btn().addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -107,22 +115,32 @@ public class OrderCore {
  	}
  	
  	private void changeFilters() {
-		String restName = (String) panel.getSelectR_comboBox().getSelectedItem();
+		String restName = (String) OrderPanel.getSelectR_comboBox().getSelectedItem();
 		Restaurant restaurant = Database.getRestaurantByName(restName);
 		ArrayList<Order> allOrders = restaurant.getOrders();
-		int status = 0;
+		int status = -1;
+		if(OrderPanel.getIncoming_RadioButton().isSelected()) {
+			status = 0;
+		
+		}else if(OrderPanel.getProgress_RadioButton().isSelected()){
+			status = 1;
+		}
+		else {
+			orders = allOrders;
+		}
+		
 		for (Order order: allOrders) {
-//			if (order.getStatus() == status)
+			if  (status != -1 && order.getStatus() == status)
 				orders.add(order);
 		}
 		displayOrders();
  	}
  	
  	private void displayOrders() {
- 		panel.getTextField().setText(null);
- 		panel.getTextField_1().setText(null);
- 		panel.getTextField_2().setText(null);
- 		panel.getTextField_3().setText(null);
+ 		OrderPanel.getTextField().setText(null);
+ 		OrderPanel.getTextField_1().setText(null);
+ 		OrderPanel.getTextField_2().setText(null);
+ 		OrderPanel.getTextField_3().setText(null);
 // 		DefaultTableModel oldModel = (DefaultTableModel) panel.getTable().getModel();
 // 		oldModel.setRowCount(0);
  		DefaultTableModel model = new DefaultTableModel(
@@ -133,11 +151,12 @@ public class OrderCore {
 				"Quantity"
 			}
 		);
- 		panel.getTable().setModel(model);
+ 		OrderPanel.getTable().setModel(model);
  	
 
- 		DefaultTableModel oldModel_1 = (DefaultTableModel) panel.getTable_1().getModel();
+ 		DefaultTableModel oldModel_1 = (DefaultTableModel) OrderPanel.getTable_1().getModel();
  		oldModel_1.setRowCount(0);
+ 		OrderPanel.getTable_1().setModel(oldModel_1);
 
  		
 		DefaultTableModel model_1 = new DefaultTableModel(
@@ -155,15 +174,16 @@ public class OrderCore {
 				model_1.addRow(row);
 			}
 		}
- 		panel.getTable_1().setModel(model_1);
- 		panel.getTable_1().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+		OrderPanel.getTable_1().setModel(model_1);
+		OrderPanel.getTable_1().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				int selRow = panel.getTable_1().getSelectedRow();
+				int selRow = OrderPanel.getTable_1().getSelectedRow();
 				if(selRow == -1)
 					return;
- 	            int orderid = (int) panel.getTable_1().getValueAt(selRow, 0);
+			
+ 	            int orderid = (int) OrderPanel.getTable_1().getValueAt(selRow, 0);
  	            order = Database.getOrderById(orderid);
  	            Item[] items = order.getItems();
 // 	    		DefaultTableModel oldModel = (DefaultTableModel) panel.getTable().getModel();
@@ -181,12 +201,12 @@ public class OrderCore {
 	 	   	 		Object[] row = { item.getName(), item.getQuantity() };
 	 	   			model.addRow(row);
 	 	   		}
-	 	    	panel.getTable().setModel(model);
+	 	   	OrderPanel.getTable().setModel(model);
 	 	    	
-	 	 		panel.getTextField().setText(order.getDate());
-	 	 		panel.getTextField_1().setText(order.getHour());
-	 	 		panel.getTextField_2().setText(order.getMinute());
-	 	 		panel.getTextField_3().setText(order.getDelivery_address());
+	 	   OrderPanel.getTextField().setText(order.getDate());
+	 	  OrderPanel.getTextField_1().setText(order.getHour());
+	 	 OrderPanel.getTextField_2().setText(order.getMinute());
+	 	OrderPanel.getTextField_3().setText(order.getDelivery_address());
  	        }
  	    });
  	}

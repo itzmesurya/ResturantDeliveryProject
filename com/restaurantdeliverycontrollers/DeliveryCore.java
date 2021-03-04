@@ -16,7 +16,7 @@ import com.restaurantdeliverymodels.UserHelper;
 import com.restaurantdeliveryviews.DeliveryPanel;
 
 public class DeliveryCore {
-
+	Deliveryman deliveryman;
 	DeliveryCore(CRUDAction action) {
 		
 		
@@ -64,13 +64,12 @@ public class DeliveryCore {
 				for (int i = 0; i < deliverymenIdArray.length; i ++) {
 					DeliveryPanel.getSelectR_comboBox().addItem(deliverymenIdArray[i]);
 				}
-//				try {
-					
+				
 				DeliveryPanel.getSelectR_comboBox().addActionListener(new ActionListener() {//add actionlistner to listen for change
 			         @Override
 			         public void actionPerformed(ActionEvent e) {
 			        	 
-			        	Deliveryman deliveryman = Database.getDeliverymanByUserName((String) DeliveryPanel.getSelectR_comboBox().getSelectedItem());
+			        	deliveryman = Database.getDeliverymanByUserName((String) DeliveryPanel.getSelectR_comboBox().getSelectedItem());
 
 			        	DeliveryPanel.getName_Field().setText(deliveryman.getFirst_name()+ " " + deliveryman.getLast_name());
 			        	DeliveryPanel.getPhone_Field().setText(deliveryman.getPhone());
@@ -90,10 +89,7 @@ public class DeliveryCore {
 			        	
 			         }
 				 });
-//				} catch (NullPointerException e) {
-//					System.out.println("Bonchod error");
-//				}
-				
+
 
 				DeliveryPanel.getVerify_btn().addActionListener(new ActionListener() {
 
@@ -160,24 +156,26 @@ public class DeliveryCore {
 								if (action == CRUDAction.Create) {
 									Database.addDeliveryman(deliveryman);
 								} else if (action == CRUDAction.Edit) {
-									int index = -1;
-									ArrayList<Deliveryman> deliverymen = Database.getDeliverymen();
-									for (int i = 0; i < deliverymen.size(); i++) {
-										if (deliverymen.get(i).getId() == deliveryman.getId()) {
-											index = i;
-										}
-									}
-									if (index != -1) {
+//									int index = -1;
+//									ArrayList<Deliveryman> deliverymen = Database.getDeliverymen();
+//									for (int i = 0; i < deliverymen.size(); i++) {
+//										if (deliverymen.get(i).getId() == deliveryman.getId()) {
+//											index = i;
+//										}
+//									}
+//									if (index != -1) {
 										
-										Deliveryman deliveryman1 = Database.getDeliverymen().get(index);
-										deliveryman1.setFirst_name(deliveryman.getFirst_name());
-										deliveryman1.setLast_name(deliveryman.getLast_name());
-										deliveryman1.setPassword(deliveryman.getPassword());
-										deliveryman1.setEmail(deliveryman.getEmail());
-										deliveryman1.setPhone(deliveryman.getPhone());
-										deliveryman1.setAddress(deliveryman.getAddress());
-										Database.saveDeliverymen();
-									}
+//										Deliveryman deliveryman1 = Database.getDeliverymen().get(index);
+//									Deliveryman deliveryman1 = Database.getDeliverymanByUserName(userName)
+										deliveryman.setFirst_name(deliveryman.getFirst_name());
+										deliveryman.setLast_name(deliveryman.getLast_name());
+										deliveryman.setPassword(deliveryman.getPassword());
+										deliveryman.setEmail(deliveryman.getEmail());
+										deliveryman.setPhone(deliveryman.getPhone());
+										deliveryman.setAddress(deliveryman.getAddress());
+//										Database.saveDeliverymen();
+										deliveryman.edit();
+//									}
 									
 									
 								} else if (action == CRUDAction.Delete) {

@@ -61,4 +61,15 @@ public class Manager extends User {
 			Database.saveManagers();
 		}
 	}
+	
+	public ArrayList<Restaurant> getRestaurants() {
+	    ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
+	    for (Restaurant restaurant : Database.getRestaurants()) {
+	      if (restaurant.getManager_id() == this.id) {
+	    	  restaurants.add(restaurant);
+	      }
+	    }
+	    return restaurants;
+	  }
+	
 }

@@ -23,11 +23,17 @@ import javax.swing.table.DefaultTableModel;
 
 public class OrderPanel extends JPanel {
 
-	private JTextField textField,textField_1,textField_2,textField_3;
-	  JTable table,table_1;
-	  JRadioButton Progress_RadioButton, Incoming_RadioButton;
-	JComboBox selectR_comboBox;
-	JButton Accept_btn;
+	private static JTextField textField;
+	private static JTextField textField_1;
+	private static JTextField textField_2;
+	private static JTextField textField_3;
+	static JTable table;
+	static JTable table_1;
+	private static JLabel label;
+	static JRadioButton Progress_RadioButton;
+	static JRadioButton Incoming_RadioButton;
+	static JComboBox selectR_comboBox;
+	static JButton Accept_btn;
 public OrderPanel() {
 	
 	
@@ -275,7 +281,7 @@ public OrderPanel() {
 				.addContainerGap(655, Short.MAX_VALUE))
 	);
 	
-	JLabel label = new JLabel("Accept Order");
+	 label = new JLabel("Accept Order");
 	label.setPreferredSize(new Dimension(300, 50));
 	label.setHorizontalAlignment(SwingConstants.CENTER);
 	label.setForeground(Color.WHITE);
@@ -348,34 +354,34 @@ public OrderPanel() {
 //	frame.getContentPane().setLayout(groupLayout);
 
 }
-public JTextField getTextField() {
+public static JTextField getTextField() {
 	return textField;
 }
-public JTextField getTextField_1() {
+public static JTextField getTextField_1() {
 	return textField_1;
 }
-public JTextField getTextField_2() {
+public static JTextField getTextField_2() {
 	return textField_2;
 }
-public JTextField getTextField_3() {
+public static JTextField getTextField_3() {
 	return textField_3;
 }
-public JTable getTable() {
+public static JTable getTable() {
 	return table;
 }
-public JTable getTable_1() {
+public static JTable getTable_1() {
 	return table_1;
 }
-public JRadioButton getProgress_RadioButton() {
+public static JRadioButton getProgress_RadioButton() {
 	return Progress_RadioButton;
 }
-public JComboBox getSelectR_comboBox() {
+public static JComboBox getSelectR_comboBox() {
 	return selectR_comboBox;
 }
-public JRadioButton getIncoming_RadioButton() {
+public static JRadioButton getIncoming_RadioButton() {
 	return Incoming_RadioButton;
 }
-public JButton getAccept_btn() {
+public static JButton getAccept_btn() {
 		return Accept_btn;
 }
 public void setAccept_btn(JButton accept_btn) {
@@ -404,6 +410,9 @@ public void setTable(JTable table) {
 }
 public void setTable_1(JTable table_1) {
 	this.table_1 = table_1;
+}
+public static JLabel getlabel() {
+	return label;
 }
 public void setProgress_RadioButton(JRadioButton progress_RadioButton) {
 	Progress_RadioButton = progress_RadioButton;
