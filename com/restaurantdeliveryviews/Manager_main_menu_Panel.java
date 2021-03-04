@@ -114,7 +114,9 @@ public class Manager_main_menu_Panel extends JPanel{
 		lblResturant.setBackground(MainFrame.offColor);
 		lblResturant.setForeground(Color.white);
 		lblResturant.setFont(MainFrame.titleFont);
+
 		lblResturant.setBounds(115, 133, 173, 45);
+
 		panel_1.add(lblResturant);
 	
 		
@@ -122,7 +124,9 @@ public class Manager_main_menu_Panel extends JPanel{
 		resto_edit_btn.setForeground(Color.WHITE);
 		resto_edit_btn.setFont(MainFrame.labelFont);
 		resto_edit_btn.setBackground(MainFrame.mainColor);
+
 		resto_edit_btn.setBounds(479, 133, 118, 45);
+
 		panel_1.add(resto_edit_btn);
 				
 

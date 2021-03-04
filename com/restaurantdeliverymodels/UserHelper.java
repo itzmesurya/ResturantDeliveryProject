@@ -17,6 +17,7 @@ public class UserHelper {
 		}
 		//If no matches were made, return true
 		return true;
+
 	}
 	
 	/*
@@ -31,6 +32,7 @@ public class UserHelper {
 		}
 		//If no matches were made, return true
 		return true;
+
 	}
 
 	public static User userFactory(int levelTobeAdded, String userName, String password, String firstName,

@@ -65,7 +65,9 @@ public class AccountPanel extends JPanel {
 	private JLabel accountLabel;
 	private JPanel topPanel;
 	private JPanel panel_2;
+
 	private static JLabel lblNewLabel;
+
 	public AccountPanel(CRUDAction crudAction) throws ParseException {
 
 		this.setLayout(new BorderLayout(0, 0));
@@ -242,7 +244,9 @@ public class AccountPanel extends JPanel {
 		
 		MaskFormatter mf = new MaskFormatter("***-***-****");
 		setPhoneTextField(new JFormattedTextField(mf));
+
 		getPhoneTextField().setFont(MainFrame.labelFont);
+
 		getPhoneTextField().setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.GRAY));
 		getPhoneTextField().setColumns(10);
 		getPhoneTextField().setBackground(Color.WHITE);

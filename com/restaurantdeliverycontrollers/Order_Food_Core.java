@@ -68,7 +68,9 @@ public class Order_Food_Core {
 					if( Order_Food_Panel.getcomboBox().getSelectedIndex() == item.get(j).getMenu_id()) {
 						//Printing items from menu 		
 						DefaultTableModel model = (DefaultTableModel) Order_Food_Panel.gettable().getModel();
+
 						model.addRow(new Object[] {++currentId2,item.get(j).getName(),item.get(j).getPrice()});
+
 						Order_Food_Panel.gettable().getColumnModel().getColumn(0).setPreferredWidth(1);
 						Order_Food_Panel.gettable().getColumnModel().getColumn(1).setPreferredWidth(350);
 						Order_Food_Panel.gettable().getColumnModel().getColumn(2).setPreferredWidth(3);
@@ -213,6 +215,7 @@ public class Order_Food_Core {
 							JOptionPane.WARNING_MESSAGE);
 					exit = true;
 				}else if(Order_Food_Panel.gettable2().getRowCount() >= 0 && exit == false){
+
 								
 					int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to Place This Order", "Information",
 							dialogButton);
@@ -231,6 +234,7 @@ public class Order_Food_Core {
 					}else {
 						
 					}			
+
 					
 				}
 						 

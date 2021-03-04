@@ -21,8 +21,10 @@ import com.restaurantdeliveryviews.RestaurantPanel;
 
 public class RestaurantCore {
 	
+
 	private Restaurant restaurant;
 	
+
 	private class RestaurantSelection {
 		int id;
 		String name;
@@ -41,6 +43,7 @@ public class RestaurantCore {
 		}
 	}
 	
+
 	public RestaurantCore(CRUDAction crudAction) {
 		
 		JComboBox[][] cb_hours = new JComboBox[7][4];
@@ -91,6 +94,7 @@ public class RestaurantCore {
 
 		for (int i = 0; i < restaurants.size(); i++) {
 			RestaurantPanel.getRestaurantnameCB().addItem(new RestaurantSelection(restaurants.get(i).getId(), restaurants.get(i).getName()));
+
 		}
 		
 		
@@ -131,6 +135,7 @@ public class RestaurantCore {
 		case Edit:
 			RestaurantPanel.getLbl_1().setText("Edit Restaurant");
 			RestaurantPanel.getBtnRestaurant().setText("Edit");
+
 			
 			RestaurantPanel.getBtnRestaurant().addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -163,10 +168,12 @@ public class RestaurantCore {
 				}
 			});
 			
+
 			break;
 		case Delete:
 			RestaurantPanel.getLbl_1().setText("Delete Restaurant");
 			RestaurantPanel.getBtnRestaurant().setText("Delete");
+
 			//Disable editing
 			for (int i = 0; i < 7; i++) {
 				for (int j = 0; j < 4; j++) {
@@ -182,6 +189,7 @@ public class RestaurantCore {
 					Functions.displayMessage("Restaurant deleted!");
 				}
 			});
+
 			break;
 		default:
 		    break;
@@ -190,11 +198,13 @@ public class RestaurantCore {
 		RestaurantPanel.getRestaurantnameCB().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+
 				restaurant = Database.getRestaurantById(((RestaurantSelection)RestaurantPanel.getRestaurantnameCB().getSelectedItem()).getValue());
 				
 				RestaurantPanel.getTf_C11().setText(restaurant.getName());
 				RestaurantPanel.getTf_C12().setText(restaurant.getAddress());
 				RestaurantPanel.getFormattedTextField_1().setText(restaurant.getPhone());
+
 
 				int rows = ((DefaultTableModel)RestaurantPanel.getTableDeliveryArea().getModel()).getRowCount();
 				for(int i = rows - 1; i >=0; i--)
@@ -244,6 +254,7 @@ public class RestaurantCore {
 			}			
 		});
 		
+
 	}
 	
 	public boolean validatePostcode() {
@@ -310,6 +321,7 @@ public class RestaurantCore {
 		default:
 			return "";
 		}
+
 	}
 		
 }

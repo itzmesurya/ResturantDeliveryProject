@@ -3,8 +3,10 @@ package com.restaurantdeliverycontrollers;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -156,6 +158,8 @@ public class AccountCore {
 			}
 		});
 
+
+
 		AccountPanel.getLastNameTextField().addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -230,7 +234,9 @@ public class AccountCore {
 			int levelTobeAdded = getLevel();
 			User userObject = null;
 			if (crudAction == CRUDAction.Create) {
+
 				// user object will be returned without any ID
+
 				return UserHelper.userFactory(levelTobeAdded, userName, password, firstName, lastName, address, email,
 						phone);
 			} else {
@@ -256,7 +262,9 @@ public class AccountCore {
 				AccountPanel.getSelectLevelLabel().setVisible(true);
 			}
 			if (crudAction != CRUDAction.Create) {
+
 				fillUserDetails(Main.user);
+
 			}
 		} else if (Main.user == null) {
 			AccountPanel.getSelectLevelDropDown().setVisible(false);
