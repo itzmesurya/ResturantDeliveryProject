@@ -72,4 +72,13 @@ public class Manager extends User {
 	    return restaurants;
 	  }
 	
+	public Restaurant getManagerRestaurant() {
+		for (Restaurant restaurant : Database.getRestaurants()) {
+			if (restaurant.getManager_id() == this.id) {
+				return restaurant;
+			}
+		}
+		return null;
+	}
+	
 }
