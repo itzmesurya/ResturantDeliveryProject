@@ -28,13 +28,13 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+
 public class RestaurantView {
 
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField tf_C11;
 	private JTextField tf_C12;
-	private JFormattedTextField formattedTextField_1;
 	private JTextField tf_C23;
 	private JTable table;
 
@@ -134,9 +134,9 @@ public class RestaurantView {
 		
 		JPanel panel_C2 = new JPanel();
 		panel_C2.setBackground(Color.BLACK);
-		panel_C2.setBounds(59, 259, 600, 300);
+		panel_C2.setBounds(59, 350, 600, 220);
 		panel_C2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		panel_C2.setPreferredSize(new Dimension(600, 300));
+		panel_C2.setPreferredSize(new Dimension(600, 220));
 		centerPanel.add(panel_C2);
 		
 		JPanel Panel_C21 = new JPanel();
@@ -153,7 +153,7 @@ public class RestaurantView {
 		
 		JPanel panel_C22 = new JPanel();
 		panel_C22.setBackground(Color.WHITE);
-		panel_C22.setPreferredSize(new Dimension(580, 180));
+		panel_C22.setPreferredSize(new Dimension(580, 100));
 		panel_C2.add(panel_C22);
 		
 		table = new JTable();
@@ -204,9 +204,9 @@ public class RestaurantView {
 		
 		JPanel panel_C1 = new JPanel();
 		panel_C1.setBackground(Color.BLACK);
-		panel_C1.setBounds(59, 36, 600, 180);
+		panel_C1.setBounds(59, 36, 600, 280);
 		panel_C1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		panel_C1.setPreferredSize(new Dimension(600, 180));
+		panel_C1.setPreferredSize(new Dimension(600, 280));
 		centerPanel.add(panel_C1);
 		
 		JPanel Panel_C11 = new JPanel();
@@ -250,34 +250,75 @@ public class RestaurantView {
 		Panel_C12.add(tf_C12);
 		
 		JPanel Panel_C13 = new JPanel();
-		Panel_C13.setBackground(Color.BLACK);
 		Panel_C13.setPreferredSize(new Dimension(580, 50));
 		Panel_C13.setFont(new Font("Arial", Font.BOLD, 16));
+		Panel_C13.setBackground(Color.BLACK);
 		panel_C1.add(Panel_C13);
 		
 		JLabel lbl_C131 = new JLabel("Telephone Number: ");
-		lbl_C131.setForeground(Color.RED);
 		lbl_C131.setPreferredSize(new Dimension(200, 40));
+		lbl_C131.setForeground(Color.RED);
 		lbl_C131.setFont(new Font("Arial", Font.BOLD, 20));
 		Panel_C13.add(lbl_C131);
 		
-		JFormattedTextField formattedTextField = new JFormattedTextField();
-		formattedTextField.setPreferredSize(new Dimension(350, 40));		
-		try{
-			MaskFormatter tel1 = new MaskFormatter("### ### - ####");
-			formattedTextField_1 = new JFormattedTextField(tel1);
-			formattedTextField_1.setBorder(new LineBorder(new Color(171, 173, 179), 2, true));
-			formattedTextField_1.setBackground(Color.WHITE);
-			formattedTextField_1.setFont(new Font("Arial", Font.BOLD, 20));
-			formattedTextField_1.setPreferredSize(new Dimension(150, 40));
-		}catch(ParseException e){
-			//System.err.println("Please enter number.");
-		}
+		JFormattedTextField formattedTextField_1 = new JFormattedTextField((Object) null);
+		formattedTextField_1.setPreferredSize(new Dimension(150, 40));
+		formattedTextField_1.setFont(new Font("Arial", Font.BOLD, 20));
+		formattedTextField_1.setBorder(new LineBorder(new Color(171, 173, 179), 2, true));
+		formattedTextField_1.setBackground(Color.WHITE);
 		Panel_C13.add(formattedTextField_1);
 		
 		JLabel lbl_C132 = new JLabel("                                                   ");
 		lbl_C132.setFont(new Font("Arial", Font.BOLD, 14));
 		Panel_C13.add(lbl_C132);
+		
+		JPanel Panel_C14 = new JPanel();
+		Panel_C14.setPreferredSize(new Dimension(580, 50));
+		Panel_C14.setFont(new Font("Arial", Font.BOLD, 16));
+		Panel_C14.setBackground(Color.BLACK);
+		panel_C1.add(Panel_C14);
+		
+		JLabel lbl_C14 = new JLabel("Manager:");
+		lbl_C14.setPreferredSize(new Dimension(200, 40));
+		lbl_C14.setForeground(Color.RED);
+		lbl_C14.setFont(new Font("Arial", Font.BOLD, 20));
+		lbl_C14.setBackground(Color.WHITE);
+		Panel_C14.add(lbl_C14);
+		
+		JComboBox comboBoxManager = new JComboBox();
+		comboBoxManager.setPreferredSize(new Dimension(350, 36));
+		comboBoxManager.setFont(new Font("Arial", Font.BOLD, 20));
+		comboBoxManager.setBorder(new LineBorder(Color.RED, 2, true));
+		comboBoxManager.setBackground(Color.WHITE);
+		Panel_C14.add(comboBoxManager);
+		
+		JPanel Panel_C15 = new JPanel();
+		Panel_C15.setPreferredSize(new Dimension(580, 50));
+		Panel_C15.setFont(new Font("Arial", Font.BOLD, 16));
+		Panel_C15.setBackground(Color.BLACK);
+		panel_C1.add(Panel_C15);
+		
+		JLabel lbl_C15 = new JLabel("Restaurateur");
+		lbl_C15.setPreferredSize(new Dimension(200, 40));
+		lbl_C15.setForeground(Color.RED);
+		lbl_C15.setFont(new Font("Arial", Font.BOLD, 20));
+		lbl_C15.setBackground(Color.WHITE);
+		Panel_C15.add(lbl_C15);
+		
+		JComboBox comboBoxBoss = new JComboBox();
+		comboBoxBoss.setPreferredSize(new Dimension(350, 36));
+		comboBoxBoss.setFont(new Font("Arial", Font.BOLD, 20));
+		comboBoxBoss.setBorder(new LineBorder(Color.RED, 2, true));
+		comboBoxBoss.setBackground(Color.WHITE);
+		Panel_C15.add(comboBoxBoss);
+		
+		JFormattedTextField formattedTextField = new JFormattedTextField();
+		formattedTextField.setPreferredSize(new Dimension(350, 40));		
+		try{
+			MaskFormatter tel1 = new MaskFormatter("### ### - ####");
+		}catch(ParseException e){
+			//System.err.println("Please enter number.");
+		}
 		
 		JPanel panel_C3 = new JPanel();
 		panel_C3.setBackground(Color.BLACK);

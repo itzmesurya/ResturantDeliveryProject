@@ -85,23 +85,14 @@ public class Admin_main_menu_Panel extends JPanel{
 		delivery_add_btn.setBounds(375, 600, 106, 40);
 		this.add(delivery_add_btn);
 		
-		
-		//RESTURANT
-		
-		JLabel lblResturant = new JLabel("   RESTURANT");
-		lblResturant.setOpaque(true);
-		lblResturant.setBackground(MainFrame.offColor);
-		lblResturant.setForeground(Color.white);
-		lblResturant.setFont(MainFrame.titleFont);
-		lblResturant.setBounds(162, 170, 170, 45);
-		this.add(lblResturant);
-		
+
+
 		//ADMIN
 		
-		JLabel lblAdmin = new JLabel("ADMIN");
+		JLabel lblAdmin = new JLabel("Admin");
 		
 		lblAdmin.setFont(MainFrame.headerFont);
-		lblAdmin.setBounds(546, 22, 170, 45);
+		lblAdmin.setBounds(571, 8, 170, 45);
 		this.add(lblAdmin);
 		
 		
@@ -112,6 +103,19 @@ public class Admin_main_menu_Panel extends JPanel{
 		panel_1.setBounds(10, 67, 549, 399);
 		this.add(panel_1);
 		panel_1.setLayout(null);
+
+		
+		
+		//RESTURANT
+		
+		JLabel lblResturant = new JLabel("   RESTAURANT");
+		lblResturant.setBounds(145, 101, 185, 45);
+		panel_1.add(lblResturant);
+		lblResturant.setOpaque(true);
+		lblResturant.setBackground(MainFrame.offColor);
+		lblResturant.setForeground(Color.white);
+		lblResturant.setFont(MainFrame.titleFont);
+
 		
 		//MENU PANNEL
 		
@@ -156,7 +160,9 @@ public class Admin_main_menu_Panel extends JPanel{
 		//DELIVERY MAN
 		
 		JLabel lblDeliveryMan = new JLabel("   DELIVERY MAN");
-		lblDeliveryMan.setBounds(502, 10, 195, 45);
+
+		lblDeliveryMan.setBounds(502, 10, 199, 45);
+
 		panel_3.add(lblDeliveryMan);
 		lblDeliveryMan.setOpaque(true);
 		lblDeliveryMan.setBackground(MainFrame.offColor);

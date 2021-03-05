@@ -27,7 +27,7 @@ public class Restaurateur_main_menu_Panel extends JPanel{
 		
 		JLabel lblRestaurateur = new JLabel("Restaurateur");
 		lblRestaurateur.setFont(MainFrame.headerFont);
-		lblRestaurateur.setBounds(496, 22, 270, 45);
+		lblRestaurateur.setBounds(524, 23, 270, 45);
 		this.add(lblRestaurateur);
 		
 		JPanel panel_1 = new JPanel();
@@ -43,22 +43,22 @@ public class Restaurateur_main_menu_Panel extends JPanel{
 		lblOrder.setBackground(MainFrame.offColor);
 		lblOrder.setForeground(Color.WHITE);
 		lblOrder.setFont(MainFrame.titleFont);
-		lblOrder.setBounds(448, 10, 128, 46);
+		lblOrder.setBounds(46, 205, 128, 46);
 		panel_1.add(lblOrder);
 		
 		
-		order_accept_btn = new JButton("<html>ACCPET<br />ORDERS</html>");
+		order_accept_btn = new JButton("Accept Orders");
 		order_accept_btn.setForeground(Color.WHITE);
 		order_accept_btn.setFont(MainFrame.labelFont);
 		order_accept_btn.setBackground(MainFrame.mainColor);
-		order_accept_btn.setBounds(189, 259, 118, 63);
+		order_accept_btn.setBounds(362, 203, 190, 50);
 		panel_1.add(order_accept_btn);
 		
-		order_ready_btn = new JButton("<html>MARK<br />READY</html>");
+		order_ready_btn = new JButton("Mark Ready");
 		order_ready_btn.setForeground(Color.WHITE);
 		order_ready_btn.setFont(MainFrame.labelFont);
 		order_ready_btn.setBackground(MainFrame.mainColor);
-		order_ready_btn.setBounds(694, 259, 118, 63);
+		order_ready_btn.setBounds(724, 203, 190, 50);
 		panel_1.add(order_ready_btn);
 		
 		//LOG OUT BUTTON

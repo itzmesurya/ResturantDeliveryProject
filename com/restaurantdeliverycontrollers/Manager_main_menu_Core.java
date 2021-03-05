@@ -55,7 +55,7 @@ public class Manager_main_menu_Core {
 				public void actionPerformed(ActionEvent e) {
 
 					MainFrame.changePanel(new OrderPanel());
-					new OrderCore(null, CRUDAction.Read);
+					new OrderCore(CRUDAction.Read);
 
 						
 				}

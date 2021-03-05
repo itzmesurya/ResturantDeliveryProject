@@ -18,6 +18,7 @@ public class Menu {
 		this.id = Database.getIdCounter().getIdCounterMenu();
 		this.restaurant_id = restaurant_id;
 		this.items = this.getMenuItemsFromDataBase();
+		Database.saveIdCounter();
 	}
 
 	public int getId() {

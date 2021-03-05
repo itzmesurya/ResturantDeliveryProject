@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -12,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliverymodels.Client;
 import com.restaurantdeliverymodels.Database;
+import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.Item;
 import com.restaurantdeliverymodels.Manager;
 import com.restaurantdeliverymodels.Order;
@@ -19,6 +21,7 @@ import com.restaurantdeliverymodels.Restaurant;
 import com.restaurantdeliverymodels.Restaurateur;
 import com.restaurantdeliveryviews.DeliveryPanel;
 import com.restaurantdeliveryviews.OrderPanel;
+import com.restaurantdeliveryviews.RestaurantPanel;
 
 public class OrderCore {
 	
@@ -26,18 +29,28 @@ public class OrderCore {
 	Order order;
 
  	OrderCore( CRUDAction action) {
+ 		
+ 		OrderPanel.getSelectR_comboBox().removeAllItems();
+ 		ButtonGroup bGroup = new ButtonGroup();
+ 		bGroup.add(OrderPanel.getIncoming_RadioButton());
+ 		bGroup.add(OrderPanel.getProgress_RadioButton());
 // 		this.panel = orderPanel;
 		
 		 switch(action) {
 		 case Read:
 			 OrderPanel.getAccept_btn().setVisible(false);
 			 OrderPanel.getlabel().setText("View Order");
-			 JLabel label = new JLabel("Accept Order");
+
 			 ArrayList<Restaurant> restaurants = ((Manager) Main.user).getRestaurants();
-//			 ArrayList<Restaurant> restaurants = Database.getRestaurants();
 			 for(Restaurant restaurant: restaurants) {
 				 OrderPanel.getSelectR_comboBox().addItem(restaurant.getName());
 			 }
+			 if (OrderPanel.getSelectR_comboBox().getItemCount() > 0) {
+				 loadRestaurantOrders(Database.getRestaurantByName((String)OrderPanel.getSelectR_comboBox().getSelectedItem()));
+			 } else {
+				 Functions.displayMessage("You have no restaurants!");
+			 }
+			 
 			 OrderPanel.getSelectR_comboBox().addActionListener(new ActionListener() {
 				
 				@Override
@@ -123,8 +136,12 @@ public class OrderCore {
  	
  	private void changeFilters() {
 
+
+
 		String restName = (String) OrderPanel.getSelectR_comboBox().getSelectedItem();
 		Restaurant restaurant = Database.getRestaurantByName(restName);
+		loadRestaurantOrders(Database.getRestaurantByName((String)OrderPanel.getSelectR_comboBox().getSelectedItem()));
+		
 		ArrayList<Order> allOrders = restaurant.getOrders();
 		int status = -1;
 		if(OrderPanel.getIncoming_RadioButton().isSelected()) {
@@ -163,9 +180,11 @@ public class OrderCore {
  		OrderPanel.getTable().setModel(model);
  	
 
+
 // 		DefaultTableModel oldModel_1 = (DefaultTableModel) OrderPanel.getTable_1().getModel();
 // 		oldModel_1.setRowCount(0);
 // 		OrderPanel.getTable_1().setModel(oldModel_1);
+
 
  		
 		DefaultTableModel model_1 = new DefaultTableModel(
@@ -219,6 +238,20 @@ public class OrderCore {
 			 	OrderPanel.getTextField_3().setText(order.getDelivery_address());
  	        }
  	    });
+ 	}
+ 	
+ 	private void loadRestaurantOrders(Restaurant restaurant) {
+ 		ArrayList<Order> orders = restaurant.getOrders();
+ 		
+ 		int rows = ((DefaultTableModel)OrderPanel.getTable_1().getModel()).getRowCount();
+		for(int i = rows - 1; i >= 0; i--)
+		{
+			((DefaultTableModel)OrderPanel.getTable_1().getModel()).removeRow(i);
+		}
+ 		
+ 		for (Order order : orders) {
+ 			((DefaultTableModel)OrderPanel.getTable_1().getModel()).addRow(new Object[] {order.getId(), (Database.getClientById(order.getClient_id()).getFirst_name() + Database.getClientById(order.getClient_id()).getLast_name())});
+ 		}
  	}
 
 }
