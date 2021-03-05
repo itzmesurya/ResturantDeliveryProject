@@ -25,7 +25,11 @@ public class Deliveryman extends User {
 			String email, String phone, String[] delivery_areas) {
 		super(username, password, first_name, last_name, address, email, phone);
 		this.level = 1;
-		this.delivery_areas = new ArrayList<>(Arrays.asList(delivery_areas));
+		if (delivery_areas != null) {
+			this.delivery_areas = new ArrayList<>(Arrays.asList(delivery_areas));
+		} else {
+			this.delivery_areas = new ArrayList<>();
+		}
 	}
 
 	public ArrayList<String> getDelivery_areas() {
