@@ -62,6 +62,9 @@ public class OrderCore {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					if( OrderPanel.getProgress_RadioButton().isSelected()) {
+						 OrderPanel.getIncoming_RadioButton().setSelected(false);
+					}
 					changeFilters();
 				}
 			});
@@ -69,6 +72,9 @@ public class OrderCore {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					if( OrderPanel.getIncoming_RadioButton().isSelected()) {
+						 OrderPanel.getProgress_RadioButton().setSelected(false);
+					}
 					changeFilters();
 				}
 			});
@@ -82,30 +88,22 @@ public class OrderCore {
 			 
 			 
 //			 orders = ((Restaurateur) Main.user).getOrders();
-			 OrderPanel.getProgress_RadioButton().addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						if( OrderPanel.getProgress_RadioButton().isSelected()) {
-							 OrderPanel.getIncoming_RadioButton().setSelected(false);
-						}else if( OrderPanel.getIncoming_RadioButton().isSelected()) {
-							 OrderPanel.getProgress_RadioButton().setSelected(false);
-						}
-						changeFilters();
-					}
-				});
-				 OrderPanel.getIncoming_RadioButton().addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						if( OrderPanel.getIncoming_RadioButton().isSelected()) {
-							 OrderPanel.getProgress_RadioButton().setSelected(false);
-						}else if( OrderPanel.getProgress_RadioButton().isSelected()) {
-							 OrderPanel.getIncoming_RadioButton().setSelected(false);
-						}
-						changeFilters();
-					}
-				});
+			 orders = ((Restaurateur) Main.user).getOrdersToAccept();
+			 
+			 displayOrders();
+
+			 
+			 OrderPanel.getAccept_btn().addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(order != null)
+						order.markRestaurateurAccepted();
+
+					 orders = ((Restaurateur) Main.user).getOrdersToAccept();
+					 displayOrders();
+				}
+			 });
 			 break;
 			 
 		 case Ready:
@@ -137,10 +135,9 @@ public class OrderCore {
  	}
  	
  	private void changeFilters() {
- 		
- 		DefaultTableModel oldModel_1 = (DefaultTableModel) OrderPanel.getTable_1().getModel(); //orders
- 		oldModel_1.setRowCount(0);
- 		
+
+
+
 		String restName = (String) OrderPanel.getSelectR_comboBox().getSelectedItem();
 		Restaurant restaurant = Database.getRestaurantByName(restName);
 		loadRestaurantOrders(Database.getRestaurantByName((String)OrderPanel.getSelectR_comboBox().getSelectedItem()));
@@ -149,18 +146,19 @@ public class OrderCore {
 		int status = -1;
 		if(OrderPanel.getIncoming_RadioButton().isSelected()) {
 			status = 0;
-		
-		}else if(OrderPanel.getProgress_RadioButton().isSelected()){
+		} else if(OrderPanel.getProgress_RadioButton().isSelected()){
 			status = 1;
 		}
-		else {
+		if(status == -1) {
 			orders = allOrders;
+		} else {
+			orders = new ArrayList<Order>();
+			for (Order order: allOrders) {
+				if  (order.getStatus() == status)
+					orders.add(order);
+			}
 		}
 		
-		for (Order order: allOrders) {
-			if  (status != -1 && order.getStatus() == status)
-				orders.add(order);
-		}
 		displayOrders();
  	}
  	
@@ -182,13 +180,11 @@ public class OrderCore {
  		OrderPanel.getTable().setModel(model);
  	
 
- 		DefaultTableModel oldModel_1 = (DefaultTableModel) OrderPanel.getTable_1().getModel();
- 		int rows = oldModel_1.getRowCount();
-		for(int i = rows - 1; i >= 0; i--)
-		{
-			oldModel_1.removeRow(i);
-		}
- 		OrderPanel.getTable_1().setModel(oldModel_1);
+
+// 		DefaultTableModel oldModel_1 = (DefaultTableModel) OrderPanel.getTable_1().getModel();
+// 		oldModel_1.setRowCount(0);
+// 		OrderPanel.getTable_1().setModel(oldModel_1);
+
 
  		
 		DefaultTableModel model_1 = new DefaultTableModel(
@@ -199,6 +195,8 @@ public class OrderCore {
 					"Client Name" 
 				}
 			);
+		OrderPanel.getTable_1().setModel(model_1);
+		
 		for(Order order: orders) {
 			Client client = Database.getClientById(order.getClient_id());
 			if(client != null) {
@@ -206,7 +204,6 @@ public class OrderCore {
 				model_1.addRow(row);
 			}
 		}
-		OrderPanel.getTable_1().setModel(model_1);
 		OrderPanel.getTable_1().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
 			@Override
@@ -233,12 +230,12 @@ public class OrderCore {
 	 	   	 		Object[] row = { item.getName(), item.getQuantity() };
 	 	   			model.addRow(row);
 	 	   		}
-	 	   	OrderPanel.getTable().setModel(model);
+	 	   		OrderPanel.getTable().setModel(model);
 	 	    	
-	 	   OrderPanel.getTextField().setText(order.getDate());
-	 	  OrderPanel.getTextField_1().setText(order.getHour());
-	 	 OrderPanel.getTextField_2().setText(order.getMinute());
-	 	OrderPanel.getTextField_3().setText(order.getDelivery_address());
+			 	   OrderPanel.getTextField().setText(order.getDate());
+			 	  OrderPanel.getTextField_1().setText(order.getHour());
+			 	 OrderPanel.getTextField_2().setText(order.getMinute());
+			 	OrderPanel.getTextField_3().setText(order.getDelivery_address());
  	        }
  	    });
  	}
