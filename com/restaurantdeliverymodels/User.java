@@ -35,6 +35,7 @@ public abstract class User {
 		this.address = address;
 		this.email = email;
 		this.phone = phone;
+		Database.saveIdCounter();
 	}
 	
 	/**

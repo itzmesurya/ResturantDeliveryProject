@@ -38,6 +38,7 @@ public class Order {
 		this.client_id = client_id;
 		this.status = 0;
 		this.setTime();
+		Database.saveIdCounter();
 	}
 
 	public void setTime() {

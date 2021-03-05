@@ -26,6 +26,7 @@ public class Item {
 		this.price = price;
 		this.quantity = quantity;
 		this.order_id = order_id;
+		Database.saveIdCounter();
 	}
 	
 	/**
@@ -39,6 +40,7 @@ public class Item {
 		this.name = name;
 		this.price = price;
 		this.menu_id = menu_id;
+		Database.saveIdCounter();
 	}
 	
 	/**
@@ -50,6 +52,7 @@ public class Item {
 		this.id = Database.getIdCounter().getIdCounterItem();
 		this.name = name;
 		this.price = price;
+		Database.saveIdCounter();
 	}
 
 	public int getId() {
