@@ -93,11 +93,11 @@ public class Order_Food_Core {
 			
 				//Get Id
 				boolean out = false;
-				if((Order_Food_Panel.getAdd_Id().getText().isBlank())){
+				if((Order_Food_Panel.getAdd_Id().getText().isEmpty())){
 					JOptionPane.showMessageDialog(null, "Please Insert Order ID", "Error",
 							JOptionPane.WARNING_MESSAGE);
 					 out = true;
-				}else if(Order_Food_Panel.getAdd_Quantity().getText().isBlank()){
+				}else if(Order_Food_Panel.getAdd_Quantity().getText().isEmpty()){
 					JOptionPane.showMessageDialog(null, "Please Insert Quantity", "Error",
 							JOptionPane.WARNING_MESSAGE);
 					out = true;
@@ -204,15 +204,15 @@ public class Order_Food_Core {
 		Order_Food_Panel.getBtn_Place_Order().addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
 				boolean exit = false;
-				if((Order_Food_Panel.getAddress().getText().isBlank())){
+				if((Order_Food_Panel.getAddress().getText().isEmpty())){
 					JOptionPane.showMessageDialog(null, "Please Insert Address", "Error",
 							JOptionPane.WARNING_MESSAGE);
 					 exit = true;
-				}else if(Order_Food_Panel.getPostal_Code().getText().isBlank()){
+				}else if(Order_Food_Panel.getPostal_Code().getText().isEmpty()){
 					JOptionPane.showMessageDialog(null, "Please Insert Postal Code", "Error",
 							JOptionPane.WARNING_MESSAGE);
 					exit = true;
-				}else if(Order_Food_Panel.getTotal().getText().isBlank() ){
+				}else if(Order_Food_Panel.getTotal().getText().isEmpty() ){
 					JOptionPane.showMessageDialog(null, "Please Give Order First", "Error",
 							JOptionPane.WARNING_MESSAGE);
 					exit = true;

@@ -3,6 +3,7 @@ package com.restaurantdeliverycontrollers;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -31,23 +32,35 @@ public class MenuCore {
 	int dialogButton = JOptionPane.YES_NO_OPTION;
 
 	MenuCore(CRUDAction crudAction) {
-		BindRestrauntsToComboBox();
+		BindRestrauntsToComboBox(crudAction);
 
 		BindActionEvents(crudAction);
 
 	}
 
-	private void BindRestrauntsToComboBox() {
-		loadRestrauntDataInComboBox();
+	private void BindRestrauntsToComboBox(CRUDAction crudAction) {
+		loadRestrauntDataInComboBox(crudAction);
 	}
 
-	private void loadRestrauntDataInComboBox() {
+	private void loadRestrauntDataInComboBox(CRUDAction crudAction) {
 
 		User user = Main.user;
 		// user object must exist and user must be a manager
 		if (user != null && (user instanceof Manager || user instanceof Admin)) {
 
-			ArrayList<Restaurant> restaurants = Database.getRestaurants();
+			ArrayList<Restaurant> restaurants = null;
+			if (crudAction == CRUDAction.Create) {
+				// make sure only restaurants with no menu items
+				// is added to the list
+				// 1. get the menu_ids of all menuItems
+				final ArrayList<Integer> ids = (ArrayList<Integer>) Database.getItems().stream()
+						.map(x -> x.getMenu_id()).collect(Collectors.toList());
+				restaurants = (ArrayList<Restaurant>) Database.getRestaurants().stream().filter(x -> {
+					return !ids.contains(x.getId());
+				}).collect(Collectors.toList());
+			} else {
+				restaurants = Database.getRestaurants();
+			}
 
 			for (int i = 0; i < restaurants.size(); i++) {
 				if (user instanceof Manager) {

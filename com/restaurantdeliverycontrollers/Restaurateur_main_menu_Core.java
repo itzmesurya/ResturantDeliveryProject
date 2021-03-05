@@ -3,6 +3,7 @@ package com.restaurantdeliverycontrollers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliveryviews.Admin_main_menu_Panel;
 import com.restaurantdeliveryviews.LoginPanel;
 import com.restaurantdeliveryviews.MainFrame;
@@ -20,7 +21,7 @@ public class Restaurateur_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 			
 				MainFrame.changePanel(new OrderPanel());
-				
+				new OrderCore(CRUDAction.Accept);
 			}
 		});
 		
@@ -30,7 +31,7 @@ public class Restaurateur_main_menu_Core {
 			public void actionPerformed(ActionEvent e) {
 				
 				MainFrame.changePanel(new OrderPanel());
-				
+				new OrderCore(CRUDAction.Ready);
 			}
 		});
 		

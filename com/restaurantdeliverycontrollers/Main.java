@@ -247,8 +247,7 @@ public class Main {
 		//Change to Login
 		MainFrame.changePanel(new LoginPanel());
 		new LoginCore();
-		LoginPanel.getUsernameTF().setText("Johndoeadmin");
-		LoginPanel.getPasswordTF().setText("Admin123");
+	
 
 		
 	}
