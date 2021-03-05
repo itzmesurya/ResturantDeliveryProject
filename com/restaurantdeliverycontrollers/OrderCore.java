@@ -69,21 +69,30 @@ public class OrderCore {
 			 
 			 
 //			 orders = ((Restaurateur) Main.user).getOrders();
-			 orders = ((Restaurateur) Main.user).getOrdersToAccept();
-			 
-			 displayOrders();
-			 
-			 OrderPanel.getAccept_btn().addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					if(order != null)
-						order.markDeliveryAccepted();
-
-					 orders = ((Restaurateur) Main.user).getOrdersToAccept();
-					 displayOrders();
-				}
-			});
+			 OrderPanel.getProgress_RadioButton().addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if( OrderPanel.getProgress_RadioButton().isSelected()) {
+							 OrderPanel.getIncoming_RadioButton().setSelected(false);
+						}else if( OrderPanel.getIncoming_RadioButton().isSelected()) {
+							 OrderPanel.getProgress_RadioButton().setSelected(false);
+						}
+						changeFilters();
+					}
+				});
+				 OrderPanel.getIncoming_RadioButton().addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if( OrderPanel.getIncoming_RadioButton().isSelected()) {
+							 OrderPanel.getProgress_RadioButton().setSelected(false);
+						}else if( OrderPanel.getProgress_RadioButton().isSelected()) {
+							 OrderPanel.getIncoming_RadioButton().setSelected(false);
+						}
+						changeFilters();
+					}
+				});
 			 break;
 			 
 		 case Ready:
@@ -115,6 +124,13 @@ public class OrderCore {
  	}
  	
  	private void changeFilters() {
+ 		
+ 		DefaultTableModel oldModel_1 = (DefaultTableModel) OrderPanel.getTable_1().getModel();
+ 		oldModel_1.setRowCount(0);
+ 		OrderPanel.getTable_1().setModel(oldModel_1);
+
+ 		
+ 		
 		String restName = (String) OrderPanel.getSelectR_comboBox().getSelectedItem();
 		Restaurant restaurant = Database.getRestaurantByName(restName);
 		ArrayList<Order> allOrders = restaurant.getOrders();

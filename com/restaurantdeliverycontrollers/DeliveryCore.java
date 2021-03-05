@@ -12,8 +12,10 @@ import javax.swing.table.DefaultTableModel;
 import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.Deliveryman;
+import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.UserHelper;
 import com.restaurantdeliveryviews.DeliveryPanel;
+import com.restaurantdeliveryviews.RestaurantPanel;
 
 public class DeliveryCore {
 	Deliveryman deliveryman;
@@ -63,6 +65,7 @@ public class DeliveryCore {
 			
 				for (int i = 0; i < deliverymenIdArray.length; i ++) {
 					DeliveryPanel.getSelectR_comboBox().addItem(deliverymenIdArray[i]);
+					
 				}
 				
 				DeliveryPanel.getSelectR_comboBox().addActionListener(new ActionListener() {//add actionlistner to listen for change
@@ -71,7 +74,7 @@ public class DeliveryCore {
 			        	 
 			        	deliveryman = Database.getDeliverymanByUserName((String) DeliveryPanel.getSelectR_comboBox().getSelectedItem());
 
-			        	DeliveryPanel.getName_Field().setText(deliveryman.getFirst_name()+ " " + deliveryman.getLast_name());
+			        	DeliveryPanel.getName_Field().setText(deliveryman.getFirst_name());
 			        	DeliveryPanel.getPhone_Field().setText(deliveryman.getPhone());
 			        	DeliveryPanel.getUser_Field().setText(deliveryman.getUsername());
 			        	DeliveryPanel.getPass_Field().setText(deliveryman.getPassword());
@@ -124,21 +127,44 @@ public class DeliveryCore {
 				DeliveryPanel.getSave_btn().addActionListener(new ActionListener() {
 
 					public void actionPerformed(ActionEvent e) {
-
+						if(	 DeliveryPanel.getLblNewLabel().getText().contains("Create")) {
+							System.out.println("create");
+						
 						ArrayList<String> areas = new ArrayList<String>();
 						for (int i = 0; i < DeliveryPanel.getDarea_table().getRowCount(); i++) {
 							areas.add((String) DeliveryPanel.getDarea_table().getValueAt(i, 0));
 						}
-
+						
+						
 						Deliveryman deliveryman = new Deliveryman(DeliveryPanel.getUser_Field().getText(),
 								DeliveryPanel.getPass_Field().getText(), DeliveryPanel.getName_Field().getText(), "", "", "",
 								DeliveryPanel.getPhone_Field().getText(), areas.toArray(new String[0]));
+						
+						
+//						
+//						deliveryman.setFirst_name( DeliveryPanel.getName_Field().getText());
+//						deliveryman.setPhone(DeliveryPanel.getPhone_Field().getText());
+//						deliveryman.setPassword(DeliveryPanel.getPass_Field().getText());
+//						deliveryman.setDelivery_areas(areas);
 
+						
+					
+						
 						if (DeliveryPanel.getUser_Field().getText().equals("") && DeliveryPanel.getPass_Field().equals("")
 								&& DeliveryPanel.getName_Field().equals("") && DeliveryPanel.getPhone_Field().equals("")) {
 							JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
 									JOptionPane.INFORMATION_MESSAGE);
-						} else {
+						
+						}else if(DeliveryPanel.getPhone_Field().getText().length() < 14) {
+							JOptionPane.showMessageDialog(null, "Please enter a complete phone number", "Error",
+									JOptionPane.INFORMATION_MESSAGE);
+						}
+						else if(!DeliveryPanel.getConfirmPass_Field().getText() .equals( DeliveryPanel.getPass_Field().getText())) {
+							JOptionPane.showMessageDialog(null, "Confirm password is not the same as password", "Error",
+									JOptionPane.INFORMATION_MESSAGE);	
+						}
+						
+						else {
 							if (action == CRUDAction.Create && !UserHelper.isUsernameAvailable(deliveryman)) {
 								JOptionPane.showMessageDialog(null, "user name npt available", "Error",
 										JOptionPane.INFORMATION_MESSAGE);
@@ -156,7 +182,7 @@ public class DeliveryCore {
 								if (action == CRUDAction.Create) {
 									Database.addDeliveryman(deliveryman);
 								} else if (action == CRUDAction.Edit) {
-//									int index = -1;
+									int index = -1;
 //									ArrayList<Deliveryman> deliverymen = Database.getDeliverymen();
 //									for (int i = 0; i < deliverymen.size(); i++) {
 //										if (deliverymen.get(i).getId() == deliveryman.getId()) {
@@ -188,24 +214,144 @@ public class DeliveryCore {
 							}
 						}
 
+					}else if(	 DeliveryPanel.getLblNewLabel().getText().contains("Edit") ||  DeliveryPanel.getLblNewLabel().getText().contains("Delete")) {
+						System.out.println("Edit");
+						ArrayList<String> areas = new ArrayList<String>();
+						for (int i = 0; i < DeliveryPanel.getDarea_table().getRowCount(); i++) {
+							areas.add((String) DeliveryPanel.getDarea_table().getValueAt(i, 0));
+						}
+					
+//						
+//						Deliveryman deliveryman = new Deliveryman(DeliveryPanel.getUser_Field().getText(),
+//								DeliveryPanel.getPass_Field().getText(), DeliveryPanel.getName_Field().getText(), "", "", "",
+//								DeliveryPanel.getPhone_Field().getText(), areas.toArray(new String[0]));
+//						
+						
+						
+						deliveryman.setFirst_name( DeliveryPanel.getName_Field().getText());
+						deliveryman.setPhone(DeliveryPanel.getPhone_Field().getText());
+						deliveryman.setPassword(DeliveryPanel.getPass_Field().getText());
+						deliveryman.setDelivery_areas(areas);
+
+						
+					
+						
+						if (DeliveryPanel.getUser_Field().getText().equals("") && DeliveryPanel.getPass_Field().equals("")
+								&& DeliveryPanel.getName_Field().equals("") && DeliveryPanel.getPhone_Field().equals("")) {
+							JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
+									JOptionPane.INFORMATION_MESSAGE);
+						
+						}else if(DeliveryPanel.getPhone_Field().getText().length() < 14) {
+							JOptionPane.showMessageDialog(null, "Please enter a complete phone number", "Error",
+									JOptionPane.INFORMATION_MESSAGE);
+						}
+						else if(!DeliveryPanel.getConfirmPass_Field().getText() .equals( DeliveryPanel.getPass_Field().getText())) {
+							JOptionPane.showMessageDialog(null, "Confirm password is not the same as password", "Error",
+									JOptionPane.INFORMATION_MESSAGE);	
+						}
+						
+						else {
+							if (action == CRUDAction.Create && !UserHelper.isUsernameAvailable(deliveryman)) {
+								JOptionPane.showMessageDialog(null, "user name npt available", "Error",
+										JOptionPane.INFORMATION_MESSAGE);
+							} else {
+								
+								
+								DeliveryPanel.getUser_Field().setText("");
+								DeliveryPanel.getPass_Field().setText("");
+								DeliveryPanel.getName_Field().setText("");
+								DeliveryPanel.getPhone_Field().setText("");
+								DeliveryPanel.getConfirmPass_Field().setText("");
+								
+
+								DefaultTableModel model = (DefaultTableModel) DeliveryPanel.getDarea_table().getModel();
+								model.setRowCount(0);
+								
+								
+		            			
+								if (action == CRUDAction.Create) {
+									Database.addDeliveryman(deliveryman);
+								} else if (action == CRUDAction.Edit) {
+									int index = -1;
+//									ArrayList<Deliveryman> deliverymen = Database.getDeliverymen();
+//									for (int i = 0; i < deliverymen.size(); i++) {
+//										if (deliverymen.get(i).getId() == deliveryman.getId()) {
+//											index = i;
+//										}
+//									}
+//									if (index != -1) {
+										
+//										Deliveryman deliveryman1 = Database.getDeliverymen().get(index);
+//									Deliveryman deliveryman1 = Database.getDeliverymanByUserName(userName)
+										deliveryman.setFirst_name(deliveryman.getFirst_name());
+										deliveryman.setLast_name(deliveryman.getLast_name());
+										deliveryman.setPassword(deliveryman.getPassword());
+										deliveryman.setEmail(deliveryman.getEmail());
+										deliveryman.setPhone(deliveryman.getPhone());
+										deliveryman.setAddress(deliveryman.getAddress());
+//										Database.saveDeliverymen();
+										deliveryman.edit();
+//									}
+									
+									
+								} else if (action == CRUDAction.Delete) {
+									Database.deleteDeliverymanById(deliveryman.getId());
+//									Database.deleteDeliverymanById(this.getId(deliveryman));
+									int i = DeliveryPanel.getSelectR_comboBox().getSelectedIndex();
+									System.out.println(i);
+									DeliveryPanel.getSelectR_comboBox().removeAll();
+									System.out.println("soccess");
+									DeliveryPanel.getSelectR_comboBox().setSelectedIndex(0);
+									
+									
+									
+									
+									// delete
+								}
+								Database.saveDeliverymen();
+			
+							}
+						}
+					}
 					}
 				});
 				
 
 				DeliveryPanel.getAdd_btn().addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if (DeliveryPanel.getDarea_Field().getText().equals("")) {
-							System.out.println("Empty textfield");
+						if  (DeliveryPanel.getDarea_Field().getText().equals("")) {
+//							System.out.println("Empty textfield");
 							JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
 									JOptionPane.INFORMATION_MESSAGE);
-						} else {
+						
+						}
+						else if (DeliveryPanel.getDarea_Field().getText().length() != 3) {
+							JOptionPane.showInputDialog(null,"Delivery area must be 3 characters long",JOptionPane.INFORMATION_MESSAGE);
+							
+						}
+						
+						else if (!String.valueOf(DeliveryPanel.getDarea_Field().getText().charAt(0)).matches("[A-Za-z]") || !String.valueOf(DeliveryPanel.getDarea_Field().getText().charAt(2)).matches("[A-Za-z]") || !Functions.isNumeric(String.valueOf(DeliveryPanel.getDarea_Field().getText().charAt(1)))) {
+							JOptionPane.showInputDialog("Delivery area must be a letter followed by a number followed by a letter",JOptionPane.INFORMATION_MESSAGE);
+							return;
+						}
+					
+						else {
 							Object[] row = { DeliveryPanel.getDarea_Field().getText() };
 							DefaultTableModel model = (DefaultTableModel) DeliveryPanel.getDarea_table().getModel();
 							model.addRow(row);
 							DeliveryPanel.getDarea_Field().setText("");
 						}
+						
 					}
 				});
+					
+					
+	
+				
+				
+				
+				
+				
 
 	}
 

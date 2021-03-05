@@ -63,7 +63,7 @@ public class DeliveryPanel extends JPanel{
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 					.addGap(88)
-				.addComponent(Dpanel, GroupLayout.DEFAULT_SIZE, 1136, Short.MAX_VALUE)
+				.addComponent(Dpanel, GroupLayout.DEFAULT_SIZE, 1174, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -166,7 +166,7 @@ public class DeliveryPanel extends JPanel{
 //			usernamelist.toArray(new String[usernamelist.size()])
 			
 			selectR_comboBox = new JComboBox();
-			selectR_comboBox.setForeground( Color.white);
+			selectR_comboBox.setForeground( Color.red);
 			selectR_comboBox.setBackground( Color.white);
 			
 			JPanel panel_3 = new JPanel();
@@ -187,48 +187,7 @@ public class DeliveryPanel extends JPanel{
 			Save_btn.setForeground(Color.white);
 			Save_btn.setFont(new Font("Arial", Font.BOLD, 14));
 			Save_btn.setBackground(Color.RED);
-		
-//			Save_btn.addActionListener(new ActionListener() {
-//			
-//
-//			
-//				
-//				
-//				@Override
-//				public void actionPerformed(ActionEvent e) {
-//			
-//					ArrayList<String> areas = new ArrayList<String>();
-//					for (int i = 0; i<Darea_table.getRowCount();i++) {
-//						areas.add((String) Darea_table.getValueAt(i,0));
-//					}
-//					
-//					
-//					Deliveryman deliveryman= new Deliveryman(User_Field.getText(),pass_Field.getText(),Name_Field.getText(),"","","",Phone_Field.getText(),areas.toArray(new String[0]));					
-//					Database.addDeliveryman(deliveryman);
-//					if(User_Field.getText().equals("") && pass_Field.getText().equals("") && Name_Field.getText().equals("") && Phone_Field.getText().equals(""))
-//					{
-//						JOptionPane.showMessageDialog(null, "Please fill all the information", "Error",
-//								JOptionPane.INFORMATION_MESSAGE);	
-//		
-//					
-//					
-//			
-//				}
-//					else {
-//						User_Field.setText("");
-//						pass_Field.setText("");
-//						Name_Field.setText("");
-//						Phone_Field.setText("");
-//						ConfirmPass_Field.setText("");
-////						Darea_table.setRowCount("","");
-//
-//						
-//						Database.saveDeliverymen();
-//
-//					}
-//				}
-//				});
-
+	
 			
 			GroupLayout gl_panel = new GroupLayout(Dpanel);
 			gl_panel.setHorizontalGroup(
@@ -454,7 +413,7 @@ public class DeliveryPanel extends JPanel{
 			gl_panel_3.setHorizontalGroup(
 				gl_panel_3.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel_3.createSequentialGroup()
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 232, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 			);
 			gl_panel_3.setVerticalGroup(
