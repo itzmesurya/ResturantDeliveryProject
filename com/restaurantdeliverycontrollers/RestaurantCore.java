@@ -14,9 +14,12 @@ import com.restaurantdeliverymodels.Admin;
 import com.restaurantdeliverymodels.CRUDAction;
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.Functions;
+import com.restaurantdeliverymodels.Manager;
 import com.restaurantdeliverymodels.Restaurant;
 import com.restaurantdeliverymodels.Restaurateur;
+import com.restaurantdeliveryviews.Admin_main_menu_Panel;
 import com.restaurantdeliveryviews.MainFrame;
+import com.restaurantdeliveryviews.Manager_main_menu_Panel;
 import com.restaurantdeliveryviews.RestaurantPanel;
 
 public class RestaurantCore {
@@ -25,11 +28,11 @@ public class RestaurantCore {
 	private Restaurant restaurant;
 	
 
-	private class RestaurantSelection {
+	private class Selection {
 		int id;
 		String name;
 		
-		public RestaurantSelection(int id, String name) {
+		public Selection(int id, String name) {
 			this.id = id;
 			this.name = name;
 		}
@@ -83,19 +86,23 @@ public class RestaurantCore {
 		cb_hours[6][2] = RestaurantPanel.getCombo_C383();
 		cb_hours[6][3] = RestaurantPanel.getCombo_C384();
 		
-		int manager_id;
-		if (Main.user.getLevel() == 3) {
-			manager_id = Main.user.getId();
-		} else {
-			manager_id = -1;
-		}
-		
 		ArrayList<Restaurant> restaurants = Database.getRestaurants();
 
-		for (int i = 0; i < restaurants.size(); i++) {
-			RestaurantPanel.getRestaurantnameCB().addItem(new RestaurantSelection(restaurants.get(i).getId(), restaurants.get(i).getName()));
-
+		if (Main.user.getLevel() == 3) {
+			Restaurant restaurant;
+			restaurant = ((Manager)Main.user).getManagerRestaurant();
+			if (restaurant != null) {
+				RestaurantPanel.getRestaurantnameCB().addItem(new Selection(restaurant.getId(), restaurant.getName()));
+			}
+		} else {
+			for (int i = 0; i < restaurants.size(); i++) {
+				RestaurantPanel.getRestaurantnameCB().addItem(new Selection(restaurants.get(i).getId(), restaurants.get(i).getName()));
+			}
 		}
+		
+		
+		ArrayList<Manager> unassignedManagers = Database.getUnassignedManagers();
+		ArrayList<Restaurateur> unassignedRestaurateurs = Database.getUnassignedRestaurateurs();
 		
 		
 		switch (crudAction) {
@@ -105,6 +112,28 @@ public class RestaurantCore {
 			RestaurantPanel.getLbl_2().setVisible(false);
 			RestaurantPanel.getRestaurantnameCB().setVisible(false);
 			
+			if (Main.user.getLevel() == 3) {
+				RestaurantPanel.getComboBoxManager().addItem(new Selection(Main.user.getId(), (Main.user.getFirst_name() + " " + Main.user.getLast_name())));
+				RestaurantPanel.getComboBoxManager().setEnabled(false);
+			} else {
+				//Load managers into combobox
+				for (int i = 0; i < unassignedManagers.size(); i++) {
+					RestaurantPanel.getComboBoxManager().addItem(new Selection(unassignedManagers.get(i).getId(), (unassignedManagers.get(i).getFirst_name() + " " + unassignedManagers.get(i).getLast_name())));
+
+				}
+			}
+			
+			//Load restaurateurs into combobox
+			for (int i = 0; i < unassignedRestaurateurs.size(); i++) {
+				RestaurantPanel.getComboBoxBoss().addItem(new Selection(unassignedRestaurateurs.get(i).getId(), (unassignedRestaurateurs.get(i).getFirst_name() + " " + unassignedRestaurateurs.get(i).getLast_name())));
+
+			}
+
+			for (int i = 0; i < restaurants.size(); i++) {
+				RestaurantPanel.getRestaurantnameCB().addItem(new Selection(restaurants.get(i).getId(), restaurants.get(i).getName()));
+
+			}
+			
 			RestaurantPanel.getBtnRestaurant().addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
@@ -122,6 +151,16 @@ public class RestaurantCore {
 						}
 					}
 					
+					int manager_id = -1;
+					if (RestaurantPanel.getComboBoxManager().getItemCount() > 0) {
+						manager_id = ((Selection)RestaurantPanel.getComboBoxManager().getSelectedItem()).getValue();
+					}
+					
+					int restaurateur_id = -1;
+					if (RestaurantPanel.getComboBoxBoss().getItemCount() > 0) {
+						restaurateur_id = ((Selection)RestaurantPanel.getComboBoxBoss().getSelectedItem()).getValue();
+					}
+					
 					if (validateRestaurant(name, address, phone, delivery_areas, hours)) {
 						String msg = "";
 						msg += "Restaurant name: " + name + "\n";
@@ -135,12 +174,25 @@ public class RestaurantCore {
 						for (int i = 0; i < 7; i++) {
 							msg += numberToDay(i) + ": " + hours[i][0] + ":" + hours[i][1] + " - " + hours[i][2] + ":" + hours[i][3] + "\n";
 						}
+						Manager manager = Database.getManagerById(manager_id);
+						if (manager != null) {
+							msg += "Manager: " + manager.getFirst_name() + " " + manager.getLast_name()+ "\n";
+						} else {
+							msg += "Manager not yet assigned" + "\n";
+						}
+						Restaurateur restaurateur = Database.getRestaurateurById(restaurateur_id);
+						if (restaurateur != null) {
+							msg += "Restaurateur: " + restaurateur.getFirst_name() + " " + restaurateur.getLast_name() + "\n";
+						} else {
+							msg += "Restaurateur not yet assigned";
+						}
 						int input = JOptionPane.showConfirmDialog(null, msg,"Are you sure you want to add this restaurant?",JOptionPane.YES_NO_OPTION);
 						if (input == JOptionPane.YES_OPTION) {
-							Database.addRestaurant(new Restaurant(name, address, phone, delivery_areas, hours, manager_id, -1));
+							Database.addRestaurant(new Restaurant(name, address, phone, delivery_areas, hours, manager_id, restaurateur_id));
 							Database.saveRestaurants();
 							//Change to confirm box
 							Functions.displayMessage("Restaurant Added!");
+							switchToMainMenu();
 						} 
 						
 					}
@@ -150,90 +202,15 @@ public class RestaurantCore {
 		case Edit:
 			RestaurantPanel.getLbl_1().setText("Edit Restaurant");
 			RestaurantPanel.getBtnRestaurant().setText("Edit");
-
 			
-			RestaurantPanel.getBtnRestaurant().addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					
-					String name = RestaurantPanel.getTf_C11().getText();
-					String address = RestaurantPanel.getTf_C12().getText();
-					String phone = RestaurantPanel.getFormattedTextField_1().getText();
-					String[] delivery_areas = new String[RestaurantPanel.getTableDeliveryArea().getModel().getRowCount()];
-					for (int i = 0; i < RestaurantPanel.getTableDeliveryArea().getModel().getRowCount(); i++){
-						  delivery_areas[i] = RestaurantPanel.getTableDeliveryArea().getModel().getValueAt(i, 0).toString();
-						}
-					String[][] hours = new String[7][4];
-					for (int i = 0; i < 7; i++) {
-						for (int j = 0; j < 4; j++) {
-							hours[i][j] = (String)cb_hours[i][j].getSelectedItem();
-						}
-					}
-					if (validateRestaurant(name, address, phone, delivery_areas, hours)) {
-						
-						String msg = "";
-						msg += "Restaurant name: " + name + "\n";
-						msg += "Restaurant address: " + address + "\n";
-						msg += "Telephone number: " + phone + "\n";
-						msg += "Delivery areas: " + "\n";
-						for (String area : delivery_areas) {
-							msg += area + "\n";
-						}
-						msg += "Business Hours:" + "\n";
-						for (int i = 0; i < 7; i++) {
-							msg += numberToDay(i) + ": " + hours[i][0] + ":" + hours[i][1] + " - " + hours[i][2] + ":" + hours[i][3] + "\n";
-						}
-						int input = JOptionPane.showConfirmDialog(null, msg,"Are you sure you want to edit this restaurant?",JOptionPane.YES_NO_OPTION);
-						if (input == JOptionPane.YES_OPTION) {
-							restaurant.setName(name);
-							restaurant.setAddress(address);
-							restaurant.setPhone(phone);
-							restaurant.setDelivery_areas(delivery_areas);
-							restaurant.setHours(hours);
-							restaurant.edit();
-							//Change to confirm box
-							Functions.displayMessage("Restaurant Updated!");
-						} 
-						
-					}
-				}
-			});
-			
-
-			break;
-		case Delete:
-			RestaurantPanel.getLbl_1().setText("Delete Restaurant");
-			RestaurantPanel.getBtnRestaurant().setText("Delete");
-
-			//Disable editing
-			for (int i = 0; i < 7; i++) {
-				for (int j = 0; j < 4; j++) {
-					cb_hours[i][j].setEnabled(false);
-				}
+			if (Main.user.getLevel() == 3) {
+				RestaurantPanel.getComboBoxManager().setEnabled(false);
 			}
 			
-			RestaurantPanel.getBtnRestaurant().addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					int input = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this restaurant?", "Confirm", JOptionPane.YES_NO_OPTION);
-					if (input == JOptionPane.YES_OPTION) {
-						//Add confirm box
-						Database.deleteRestaurantById(restaurant.getId());
-						Database.saveRestaurants();
-						Functions.displayMessage("Restaurant deleted!");
-					}					
-				}
-			});
-
-			break;
-		default:
-		    break;
-		}
-		
-		RestaurantPanel.getRestaurantnameCB().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-
-				restaurant = Database.getRestaurantById(((RestaurantSelection)RestaurantPanel.getRestaurantnameCB().getSelectedItem()).getValue());
-				
+			//Load the default restaurant
+			restaurant = Database.getRestaurantById(((Selection)RestaurantPanel.getRestaurantnameCB().getSelectedItem()).getValue());
+			
+			if (restaurant != null) {
 				RestaurantPanel.getTf_C11().setText(restaurant.getName());
 				RestaurantPanel.getTf_C12().setText(restaurant.getAddress());
 				RestaurantPanel.getFormattedTextField_1().setText(restaurant.getPhone());
@@ -253,6 +230,244 @@ public class RestaurantCore {
 						cb_hours[i][j].setSelectedItem(restaurant.getHours()[i][j]);
 					}
 				}
+				Manager manager = Database.getManagerById(restaurant.getManager_id());
+				if (manager != null) {
+					RestaurantPanel.getComboBoxManager().addItem(new Selection(manager.getId(), (manager.getFirst_name() + " " + manager.getLast_name())));
+				} else {
+					RestaurantPanel.getComboBoxManager().addItem(new Selection(-1, "Unassigned"));
+				}
+				//Load managers into combobox
+				for (int i = 0; i < unassignedManagers.size(); i++) {
+					RestaurantPanel.getComboBoxManager().addItem(new Selection(unassignedManagers.get(i).getId(), (unassignedManagers.get(i).getFirst_name() + " " + unassignedManagers.get(i).getLast_name())));
+				}
+				Restaurateur restaurateur = Database.getRestaurateurById(restaurant.getRestaurateur_id());
+				if (restaurateur != null) {
+					RestaurantPanel.getComboBoxBoss().addItem(new Selection(restaurateur.getId(), (restaurateur.getFirst_name() + " " + restaurateur.getLast_name())));
+				} else {
+					RestaurantPanel.getComboBoxBoss().addItem(new Selection(-1, "Unassigned"));
+				}
+				//Load restaurateurs into combobox
+				for (int i = 0; i < unassignedRestaurateurs.size(); i++) {
+					RestaurantPanel.getComboBoxBoss().addItem(new Selection(unassignedRestaurateurs.get(i).getId(), (unassignedRestaurateurs.get(i).getFirst_name() + " " + unassignedRestaurateurs.get(i).getLast_name())));
+				}
+				
+			} else {
+				Functions.displayError("You have no restaurant to edit!");
+			}
+
+			
+			RestaurantPanel.getBtnRestaurant().addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					String name = RestaurantPanel.getTf_C11().getText();
+					String address = RestaurantPanel.getTf_C12().getText();
+					String phone = RestaurantPanel.getFormattedTextField_1().getText();
+					String[] delivery_areas = new String[RestaurantPanel.getTableDeliveryArea().getModel().getRowCount()];
+					for (int i = 0; i < RestaurantPanel.getTableDeliveryArea().getModel().getRowCount(); i++){
+						  delivery_areas[i] = RestaurantPanel.getTableDeliveryArea().getModel().getValueAt(i, 0).toString();
+						}
+					String[][] hours = new String[7][4];
+					for (int i = 0; i < 7; i++) {
+						for (int j = 0; j < 4; j++) {
+							hours[i][j] = (String)cb_hours[i][j].getSelectedItem();
+						}
+					}
+					if (validateRestaurant(name, address, phone, delivery_areas, hours)) {
+						
+						int manager_id = -1;
+						if (RestaurantPanel.getComboBoxManager().getItemCount() > 0) {
+							manager_id = ((Selection)RestaurantPanel.getComboBoxManager().getSelectedItem()).getValue();
+						}
+						
+						int restaurateur_id = -1;
+						if (RestaurantPanel.getComboBoxBoss().getItemCount() > 0) {
+							restaurateur_id = ((Selection)RestaurantPanel.getComboBoxBoss().getSelectedItem()).getValue();
+						}
+						
+						String msg = "";
+						msg += "Restaurant name: " + name + "\n";
+						msg += "Restaurant address: " + address + "\n";
+						msg += "Telephone number: " + phone + "\n";
+						msg += "Delivery areas: " + "\n";
+						for (String area : delivery_areas) {
+							msg += area + "\n";
+						}
+						msg += "Business Hours:" + "\n";
+						for (int i = 0; i < 7; i++) {
+							msg += numberToDay(i) + ": " + hours[i][0] + ":" + hours[i][1] + " - " + hours[i][2] + ":" + hours[i][3] + "\n";
+						}
+						
+						Manager manager = Database.getManagerById(manager_id);
+						if (manager != null) {
+							msg += "Manager: " + manager.getFirst_name() + " " + manager.getLast_name()+ "\n";
+						} else {
+							msg += "Manager not yet assigned" + "\n";
+						}
+						Restaurateur restaurateur = Database.getRestaurateurById(restaurateur_id);
+						if (restaurateur != null) {
+							msg += "Restaurateur: " + restaurateur.getFirst_name() + " " + restaurateur.getLast_name() + "\n";
+						} else {
+							msg += "Restaurateur not yet assigned";
+						}
+						int input = JOptionPane.showConfirmDialog(null, msg,"Are you sure you want to edit this restaurant?",JOptionPane.YES_NO_OPTION);
+						if (input == JOptionPane.YES_OPTION) {
+							restaurant.setName(name);
+							restaurant.setAddress(address);
+							restaurant.setPhone(phone);
+							restaurant.setDelivery_areas(delivery_areas);
+							restaurant.setHours(hours);
+							restaurant.setManager_id(manager_id);
+							restaurant.setRestaurateur_id(restaurateur_id);
+							restaurant.edit();
+							Database.saveRestaurants();
+							//Change to confirm box
+							Functions.displayMessage("Restaurant Updated!");
+							switchToMainMenu();
+						} 
+						
+					}
+				}
+			});
+			
+
+			break;
+		case Delete:
+			RestaurantPanel.getLbl_1().setText("Delete Restaurant");
+			RestaurantPanel.getBtnRestaurant().setText("Delete");
+
+			//Disable editing
+			for (int i = 0; i < 7; i++) {
+				for (int j = 0; j < 4; j++) {
+					cb_hours[i][j].setEnabled(false);
+				}
+			}
+			RestaurantPanel.getBtnC231().setEnabled(false);
+			RestaurantPanel.getBtnC232().setEnabled(false);
+			RestaurantPanel.getBtnC39().setEnabled(false);
+			RestaurantPanel.getTf_C11().setEnabled(false);
+			RestaurantPanel.getTf_C12().setEnabled(false);
+			RestaurantPanel.getTf_C23().setEnabled(false);
+			RestaurantPanel.getFormattedTextField_1().setEnabled(false);
+			RestaurantPanel.getComboBoxManager().setEnabled(false);
+			RestaurantPanel.getComboBoxBoss().setEnabled(false);
+			
+			
+			//Load the default restaurant
+			restaurant = Database.getRestaurantById(((Selection)RestaurantPanel.getRestaurantnameCB().getSelectedItem()).getValue());
+			
+			if (restaurant != null) {
+				RestaurantPanel.getTf_C11().setText(restaurant.getName());
+				RestaurantPanel.getTf_C12().setText(restaurant.getAddress());
+				RestaurantPanel.getFormattedTextField_1().setText(restaurant.getPhone());
+
+
+				int rows = ((DefaultTableModel)RestaurantPanel.getTableDeliveryArea().getModel()).getRowCount();
+				for(int i = rows - 1; i >=0; i--)
+				{
+					((DefaultTableModel)RestaurantPanel.getTableDeliveryArea().getModel()).removeRow(i);
+				}
+				
+				for (int i = 0; i < restaurant.getDelivery_areas().length; i++) {
+					((DefaultTableModel)RestaurantPanel.getTableDeliveryArea().getModel()).addRow(new Object[]{restaurant.getDelivery_areas()[i]});
+				}
+				for (int i = 0; i < 7; i++) {
+					for (int j = 0; j < 4; j++) {
+						cb_hours[i][j].setSelectedItem(restaurant.getHours()[i][j]);
+					}
+				}
+				Manager manager = Database.getManagerById(restaurant.getManager_id());
+				if (manager != null) {
+					RestaurantPanel.getComboBoxManager().addItem(new Selection(manager.getId(), (manager.getFirst_name() + " " + manager.getLast_name())));
+				} else {
+					RestaurantPanel.getComboBoxManager().addItem(new Selection(-1, "Unassigned"));
+				}
+				//Load managers into combobox
+				for (int i = 0; i < unassignedManagers.size(); i++) {
+					RestaurantPanel.getComboBoxManager().addItem(new Selection(unassignedManagers.get(i).getId(), (unassignedManagers.get(i).getFirst_name() + " " + unassignedManagers.get(i).getLast_name())));
+				}
+				Restaurateur restaurateur = Database.getRestaurateurById(restaurant.getRestaurateur_id());
+				if (restaurateur != null) {
+					RestaurantPanel.getComboBoxBoss().addItem(new Selection(restaurateur.getId(), (restaurateur.getFirst_name() + " " + restaurateur.getLast_name())));
+				} else {
+					RestaurantPanel.getComboBoxBoss().addItem(new Selection(-1, "Unassigned"));
+				}
+				//Load restaurateurs into combobox
+				for (int i = 0; i < unassignedRestaurateurs.size(); i++) {
+					RestaurantPanel.getComboBoxBoss().addItem(new Selection(unassignedRestaurateurs.get(i).getId(), (unassignedRestaurateurs.get(i).getFirst_name() + " " + unassignedRestaurateurs.get(i).getLast_name())));
+				}
+			} else {
+				Functions.displayError("You have no restaurants to delete!");
+			}
+			
+			RestaurantPanel.getBtnRestaurant().addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int input = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this restaurant?", "Confirm", JOptionPane.YES_NO_OPTION);
+					if (input == JOptionPane.YES_OPTION) {
+						//Add confirm box
+						Database.deleteRestaurantById(restaurant.getId());
+						Database.saveRestaurants();
+						Functions.displayMessage("Restaurant deleted!");
+						switchToMainMenu();
+					}					
+				}
+			});
+
+			break;
+		default:
+		    break;
+		}
+		
+		RestaurantPanel.getRestaurantnameCB().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+
+				restaurant = Database.getRestaurantById(((Selection)RestaurantPanel.getRestaurantnameCB().getSelectedItem()).getValue());
+				
+				if (restaurant != null) {
+					RestaurantPanel.getTf_C11().setText(restaurant.getName());
+					RestaurantPanel.getTf_C12().setText(restaurant.getAddress());
+					RestaurantPanel.getFormattedTextField_1().setText(restaurant.getPhone());
+
+
+					int rows = ((DefaultTableModel)RestaurantPanel.getTableDeliveryArea().getModel()).getRowCount();
+					for(int i = rows - 1; i >=0; i--)
+					{
+						((DefaultTableModel)RestaurantPanel.getTableDeliveryArea().getModel()).removeRow(i);
+					}
+					
+					for (int i = 0; i < restaurant.getDelivery_areas().length; i++) {
+						((DefaultTableModel)RestaurantPanel.getTableDeliveryArea().getModel()).addRow(new Object[]{restaurant.getDelivery_areas()[i]});
+					}
+					for (int i = 0; i < 7; i++) {
+						for (int j = 0; j < 4; j++) {
+							cb_hours[i][j].setSelectedItem(restaurant.getHours()[i][j]);
+						}
+					}
+					//Remove previous items from combobox
+					RestaurantPanel.getComboBoxManager().removeAllItems();
+					RestaurantPanel.getComboBoxBoss().removeAllItems();
+					
+					Manager manager = Database.getManagerById(restaurant.getManager_id());
+					if (manager != null) {
+						RestaurantPanel.getComboBoxManager().addItem(new Selection(manager.getId(), (manager.getFirst_name() + " " + manager.getLast_name())));
+					} else {
+						RestaurantPanel.getComboBoxManager().addItem(new Selection(-1, "Unassigned"));
+					}
+					//Load managers into combobox
+					for (int i = 0; i < unassignedManagers.size(); i++) {
+						RestaurantPanel.getComboBoxManager().addItem(new Selection(unassignedManagers.get(i).getId(), (unassignedManagers.get(i).getFirst_name() + " " + unassignedManagers.get(i).getLast_name())));
+					}
+					Restaurateur restaurateur = Database.getRestaurateurById(restaurant.getRestaurateur_id());
+					if (restaurateur != null) {
+						RestaurantPanel.getComboBoxBoss().addItem(new Selection(restaurateur.getId(), (restaurateur.getFirst_name() + " " + restaurateur.getLast_name())));
+					} else {
+						RestaurantPanel.getComboBoxBoss().addItem(new Selection(-1, "Unassigned"));
+					}
+					//Load restaurateurs into combobox
+					for (int i = 0; i < unassignedRestaurateurs.size(); i++) {
+						RestaurantPanel.getComboBoxBoss().addItem(new Selection(unassignedRestaurateurs.get(i).getId(), (unassignedRestaurateurs.get(i).getFirst_name() + " " + unassignedRestaurateurs.get(i).getLast_name())));
+					}
+				}
 			}
 		});
 		
@@ -270,7 +485,7 @@ public class RestaurantCore {
 			public void actionPerformed(ActionEvent e) {				
 				
 				if (validatePostcode()) {
-					((DefaultTableModel)RestaurantPanel.getTableDeliveryArea().getModel()).addRow(new Object[]{RestaurantPanel.getTf_C23().getText()});
+					((DefaultTableModel)RestaurantPanel.getTableDeliveryArea().getModel()).addRow(new Object[]{RestaurantPanel.getTf_C23().getText().toUpperCase()});
 					RestaurantPanel.getTf_C23().setText("");
 				}				
 			}			
@@ -355,6 +570,16 @@ public class RestaurantCore {
 			return "";
 		}
 
+	}
+	
+	private void switchToMainMenu() {
+		if (Main.user.getLevel() == 100) {
+			MainFrame.changePanel(new Admin_main_menu_Panel());
+			new Admin_main_menu_Core();
+		} else {
+			MainFrame.changePanel(new Manager_main_menu_Panel());
+			new Manager_main_menu_Core();
+		}
 	}
 		
 }
