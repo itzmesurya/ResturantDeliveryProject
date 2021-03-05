@@ -34,6 +34,7 @@ public class OrderPanel extends JPanel {
 	static JRadioButton Incoming_RadioButton;
 	static JComboBox selectR_comboBox;
 	static JButton Accept_btn;
+	private static JLabel lblNewLabel_2;
 public OrderPanel() {
 	
 	
@@ -173,9 +174,9 @@ public OrderPanel() {
 	panel_2.setBorder(null);
 	panel_2.setBackground( Color.white);
 	
-	JLabel lblNewLabel_2 = new JLabel("Select Restaurant");
-	lblNewLabel_2.setForeground(Color.RED);
-	lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 20));
+	setLblNewLabel_2(new JLabel("Select Restaurant"));
+	getLblNewLabel_2().setForeground(Color.RED);
+	getLblNewLabel_2().setFont(new Font("Arial", Font.BOLD, 20));
 	
 	
 	selectR_comboBox = new JComboBox();
@@ -210,7 +211,7 @@ public OrderPanel() {
 							.addGap(52)
 							.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(lblNewLabel_2)
+							.addComponent(getLblNewLabel_2())
 							.addGap(27))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(156)
@@ -252,7 +253,7 @@ public OrderPanel() {
 				.addGap(33)
 				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 					.addComponent(selectR_comboBox, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-					.addComponent(lblNewLabel_2))
+					.addComponent(getLblNewLabel_2()))
 				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel.createSequentialGroup()
 						.addGap(18)
@@ -428,6 +429,18 @@ void setPanelEnabled(JPanel panel, Boolean isEnabled) {
         }
         component.setEnabled(isEnabled);
     }
+}
+/**
+ * @return the lblNewLabel_2
+ */
+public static JLabel getLblNewLabel_2() {
+	return lblNewLabel_2;
+}
+/**
+ * @param lblNewLabel_2 the lblNewLabel_2 to set
+ */
+static void setLblNewLabel_2(JLabel lblNewLabel_2) {
+	OrderPanel.lblNewLabel_2 = lblNewLabel_2;
 }
 
 }

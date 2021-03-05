@@ -45,7 +45,7 @@ public class DeliveryPanel extends JPanel{
 	public static JButton Save_btn;
 //	ArrayList<String> usernamelist = new ArrayList<String>();
 	public static JButton Add_btn;
-	public JButton Delete_btn;
+	public static JButton Delete_btn;
 	public static JButton Verify_btn;
 	
 	public DeliveryPanel() {
@@ -260,7 +260,7 @@ public class DeliveryPanel extends JPanel{
 			Add_btn.setBackground(Color.RED);
 			Add_btn.setForeground(Color.WHITE);
 			
-			JButton Delete_btn = new JButton("Delete");
+			Delete_btn = new JButton("Delete");
 			Delete_btn.setBackground(Color.RED);
 			Delete_btn.setForeground(Color.WHITE);
 			
@@ -477,7 +477,7 @@ public class DeliveryPanel extends JPanel{
 	public static JButton getAdd_btn() {
 		return Add_btn;
 	}
-	public JButton getDelete_btn() {
+	public static JButton getDelete_btn() {
 		return Delete_btn;
 	}
 	public static JButton getVerify_btn() {
