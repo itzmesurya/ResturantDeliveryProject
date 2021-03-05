@@ -47,6 +47,7 @@ public class DeliveryPanel extends JPanel{
 	public static JButton Add_btn;
 	public static JButton Delete_btn;
 	public static JButton Verify_btn;
+	private static JLabel lblNewLabel_2;
 	
 	public DeliveryPanel() {
 		 
@@ -154,7 +155,7 @@ public class DeliveryPanel extends JPanel{
 			Verify_btn.setForeground(Color.white);
 			Verify_btn.setFont(new Font("Arial", Font.BOLD, 14));
 			
-			JLabel lblNewLabel_2 = new JLabel("Select :");
+			lblNewLabel_2 = new JLabel("Select :");
 			lblNewLabel_2.setForeground(Color.RED);
 			lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 20));
 			
@@ -521,6 +522,11 @@ public class DeliveryPanel extends JPanel{
 	public void setSelectR_comboBox(JComboBox selectR_comboBox) {
 		this.selectR_comboBox = selectR_comboBox;
 	}
+	public static JLabel getLblNewLabel_2() {
+		return lblNewLabel_2;
+	}
+	
+	
 	
 
 }

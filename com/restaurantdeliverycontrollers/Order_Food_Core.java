@@ -106,7 +106,7 @@ public class Order_Food_Core {
 				int id = 0;
 				id = Integer.parseInt(add.getText());		
 				
-				if(id < Order_Food_Panel.gettable().getRowCount()) {
+				if(id <= Order_Food_Panel.gettable().getRowCount()) {
 				
 					//Display Order in Order Menu
 					Object[] rowData = new Object[Order_Food_Panel.gettable().getColumnCount()];

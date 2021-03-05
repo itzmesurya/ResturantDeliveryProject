@@ -286,14 +286,14 @@ public OrderPanel() {
 	label.setPreferredSize(new Dimension(300, 50));
 	label.setHorizontalAlignment(SwingConstants.CENTER);
 	label.setForeground(Color.WHITE);
-	label.setFont(new Font("Arial", Font.BOLD, 30));
+	label.setFont(MainFrame.headerFont);
 	label.setBorder(new MatteBorder(2, 0, 2, 2, (Color) new Color(0, 0, 0)));
 	label.setBackground(Color.BLACK);
 	panel_5.add(label);
 	
 	JLabel lblNewLabel_4 = new JLabel("Meal In Order");
 	lblNewLabel_4.setForeground(Color.WHITE);
-	lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 20));
+	lblNewLabel_4.setFont(MainFrame.titleFont);
 	GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 	gl_panel_4.setHorizontalGroup(
 		gl_panel_4.createParallelGroup(Alignment.LEADING)
@@ -313,7 +313,7 @@ public OrderPanel() {
 	
 	JLabel lblNewLabel_3 = new JLabel("Orders");
 	lblNewLabel_3.setForeground(Color.WHITE);
-	lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 20));
+	lblNewLabel_3.setFont(MainFrame.titleFont);
 	GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 	gl_panel_3.setHorizontalGroup(
 		gl_panel_3.createParallelGroup(Alignment.LEADING)

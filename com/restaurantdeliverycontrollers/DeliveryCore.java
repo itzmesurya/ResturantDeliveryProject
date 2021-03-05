@@ -29,7 +29,8 @@ public class DeliveryCore {
 		case Create:
 			DeliveryPanel.getLblNewLabel().setText("Create Deliveryman");
 			DeliveryPanel.getSave_btn().setText("Create Deliveryman");
-			DeliveryPanel.getSelectR_comboBox().setEnabled(false);
+			DeliveryPanel.getLblNewLabel_2().setVisible(false);
+			DeliveryPanel.getSelectR_comboBox().setVisible(false);
 			break;
 		case Edit:
 			DeliveryPanel.getLblNewLabel().setText("Edit Deliveryman");
@@ -130,7 +131,6 @@ public class DeliveryCore {
 
 			public void actionPerformed(ActionEvent e) {
 				if (DeliveryPanel.getLblNewLabel().getText().contains("Create")) {
-					System.out.println("create");
 
 					ArrayList<String> areas = new ArrayList<String>();
 					for (int i = 0; i < DeliveryPanel.getDarea_table().getRowCount(); i++) {
@@ -163,7 +163,7 @@ public class DeliveryCore {
 
 					else {
 						if (action == CRUDAction.Create && !UserHelper.isUsernameAvailable(deliveryman)) {
-							JOptionPane.showMessageDialog(null, "user name npt available", "Error",
+							JOptionPane.showMessageDialog(null, "user name not available", "Error",
 									JOptionPane.INFORMATION_MESSAGE);
 						} else {
 							DeliveryPanel.getUser_Field().setText("");
@@ -211,10 +211,9 @@ public class DeliveryCore {
 
 				} else if (DeliveryPanel.getLblNewLabel().getText().contains("Edit")
 						|| DeliveryPanel.getLblNewLabel().getText().contains("Delete")) {
-					System.out.println("Edit");
 					ArrayList<String> areas = new ArrayList<String>();
 					for (int i = 0; i < DeliveryPanel.getDarea_table().getRowCount(); i++) {
-						areas.add((String) DeliveryPanel.getDarea_table().getValueAt(i, 0));
+						areas.add(((String) DeliveryPanel.getDarea_table().getValueAt(i, 0)).toUpperCase());
 					}
 
 //						
@@ -244,7 +243,7 @@ public class DeliveryCore {
 
 					else {
 						if (action == CRUDAction.Create && !UserHelper.isUsernameAvailable(deliveryman)) {
-							JOptionPane.showMessageDialog(null, "user name npt available", "Error",
+							JOptionPane.showMessageDialog(null, "user name not available", "Error",
 									JOptionPane.INFORMATION_MESSAGE);
 						} else {
 
@@ -259,6 +258,8 @@ public class DeliveryCore {
 
 							if (action == CRUDAction.Create) {
 								Database.addDeliveryman(deliveryman);
+								Functions.displayMessage("Deliveryman added!");
+								Database.saveDeliverymen();
 							} else if (action == CRUDAction.Edit) {
 								int index = -1;
 //									ArrayList<Deliveryman> deliverymen = Database.getDeliverymen();
@@ -285,9 +286,7 @@ public class DeliveryCore {
 								Database.deleteDeliverymanById(deliveryman.getId());
 //									Database.deleteDeliverymanById(this.getId(deliveryman));
 								int i = DeliveryPanel.getSelectR_comboBox().getSelectedIndex();
-								System.out.println(i);
 								DeliveryPanel.getSelectR_comboBox().removeAll();
-								System.out.println("soccess");
 								DeliveryPanel.getSelectR_comboBox().setSelectedIndex(0);
 
 								// delete
@@ -308,22 +307,19 @@ public class DeliveryCore {
 							JOptionPane.INFORMATION_MESSAGE);
 
 				} else if (DeliveryPanel.getDarea_Field().getText().length() != 3) {
-					JOptionPane.showInputDialog(null, "Delivery area must be 3 characters long",
-							JOptionPane.INFORMATION_MESSAGE);
+					Functions.displayMessage("Delivery area must be 3 characters long");
 
 				}
 
 				else if (!String.valueOf(DeliveryPanel.getDarea_Field().getText().charAt(0)).matches("[A-Za-z]")
 						|| !String.valueOf(DeliveryPanel.getDarea_Field().getText().charAt(2)).matches("[A-Za-z]")
 						|| !Functions.isNumeric(String.valueOf(DeliveryPanel.getDarea_Field().getText().charAt(1)))) {
-					JOptionPane.showInputDialog(
-							"Delivery area must be a letter followed by a number followed by a letter",
-							JOptionPane.INFORMATION_MESSAGE);
+						Functions.displayMessage("Delivery area must be a letter followed by a number followed by a letter");
 					return;
 				}
 
 				else {
-					Object[] row = { DeliveryPanel.getDarea_Field().getText() };
+					Object[] row = { DeliveryPanel.getDarea_Field().getText().toUpperCase() };
 					DefaultTableModel model = (DefaultTableModel) DeliveryPanel.getDarea_table().getModel();
 					model.addRow(row);
 					DeliveryPanel.getDarea_Field().setText("");
