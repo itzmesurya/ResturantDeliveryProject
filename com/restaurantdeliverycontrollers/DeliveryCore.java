@@ -40,7 +40,7 @@ public class DeliveryCore {
 		case Delete:
 			DeliveryPanel.getLblNewLabel().setText("Delete Deliveryman");
 			DeliveryPanel.getSave_btn().setText("Delete");
-//			 selectR_comboBox.setEnabled(false);
+//			selectR_comboBox.setEnabled(false);
 			 
 			DeliveryPanel.getName_Field().setEnabled(false);
 			DeliveryPanel.getPhone_Field().setEnabled(false);
