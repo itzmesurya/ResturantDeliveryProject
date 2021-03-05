@@ -74,9 +74,11 @@ public class Order_Food_Core {
 						Order_Food_Panel.gettable().getColumnModel().getColumn(0).setPreferredWidth(1);
 						Order_Food_Panel.gettable().getColumnModel().getColumn(1).setPreferredWidth(350);
 						Order_Food_Panel.gettable().getColumnModel().getColumn(2).setPreferredWidth(3);
+
 					}	
 				}
 				currentId2 = 0;
+
 			}
 		});
 		
@@ -222,6 +224,7 @@ public class Order_Food_Core {
 					if (dialogResult == JOptionPane.YES_OPTION) {
 						
 						JOptionPane.showMessageDialog(null, "Order Placed");
+
 						
 						
 						ArrayList<Item> final_order = new ArrayList<Item>();	//Created Array List
@@ -247,6 +250,7 @@ public class Order_Food_Core {
 													Order_Food_Panel.getcomboBox().getSelectedIndex()+1 ,
 													Main.user.getId()));
 						Database.saveOrders();					
+
 						MainFrame.changePanel(new Client_main_menu_Panel());
 						new Client_main_menu_Core();
 					}else {
