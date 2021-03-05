@@ -34,6 +34,7 @@ public class Restaurant {
 		this.hours = hours;
 		this.manager_id = manager_id;
 		this.restaurateur_id = restaurateur_id;
+		Database.saveIdCounter();
 	}
 	
 	public void edit() {
