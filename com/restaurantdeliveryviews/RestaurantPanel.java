@@ -222,14 +222,14 @@ public class RestaurantPanel extends JPanel {
 		panel_C1.add(Panel_C11);
 		
 		JLabel lbl_C11 = new JLabel("Restaurant Name: ");
-		lbl_C11.setPreferredSize(new Dimension(200, 40));
+		lbl_C11.setPreferredSize(new Dimension(230, 40));
 		lbl_C11.setForeground(Color.black);
 		lbl_C11.setFont(MainFrame.labelFont);
 		Panel_C11.add(lbl_C11);
 		
 		tf_C11 = new JTextField();
 		tf_C11.setBackground(Color.white);
-		tf_C11.setPreferredSize(new Dimension(350, 40));
+		tf_C11.setPreferredSize(new Dimension(320, 40));
 		tf_C11.setFont(MainFrame.labelFont);
 		tf_C11.setBorder(new LineBorder(new Color(0,0,0), 2, true));
 		Panel_C11.add(tf_C11);
@@ -240,14 +240,14 @@ public class RestaurantPanel extends JPanel {
 		panel_C1.add(Panel_C12);
 		
 		JLabel lbl_C12 = new JLabel("Restaurant Address: ");
-		lbl_C12.setPreferredSize(new Dimension(200, 40));
+		lbl_C12.setPreferredSize(new Dimension(230, 40));
 		lbl_C12.setForeground(Color.black);
 		lbl_C12.setFont(MainFrame.labelFont);
 		Panel_C12.add(lbl_C12);
 		
 		tf_C12 = new JTextField();
 		tf_C12.setBackground(Color.white);
-		tf_C12.setPreferredSize(new Dimension(350, 40));
+		tf_C12.setPreferredSize(new Dimension(320, 40));
 		tf_C12.setFont(MainFrame.labelFont);
 		tf_C12.setBorder(new LineBorder(new Color(0,0,0), 2, true));
 		Panel_C12.add(tf_C12);
@@ -258,13 +258,13 @@ public class RestaurantPanel extends JPanel {
 		panel_C1.add(Panel_C13);
 		
 		JLabel lbl_C131 = new JLabel("Telephone Number: ");
-		lbl_C131.setPreferredSize(new Dimension(200, 40));
+		lbl_C131.setPreferredSize(new Dimension(230, 40));
 		lbl_C131.setForeground(Color.black);
 		lbl_C131.setFont(MainFrame.labelFont);
 		Panel_C13.add(lbl_C131);
 		
 		JFormattedTextField formattedTextField = new JFormattedTextField();
-		formattedTextField.setPreferredSize(new Dimension(350, 40));		
+		formattedTextField.setPreferredSize(new Dimension(320, 40));		
 		try{
 			MaskFormatter tel1 = new MaskFormatter("### ### - ####");
 			formattedTextField_1 = new JFormattedTextField(tel1);
@@ -277,7 +277,7 @@ public class RestaurantPanel extends JPanel {
 		}
 		Panel_C13.add(formattedTextField_1);
 		
-		JLabel lbl_C132 = new JLabel("                                                             ");
+		JLabel lbl_C132 = new JLabel("                                                    ");
 		lbl_C132.setBackground(Color.white);
 		Panel_C13.add(lbl_C132);
 		
@@ -287,13 +287,13 @@ public class RestaurantPanel extends JPanel {
 		panel_C1.add(Panel_C14);
 		
 		JLabel lbl_C14 = new JLabel("Manager:");
-		lbl_C14.setPreferredSize(new Dimension(200, 40));
+		lbl_C14.setPreferredSize(new Dimension(230, 40));
 		lbl_C14.setForeground(Color.black);
 		lbl_C14.setFont(MainFrame.labelFont);
 		Panel_C14.add(lbl_C14);
 		
 		comboBoxManager = new JComboBox();
-		comboBoxManager.setPreferredSize(new Dimension(350, 36));
+		comboBoxManager.setPreferredSize(new Dimension(320, 36));
 		comboBoxManager.setFont(MainFrame.labelFont);
 		comboBoxManager.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		comboBoxManager.setBackground(Color.WHITE);
@@ -305,13 +305,13 @@ public class RestaurantPanel extends JPanel {
 		panel_C1.add(Panel_C15);
 		
 		JLabel lbl_C15 = new JLabel("Restaurateur");
-		lbl_C15.setPreferredSize(new Dimension(200, 40));
+		lbl_C15.setPreferredSize(new Dimension(230, 40));
 		lbl_C15.setForeground(Color.black);
 		lbl_C15.setFont(MainFrame.labelFont);
 		Panel_C15.add(lbl_C15);
 		
 		comboBoxBoss = new JComboBox();
-		comboBoxBoss.setPreferredSize(new Dimension(350, 36));
+		comboBoxBoss.setPreferredSize(new Dimension(320, 36));
 		comboBoxBoss.setFont(MainFrame.labelFont);
 		comboBoxBoss.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		comboBoxBoss.setBackground(Color.WHITE);
