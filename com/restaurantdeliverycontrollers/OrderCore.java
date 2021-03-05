@@ -181,7 +181,7 @@ public class OrderCore {
 		for (Order order : orders) {
 			Client client = Database.getClientById(order.getClient_id());
 			if (client != null) {
-				Object[] row = { order.getId(), client.getFirst_name() + " " + client.getLast_name() };
+				Object[] row = { order.getId(), (client.getFirst_name() + " " + client.getLast_name()) };
 				model_1.addRow(row);
 			}
 		}
@@ -227,7 +227,7 @@ public class OrderCore {
 
 			Client client = Database.getClientById(order.getClient_id());
 			if (client != null) {
-				dataModel.addRow(new Object[] { order.getId(), (client.getFirst_name() + client.getLast_name()) });
+//				dataModel.addRow(new Object[] { order.getId(), (client.getFirst_name() + client.getLast_name()) });
 			}
 		}
 		OrderPanel.getTable_1().setModel(dataModel);
