@@ -13,6 +13,7 @@ import javax.swing.table.TableModel;
 
 import com.restaurantdeliverymodels.Database;
 import com.restaurantdeliverymodels.Deliveryman;
+import com.restaurantdeliverymodels.Functions;
 import com.restaurantdeliverymodels.IdCounter;
 import com.restaurantdeliverymodels.Item;
 import com.restaurantdeliverymodels.Menu;
@@ -20,6 +21,7 @@ import com.restaurantdeliverymodels.Order;
 import com.restaurantdeliverymodels.Restaurant;
 import com.restaurantdeliveryviews.Accept_Done__Delivery_Panel;
 import com.restaurantdeliveryviews.Client_main_menu_Panel;
+import com.restaurantdeliveryviews.DeliveryPanel;
 import com.restaurantdeliveryviews.MainFrame;
 import com.restaurantdeliveryviews.Order_Food_Panel;
 
@@ -82,8 +84,6 @@ public class Order_Food_Core {
 			}
 		});
 		
-		
-
 		
 		// Add Order Button
 		ArrayList<Double> list = new ArrayList<Double>();
@@ -216,7 +216,20 @@ public class Order_Food_Core {
 					JOptionPane.showMessageDialog(null, "Please Give Order First", "Error",
 							JOptionPane.WARNING_MESSAGE);
 					exit = true;
-				}else if(Order_Food_Panel.gettable2().getRowCount() >= 0 && exit == false){
+				}else if (Order_Food_Panel.getPostal_Code().getText().length() != 3) {
+					JOptionPane.showMessageDialog(null, "Postal Code must be 3 characters long", "Error",
+							JOptionPane.WARNING_MESSAGE);
+					exit = true;
+				}else if (!String.valueOf(Order_Food_Panel.getPostal_Code().getText().charAt(0)).matches("[A-Za-z]") || !String.valueOf(Order_Food_Panel.getPostal_Code().getText().charAt(2)).matches("[A-Za-z]") || !Functions.isNumeric(String.valueOf(Order_Food_Panel.getPostal_Code().getText().charAt(1)))) {
+					JOptionPane.showMessageDialog(null, "Postal Code must be a letter followed by a number followed by a letter", "Error",
+							JOptionPane.WARNING_MESSAGE);
+					exit = true;
+				}
+				
+				
+				
+				
+				else if(Order_Food_Panel.gettable2().getRowCount() >= 0 && exit == false){
 
 								
 					int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to Place This Order", "Information",
@@ -233,24 +246,13 @@ public class Order_Food_Core {
 						
 								for(int q = 0 ;q < Order_Food_Panel.gettable2().getRowCount() ; q++) {  //for Rows
 								              
-									//"ID", "Item Name", "Price","Quantity"
-								             //public Item(String name, double price, int quantity, int order_id)
-			final_order.add(new Item(Order_Food_Panel.gettable2().getValueAt(q,1).toString(),
+									final_order.add(new Item(Order_Food_Panel.gettable2().getValueAt(q,1).toString(),
 										Double.parseDouble(Order_Food_Panel.gettable2().getValueAt(q,2).toString()), 
 										Integer.parseInt(Order_Food_Panel.gettable2().getValueAt(q,3).toString()), 
 										Database.getIdCounter().getCurrentIdCounterOrder()));
 								              
 								              
 							 }
-						
-//						for(int q = 0 ;q < Order_Food_Panel.gettable2().getRowCount() ; q++) {	//for Rows
-//							
-//							for(int q1 = 0 ; q1 < 3 ; q1++) {		//For Columns	
-//								
-//							final_order.add((Item) Order_Food_Panel.gettable2().getValueAt(q,q1));
-//							
-//							}
-//						}
 						
 						Item[] Final_order = new Item[final_order .size()]; 	//created Array
 						Final_order =final_order.toArray(Final_order);			//Putting Items from Array List To Array
@@ -260,7 +262,7 @@ public class Order_Food_Core {
 						Database.addOrder(new Order(Order_Food_Panel.getPostal_Code().getText() , 
 													Order_Food_Panel.getAddress().getText() , 
 													Final_order, //Calling Item[]
-													Order_Food_Panel.getcomboBox().getSelectedIndex()+1 ,
+													Order_Food_Panel.getcomboBox().getSelectedIndex(),
 													Main.user.getId()));
 						Database.saveOrders();					
 

@@ -34,15 +34,15 @@ public class Order_Food_Panel extends JPanel{
 		this.setLayout(null);
 		//RESTURANT LABEL 
 		
-		JLabel lblNewLabel_1 = new JLabel("Select Resturant");
+		JLabel lblNewLabel_1 = new JLabel("Select Restaurant");
 		lblNewLabel_1.setFont(MainFrame.titleFont);
 		lblNewLabel_1.setForeground(Color.red);
-		lblNewLabel_1.setBounds(374, 17, 210, 38);
+		lblNewLabel_1.setBounds(374, 17, 239, 38);
 		this.add(lblNewLabel_1);
 		
 		//COMBOBOX FOR RESTURANT
 		comboBox = new JComboBox();
-		comboBox.setBounds(585, 17, 150, 38);
+		comboBox.setBounds(623, 17, 150, 38);
 		this.add(comboBox);
 		
 		//MENU PANEL
