@@ -895,6 +895,16 @@ public class RestaurantPanel extends JPanel {
 	public static JLabel getLbl_2() {
 		return lbl_2;
 	}
+
+	public static JComboBox getComboBoxManager() {
+		return comboBoxManager;
+	}
+
+	public static JComboBox getComboBoxBoss() {
+		return comboBoxBoss;
+	}
+	
+	
 	
 	
 }

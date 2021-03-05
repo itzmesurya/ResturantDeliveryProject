@@ -293,6 +293,22 @@ public class Database {
 		}
 		return null;
 	}
+	
+	public static ArrayList<Restaurateur> getUnassignedRestaurateurs(){
+		ArrayList<Restaurateur> unassignedRestaurateurs = new ArrayList<Restaurateur>();
+		for (Restaurateur restaurateur : Database.getRestaurateurs()) {
+			boolean unassigned = true;
+			for (Restaurant restaurant : Database.getRestaurants()) {
+				if (restaurateur.getId() == restaurant.getRestaurateur_id()) {
+					unassigned = false;
+				}
+			}
+			if (unassigned) {
+				unassignedRestaurateurs.add(restaurateur);
+			}
+		}
+		return unassignedRestaurateurs;
+	}
 
 	private static void loadRestaurateurs() {
 		loadData("restaurateurs");
@@ -334,6 +350,22 @@ public class Database {
 			}
 		}
 		return null;
+	}
+	
+	public static ArrayList<Manager> getUnassignedManagers(){
+		ArrayList<Manager> unassignedManagers = new ArrayList<Manager>();
+		for (Manager manager : Database.getManagers()) {
+			boolean unassigned = true;
+			for (Restaurant restaurant : Database.getRestaurants()) {
+				if (manager.getId() == restaurant.getManager_id()) {
+					unassigned = false;
+				}
+			}
+			if (unassigned) {
+				unassignedManagers.add(manager);
+			}
+		}
+		return unassignedManagers;
 	}
 
 	private static void loadManagers() {
