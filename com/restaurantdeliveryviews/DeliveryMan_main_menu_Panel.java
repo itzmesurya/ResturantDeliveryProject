@@ -44,30 +44,38 @@ public class DeliveryMan_main_menu_Panel extends JPanel{
 		lblDeliveries.setBackground(MainFrame.offColor);
 		lblDeliveries.setForeground(Color.white);
 		lblDeliveries.setFont(MainFrame.titleFont);
-		lblDeliveries.setBounds(471, 47, 169, 46);
+		lblDeliveries.setBounds(71, 80, 169, 46);
 		panel_1.add(lblDeliveries);
 		
 		
-		delivery_accept_btn = new JButton("<html>ACCPET<br />Delivery</html>");
+		delivery_accept_btn = new JButton("Accept Delivery");
 		delivery_accept_btn.setForeground(Color.WHITE);
 		delivery_accept_btn.setFont(MainFrame.labelFont);
 		delivery_accept_btn.setBackground(MainFrame.mainColor);
-		delivery_accept_btn.setBounds(212, 411, 118, 63);
+		delivery_accept_btn.setBounds(376, 79, 214, 50);
 		panel_1.add(delivery_accept_btn);
 		
-		delivery_end_btn = new JButton("<html>END<br />Delivery</html>");
+		delivery_end_btn = new JButton("End Delivery");
 		delivery_end_btn.setForeground(Color.WHITE);
 		delivery_end_btn.setFont(MainFrame.labelFont);
 		delivery_end_btn.setBackground(MainFrame.mainColor);
-		delivery_end_btn.setBounds(757, 411, 118, 63);
+		delivery_end_btn.setBounds(719, 79, 179, 50);
 		panel_1.add(delivery_end_btn);
 		
-		delivery_editinfo_btn = new JButton("<html>EDIT<br />Information</html>");
+		delivery_editinfo_btn = new JButton("Edit Information");
 		delivery_editinfo_btn.setForeground(Color.WHITE);
 		delivery_editinfo_btn.setFont(MainFrame.labelFont);
 		delivery_editinfo_btn.setBackground(MainFrame.mainColor);
-		delivery_editinfo_btn.setBounds(487, 411, 136, 63);
+		delivery_editinfo_btn.setBounds(376, 339, 214, 50);
 		panel_1.add(delivery_editinfo_btn);
+		
+		JLabel lblAccount = new JLabel("   ACCOUNT");
+		lblAccount.setOpaque(true);
+		lblAccount.setBackground(MainFrame.offColor);
+		lblAccount.setForeground(Color.white);
+		lblAccount.setFont(MainFrame.titleFont);
+		lblAccount.setBounds(71, 340, 150, 46);
+		panel_1.add(lblAccount);
 		
 		//LOG OUT BUTTON
 		
@@ -105,7 +113,4 @@ public class DeliveryMan_main_menu_Panel extends JPanel{
 	public static JButton getLog_Out_Btn() {
 		return	log_out_btn;
 	}
-	
-
-
 }

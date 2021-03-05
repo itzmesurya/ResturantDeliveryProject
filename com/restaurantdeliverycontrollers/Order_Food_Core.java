@@ -74,9 +74,11 @@ public class Order_Food_Core {
 						Order_Food_Panel.gettable().getColumnModel().getColumn(0).setPreferredWidth(1);
 						Order_Food_Panel.gettable().getColumnModel().getColumn(1).setPreferredWidth(350);
 						Order_Food_Panel.gettable().getColumnModel().getColumn(2).setPreferredWidth(3);
-					}
-						
+
+					}	
 				}
+				currentId2 = 0;
+
 			}
 		});
 		
@@ -222,13 +224,33 @@ public class Order_Food_Core {
 					if (dialogResult == JOptionPane.YES_OPTION) {
 						
 						JOptionPane.showMessageDialog(null, "Order Placed");
+
+						
+						
+						ArrayList<Item> final_order = new ArrayList<Item>();	//Created Array List
+						
+						
+						for(int q = 0 ;q < Order_Food_Panel.gettable2().getRowCount() ; q++) {	//for Rows
+							
+							for(int q1 = 0 ; q1 < 3 ; q1++) {		//For Columns	
+								
+							final_order.add((Item) Order_Food_Panel.gettable2().getValueAt(q,q1));
+							
+							}
+						}
+						
+						Item[] Final_order = new Item[final_order .size()]; 	//created Array
+						Final_order =final_order.toArray(Final_order);			//Putting Items from Array List To Array
+						
+						
 											
 						Database.addOrder(new Order(Order_Food_Panel.getPostal_Code().getText() , 
 													Order_Food_Panel.getAddress().getText() , 
-													null/*Order_Food_Panel.gettable2().getComponents()*/,
+													Final_order, //Calling Item[]
 													Order_Food_Panel.getcomboBox().getSelectedIndex()+1 ,
 													Main.user.getId()));
-						
+						Database.saveOrders();					
+
 						MainFrame.changePanel(new Client_main_menu_Panel());
 						new Client_main_menu_Core();
 					}else {
