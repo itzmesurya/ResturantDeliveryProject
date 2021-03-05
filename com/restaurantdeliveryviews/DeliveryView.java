@@ -69,17 +69,14 @@ public class DeliveryView {
 		panel.setBackground(Color.WHITE);
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addGap(88)
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 1136, Short.MAX_VALUE)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 1174, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE))
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
 		);
 		
 		JPanel panel_1 = new JPanel();
@@ -149,7 +146,7 @@ public class DeliveryView {
 		
 		JComboBox selectR_comboBox = new JComboBox();
 		selectR_comboBox.setForeground(new Color(255, 0, 255));
-		selectR_comboBox.setBackground(new Color(255, 0, 255));
+		selectR_comboBox.setBackground(Color.black);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -173,16 +170,16 @@ public class DeliveryView {
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 							.addGroup(gl_panel.createSequentialGroup()
-								.addGap(50)
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
+								.addContainerGap()
+								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 252, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 518, Short.MAX_VALUE)
 								.addComponent(lblNewLabel_2)
 								.addGap(27))
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGap(62)
 								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-									.addComponent(panel_4, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
-									.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+									.addComponent(panel_4, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
+									.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE))
 								.addGap(60)))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(247)
@@ -192,7 +189,7 @@ public class DeliveryView {
 							.addGap(260)))
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(selectR_comboBox, 0, 255, Short.MAX_VALUE)
+							.addComponent(selectR_comboBox, 0, 279, Short.MAX_VALUE)
 							.addGap(45))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE)
@@ -201,28 +198,26 @@ public class DeliveryView {
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(33)
 							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 								.addComponent(selectR_comboBox, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblNewLabel_2)))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(24)
-							.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(58)
 							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
 							.addGap(60)
-							.addComponent(panel_4, GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+							.addComponent(panel_4, GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
 							.addGap(18)
 							.addComponent(Uavailable_btn, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addComponent(Save_btn, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(18)
-							.addComponent(panel_5, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)))
+							.addComponent(panel_5, GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)))
 					.addGap(63))
 		);
 		
@@ -375,14 +370,14 @@ public class DeliveryView {
 		gl_panel_3.setHorizontalGroup(
 			gl_panel_3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_3.createSequentialGroup()
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 226, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(20, Short.MAX_VALUE))
 		);
 		gl_panel_3.setVerticalGroup(
-			gl_panel_3.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel_3.createSequentialGroup()
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 32, Short.MAX_VALUE)
-					.addContainerGap())
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_3.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 42, Short.MAX_VALUE))
 		);
 		panel_3.setLayout(gl_panel_3);
 		panel.setLayout(gl_panel);
